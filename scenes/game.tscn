@@ -1,11 +1,73 @@
-[gd_scene load_steps=2 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=7 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
+[ext_resource type="Texture2D" uid="uid://cpqy8caon4p81" path="res://assets/textures/Mockup1.png" id="2_qjgvl"]
+[ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/shadow_enemy.tscn" id="3_22otp"]
+
+[sub_resource type="Theme" id="Theme_yptux"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mihx5"]
+bg_color = Color(0.67451, 0.607843, 0.0431373, 0.752941)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_f8suf"]
+default_font_size = 32
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_0vq47")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 205.0
-offset_bottom = 80.0
-text = "Hello, world!"
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(960, 540)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qjgvl")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 500
+theme_override_constants/margin_bottom = 30
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Time Left in Daytime"
+theme = SubResource("Theme_yptux")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_styles/background = SubResource("StyleBoxFlat_mihx5")
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_f8suf")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Daytime
+"
+horizontal_alignment = 1
+
+[node name="ShadowEnemy" parent="." instance=ExtResource("3_22otp")]
+position = Vector2(1634, 588)
