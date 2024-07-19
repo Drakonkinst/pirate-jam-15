@@ -1,8 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=14 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://cpqy8caon4p81" path="res://assets/textures/Mockup1.png" id="2_qjgvl"]
+[ext_resource type="Texture2D" uid="uid://tkvdjxmelk14" path="res://assets/ui/GUI-1.png.png" id="3_7mbne"]
 [ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/shadow_enemy.tscn" id="3_22otp"]
+[ext_resource type="Texture2D" uid="uid://jepydxa83khl" path="res://assets/ui/tool_shovel.png" id="3_cdii4"]
+[ext_resource type="Texture2D" uid="uid://dtt1bftyojqql" path="res://assets/ui/tool_pickaxe.png" id="4_y46bv"]
+[ext_resource type="Texture2D" uid="uid://ct0nr10ry1ih3" path="res://assets/ui/tool_torch.png" id="5_6q53y"]
+[ext_resource type="Texture2D" uid="uid://2he2vg8y0whc" path="res://assets/ui/tool_wand.png" id="6_g0cff"]
+[ext_resource type="Texture2D" uid="uid://y7ksqdsx5ymh" path="res://assets/ui/tool_bomb.png" id="7_u3w8k"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -21,6 +27,11 @@ corner_radius_bottom_left = 15
 [sub_resource type="Theme" id="Theme_f8suf"]
 default_font_size = 32
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y25x6"]
+texture = ExtResource("3_7mbne")
+texture_margin_left = 1.0
+texture_margin_right = 1.0
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_0vq47")
 
@@ -38,7 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_qjgvl")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="DayTrackerContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 27.0
@@ -48,7 +59,7 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 500
 theme_override_constants/margin_bottom = 30
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/DayTrackerContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 4
@@ -61,13 +72,71 @@ theme_override_styles/background = SubResource("StyleBoxFlat_mihx5")
 rounded = true
 show_percentage = false
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/DayTrackerContainer"]
 layout_mode = 2
 theme = SubResource("Theme_f8suf")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Daytime
 "
 horizontal_alignment = 1
+
+[node name="ToolsContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -125.0
+offset_right = 745.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_y25x6")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ToolsContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="ActionsContainer" type="HBoxContainer" parent="CanvasLayer/ToolsContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/ToolsContainer/MarginContainer/ActionsContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture_normal = ExtResource("3_cdii4")
+stretch_mode = 0
+
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer/ToolsContainer/MarginContainer/ActionsContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture_normal = ExtResource("4_y46bv")
+stretch_mode = 0
+
+[node name="TextureButton4" type="TextureButton" parent="CanvasLayer/ToolsContainer/MarginContainer/ActionsContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture_normal = ExtResource("5_6q53y")
+stretch_mode = 0
+
+[node name="TextureButton3" type="TextureButton" parent="CanvasLayer/ToolsContainer/MarginContainer/ActionsContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture_normal = ExtResource("6_g0cff")
+stretch_mode = 0
+
+[node name="TextureButton5" type="TextureButton" parent="CanvasLayer/ToolsContainer/MarginContainer/ActionsContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture_normal = ExtResource("7_u3w8k")
+stretch_mode = 0
 
 [node name="ShadowEnemy" parent="." instance=ExtResource("3_22otp")]
 position = Vector2(1634, 588)
