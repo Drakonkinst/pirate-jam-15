@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=15 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://cpqy8caon4p81" path="res://assets/textures/Mockup1.png" id="2_qjgvl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ct0nr10ry1ih3" path="res://assets/ui/tool_torch.png" id="5_6q53y"]
 [ext_resource type="Texture2D" uid="uid://2he2vg8y0whc" path="res://assets/ui/tool_wand.png" id="6_g0cff"]
 [ext_resource type="Texture2D" uid="uid://y7ksqdsx5ymh" path="res://assets/ui/tool_bomb.png" id="7_u3w8k"]
+[ext_resource type="PackedScene" uid="uid://b2y1wt3uage55" path="res://scenes/tile.tscn" id="9_84sl7"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -52,7 +53,7 @@ texture = ExtResource("2_qjgvl")
 [node name="DayTrackerContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 27.0
+offset_bottom = 160.0
 grow_horizontal = 2
 theme_override_constants/margin_left = 500
 theme_override_constants/margin_top = 30
@@ -137,6 +138,162 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 texture_normal = ExtResource("7_u3w8k")
 stretch_mode = 0
+
+[node name="TileContainer" type="Node2D" parent="."]
+
+[node name="Row1" type="Node2D" parent="TileContainer"]
+
+[node name="Tile" parent="TileContainer/Row1" instance=ExtResource("9_84sl7")]
+position = Vector2(500, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile2" parent="TileContainer/Row1" instance=ExtResource("9_84sl7")]
+position = Vector2(642, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile3" parent="TileContainer/Row1" instance=ExtResource("9_84sl7")]
+position = Vector2(783, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile4" parent="TileContainer/Row1" instance=ExtResource("9_84sl7")]
+position = Vector2(925, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile5" parent="TileContainer/Row1" instance=ExtResource("9_84sl7")]
+position = Vector2(1066, 289)
+scale = Vector2(7, 7)
+
+[node name="Tile6" parent="TileContainer/Row1" instance=ExtResource("9_84sl7")]
+position = Vector2(1208, 289)
+scale = Vector2(7, 7)
+
+[node name="Tile7" parent="TileContainer/Row1" instance=ExtResource("9_84sl7")]
+position = Vector2(1350, 289)
+scale = Vector2(7, 7)
+
+[node name="Row2" type="Node2D" parent="TileContainer"]
+position = Vector2(0, 145)
+
+[node name="Tile" parent="TileContainer/Row2" instance=ExtResource("9_84sl7")]
+position = Vector2(500, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile2" parent="TileContainer/Row2" instance=ExtResource("9_84sl7")]
+position = Vector2(642, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile3" parent="TileContainer/Row2" instance=ExtResource("9_84sl7")]
+position = Vector2(783, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile4" parent="TileContainer/Row2" instance=ExtResource("9_84sl7")]
+position = Vector2(925, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile5" parent="TileContainer/Row2" instance=ExtResource("9_84sl7")]
+position = Vector2(1066, 289)
+scale = Vector2(7, 7)
+
+[node name="Tile6" parent="TileContainer/Row2" instance=ExtResource("9_84sl7")]
+position = Vector2(1208, 289)
+scale = Vector2(7, 7)
+
+[node name="Tile7" parent="TileContainer/Row2" instance=ExtResource("9_84sl7")]
+position = Vector2(1350, 289)
+scale = Vector2(7, 7)
+
+[node name="Row3" type="Node2D" parent="TileContainer"]
+position = Vector2(-3, 290)
+
+[node name="Tile" parent="TileContainer/Row3" instance=ExtResource("9_84sl7")]
+position = Vector2(500, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile2" parent="TileContainer/Row3" instance=ExtResource("9_84sl7")]
+position = Vector2(642, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile3" parent="TileContainer/Row3" instance=ExtResource("9_84sl7")]
+position = Vector2(783, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile4" parent="TileContainer/Row3" instance=ExtResource("9_84sl7")]
+position = Vector2(925, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile5" parent="TileContainer/Row3" instance=ExtResource("9_84sl7")]
+position = Vector2(1066, 289)
+scale = Vector2(7, 7)
+
+[node name="Tile6" parent="TileContainer/Row3" instance=ExtResource("9_84sl7")]
+position = Vector2(1208, 289)
+scale = Vector2(7, 7)
+
+[node name="Tile7" parent="TileContainer/Row3" instance=ExtResource("9_84sl7")]
+position = Vector2(1350, 289)
+scale = Vector2(7, 7)
+
+[node name="Row4" type="Node2D" parent="TileContainer"]
+position = Vector2(-3, 434)
+
+[node name="Tile" parent="TileContainer/Row4" instance=ExtResource("9_84sl7")]
+position = Vector2(500, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile2" parent="TileContainer/Row4" instance=ExtResource("9_84sl7")]
+position = Vector2(642, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile3" parent="TileContainer/Row4" instance=ExtResource("9_84sl7")]
+position = Vector2(783, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile4" parent="TileContainer/Row4" instance=ExtResource("9_84sl7")]
+position = Vector2(925, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile5" parent="TileContainer/Row4" instance=ExtResource("9_84sl7")]
+position = Vector2(1066, 289)
+scale = Vector2(7, 7)
+
+[node name="Tile6" parent="TileContainer/Row4" instance=ExtResource("9_84sl7")]
+position = Vector2(1208, 289)
+scale = Vector2(7, 7)
+
+[node name="Tile7" parent="TileContainer/Row4" instance=ExtResource("9_84sl7")]
+position = Vector2(1350, 289)
+scale = Vector2(7, 7)
+
+[node name="Row5" type="Node2D" parent="TileContainer"]
+position = Vector2(-3, 576)
+
+[node name="Tile" parent="TileContainer/Row5" instance=ExtResource("9_84sl7")]
+position = Vector2(500, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile2" parent="TileContainer/Row5" instance=ExtResource("9_84sl7")]
+position = Vector2(642, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile3" parent="TileContainer/Row5" instance=ExtResource("9_84sl7")]
+position = Vector2(783, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile4" parent="TileContainer/Row5" instance=ExtResource("9_84sl7")]
+position = Vector2(925, 290)
+scale = Vector2(7, 7)
+
+[node name="Tile5" parent="TileContainer/Row5" instance=ExtResource("9_84sl7")]
+position = Vector2(1066, 289)
+scale = Vector2(7, 7)
+
+[node name="Tile6" parent="TileContainer/Row5" instance=ExtResource("9_84sl7")]
+position = Vector2(1208, 289)
+scale = Vector2(7, 7)
+
+[node name="Tile7" parent="TileContainer/Row5" instance=ExtResource("9_84sl7")]
+position = Vector2(1350, 289)
+scale = Vector2(7, 7)
 
 [node name="ShadowEnemy" parent="." instance=ExtResource("3_22otp")]
 position = Vector2(1634, 588)
