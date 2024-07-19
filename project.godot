@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerResources="*res://player_resources.gd"
+Global="*res://scenes/global.tscn"
+GlobalVariables="*res://scenes/global_variables.gd"
 
 [display]
 
