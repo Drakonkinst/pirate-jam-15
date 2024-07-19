@@ -10,6 +10,12 @@ class_name Grid
 
 var grid: Array[Array]
 
+# row = y, col = x
+func get_tile(row: int, col: int) -> GridTile:
+    row = clamp(0, row, num_rows - 1)
+    col = clamp(0, col, num_cols - 1)
+    return grid[row][col]
+
 func find_grid_origin():
     # Not sure why this doesn't fully center it but we're applying an offset anyways
     var screen_dimensions: Vector2 = get_viewport().get_visible_rect().size
@@ -26,10 +32,10 @@ func _ready():
     for row in num_rows:
         var row_tiles: Array[GridTile] = []
         for col in num_cols:
-            var tile = tile_scene.instantiate()
-            var tileObject = tile as GridTile
-            tileObject.initialize(origin, row, col, tile_width, tile_height)
+            var tile_obj = tile_scene.instantiate()
+            add_child(tile_obj)
+            var tile = tile_obj as GridTile
+            tile.initialize(origin, row, col, tile_width, tile_height)
             row_tiles.append(tile)
-            add_child(tile)
         grid.append(row_tiles)
 

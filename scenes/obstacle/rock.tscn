@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci5x7iudnfatv"]
+
+[ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_tp0j5"]
+
+[node name="Rock" instance=ExtResource("1_tp0j5")]

@@ -3,11 +3,29 @@ extends Node2D
 class_name GridTile
 
 const BORDER = 5
+
 @export var sprite: Sprite2D
 @export var collision_shape: CollisionShape2D
 
+@onready var obstacle_parent: Node2D = $ObstacleParent
+
 var row: int
 var col: int
+var obstacle: Obstacle = null
+
+func clear_obstacle() -> void:
+    # Remove all children
+    for node in obstacle_parent.get_children():
+        obstacle_parent.remove_child(node)
+        node.queue_free()
+    obstacle = null
+
+func set_obstacle(obj: Obstacle) -> void:
+    if obstacle:
+        clear_obstacle()
+    obstacle = obj
+    obstacle_parent.add_child(obstacle)
+    obstacle.set_tile(self)
 
 func scale_sprite(tile_width: float, tile_height: float) -> void:
     var texture_width = sprite.texture.get_width()

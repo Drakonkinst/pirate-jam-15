@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=18 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://cpqy8caon4p81" path="res://assets/textures/Mockup1.png" id="2_qjgvl"]
@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://ct0nr10ry1ih3" path="res://assets/ui/tool_torch.png" id="5_6q53y"]
 [ext_resource type="Texture2D" uid="uid://2he2vg8y0whc" path="res://assets/ui/tool_wand.png" id="6_g0cff"]
 [ext_resource type="Texture2D" uid="uid://y7ksqdsx5ymh" path="res://assets/ui/tool_bomb.png" id="7_u3w8k"]
-[ext_resource type="PackedScene" uid="uid://bmemup7nt535x" path="res://scenes/grid/grid.tscn" id="11_7lv1o"]
+[ext_resource type="Script" path="res://scenes/obstacle_manager.gd" id="10_uoctj"]
+[ext_resource type="PackedScene" uid="uid://bdnr8tlvaswxs" path="res://scenes/obstacle/tree.tscn" id="11_4iroc"]
+[ext_resource type="PackedScene" uid="uid://g0r7v65brbxf" path="res://scenes/grid/grid.tscn" id="11_7lv1o"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -33,8 +35,18 @@ texture = ExtResource("3_7mbne")
 texture_margin_left = 1.0
 texture_margin_right = 1.0
 
-[node name="Game" type="Node2D"]
+[sub_resource type="GDScript" id="GDScript_hp6k0"]
+script/source = "extends Node2D
+
+class_name World
+
+
+"
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager")]
 script = ExtResource("1_0vq47")
+grid = NodePath("World/Grid")
+obstacle_manager = NodePath("World/ObstacleManager")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
@@ -140,12 +152,14 @@ texture_normal = ExtResource("7_u3w8k")
 stretch_mode = 0
 
 [node name="World" type="Node2D" parent="."]
+script = SubResource("GDScript_hp6k0")
 
 [node name="Grid" parent="World" instance=ExtResource("11_7lv1o")]
-num_rows = 5
-num_cols = 9
-tile_width = 150
-tile_height = 125
+position = Vector2(125, 25)
+
+[node name="ObstacleManager" type="Node2D" parent="World"]
+script = ExtResource("10_uoctj")
+obstacle_to_spawn = ExtResource("11_4iroc")
 
 [node name="ShadowEnemy" parent="." instance=ExtResource("3_22otp")]
 position = Vector2(1634, 588)
