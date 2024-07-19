@@ -24,5 +24,4 @@ func _iter_next(_arg) -> bool:
     return should_continue()
 
 func _iter_get(_arg) -> GridTile:
-    print(row, " ", col)
     return grid.get_tile(row, col)

@@ -6,6 +6,7 @@ class_name Game
 @export var obstacle_manager: ObstacleManager
 
 func _ready():
+    # Grid already instantiated since it is a child
     obstacle_manager.spawn_starting_obstacles(grid)
 
 func _input(event):
