@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmemup7nt535x"]
+
+[ext_resource type="Script" path="res://scenes/grid/grid.gd" id="1_kmnsf"]
+[ext_resource type="PackedScene" uid="uid://b2y1wt3uage55" path="res://scenes/grid/grid_tile.tscn" id="2_l4kww"]
+
+[node name="Grid" type="Node2D"]
+script = ExtResource("1_kmnsf")
+tile_scene = ExtResource("2_l4kww")
