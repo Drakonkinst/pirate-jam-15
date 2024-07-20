@@ -10,13 +10,13 @@ data = ExtResource("2_krvas")
 behaviors = [NodePath("OilSpillBehavior")]
 
 [node name="ObstacleModel1" parent="." index="1"]
-position = Vector2(0, 44)
+position = Vector2(0, -3)
 
 [node name="Base" parent="ObstacleModel1" index="0"]
 texture = ExtResource("2_ulbsa")
 
 [node name="Flaming" parent="ObstacleModel1" index="1"]
-position = Vector2(-3, -80)
+position = Vector2(-3, -34)
 
 [node name="OilSpillBehavior" type="Node2D" parent="." index="3"]
 script = ExtResource("4_ir1mx")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://catifqjuiedc4"
-path="res://.godot/imported/dead_tree.png-ea0968f25073a26056d88fb0664608a3.ctex"
+uid="uid://pdrfp61olllo"
+path="res://.godot/imported/quartz_ore_rock.png-eaefe8ac32f6c51d0118d23a4644f86c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/dead_tree.png"
-dest_files=["res://.godot/imported/dead_tree.png-ea0968f25073a26056d88fb0664608a3.ctex"]
+source_file="res://assets/textures/quartz_ore_rock.png"
+dest_files=["res://.godot/imported/quartz_ore_rock.png-eaefe8ac32f6c51d0118d23a4644f86c.ctex"]
 
 [params]
 

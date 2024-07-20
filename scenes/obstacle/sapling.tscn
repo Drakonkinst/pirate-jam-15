@@ -11,7 +11,7 @@ data = ExtResource("2_yt6tw")
 behaviors = [NodePath("SaplingBehavior"), NodePath("BurnLeavesBehavior")]
 
 [node name="ObstacleModel1" parent="." index="1"]
-position = Vector2(0, 24)
+position = Vector2(0, 28)
 
 [node name="Base" parent="ObstacleModel1" index="0"]
 texture = ExtResource("2_c6hhx")

@@ -17,8 +17,11 @@ data = ExtResource("2_7gwrh")
 behaviors = [NodePath("TreeBehavior"), NodePath("BurnLeavesBehavior")]
 
 [node name="ObstacleModel1" parent="." index="1"]
-position = Vector2(-2, -1)
+position = Vector2(-2, -13)
 transmutable_map = Array[ExtResource("3_ca1s4")]([SubResource("Resource_44n8k")])
+
+[node name="Flaming" parent="ObstacleModel1" index="1"]
+position = Vector2(-3, -94)
 
 [node name="TreeBehavior" type="Node2D" parent="." index="3"]
 script = ExtResource("5_chy1h")

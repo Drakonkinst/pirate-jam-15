@@ -46,7 +46,7 @@ func init_model() -> void:
     # TODO: For demo only
     if randf() < 0.5 and data.is_flammable:
         set_on_fire(5)
-    if data.id == ObstacleData.Type.TREE and randf() < 0.5:
+    if (data.id == ObstacleData.Type.TREE or data.id == ObstacleData.Type.ROCK) and randf() < 0.25:
         set_transmuted_state(Obstacle.TransmutedState.QUARTZ)
 
 func set_tile(obj: GridTile) -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx2s5datltkmr"
-path="res://.godot/imported/fire_rock_3.png-dad90d380c65927ddf5ac8875f244168.ctex"
+uid="uid://crftg4cevi8bd"
+path="res://.godot/imported/small_tree.png-afad4f1a3c16fc67c5d7700cbd9da730.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/fire_rock_3.png"
-dest_files=["res://.godot/imported/fire_rock_3.png-dad90d380c65927ddf5ac8875f244168.ctex"]
+source_file="res://assets/textures/small_tree.png"
+dest_files=["res://.godot/imported/small_tree.png-afad4f1a3c16fc67c5d7700cbd9da730.ctex"]
 
 [params]
 

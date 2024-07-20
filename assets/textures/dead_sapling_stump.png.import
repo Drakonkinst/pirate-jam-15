@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://catifqjuiedc4"
-path="res://.godot/imported/dead_tree.png-ea0968f25073a26056d88fb0664608a3.ctex"
+uid="uid://c5s6lk2q0vj4w"
+path="res://.godot/imported/dead_sapling_stump.png-11e1216be050306361bd950dcf45544f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/dead_tree.png"
-dest_files=["res://.godot/imported/dead_tree.png-ea0968f25073a26056d88fb0664608a3.ctex"]
+source_file="res://assets/textures/dead_sapling_stump.png"
+dest_files=["res://.godot/imported/dead_sapling_stump.png-11e1216be050306361bd950dcf45544f.ctex"]
 
 [params]
 
