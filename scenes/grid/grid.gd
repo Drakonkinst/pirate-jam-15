@@ -16,7 +16,7 @@ func get_tile(row: int, col: int) -> GridTile:
     col = clamp(0, col, num_cols - 1)
     return grid[row][col]
 
-func find_grid_origin():
+func find_grid_origin() -> Vector2:
     # Not sure why this doesn't fully center it but we're applying an offset anyways
     var screen_dimensions: Vector2 = get_viewport().get_visible_rect().size
     var grid_height: float = tile_height * num_rows
