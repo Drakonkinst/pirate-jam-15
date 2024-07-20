@@ -23,11 +23,3 @@ texture = ExtResource("5_g0axf")
 
 [node name="Flaming" parent="ObstacleModel1" index="1"]
 position = Vector2(-3, -94)
-
-[node name="Healthbar" parent="." index="3"]
-show_only_if_damaged = null
-speed = null
-delay_multiplier = null
-should_change_colors = null
-caution_threshold = null
-danger_threshold = null

@@ -90,12 +90,6 @@ offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.44, 1.44)
-show_only_if_damaged = null
-speed = null
-delay_multiplier = null
-should_change_colors = null
-caution_threshold = null
-danger_threshold = null
 
 [connection signal="changed" from="Health" to="Healthbar" method="_on_health_changed"]
 [connection signal="death" from="Health" to="." method="_on_health_death"]
