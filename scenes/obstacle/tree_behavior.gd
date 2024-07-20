@@ -33,18 +33,6 @@ func harvest_fruit() -> void:
     fruit_tree_model.hide()
     original_tree_model.show()
 
-# https://forum.godotengine.org/t/is-it-possible-to-detect-if-a-mouse-pointer-is-hovering-over-area-2d/15073
-# TODO: This runs for all trees, might be better to run this once and grab the tree obstacle from there
-# mouse_entered doesn't work consistently so I think this way is better
-func _physics_process(_delta: float) -> void:
-    var space = get_world_2d().direct_space_state
-    var mouse_pos = get_viewport().get_mouse_position()
-    var parameters: PhysicsPointQueryParameters2D = PhysicsPointQueryParameters2D.new()
-    parameters.position = mouse_pos
-    parameters.collide_with_areas = true
-    parameters.collide_with_bodies = false
-    parameters.collision_mask = tree_harvest_mask
-    var hit: Array[Dictionary] = space.intersect_point(parameters, 1)
-    # TODO: Is there a better way than checking the reference? An ID, maybe?
-    if hit && hit[0].collider == harvest_area:
+func _on_mouse_over_area_moused_over() -> void:
+    if has_fruit:
         harvest_fruit()

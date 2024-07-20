@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=28 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://cpqy8caon4p81" path="res://assets/textures/Mockup1.png" id="2_qjgvl"]
@@ -18,8 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://bcqx4m1p240sb" path="res://scenes/obstacle/dead_tree.tscn" id="16_py4vk"]
 [ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/shadow_enemy.tscn" id="16_ylmnt"]
 [ext_resource type="PackedScene" uid="uid://c68lf7id1osf4" path="res://scenes/obstacle/dead_sapling.tscn" id="17_6mv6d"]
+[ext_resource type="Script" path="res://scenes/projectile/projectile_manager.gd" id="18_hrc3v"]
 [ext_resource type="PackedScene" uid="uid://cu2l6glnoatrb" path="res://scenes/player/player.tscn" id="19_c5v0p"]
 [ext_resource type="PackedScene" uid="uid://cyq7jll2t5va" path="res://scenes/projectile/thrown_projectile.tscn" id="20_ipaia"]
+[ext_resource type="Script" path="res://scenes/mouse_over_handler.gd" id="22_30ic7"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -184,6 +186,9 @@ sapling_scene = ExtResource("15_0ctjf")
 dead_tree_scene = ExtResource("16_py4vk")
 dead_sapling_scene = ExtResource("17_6mv6d")
 
+[node name="Node2D" type="Node2D" parent="World"]
+script = ExtResource("18_hrc3v")
+
 [node name="ShadowEnemy" parent="." instance=ExtResource("16_ylmnt")]
 position = Vector2(1872, 285)
 
@@ -204,3 +209,7 @@ position = Vector2(235, 518)
 
 [node name="Projectile" parent="." instance=ExtResource("20_ipaia")]
 position = Vector2(287, 370)
+
+[node name="MouseOverHandler" type="Node2D" parent="."]
+script = ExtResource("22_30ic7")
+mouse_over_mask = 2

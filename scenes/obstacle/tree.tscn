@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdnr8tlvaswxs"]
+[gd_scene load_steps=11 format=3 uid="uid://bdnr8tlvaswxs"]
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_ubi77"]
 [ext_resource type="Resource" uid="uid://c74t1c6d0mox1" path="res://data/obstacle/tree.tres" id="2_7gwrh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/obstacle/tree_behavior.gd" id="5_chy1h"]
 [ext_resource type="Texture2D" uid="uid://bxpivg1861wjc" path="res://assets/textures/fruit_tree.png" id="5_uy6jq"]
 [ext_resource type="Script" path="res://scenes/obstacle/burn_leaves_behavior.gd" id="6_5ae8g"]
+[ext_resource type="Script" path="res://scenes/mouse_over_area.gd" id="8_bp3vh"]
 
 [sub_resource type="Resource" id="Resource_44n8k"]
 script = ExtResource("3_ca1s4")
@@ -37,29 +38,23 @@ position = Vector2(-3, -94)
 script = ExtResource("5_chy1h")
 fruit_tree_model = NodePath("../ObstacleModel1/FruitTree")
 original_tree_model = NodePath("../ObstacleModel1/Base")
-harvest_area = NodePath("../Area2D")
+harvest_area = NodePath("../MouseOverArea")
 tree_harvest_mask = 2
 
 [node name="BurnLeavesBehavior" type="Node2D" parent="." index="4"]
 script = ExtResource("6_5ae8g")
 transform_into = 6
 
-[node name="Healthbar" parent="." index="5"]
-show_only_if_damaged = true
-speed = 100.0
-delay_multiplier = 0.0085
-should_change_colors = true
-caution_threshold = 0.5
-danger_threshold = 0.2
-
-[node name="Area2D" type="Area2D" parent="." index="6"]
+[node name="MouseOverArea" type="Area2D" parent="." index="6"]
 collision_layer = 2
 collision_mask = 2
 collision_priority = 10.0
 monitoring = false
+script = ExtResource("8_bp3vh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseOverArea" index="0"]
 position = Vector2(-0.5, -66)
 shape = SubResource("RectangleShape2D_lhsll")
 
-[connection signal="mouse_entered" from="Area2D" to="TreeBehavior" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="MouseOverArea" to="TreeBehavior" method="_on_area_2d_mouse_entered"]
+[connection signal="moused_over" from="MouseOverArea" to="TreeBehavior" method="_on_mouse_over_area_moused_over"]
