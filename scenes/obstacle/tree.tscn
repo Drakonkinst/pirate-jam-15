@@ -1,11 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdnr8tlvaswxs"]
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_ubi77"]
-[ext_resource type="Texture2D" uid="uid://duj6l56uoqmpf" path="res://assets/textures/TreeTemp.png" id="2_msko8"]
+[ext_resource type="Resource" uid="uid://c74t1c6d0mox1" path="res://data/obstacle/tree.tres" id="2_7gwrh"]
 
 [node name="Tree" instance=ExtResource("1_ubi77")]
+data = ExtResource("2_7gwrh")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
-position = Vector2(0, -20)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_msko8")
+[node name="ObstacleModel1" parent="." index="1"]
+position = Vector2(-2, -1)

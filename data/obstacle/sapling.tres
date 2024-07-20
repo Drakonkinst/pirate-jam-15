@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ObstacleData" load_steps=2 format=3 uid="uid://dvrp2cbwh7e8v"]
+
+[ext_resource type="Script" path="res://data/obstacle/obstacle_data.gd" id="1_sovwx"]
+
+[resource]
+script = ExtResource("1_sovwx")
+health = 10
+is_flammable = true
+can_pass_through = false

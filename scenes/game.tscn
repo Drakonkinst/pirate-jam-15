@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=22 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://cpqy8caon4p81" path="res://assets/textures/Mockup1.png" id="2_qjgvl"]
@@ -12,6 +12,10 @@
 [ext_resource type="Script" path="res://scenes/obstacle_manager.gd" id="10_uoctj"]
 [ext_resource type="PackedScene" uid="uid://bdnr8tlvaswxs" path="res://scenes/obstacle/tree.tscn" id="11_4iroc"]
 [ext_resource type="PackedScene" uid="uid://g0r7v65brbxf" path="res://scenes/grid/grid.tscn" id="11_7lv1o"]
+[ext_resource type="PackedScene" uid="uid://ci5x7iudnfatv" path="res://scenes/obstacle/rock.tscn" id="12_bokvu"]
+[ext_resource type="PackedScene" uid="uid://hmw6qr2yjefw" path="res://scenes/obstacle/oil_spill.tscn" id="13_tpqui"]
+[ext_resource type="PackedScene" uid="uid://dutyvrutx3beh" path="res://scenes/obstacle/torch.tscn" id="14_q7ayn"]
+[ext_resource type="PackedScene" uid="uid://4ly726jco8yn" path="res://scenes/obstacle/sapling.tscn" id="15_0ctjf"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -54,7 +58,16 @@ offset = Vector2(960, 540)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -159,7 +172,11 @@ position = Vector2(125, 25)
 
 [node name="ObstacleManager" type="Node2D" parent="World"]
 script = ExtResource("10_uoctj")
-obstacle_to_spawn = ExtResource("11_4iroc")
+tree_scene = ExtResource("11_4iroc")
+rock_scene = ExtResource("12_bokvu")
+oil_spill_scene = ExtResource("13_tpqui")
+torch_scene = ExtResource("14_q7ayn")
+sapling_scene = ExtResource("15_0ctjf")
 
 [node name="ShadowEnemy" parent="." instance=ExtResource("3_22otp")]
 position = Vector2(1634, 588)

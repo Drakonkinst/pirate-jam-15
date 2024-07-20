@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://4ly726jco8yn"]
+
+[ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_aelaq"]
+[ext_resource type="Texture2D" uid="uid://7q5l66cc7xee" path="res://assets/textures/tree_small.png" id="2_c6hhx"]
+[ext_resource type="Resource" uid="uid://dvrp2cbwh7e8v" path="res://data/obstacle/sapling.tres" id="2_yt6tw"]
+
+[node name="Obstacle" instance=ExtResource("1_aelaq")]
+data = ExtResource("2_yt6tw")
+
+[node name="Base" parent="ObstacleModel1" index="0"]
+texture = ExtResource("2_c6hhx")
+
+[node name="Flaming" parent="ObstacleModel1" index="1"]
+position = Vector2(-3, -74)
+scale = Vector2(1.64808, 1.26742)
