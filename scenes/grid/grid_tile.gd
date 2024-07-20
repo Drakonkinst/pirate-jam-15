@@ -26,6 +26,7 @@ func set_obstacle(obj: Obstacle) -> void:
     obstacle = obj
     obstacle_parent.add_child(obstacle)
     obstacle.set_tile(self)
+    obstacle.removed.connect(_on_obstacle_removed)
 
 func scale_sprite(tile_width: float, tile_height: float) -> void:
     var texture_width = sprite.texture.get_width()
@@ -39,3 +40,6 @@ func initialize(origin: Vector2, rowIndex: int, colIndex: int, tile_width: float
     position = origin + Vector2(col * tile_width, row * tile_height)
     collision_shape.shape.extents = Vector2(tile_width, tile_height)
     scale_sprite(tile_width, tile_height)
+
+func _on_obstacle_removed() -> void:
+    clear_obstacle()

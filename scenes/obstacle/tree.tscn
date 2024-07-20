@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdnr8tlvaswxs"]
+[gd_scene load_steps=6 format=3 uid="uid://bdnr8tlvaswxs"]
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_ubi77"]
 [ext_resource type="Resource" uid="uid://c74t1c6d0mox1" path="res://data/obstacle/tree.tres" id="2_7gwrh"]
+[ext_resource type="Script" path="res://data/obstacle/transmutable_entry.gd" id="3_ca1s4"]
+[ext_resource type="Texture2D" uid="uid://bxwpgwksan1se" path="res://assets/textures/quartz_tree.png" id="4_ahk4y"]
+
+[sub_resource type="Resource" id="Resource_44n8k"]
+script = ExtResource("3_ca1s4")
+state = 3
+texture = ExtResource("4_ahk4y")
 
 [node name="Tree" instance=ExtResource("1_ubi77")]
 data = ExtResource("2_7gwrh")
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(-2, -1)
+transmutable_map = Array[ExtResource("3_ca1s4")]([SubResource("Resource_44n8k")])

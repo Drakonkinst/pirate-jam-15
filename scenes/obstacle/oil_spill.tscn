@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://hmw6qr2yjefw"]
+[gd_scene load_steps=5 format=3 uid="uid://hmw6qr2yjefw"]
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_nl8qt"]
 [ext_resource type="Resource" uid="uid://uisfpggyr8q7" path="res://data/obstacle/oil_spill.tres" id="2_krvas"]
 [ext_resource type="Texture2D" uid="uid://chkleabis36tk" path="res://assets/textures/oil_spill.png" id="2_ulbsa"]
+[ext_resource type="Script" path="res://scenes/obstacle/oil_spill_behavior.gd" id="4_ir1mx"]
 
-[node name="Obstacle" instance=ExtResource("1_nl8qt")]
+[node name="Obstacle" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_nl8qt")]
 data = ExtResource("2_krvas")
+behaviors = [NodePath("OilSpillBehavior")]
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(0, 44)
@@ -15,3 +17,6 @@ texture = ExtResource("2_ulbsa")
 
 [node name="Flaming" parent="ObstacleModel1" index="1"]
 position = Vector2(-3, -80)
+
+[node name="OilSpillBehavior" type="Node2D" parent="." index="3"]
+script = ExtResource("4_ir1mx")

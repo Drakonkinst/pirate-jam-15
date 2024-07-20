@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://56848sq2g0ld"]
+
+[ext_resource type="Shader" path="res://shader/burnt.gdshader" id="1_f6b55"]
+[ext_resource type="Texture2D" uid="uid://clehrrjwkowtj" path="res://data/sprite/burnt_texture.tres" id="2_8ig7w"]
+
+[resource]
+shader = ExtResource("1_f6b55")
+shader_parameter/mask_texture = ExtResource("2_8ig7w")

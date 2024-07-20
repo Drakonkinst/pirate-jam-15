@@ -4,6 +4,8 @@
 
 [resource]
 script = ExtResource("1_qx5qe")
+id = 3
 health = 5
 is_flammable = false
+should_use_burnt_texture = false
 can_pass_through = false

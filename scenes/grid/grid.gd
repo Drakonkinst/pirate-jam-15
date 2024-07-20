@@ -23,7 +23,6 @@ func find_grid_origin():
     var grid_width: float = tile_width * num_cols
     var origin_x := (screen_dimensions.x - grid_width) / 2
     var origin_y := (screen_dimensions.y - grid_height) / 2
-    print(screen_dimensions, " ", grid_height, " ", grid_width)
     var origin: Vector2 = position + Vector2(origin_x, origin_y)
     return origin
 

@@ -24,6 +24,9 @@ func spawn_starting_obstacles(grid: Grid):
             obstacle_scene = sapling_scene
 
         if obstacle_scene:
-            var obstacle_obj = obstacle_scene.instantiate()
-            var obstacle = obstacle_obj as Obstacle
-            tile.set_obstacle(obstacle)
+            spawn_obstacle(obstacle_scene, tile)
+
+func spawn_obstacle(obstacle_scene: PackedScene, tile: GridTile):
+    var obstacle_obj = obstacle_scene.instantiate()
+    var obstacle = obstacle_obj as Obstacle
+    tile.set_obstacle(obstacle)
