@@ -30,6 +30,7 @@ script = ExtResource("2_pkgyp")
 position = Vector2(0, -52)
 scale = Vector2(3.636, 3.636)
 shape = SubResource("CapsuleShape2D_yycql")
+disabled = true
 
 [node name="PlayerAnimationControl" type="Node2D" parent="."]
 script = ExtResource("3_i8sua")
