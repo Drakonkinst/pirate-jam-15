@@ -4,6 +4,7 @@ class_name Game
 
 @export var grid: Grid
 @export var obstacle_manager: ObstacleManager
+@export var player: Player
 
 func _ready():
     # Grid already instantiated since it is a child

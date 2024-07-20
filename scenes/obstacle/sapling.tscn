@@ -30,3 +30,9 @@ transform_into = 7
 [node name="Healthbar" parent="." index="5"]
 offset_top = -79.0
 offset_bottom = -79.0
+show_only_if_damaged = true
+speed = 100.0
+delay_multiplier = 0.0085
+should_change_colors = true
+caution_threshold = 0.5
+danger_threshold = 0.2

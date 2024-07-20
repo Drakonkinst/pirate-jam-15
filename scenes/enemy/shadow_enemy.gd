@@ -38,7 +38,7 @@ func get_left_tile() -> GridTile:
     var detection_offset = Vector2(-size_x, 0)
     var shadow_left_position: Vector2 = global_position + detection_offset
 
-    var tile: GridTile = GlobalVariables.curr_game.grid.screenspace_to_tile(shadow_left_position)
+    var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(shadow_left_position)
     return tile
 
 func attack(target_obstacle: Obstacle):

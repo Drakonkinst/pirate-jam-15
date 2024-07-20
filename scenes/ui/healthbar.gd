@@ -51,7 +51,7 @@ func set_percentage(percent: float, instant: bool = false) -> void:
     if instant:
         bar_under.value = target_value
     if should_change_colors:
-        update_color()
+        _update_color()
     if show_only_if_damaged:
         if target_value < MAX_VALUE:
             bar_over.show()
@@ -60,7 +60,7 @@ func set_percentage(percent: float, instant: bool = false) -> void:
             bar_over.hide()
             bar_under.hide()
 
-func update_color() -> void:
+func _update_color() -> void:
     if target_value < MAX_VALUE * danger_threshold:
         bar_over.tint_progress = danger_color
     elif target_value < MAX_VALUE * caution_threshold:

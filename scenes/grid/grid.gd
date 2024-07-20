@@ -42,6 +42,12 @@ func screenspace_to_tile(screen_space_pos: Vector2) -> GridTile:
 
     return get_tile(row,col)
 
+func get_y_extents() -> Vector2:
+    var origin = find_grid_origin()
+    var min_extent = origin.y
+    var max_extent = min_extent + tile_height * num_rows
+    return Vector2(min_extent, max_extent)
+
 func _ready():
     var origin: Vector2 = find_grid_origin()
     for row in num_rows:

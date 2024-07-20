@@ -44,6 +44,14 @@ tree_harvest_mask = 2
 script = ExtResource("6_5ae8g")
 transform_into = 6
 
+[node name="Healthbar" parent="." index="5"]
+show_only_if_damaged = true
+speed = 100.0
+delay_multiplier = 0.0085
+should_change_colors = true
+caution_threshold = 0.5
+danger_threshold = 0.2
+
 [node name="Area2D" type="Area2D" parent="." index="6"]
 collision_layer = 2
 collision_mask = 2

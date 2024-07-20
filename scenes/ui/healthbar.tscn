@@ -7,15 +7,9 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_m2iuc")
-show_only_if_damaged = null
-speed = null
-delay_multiplier = null
-should_change_colors = null
 healthy_color = Color(0, 0.400108, 0, 1)
 caution_color = Color(0.78043, 0.40002, 3.85046e-07, 1)
 danger_color = Color(0.739594, 0.0013106, 0.000718592, 1)
-caution_threshold = null
-danger_threshold = null
 
 [node name="BarUnder" type="TextureProgressBar" parent="."]
 layout_mode = 0

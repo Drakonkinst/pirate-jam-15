@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu2l6glnoatrb"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_g3hje"]
+[ext_resource type="Script" path="res://scenes/player/player_move_control.gd" id="2_pkgyp"]
+[ext_resource type="Script" path="res://scenes/player/player_animation_control.gd" id="3_i8sua"]
+[ext_resource type="Texture2D" uid="uid://d1xkqdit3j7if" path="res://assets/textures/player_still.png" id="4_mtw81"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yycql"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sti1p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_mtw81")
+}],
+"loop": true,
+"name": &"still",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(2, -3)
+motion_mode = 1
+script = ExtResource("1_g3hje")
+
+[node name="PlayerMoveControl" type="Node2D" parent="."]
+script = ExtResource("2_pkgyp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -52)
+scale = Vector2(3.636, 3.636)
+shape = SubResource("CapsuleShape2D_yycql")
+
+[node name="PlayerAnimationControl" type="Node2D" parent="."]
+script = ExtResource("3_i8sua")
+
+[node name="Model" type="AnimatedSprite2D" parent="PlayerAnimationControl"]
+position = Vector2(0, -122)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_sti1p")
+animation = &"still"
