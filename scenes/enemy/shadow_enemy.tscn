@@ -5,7 +5,6 @@
 
 [node name="ShadowEnemy" type="Node2D"]
 script = ExtResource("1_qvcdo")
-sprite_scale = 0.03
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true

@@ -33,4 +33,6 @@ func set_health(value: int) -> void:
         death.emit()
 
 func get_percentage() -> float:
+    if max_health == 0:
+        return 0
     return health * 1.0 / max_health

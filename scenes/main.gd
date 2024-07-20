@@ -5,10 +5,10 @@ extends Node
 var game: Game
 
 func _ready() -> void:
-	start_new_game()
+    start_new_game()
 
 
 func start_new_game() -> void:
-	game = game_scene.instantiate()
-	GlobalVariables.curr_game = game
-	add_child(game)
+    game = game_scene.instantiate()
+    GlobalVariables.curr_game = game
+    add_child(game)

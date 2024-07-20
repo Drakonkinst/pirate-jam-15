@@ -77,7 +77,9 @@ func update_health_from_transmutation(state: TransmutedState) -> void:
     # Formula: New Health = (Current Health / Max Health) * Size Multiplier * Material Multiplier
     var health_percent = health.get_percentage()
     var material_multiplier = get_material_multiplier(state)
+    #print(health_percent, " ", data.size_multiplier, " ", material_multiplier)
     var new_health: int = ceil(health_percent * data.size_multiplier * material_multiplier)
+    print("Transmutated health ", health_percent, " of ", ObstacleData.Type.keys()[data.id], " to ", TransmutedState.keys()[state], " = ", new_health)
     health.set_health(new_health)
 
 func get_material_multiplier(state: TransmutedState) -> int:
@@ -110,9 +112,9 @@ func is_flammable() -> bool:
     return transmuted_state == TransmutedState.WOOD
 
 func _ready() -> void:
-    init_model()
     health.set_max_health(data.health)
     health.refill_health()
+    init_model()
 
 func _on_burning_state_fire_tick() -> void:
     damage(OBSTACLE_FIRE_DAMAGE)

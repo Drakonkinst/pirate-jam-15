@@ -3,7 +3,6 @@ extends Node2D
 
 @export var move_speed = 50.0
 @export var row = 0 
-@export var sprite_scale: float = 1
 
 enum EnemyState {
     MOVING,
@@ -18,7 +17,7 @@ var obstacle: Obstacle = null
 @onready var sprite = %Sprite
 
 func _ready():
-    sprite.scale = Vector2(sprite_scale, sprite_scale)
+    pass
 
 func _process(delta):
     var adjacent_tile = get_left_tile()
