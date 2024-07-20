@@ -30,3 +30,11 @@ func spawn_obstacle(obstacle_scene: PackedScene, tile: GridTile):
     var obstacle_obj = obstacle_scene.instantiate()
     var obstacle = obstacle_obj as Obstacle
     tile.set_obstacle(obstacle)
+
+func replace_obstacle(new_obstacle_scene: PackedScene, tile: GridTile):
+    if not tile.obstacle:
+        spawn_obstacle(new_obstacle_scene, tile)
+        return
+    # TODO: keep health as a percentage
+    # TODO: keep burning state
+    # TODO: keep burnt state

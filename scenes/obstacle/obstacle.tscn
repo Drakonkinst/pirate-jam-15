@@ -77,5 +77,6 @@ frame_progress = 0.798222
 script = ExtResource("7_at5li")
 
 [connection signal="death" from="Health" to="." method="_on_health_death"]
+[connection signal="burnt" from="BurningState" to="." method="_on_burning_state_burnt"]
 [connection signal="fire_expired" from="BurningState" to="." method="_on_burning_state_fire_expired"]
 [connection signal="fire_tick" from="BurningState" to="." method="_on_burning_state_fire_tick"]

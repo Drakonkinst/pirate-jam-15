@@ -10,24 +10,19 @@ class_name ObstacleModel
 @export var transmutable_map: Array[TransmutableEntry]
 
 var original_texture: Texture
-var is_burned: bool = false
 
 func _ready() -> void:
     original_texture = model.texture
 
-func set_flaming(is_on_fire: bool, should_use_burnt_texture: bool) -> void:
-    if is_burned or (is_on_fire and should_use_burnt_texture):
-        model.material = burnt_material
-        is_burned = true
-    else:
-        model.material = null
+func set_flaming(is_on_fire: bool) -> void:
     flaming_sprite.visible = is_on_fire
+
+func set_burned_overlay() -> void:
+    model.material = burnt_material
 
 func set_transmuted_state(state: Obstacle.TransmutedState) -> bool:
     # Replacing the material will always clear the burned state
-    if is_burned:
-        model.material = null
-        is_burned = false
+    model.material = null
 
     for entry: TransmutableEntry in transmutable_map:
         if entry.state == state:
