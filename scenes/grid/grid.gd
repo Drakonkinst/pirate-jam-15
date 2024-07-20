@@ -21,10 +21,26 @@ func find_grid_origin():
     var screen_dimensions: Vector2 = get_viewport().get_visible_rect().size
     var grid_height: float = tile_height * num_rows
     var grid_width: float = tile_width * num_cols
-    var origin_x := (screen_dimensions.x - grid_width) / 2
+    var origin_x := (screen_dimensions.x - grid_width) / 4
     var origin_y := (screen_dimensions.y - grid_height) / 2
     var origin: Vector2 = position + Vector2(origin_x, origin_y)
     return origin
+
+func screenspace_to_tile(screen_space_pos: Vector2) -> GridTile:
+    var origin = find_grid_origin()
+    var grid_space_pos = (screen_space_pos - origin)
+
+    #print("Gx: " + str(grid_space_pos.x) + ", Gy: " + str(grid_space_pos.y))
+    if grid_space_pos.x < 0 || grid_space_pos.x > (num_cols * tile_width):
+        return null
+    elif grid_space_pos.y < 0 || grid_space_pos.y > (num_rows * tile_height):
+        return null
+
+    var row = floori(grid_space_pos.y / tile_height)
+    var col = floori(grid_space_pos.x / tile_width)
+    print("Row: " + str(row) + ", Col: " + str(col))
+
+    return get_tile(row,col)
 
 func _ready():
     var origin: Vector2 = find_grid_origin()

@@ -3,6 +3,8 @@ extends Node2D
 # Uses inherited scenes to keep child components constant for all types of obstacles
 class_name Obstacle
 
+
+
 # Some objects can be tramsuted which should overlay their shape with a texture
 enum TransmutedState {
     DEFAULT, WOOD, STONE, QUARTZ

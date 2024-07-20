@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ckaoxt7bilkcr" path="res://assets/textures/1x1.png" id="2_idvhu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ll450"]
-size = Vector2(31, 30)
+size = Vector2(10, 10)
 
 [node name="GridTile" type="Node2D" node_paths=PackedStringArray("sprite", "collision_shape")]
 script = ExtResource("1_fmax6")
