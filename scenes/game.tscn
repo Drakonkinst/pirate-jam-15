@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://cpqy8caon4p81" path="res://assets/textures/Mockup1.png" id="2_qjgvl"]
 [ext_resource type="Texture2D" uid="uid://tkvdjxmelk14" path="res://assets/ui/GUI-1.png.png" id="3_7mbne"]
-[ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/shadow_enemy.tscn" id="3_22otp"]
 [ext_resource type="Texture2D" uid="uid://jepydxa83khl" path="res://assets/ui/tool_shovel.png" id="3_cdii4"]
 [ext_resource type="Texture2D" uid="uid://dtt1bftyojqql" path="res://assets/ui/tool_pickaxe.png" id="4_y46bv"]
 [ext_resource type="Texture2D" uid="uid://ct0nr10ry1ih3" path="res://assets/ui/tool_torch.png" id="5_6q53y"]
@@ -16,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://hmw6qr2yjefw" path="res://scenes/obstacle/oil_spill.tscn" id="13_tpqui"]
 [ext_resource type="PackedScene" uid="uid://dutyvrutx3beh" path="res://scenes/obstacle/torch.tscn" id="14_q7ayn"]
 [ext_resource type="PackedScene" uid="uid://4ly726jco8yn" path="res://scenes/obstacle/sapling.tscn" id="15_0ctjf"]
+[ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/shadow_enemy.tscn" id="16_ylmnt"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -178,5 +178,17 @@ oil_spill_scene = ExtResource("13_tpqui")
 torch_scene = ExtResource("14_q7ayn")
 sapling_scene = ExtResource("15_0ctjf")
 
-[node name="ShadowEnemy" parent="." instance=ExtResource("3_22otp")]
-position = Vector2(1634, 588)
+[node name="ShadowEnemy" parent="." instance=ExtResource("16_ylmnt")]
+position = Vector2(1872, 285)
+
+[node name="ShadowEnemy2" parent="." instance=ExtResource("16_ylmnt")]
+position = Vector2(1872, 391)
+
+[node name="ShadowEnemy3" parent="." instance=ExtResource("16_ylmnt")]
+position = Vector2(1872, 525)
+
+[node name="ShadowEnemy4" parent="." instance=ExtResource("16_ylmnt")]
+position = Vector2(1870, 633)
+
+[node name="ShadowEnemy5" parent="." instance=ExtResource("16_ylmnt")]
+position = Vector2(1868, 763)

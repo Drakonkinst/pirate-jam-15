@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2a8ngge05k7t"]
+
+[ext_resource type="Script" path="res://scenes/enemy/shadow_enemy.gd" id="1_qvcdo"]
+[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/ShadowTemp2.png" id="2_ghkbo"]
+
+[node name="ShadowEnemy" type="Node2D"]
+script = ExtResource("1_qvcdo")
+sprite_scale = 0.03
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_ghkbo")
+region_enabled = true
+region_rect = Rect2(600, 100, 2150, 2350)
