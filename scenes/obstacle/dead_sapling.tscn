@@ -24,3 +24,11 @@ texture = ExtResource("3_g02xa")
 [node name="Flaming" parent="ObstacleModel1" index="1"]
 position = Vector2(-3, -42)
 scale = Vector2(1.64808, 1.26742)
+
+[node name="Healthbar" parent="." index="3"]
+show_only_if_damaged = null
+speed = null
+delay_multiplier = null
+should_change_colors = null
+caution_threshold = null
+danger_threshold = null

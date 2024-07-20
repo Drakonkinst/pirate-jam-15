@@ -5,3 +5,11 @@
 
 [node name="Torch" instance=ExtResource("1_ofhq0")]
 data = ExtResource("2_jnbvw")
+
+[node name="Healthbar" parent="." index="3"]
+show_only_if_damaged = null
+speed = null
+delay_multiplier = null
+should_change_colors = null
+caution_threshold = null
+danger_threshold = null

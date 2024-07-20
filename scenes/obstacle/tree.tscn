@@ -29,3 +29,11 @@ script = ExtResource("5_chy1h")
 [node name="BurnLeavesBehavior" type="Node2D" parent="." index="4"]
 script = ExtResource("6_5ae8g")
 transform_into = 6
+
+[node name="Healthbar" parent="." index="5"]
+show_only_if_damaged = null
+speed = null
+delay_multiplier = null
+should_change_colors = null
+caution_threshold = null
+danger_threshold = null

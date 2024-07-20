@@ -4,12 +4,13 @@ extends Node
 
 class_name Health
 
-signal health_changed(value: int) # Use to inform UI elements
+signal changed(value: int, percent: float, instant: bool) # Use to inform UI elements
 signal death
 
 var health: int
 var max_health: int
 var dead: bool = false
+var invulnerable: bool = false
 
 func set_max_health(value: int) -> void:
     max_health = value
@@ -23,11 +24,13 @@ func kill() -> void:
 func refill_health() -> void:
     set_health(max_health)
 
-func set_health(value: int) -> void:
+func set_health(value: int, instant: bool = false) -> void:
     if dead:
         return
+    var old_health = health
     health = clamp(value, 0, max_health)
-    health_changed.emit(value)
+    if old_health != health and not invulnerable:
+        changed.emit(value, get_percentage(), instant)
     if health <= 0:
         dead = true
         death.emit()
@@ -37,6 +40,6 @@ func get_percentage() -> float:
         return 0
     return health * 1.0 / max_health
 
-func set_percentage(percent: float) -> void:
+func set_percentage(percent: float, instant: bool = false) -> void:
     percent = clamp(percent, 0.0, 1.0)
-    set_health(ceili(percent * max_health))
+    set_health(ceili(percent * max_health), instant)

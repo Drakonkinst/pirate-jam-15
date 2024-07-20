@@ -85,7 +85,7 @@ func replace_obstacle_scene(new_obstacle_scene: PackedScene, tile: GridTile) -> 
         print("TRANSFORM ", Obstacle.Type.keys()[original_obstacle.data.id], " -> ", Obstacle.Type.keys()[new_obstacle.data.id])
         # Keep health as percentage
         var health_percent = original_obstacle.health.get_percentage()
-        new_obstacle.health.set_percentage(health_percent)
+        new_obstacle.health.set_percentage(health_percent, true)
         # Keep burning state
         new_obstacle.copy_burning_state(original_obstacle.burning_state)
     return new_obstacle

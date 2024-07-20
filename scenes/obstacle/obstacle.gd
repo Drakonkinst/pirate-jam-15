@@ -111,6 +111,7 @@ func is_flammable() -> bool:
 func _ready() -> void:
     health.set_max_health(data.health)
     health.refill_health()
+    health.invulnerable = data.invulnerable
     put_out_fire()
     init_model()
 
