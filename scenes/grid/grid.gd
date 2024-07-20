@@ -38,7 +38,7 @@ func screenspace_to_tile(screen_space_pos: Vector2) -> GridTile:
 
     var row = floori(grid_space_pos.y / tile_height)
     var col = floori(grid_space_pos.x / tile_width)
-    print("Row: " + str(row) + ", Col: " + str(col))
+    # print("Row: " + str(row) + ", Col: " + str(col))
 
     return get_tile(row,col)
 

@@ -36,3 +36,7 @@ func get_percentage() -> float:
     if max_health == 0:
         return 0
     return health * 1.0 / max_health
+
+func set_percentage(percent: float) -> void:
+    percent = clamp(percent, 0.0, 1.0)
+    set_health(ceili(percent * max_health))

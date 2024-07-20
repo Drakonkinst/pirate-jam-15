@@ -1,23 +1,23 @@
 [gd_scene load_steps=6 format=3 uid="uid://4ly726jco8yn"]
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_aelaq"]
-[ext_resource type="Texture2D" uid="uid://7q5l66cc7xee" path="res://assets/textures/tree_small.png" id="2_c6hhx"]
 [ext_resource type="Resource" uid="uid://dvrp2cbwh7e8v" path="res://data/obstacle/sapling.tres" id="2_yt6tw"]
+[ext_resource type="Texture2D" uid="uid://dy0cbkmdp5mcd" path="res://assets/textures/sapling.png" id="3_krrjn"]
 [ext_resource type="Script" path="res://scenes/obstacle/sapling_behavior.gd" id="4_l6r4w"]
 [ext_resource type="Script" path="res://scenes/obstacle/burn_leaves_behavior.gd" id="5_lpq0v"]
 
-[node name="Obstacle" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_aelaq")]
+[node name="Sapling" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_aelaq")]
 data = ExtResource("2_yt6tw")
 behaviors = [NodePath("SaplingBehavior"), NodePath("BurnLeavesBehavior")]
 
 [node name="ObstacleModel1" parent="." index="1"]
-position = Vector2(0, 28)
+position = Vector2(0, -4)
 
 [node name="Base" parent="ObstacleModel1" index="0"]
-texture = ExtResource("2_c6hhx")
+texture = ExtResource("3_krrjn")
 
 [node name="Flaming" parent="ObstacleModel1" index="1"]
-position = Vector2(-3, -74)
+position = Vector2(-3, -42)
 scale = Vector2(1.64808, 1.26742)
 
 [node name="SaplingBehavior" type="Node2D" parent="." index="3"]
@@ -25,3 +25,4 @@ script = ExtResource("4_l6r4w")
 
 [node name="BurnLeavesBehavior" type="Node2D" parent="." index="4"]
 script = ExtResource("5_lpq0v")
+transform_into = 7

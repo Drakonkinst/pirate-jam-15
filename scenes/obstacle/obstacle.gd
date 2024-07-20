@@ -3,7 +3,9 @@ extends Node2D
 # Uses inherited scenes to keep child components constant for all types of obstacles
 class_name Obstacle
 
-
+enum Type {
+    UNKNOWN, TREE, ROCK, TORCH, OIL_SPILL, SAPLING, DEAD_TREE, DEAD_SAPLING
+}
 
 # Some objects can be tramsuted which should overlay their shape with a texture
 enum TransmutedState {
@@ -29,7 +31,9 @@ var burned: bool = false
 
 func _process(delta: float) -> void:
     for behavior: ObstacleBehavior in behaviors:
-        behavior.update(self, delta)
+        # Quick null check just in case
+        if behavior:
+            behavior.update(self, delta)
 
 func choose_model() -> void:
     if alternate_models.size() <= 0:
@@ -41,13 +45,6 @@ func choose_model() -> void:
 
 func init_model() -> void:
     choose_model()
-    put_out_fire()
-
-    # TODO: For demo only
-    if randf() < 0.5 and data.is_flammable:
-        set_on_fire(5)
-    if (data.id == ObstacleData.Type.TREE or data.id == ObstacleData.Type.ROCK) and randf() < 0.25:
-        set_transmuted_state(Obstacle.TransmutedState.QUARTZ)
 
 func set_tile(obj: GridTile) -> void:
     tile = obj
@@ -78,8 +75,8 @@ func update_health_from_transmutation(state: TransmutedState) -> void:
     var health_percent = health.get_percentage()
     var material_multiplier = get_material_multiplier(state)
     #print(health_percent, " ", data.size_multiplier, " ", material_multiplier)
-    var new_health: int = ceil(health_percent * data.size_multiplier * material_multiplier)
-    print("Transmutated health ", health_percent, " of ", ObstacleData.Type.keys()[data.id], " to ", TransmutedState.keys()[state], " = ", new_health)
+    var new_health: int = ceili(health_percent * data.size_multiplier * material_multiplier)
+    print("Transmutated health ", health_percent, " of ", Type.keys()[data.id], " to ", TransmutedState.keys()[state], " = ", new_health)
     health.set_health(new_health)
 
 func get_material_multiplier(state: TransmutedState) -> int:
@@ -114,6 +111,7 @@ func is_flammable() -> bool:
 func _ready() -> void:
     health.set_max_health(data.health)
     health.refill_health()
+    put_out_fire()
     init_model()
 
 func _on_burning_state_fire_tick() -> void:
@@ -129,3 +127,17 @@ func _on_burning_state_burnt() -> void:
     if data.should_use_burnt_texture:
         model.set_burned_overlay()
         burned = true
+
+func copy_burning_state(state: BurningState) -> void:
+    burning_state.burning_time_remaining = state.burning_time_remaining
+    burning_state.is_burned = state.is_burned
+    burning_state.time_since_last_tick = state.time_since_last_tick
+    burning_state.total_time_burned = state.total_time_burned
+
+    if burning_state.is_burned:
+        _on_burning_state_burnt()
+    if burning_state.is_burning():
+        set_on_fire(burning_state.burning_time_remaining)
+    else:
+        put_out_fire()
+

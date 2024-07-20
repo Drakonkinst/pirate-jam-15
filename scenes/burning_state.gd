@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
             time_since_last_tick = 0
         if total_time_burned >= BURNED_AFTER and not is_burned:
             burnt.emit()
+            is_burned = true
     var original_time = burning_time_remaining
     burning_time_remaining = max(0, burning_time_remaining - delta)
     if original_time > 0 and burning_time_remaining <= 0:

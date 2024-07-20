@@ -5,5 +5,5 @@ colors = PackedColorArray(0.158472, 0.158472, 0.158472, 1, 1, 1, 1, 0)
 
 [resource]
 gradient = SubResource("Gradient_cta5f")
-fill_from = Vector2(0.489247, 0.349462)
-fill_to = Vector2(0.483871, 0.698925)
+fill_from = Vector2(0.520202, 0.449495)
+fill_to = Vector2(0.525253, 0.858586)

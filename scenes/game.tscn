@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=24 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://cpqy8caon4p81" path="res://assets/textures/Mockup1.png" id="2_qjgvl"]
@@ -15,7 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://hmw6qr2yjefw" path="res://scenes/obstacle/oil_spill.tscn" id="13_tpqui"]
 [ext_resource type="PackedScene" uid="uid://dutyvrutx3beh" path="res://scenes/obstacle/torch.tscn" id="14_q7ayn"]
 [ext_resource type="PackedScene" uid="uid://4ly726jco8yn" path="res://scenes/obstacle/sapling.tscn" id="15_0ctjf"]
+[ext_resource type="PackedScene" uid="uid://bcqx4m1p240sb" path="res://scenes/obstacle/dead_tree.tscn" id="16_py4vk"]
 [ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/shadow_enemy.tscn" id="16_ylmnt"]
+[ext_resource type="PackedScene" uid="uid://c68lf7id1osf4" path="res://scenes/obstacle/dead_sapling.tscn" id="17_6mv6d"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -177,6 +179,8 @@ rock_scene = ExtResource("12_bokvu")
 oil_spill_scene = ExtResource("13_tpqui")
 torch_scene = ExtResource("14_q7ayn")
 sapling_scene = ExtResource("15_0ctjf")
+dead_tree_scene = ExtResource("16_py4vk")
+dead_sapling_scene = ExtResource("17_6mv6d")
 
 [node name="ShadowEnemy" parent="." instance=ExtResource("16_ylmnt")]
 position = Vector2(1872, 285)

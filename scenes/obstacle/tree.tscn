@@ -28,3 +28,4 @@ script = ExtResource("5_chy1h")
 
 [node name="BurnLeavesBehavior" type="Node2D" parent="." index="4"]
 script = ExtResource("6_5ae8g")
+transform_into = 6

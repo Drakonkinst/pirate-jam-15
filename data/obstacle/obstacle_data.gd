@@ -2,11 +2,7 @@ extends Resource
 
 class_name ObstacleData
 
-enum Type {
-    UNKNOWN, TREE, ROCK, TORCH, OIL_SPILL, SAPLING
-}
-
-@export var id: Type
+@export var id: Obstacle.Type
 @export var health: int = 10
 @export var size_multiplier: float = 1 # Multiplied with the material when transmutated
 @export var is_flammable: bool = false
