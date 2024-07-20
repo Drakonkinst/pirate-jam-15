@@ -10,10 +10,10 @@ var health: int
 var max_health: int
 
 func set_max_health(value: int) -> void:
-	max_health = value
+    max_health = value
 
 func set_health(value: int) -> void:
-	health = clamp(value, 0, max_health)
+    health = clamp(value, 0, max_health)
 
 func get_percentage() -> float:
-	return health * 1.0 / max_health
+    return health * 1.0 / max_health
