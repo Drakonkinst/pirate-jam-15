@@ -15,7 +15,6 @@ const INVERT_Y: Vector2 = Vector2(1.0, -1.0)
 @export var arc_height_multiplier: float = 0.25
 
 func fire_projectile(from: Vector2, to: Vector2) -> void:
-    print("FIRE ", from, " ", to)
     var projectile_obj = projectile_scene.instantiate()
     add_child(projectile_obj)
     var projectile = projectile_obj as ThrownProjectile
@@ -53,6 +52,7 @@ func calculate_trajectory(from: Vector2, to: Vector2) -> Vector2:
     velocity.y = -velocity.y
     return velocity
 
+# TODO: Create lockout zones so the potion cannot be thrown towards weird positions
 func _input(event) -> void:
     if event.is_action_pressed(FIRE_INPUT):
         var mouse_pos = get_global_mouse_position()

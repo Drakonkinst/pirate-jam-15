@@ -15,10 +15,6 @@ var velocity: Vector2 = Vector2.ZERO
 var target_y: float = 500
 var gravity: float # Set by ProjectileManager
 
-func _ready() -> void:
-    # direction and magnitude!
-    print("THROW")
-
 func _physics_process(delta: float) -> void:
     velocity.y += gravity * delta
     position += velocity * delta
@@ -28,5 +24,4 @@ func _physics_process(delta: float) -> void:
     # Then it has reached its target
     if position.y >= target_y && velocity.y > 0:
         # TODO: Has hit its target on its downward arc
-        print("DEAD")
         queue_free()

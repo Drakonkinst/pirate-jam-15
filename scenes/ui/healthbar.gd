@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
     if bar_under.value != target_value:
         if is_changing:
             delay = 0
+            # TODO: Maybe switch this to actual easing instead of just lerping lol
             if bar_under.value < target_value:
                 bar_under.value = min(target_value, bar_under.value + speed * delta)
             else:
