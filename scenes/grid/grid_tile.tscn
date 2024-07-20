@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2y1wt3uage55"]
+[gd_scene load_steps=4 format=3 uid="uid://b2y1wt3uage55"]
 
 [ext_resource type="Script" path="res://scenes/grid/grid_tile.gd" id="1_fmax6"]
 [ext_resource type="Texture2D" uid="uid://ckaoxt7bilkcr" path="res://assets/textures/1x1.png" id="2_idvhu"]
-[ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="3_7mgh2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ll450"]
 size = Vector2(31, 30)
@@ -23,5 +22,3 @@ scale = Vector2(10, 10)
 texture = ExtResource("2_idvhu")
 
 [node name="ObstacleParent" type="Node2D" parent="."]
-
-[node name="Obstacle" parent="ObstacleParent" instance=ExtResource("3_7mgh2")]
