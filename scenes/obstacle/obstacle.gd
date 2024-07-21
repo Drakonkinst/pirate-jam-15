@@ -124,6 +124,8 @@ func _on_burning_state_fire_expired() -> void:
     put_out_fire()
 
 func _on_health_death() -> void:
+    # TODO: May want to wait a bit for the health to animate before killing?
+    # TODO: Maybe health can emit a "finished animation"
     removed.emit()
 
 func _on_burning_state_burnt() -> void:

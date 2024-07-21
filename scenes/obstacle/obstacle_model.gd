@@ -10,13 +10,20 @@ class_name ObstacleModel
 @export var random_offset: Vector2
 
 var original_texture: Texture
+var original_position: Vector2
+var offset: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
     original_texture = model.texture
+    original_position = position
     if random_offset != Vector2.ZERO:
         var offset_x = randf_range(-random_offset.x, random_offset.x)
         var offset_y = randf_range(-random_offset.y, random_offset.y)
-        position += Vector2(offset_x, offset_y)
+        set_offset(Vector2(offset_x, offset_y))
+
+func set_offset(value: Vector2):
+    offset = value
+    position = original_position + offset
 
 func set_flaming(is_on_fire: bool) -> void:
     if is_on_fire:

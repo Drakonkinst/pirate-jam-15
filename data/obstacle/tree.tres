@@ -11,3 +11,4 @@ size_multiplier = 1.0
 is_flammable = true
 should_use_burnt_texture = true
 can_pass_through = null
+can_transform = true

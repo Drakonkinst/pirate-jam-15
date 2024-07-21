@@ -33,13 +33,7 @@ func spawn_starting_obstacles(grid: Grid):
             obstacle_scene = sapling_scene
 
         if obstacle_scene:
-            var obstacle = spawn_obstacle_scene(obstacle_scene, tile)
-
-            # TODO: For demo only
-            if randf() < 0.5 and obstacle.data.is_flammable:
-                obstacle.set_on_fire(5 + 3 * randf())
-            if (obstacle.data.id == Obstacle.Type.TREE or obstacle.data.id == Obstacle.Type.ROCK) and randf() < 0.25:
-                obstacle.set_transmuted_state(Obstacle.TransmutedState.QUARTZ)
+            spawn_obstacle_scene(obstacle_scene, tile)
 
 func get_scene_for_obstacle(type: Obstacle.Type) -> PackedScene:
     match type:
@@ -88,4 +82,6 @@ func replace_obstacle_scene(new_obstacle_scene: PackedScene, tile: GridTile) -> 
         new_obstacle.health.set_percentage(health_percent, true)
         # Keep burning state
         new_obstacle.copy_burning_state(original_obstacle.burning_state)
+        # Keep model offset
+        new_obstacle.model.set_offset(original_obstacle.model.offset)
     return new_obstacle
