@@ -7,9 +7,9 @@ extends CanvasLayer
 var sfx_path = "res://assets/audio/sfx/"
 
 var sounds = {
-	startup = load(sfx_path + "select_006.ogg"),
-	select_play = load(sfx_path + "confirmation_002.ogg"),
-	toggle_option = load(sfx_path + "toggle_004.ogg"),
+    startup = load(sfx_path + "select_006.ogg"),
+    select_play = load(sfx_path + "confirmation_002.ogg"),
+    toggle_option = load(sfx_path + "toggle_004.ogg"),
     select_settings = load(sfx_path + "select_002.ogg"),
     select_return = load(sfx_path + "bong_001.ogg")
 }
@@ -41,7 +41,7 @@ func _on_settings_button_button_down():
     toggle_menu(settings_menu) 
 
 func _on_credits_button_mouse_down():
-	# Toggle settings page
+    # Toggle settings page
     pass
 
 func _on_exit_button_mouse_down():
