@@ -2,7 +2,6 @@ extends Node2D
 
 class_name Game
 
-@onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 @export var grid: Grid
 @export var obstacle_manager: ObstacleManager
 @export var projectile_manager: ProjectileManager

@@ -29,7 +29,6 @@ position = Vector2(-3, -108)
 scale = Vector2(2.77093, 2.13092)
 
 [node name="FlameParticle" parent="ObstacleModel1/Flaming" instance=ExtResource("6_rjvnb")]
-position = Vector2(1.80445, 16.4248)
 
 [node name="FlameParticle2" parent="ObstacleModel1/Flaming" instance=ExtResource("6_rjvnb")]
 position = Vector2(-6.8569, 30.034)

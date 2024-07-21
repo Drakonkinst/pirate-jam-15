@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scenes/obstacle/tree_behavior.gd" id="5_chy1h"]
 [ext_resource type="Texture2D" uid="uid://bxpivg1861wjc" path="res://assets/textures/fruit_tree.png" id="5_uy6jq"]
 [ext_resource type="Script" path="res://scenes/obstacle/burn_leaves_behavior.gd" id="6_5ae8g"]
-[ext_resource type="Script" path="res://scenes/mouse_over_area.gd" id="8_bp3vh"]
+[ext_resource type="Script" path="res://scenes/hud/mouse_over_area.gd" id="8_bp3vh"]
 
 [sub_resource type="Resource" id="Resource_44n8k"]
 script = ExtResource("3_ca1s4")

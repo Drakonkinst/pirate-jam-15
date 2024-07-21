@@ -114,9 +114,8 @@ text = "Daytime
 "
 horizontal_alignment = 1
 
-[node name="ToolBarHud" parent="CanvasLayer" node_paths=PackedStringArray("toolbar") instance=ExtResource("9_dlv2r")]
+[node name="ToolBarHud" parent="CanvasLayer" instance=ExtResource("9_dlv2r")]
 mouse_filter = 1
-toolbar = NodePath("../../World/ToolBar")
 
 [node name="World" type="Node2D" parent="."]
 script = SubResource("GDScript_hp6k0")
@@ -142,30 +141,23 @@ potion_wood_scene = ExtResource("22_i3eab")
 potion_stone_scene = ExtResource("23_65kor")
 potion_quartz_scene = ExtResource("24_50sjw")
 debug_marker_scene = ExtResource("20_capy2")
+show_debug = null
 throw_offset = Vector2(25, -75)
+arc_height_multiplier = null
 
 [node name="ToolBar" type="Node2D" parent="World"]
 script = ExtResource("20_akytf")
 
-[node name="AttackCooldown" type="Timer" parent="World/ToolBar"]
-wait_time = 3.0
-one_shot = true
-
 [node name="DestroyCooldown" type="Timer" parent="World/ToolBar"]
 wait_time = 3.0
-one_shot = true
 
 [node name="TorchCooldown" type="Timer" parent="World/ToolBar"]
-wait_time = 0.2
-one_shot = true
 
 [node name="PotionCooldown" type="Timer" parent="World/ToolBar"]
 wait_time = 0.2
-one_shot = true
 
 [node name="SummonCooldown" type="Timer" parent="World/ToolBar"]
 wait_time = 0.2
-one_shot = true
 
 [node name="ShadowEnemy" parent="." instance=ExtResource("16_ylmnt")]
 position = Vector2(1872, 285)
@@ -195,7 +187,6 @@ mouse_over_mask = 2
 script = ExtResource("28_xelsv")
 tool_bar = NodePath("../../CanvasLayer/ToolBarHud")
 
-[connection signal="timeout" from="World/ToolBar/AttackCooldown" to="World/ToolBar" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="World/ToolBar/DestroyCooldown" to="World/ToolBar" method="_on_destroy_cooldown_timeout"]
 [connection signal="timeout" from="World/ToolBar/TorchCooldown" to="World/ToolBar" method="_on_torch_cooldown_timeout"]
 [connection signal="timeout" from="World/ToolBar/PotionCooldown" to="World/ToolBar" method="_on_potion_cooldown_timeout"]

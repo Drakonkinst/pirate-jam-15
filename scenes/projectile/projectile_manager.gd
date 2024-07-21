@@ -8,6 +8,7 @@ const INVERT_Y: Vector2 = Vector2(1.0, -1.0)
 
 @onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 
+@export var magic_bolt_scene: PackedScene # TODO: Implement action
 @export var torch_scene: PackedScene
 @export var potion_oil_scene: PackedScene
 @export var potion_wood_scene: PackedScene
@@ -18,7 +19,7 @@ const INVERT_Y: Vector2 = Vector2(1.0, -1.0)
 @export var throw_offset: Vector2
 @export var arc_height_multiplier: float = 0.25
 
-func get_scene_for_projectile(type: ThrownProjectile.Type) -> PackedScene:
+func _get_scene_for_projectile(type: ThrownProjectile.Type) -> PackedScene:
     match type:
         ThrownProjectile.Type.POTION_QUARTZ:
             return potion_quartz_scene
@@ -34,24 +35,34 @@ func get_scene_for_projectile(type: ThrownProjectile.Type) -> PackedScene:
             print("Unknown scene for projectile ", ThrownProjectile.Type.keys()[type])
             return null
 
-func fire_projectile(projectile: ThrownProjectile.Type, from: Vector2, to: Vector2) -> void:
-    fire_projectile_scene(get_scene_for_projectile(projectile), from, to)
+func _fire_projectile(projectile: ThrownProjectile.Type, from: Vector2, to: Vector2) -> void:
+    _fire_projectile_scene(_get_scene_for_projectile(projectile), from, to)
 
-func fire_projectile_scene(projectile_scene: PackedScene, from: Vector2, to: Vector2) -> void:
+func _fire_projectile_scene(projectile_scene: PackedScene, from: Vector2, to: Vector2) -> void:
     var projectile_obj = projectile_scene.instantiate()
     add_child(projectile_obj)
     var projectile = projectile_obj as ThrownProjectile
     projectile.global_position = from
     projectile.target_y = to.y
     projectile.gravity = GRAVITY
-    projectile.velocity = calculate_trajectory(from, to)
+    projectile.velocity = _calculate_trajectory(from, to)
+
+func throw_projectile(projectile: ThrownProjectile.Type, mouse_pos: Vector2) -> bool:
+    if not is_valid_target(mouse_pos):
+        return false
+    _fire_projectile(projectile, player.global_position + throw_offset, mouse_pos)
+    return true
+
+# TODO: Do not throw if not in a good zone
+func is_valid_target(pos: Vector2) -> bool:
+    return true
 
 # For debug
 # Random bullshit, go!
-func throw_random_projectile(from: Vector2, to: Vector2) -> void:
-    fire_projectile(randi() % ThrownProjectile.Type.keys().size(), from, to)
+func throw_random_projectile(to: Vector2) -> bool:
+    return throw_projectile(randi() % ThrownProjectile.Type.keys().size(), to)
 
-func place_debug_circle(pos: Vector2):
+func _place_debug_circle(pos: Vector2):
     if not show_debug:
         return
     var obj = debug_marker_scene.instantiate()
@@ -59,16 +70,16 @@ func place_debug_circle(pos: Vector2):
     obj.position = pos
 
 # https://gamedev.stackexchange.com/questions/114635
-func calculate_trajectory(from: Vector2, to: Vector2) -> Vector2:
+func _calculate_trajectory(from: Vector2, to: Vector2) -> Vector2:
     # Act as if starting from the origin
     var end = (to - from)
     # Flip y since +y is down
     end.y = -end.y
-    place_debug_circle(end * INVERT_Y + from)
+    _place_debug_circle(end * INVERT_Y + from)
 
     # Select a point above the player to make a nice arc
     var midpoint: Vector2 = Vector2(end.x / 2, max(end.y, arc_height_multiplier * end.x))
-    place_debug_circle(midpoint * INVERT_Y + from)
+    _place_debug_circle(midpoint * INVERT_Y + from)
 
     # Find time to reach end in a parabola that passes through all three points
     var time_to_reach_target = sqrt(2 * (end.y - midpoint.y * end.x / midpoint.x) / (-GRAVITY * (1 - midpoint.x/end.x)))
@@ -79,10 +90,4 @@ func calculate_trajectory(from: Vector2, to: Vector2) -> Vector2:
     # Flip y since +y is pointing down
     velocity.y = -velocity.y
     return velocity
-
-# TODO: Create lockout zones so the potion cannot be thrown towards weird positions
-func _input(event) -> void:
-    if event.is_action_pressed(CLICK_INPUT):
-        var mouse_pos = get_global_mouse_position()
-        throw_random_projectile(player.global_position + throw_offset, mouse_pos)
 
