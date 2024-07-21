@@ -20,6 +20,16 @@ texture = ExtResource("3_krrjn")
 position = Vector2(-3, -42)
 scale = Vector2(1.64808, 1.26742)
 
+[node name="FlameParticle" parent="ObstacleModel1/Flaming" index="0"]
+position = Vector2(-4.24737, 6.31204)
+scale = Vector2(0.18, 0.18)
+
+[node name="FlameParticle2" parent="ObstacleModel1/Flaming" index="1"]
+position = Vector2(-8.49473, 32.3492)
+
+[node name="FlameParticle3" parent="ObstacleModel1/Flaming" index="2"]
+position = Vector2(16.3827, 25.2481)
+
 [node name="SaplingBehavior" type="Node2D" parent="." index="3"]
 script = ExtResource("4_l6r4w")
 
@@ -30,9 +40,3 @@ transform_into = 7
 [node name="Healthbar" parent="." index="5"]
 offset_top = -79.0
 offset_bottom = -79.0
-show_only_if_damaged = true
-speed = 100.0
-delay_multiplier = 0.0085
-should_change_colors = true
-caution_threshold = 0.5
-danger_threshold = 0.2

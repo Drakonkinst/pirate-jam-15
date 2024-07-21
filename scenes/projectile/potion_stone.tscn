@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bijsw4pri2ff"]
+
+[ext_resource type="PackedScene" uid="uid://cyq7jll2t5va" path="res://scenes/projectile/thrown_projectile.tscn" id="1_056b0"]
+[ext_resource type="Texture2D" uid="uid://v0ebw3vimde" path="res://assets/textures/potion_stone.png" id="2_mkpou"]
+
+[node name="Projectile" instance=ExtResource("1_056b0")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_mkpou")

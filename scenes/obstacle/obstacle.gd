@@ -76,7 +76,9 @@ func update_health_from_transmutation(state: TransmutedState) -> void:
     var material_multiplier = get_material_multiplier(state)
     #print(health_percent, " ", data.size_multiplier, " ", material_multiplier)
     var new_health: int = ceili(health_percent * data.size_multiplier * material_multiplier)
+    var new_max_health: int = ceili(data.size_multiplier * material_multiplier)
     print("Transmutated health ", health_percent, " of ", Type.keys()[data.id], " to ", TransmutedState.keys()[state], " = ", new_health)
+    health.set_max_health(new_max_health)
     health.set_health(new_health)
 
 func get_material_multiplier(state: TransmutedState) -> int:

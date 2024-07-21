@@ -5,7 +5,9 @@ extends Node2D
 # As well as the y position of its target so it knows when to stop
 class_name ThrownProjectile
 
-
+enum Type {
+    TORCH, POTION_OIL, POTION_WOOD, POTION_STONE, POTION_QUARTZ
+}
 
 @onready var sprite: Sprite2D = $Sprite2D
 

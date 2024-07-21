@@ -18,13 +18,15 @@ texture = ExtResource("2_ulbsa")
 [node name="Flaming" parent="ObstacleModel1" index="1"]
 position = Vector2(-3, -34)
 
+[node name="FlameParticle" parent="ObstacleModel1/Flaming" index="0"]
+position = Vector2(-10.8267, -5.63137)
+
+[node name="FlameParticle2" parent="ObstacleModel1/Flaming" index="1"]
+position = Vector2(8.66135, 2.81568)
+scale = Vector2(0.211608, 0.211608)
+
+[node name="FlameParticle3" parent="ObstacleModel1/Flaming" index="2"]
+position = Vector2(-1.44356, 22.0562)
+
 [node name="OilSpillBehavior" type="Node2D" parent="." index="3"]
 script = ExtResource("4_ir1mx")
-
-[node name="Healthbar" parent="." index="4"]
-show_only_if_damaged = true
-speed = 100.0
-delay_multiplier = 0.0085
-should_change_colors = true
-caution_threshold = 0.5
-danger_threshold = 0.2

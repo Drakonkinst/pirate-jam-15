@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx5t0lk1frgn2"]
+
+[ext_resource type="PackedScene" uid="uid://cyq7jll2t5va" path="res://scenes/projectile/thrown_projectile.tscn" id="1_3sqi8"]
+[ext_resource type="Texture2D" uid="uid://4mxu6kmceihf" path="res://assets/textures/torch.png" id="2_mbyeh"]
+[ext_resource type="PackedScene" uid="uid://do1ux20syj75b" path="res://scenes/effect/flame_particle.tscn" id="3_ux4go"]
+
+[node name="Torch" instance=ExtResource("1_3sqi8")]
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, -69)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_mbyeh")
+
+[node name="FlameParticle" parent="Sprite2D" index="0" instance=ExtResource("3_ux4go")]
+modulate = Color(1, 1, 1, 0.882353)
+position = Vector2(-22.2222, 82.2222)
+rotation = -1.51517
+scale = Vector2(0.75, 0.75)

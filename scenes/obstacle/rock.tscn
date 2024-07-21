@@ -22,12 +22,5 @@ transmutable_map = Array[ExtResource("3_u5mqm")]([SubResource("Resource_t0gkr")]
 texture = ExtResource("3_eb06d")
 
 [node name="Flaming" parent="ObstacleModel1" index="1"]
+visible = false
 position = Vector2(-3, -25)
-
-[node name="Healthbar" parent="." index="3"]
-show_only_if_damaged = true
-speed = 100.0
-delay_multiplier = 0.0085
-should_change_colors = true
-caution_threshold = 0.5
-danger_threshold = 0.2

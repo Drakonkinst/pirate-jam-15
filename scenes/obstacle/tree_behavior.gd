@@ -14,7 +14,11 @@ var has_fruit
 
 func update(obstacle: Obstacle, delta: float) -> void:
     if obstacle.transmuted_state != Obstacle.TransmutedState.DEFAULT:
+        fruit_tree_model.hide()
         return
+
+    if obstacle.burning_state.is_burned:
+        fruit_tree_model.material = original_tree_model.material
 
     if not has_fruit and time_until_next_fruit > 0:
         time_until_next_fruit -= delta

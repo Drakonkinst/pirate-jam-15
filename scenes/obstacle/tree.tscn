@@ -34,6 +34,17 @@ texture = ExtResource("5_uy6jq")
 [node name="Flaming" parent="ObstacleModel1" index="2"]
 position = Vector2(-3, -94)
 
+[node name="FlameParticle" parent="ObstacleModel1/Flaming" index="0"]
+position = Vector2(1.80445, 7.97778)
+scale = Vector2(0.225, 0.225)
+
+[node name="FlameParticle2" parent="ObstacleModel1/Flaming" index="1"]
+position = Vector2(-9.38313, 23.464)
+scale = Vector2(0.175, 0.175)
+
+[node name="FlameParticle3" parent="ObstacleModel1/Flaming" index="2"]
+position = Vector2(11.9094, 24.4026)
+
 [node name="TreeBehavior" type="Node2D" parent="." index="3" node_paths=PackedStringArray("fruit_tree_model", "original_tree_model", "harvest_area")]
 script = ExtResource("5_chy1h")
 fruit_tree_model = NodePath("../ObstacleModel1/FruitTree")

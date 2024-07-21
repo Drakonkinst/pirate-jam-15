@@ -3,7 +3,7 @@ extends Node2D
 class_name ObstacleModel
 
 @onready var model: Sprite2D = $Base
-@onready var flaming_sprite: AnimatedSprite2D = $Flaming
+@onready var flaming_overlay: Node2D = $Flaming
 
 @export var burnt_material: Material
 
@@ -15,7 +15,10 @@ func _ready() -> void:
     original_texture = model.texture
 
 func set_flaming(is_on_fire: bool) -> void:
-    flaming_sprite.visible = is_on_fire
+    if is_on_fire:
+        flaming_overlay.show()
+    else:
+        flaming_overlay.hide()
 
 func set_burned_overlay() -> void:
     model.material = burnt_material
