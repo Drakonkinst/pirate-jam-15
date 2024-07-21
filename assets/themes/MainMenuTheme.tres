@@ -1,0 +1,38 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bkwik1tcqd4en"]
+
+[ext_resource type="Texture2D" uid="uid://tkvdjxmelk14" path="res://assets/ui/GUI-1.png.png" id="1_6jceh"]
+[ext_resource type="FontFile" uid="uid://cslgns4mab5dp" path="res://assets/themes/DungGeunMo.ttf" id="1_losue"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kvjdv"]
+texture = ExtResource("1_6jceh")
+texture_margin_left = 2.0
+texture_margin_top = 1.0
+texture_margin_right = 2.0
+texture_margin_bottom = 1.0
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+modulate_color = Color(0.357959, 0.414861, 0.844677, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ld75"]
+texture = ExtResource("1_6jceh")
+texture_margin_left = 2.0
+texture_margin_top = 1.0
+texture_margin_right = 2.0
+texture_margin_bottom = 1.0
+expand_margin_left = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne34f"]
+bg_color = Color(0.185442, 0.157733, 0.592313, 1)
+
+[resource]
+default_font = ExtResource("1_losue")
+default_font_size = 80
+Button/styles/hover = SubResource("StyleBoxTexture_kvjdv")
+Button/styles/normal = SubResource("StyleBoxTexture_2ld75")
+Label/styles/normal = SubResource("StyleBoxFlat_ne34f")
+MarginContainer/constants/margin_bottom = 15
+MarginContainer/constants/margin_left = 15
+MarginContainer/constants/margin_right = 15
+MarginContainer/constants/margin_top = 15

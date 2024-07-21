@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://t4eahik3spf0"]
+
+[ext_resource type="FontFile" uid="uid://cslgns4mab5dp" path="res://assets/themes/DungGeunMo.ttf" id="1_yqvns"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hakt"]
+bg_color = Color(0.219501, 0.219501, 0.219501, 1)
+
+[resource]
+Button/font_sizes/font_size = 48
+Button/fonts/font = ExtResource("1_yqvns")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_2hakt")
+Label/font_sizes/font_size = 48
+Label/fonts/font = ExtResource("1_yqvns")
+VBoxContainer/constants/separation = 30
