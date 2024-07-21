@@ -18,6 +18,7 @@ script = ExtResource("2_3c27n")
 [node name="ObstacleModel1" type="Node2D" parent="."]
 script = ExtResource("3_cucgv")
 burnt_material = ExtResource("4_2a0k7")
+random_offset = Vector2(10, 10)
 
 [node name="Base" type="Sprite2D" parent="ObstacleModel1"]
 position = Vector2(0, -41)

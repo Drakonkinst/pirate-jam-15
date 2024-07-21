@@ -1,15 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dutyvrutx3beh"]
+[gd_scene load_steps=5 format=3 uid="uid://dutyvrutx3beh"]
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_ofhq0"]
 [ext_resource type="Resource" uid="uid://ca15j4erbvp2l" path="res://data/obstacle/torch.tres" id="2_jnbvw"]
+[ext_resource type="Texture2D" uid="uid://4mxu6kmceihf" path="res://assets/textures/torch.png" id="3_fn5ve"]
+[ext_resource type="PackedScene" uid="uid://do1ux20syj75b" path="res://scenes/effect/flame_particle.tscn" id="4_5bhhw"]
 
 [node name="Torch" instance=ExtResource("1_ofhq0")]
 data = ExtResource("2_jnbvw")
 
-[node name="Healthbar" parent="." index="3"]
-show_only_if_damaged = true
-speed = 100.0
-delay_multiplier = 0.0085
-should_change_colors = true
-caution_threshold = 0.5
-danger_threshold = 0.2
+[node name="Base" parent="ObstacleModel1" index="0"]
+position = Vector2(0, -61)
+texture = ExtResource("3_fn5ve")
+
+[node name="FlameParticle" parent="ObstacleModel1/Base" index="0" instance=ExtResource("4_5bhhw")]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(5, 67.5)
+scale = Vector2(0.733, 0.733)
+
+[node name="Flaming" parent="ObstacleModel1" index="1"]
+visible = false

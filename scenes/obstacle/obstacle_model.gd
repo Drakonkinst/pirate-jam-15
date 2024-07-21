@@ -6,13 +6,17 @@ class_name ObstacleModel
 @onready var flaming_overlay: Node2D = $Flaming
 
 @export var burnt_material: Material
-
 @export var transmutable_map: Array[TransmutableEntry]
+@export var random_offset: Vector2
 
 var original_texture: Texture
 
 func _ready() -> void:
     original_texture = model.texture
+    if random_offset != Vector2.ZERO:
+        var offset_x = randf_range(-random_offset.x, random_offset.x)
+        var offset_y = randf_range(-random_offset.y, random_offset.y)
+        position += Vector2(offset_x, offset_y)
 
 func set_flaming(is_on_fire: bool) -> void:
     if is_on_fire:

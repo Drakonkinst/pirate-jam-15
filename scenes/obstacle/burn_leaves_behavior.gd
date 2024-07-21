@@ -3,6 +3,7 @@ extends ObstacleBehavior
 class_name BurnLeavesBehavior
 
 const BURNT_LEAVES_AFTER: float = 4
+const HEALTH_THRESHOLD: float = 0.75
 
 @export var transform_into: Obstacle.Type
 
@@ -12,5 +13,5 @@ func update(obstacle: Obstacle, _delta: float) -> void:
         return
 
     if obstacle.burning_state.is_burning():
-        if obstacle.burning_state.total_time_burned >= BURNT_LEAVES_AFTER:
+        if obstacle.burning_state.total_time_burned >= BURNT_LEAVES_AFTER && obstacle.health.get_percentage() <= HEALTH_THRESHOLD:
             GlobalVariables.get_obstacle_manager().replace_obstacle(transform_into, obstacle.tile)

@@ -134,7 +134,7 @@ func _on_burning_state_burnt() -> void:
 func copy_burning_state(state: BurningState) -> void:
     burning_state.burning_time_remaining = state.burning_time_remaining
     burning_state.is_burned = state.is_burned
-    burning_state.time_since_last_tick = state.time_since_last_tick
+    burning_state.time_until_next_tick = state.time_until_next_tick
     burning_state.total_time_burned = state.total_time_burned
 
     if burning_state.is_burned:
