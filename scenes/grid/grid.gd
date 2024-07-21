@@ -48,6 +48,43 @@ func get_y_extents() -> Vector2:
     var max_extent = min_extent + tile_height * num_rows
     return Vector2(min_extent, max_extent)
 
+func get_tiles_in_radius(pos: Vector2, radius: float) -> Array[GridTile]:
+    var result: Array[GridTile] = []
+    for tile: GridTile in GridIterator.new(self):
+        if is_tile_in_radius(tile, pos, radius):
+            result.append(tile)
+    return result
+
+func is_tile_in_radius(tile: GridTile, pos: Vector2, radius: float) -> bool:
+    var tile_center: Vector2 = get_tile_center(tile)
+    var delta_x = abs(pos.x - tile_center.x)
+    var delta_y = abs(pos.y - tile_center.y)
+    var half_width = tile_width / 2.0
+    var half_height = tile_height / 2.0
+
+    if delta_x > tile_width + radius:
+        return false
+    if delta_y > half_height + radius:
+        return false
+
+    if delta_x <= tile_width:
+        return true
+    if delta_y <= half_height:
+        return true
+
+    var half_x: float = delta_x - half_width
+    var half_y: float = delta_y - half_height
+    var corner_dist_sq = half_x * half_x + half_y * half_y
+    return corner_dist_sq <= radius * radius
+
+
+func get_tile_center(tile: GridTile) -> Vector2:
+    var origin = find_grid_origin()
+    var tile_center_x: float = origin.x + tile.col * tile_width + tile_width / 2
+    var tile_center_y: float = origin.y + tile.row * tile_height + tile_height / 2
+    return Vector2(tile_center_x, tile_center_y)
+
+
 func _ready():
     var origin: Vector2 = find_grid_origin()
     for row in num_rows:

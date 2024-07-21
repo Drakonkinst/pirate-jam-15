@@ -116,7 +116,40 @@ horizontal_alignment = 1
 
 [node name="ToolBarHud" parent="CanvasLayer" node_paths=PackedStringArray("toolbar") instance=ExtResource("9_dlv2r")]
 mouse_filter = 1
-toolbar = NodePath("../../World/ToolBar")
+toolbar = NodePath("../../ToolBar")
+
+[node name="Input" type="Node2D" parent="."]
+
+[node name="MouseOverHandler" type="Node2D" parent="Input"]
+script = ExtResource("22_30ic7")
+mouse_over_mask = 2
+
+[node name="ClickHandler" type="Node2D" parent="Input" node_paths=PackedStringArray("tool_bar")]
+script = ExtResource("28_xelsv")
+tool_bar = NodePath("../../CanvasLayer/ToolBarHud")
+
+[node name="ToolBar" type="Node2D" parent="."]
+script = ExtResource("20_akytf")
+
+[node name="AttackCooldown" type="Timer" parent="ToolBar"]
+wait_time = 3.0
+one_shot = true
+
+[node name="DestroyCooldown" type="Timer" parent="ToolBar"]
+wait_time = 3.0
+one_shot = true
+
+[node name="TorchCooldown" type="Timer" parent="ToolBar"]
+wait_time = 0.2
+one_shot = true
+
+[node name="PotionCooldown" type="Timer" parent="ToolBar"]
+wait_time = 0.2
+one_shot = true
+
+[node name="SummonCooldown" type="Timer" parent="ToolBar"]
+wait_time = 0.2
+one_shot = true
 
 [node name="World" type="Node2D" parent="."]
 script = SubResource("GDScript_hp6k0")
@@ -134,6 +167,23 @@ sapling_scene = ExtResource("15_0ctjf")
 dead_tree_scene = ExtResource("16_py4vk")
 dead_sapling_scene = ExtResource("17_6mv6d")
 
+[node name="Enemies" type="Node2D" parent="World"]
+
+[node name="ShadowEnemy" parent="World/Enemies" instance=ExtResource("16_ylmnt")]
+position = Vector2(1872, 285)
+
+[node name="ShadowEnemy2" parent="World/Enemies" instance=ExtResource("16_ylmnt")]
+position = Vector2(1872, 391)
+
+[node name="ShadowEnemy3" parent="World/Enemies" instance=ExtResource("16_ylmnt")]
+position = Vector2(1872, 525)
+
+[node name="ShadowEnemy4" parent="World/Enemies" instance=ExtResource("16_ylmnt")]
+position = Vector2(1870, 633)
+
+[node name="ShadowEnemy5" parent="World/Enemies" instance=ExtResource("16_ylmnt")]
+position = Vector2(1868, 763)
+
 [node name="ProjectileManager" type="Node2D" parent="World"]
 script = ExtResource("18_s1wrk")
 torch_scene = ExtResource("20_3f6c5")
@@ -144,59 +194,11 @@ potion_quartz_scene = ExtResource("24_50sjw")
 debug_marker_scene = ExtResource("20_capy2")
 throw_offset = Vector2(25, -75)
 
-[node name="ToolBar" type="Node2D" parent="World"]
-script = ExtResource("20_akytf")
-
-[node name="AttackCooldown" type="Timer" parent="World/ToolBar"]
-wait_time = 3.0
-one_shot = true
-
-[node name="DestroyCooldown" type="Timer" parent="World/ToolBar"]
-wait_time = 3.0
-one_shot = true
-
-[node name="TorchCooldown" type="Timer" parent="World/ToolBar"]
-wait_time = 0.2
-one_shot = true
-
-[node name="PotionCooldown" type="Timer" parent="World/ToolBar"]
-wait_time = 0.2
-one_shot = true
-
-[node name="SummonCooldown" type="Timer" parent="World/ToolBar"]
-wait_time = 0.2
-one_shot = true
-
-[node name="ShadowEnemy" parent="." instance=ExtResource("16_ylmnt")]
-position = Vector2(1872, 285)
-
-[node name="ShadowEnemy2" parent="." instance=ExtResource("16_ylmnt")]
-position = Vector2(1872, 391)
-
-[node name="ShadowEnemy3" parent="." instance=ExtResource("16_ylmnt")]
-position = Vector2(1872, 525)
-
-[node name="ShadowEnemy4" parent="." instance=ExtResource("16_ylmnt")]
-position = Vector2(1870, 633)
-
-[node name="ShadowEnemy5" parent="." instance=ExtResource("16_ylmnt")]
-position = Vector2(1868, 763)
-
 [node name="Player" parent="." groups=["player"] instance=ExtResource("19_c5v0p")]
 position = Vector2(238, 518)
 
-[node name="Input" type="Node2D" parent="."]
-
-[node name="MouseOverHandler" type="Node2D" parent="Input"]
-script = ExtResource("22_30ic7")
-mouse_over_mask = 2
-
-[node name="ClickHandler" type="Node2D" parent="Input" node_paths=PackedStringArray("tool_bar")]
-script = ExtResource("28_xelsv")
-tool_bar = NodePath("../../CanvasLayer/ToolBarHud")
-
-[connection signal="timeout" from="World/ToolBar/AttackCooldown" to="World/ToolBar" method="_on_attack_cooldown_timeout"]
-[connection signal="timeout" from="World/ToolBar/DestroyCooldown" to="World/ToolBar" method="_on_destroy_cooldown_timeout"]
-[connection signal="timeout" from="World/ToolBar/TorchCooldown" to="World/ToolBar" method="_on_torch_cooldown_timeout"]
-[connection signal="timeout" from="World/ToolBar/PotionCooldown" to="World/ToolBar" method="_on_potion_cooldown_timeout"]
-[connection signal="timeout" from="World/ToolBar/SummonCooldown" to="World/ToolBar" method="_on_summon_cooldown_timeout"]
+[connection signal="timeout" from="ToolBar/AttackCooldown" to="ToolBar" method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="ToolBar/DestroyCooldown" to="ToolBar" method="_on_destroy_cooldown_timeout"]
+[connection signal="timeout" from="ToolBar/TorchCooldown" to="ToolBar" method="_on_torch_cooldown_timeout"]
+[connection signal="timeout" from="ToolBar/PotionCooldown" to="ToolBar" method="_on_potion_cooldown_timeout"]
+[connection signal="timeout" from="ToolBar/SummonCooldown" to="ToolBar" method="_on_summon_cooldown_timeout"]

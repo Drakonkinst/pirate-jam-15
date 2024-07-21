@@ -9,6 +9,7 @@ class_name ObstacleData
 @export var is_flammable: bool = false
 @export var should_use_burnt_texture: bool = false
 @export var can_pass_through: bool = false
+@export var can_transform: bool = true
 
 # TODO
 @export var loot: LootEntry

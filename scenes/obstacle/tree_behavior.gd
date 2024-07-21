@@ -10,11 +10,12 @@ const GROWTH_TIME: float = 3
 @export_flags_2d_physics var tree_harvest_mask
 
 var time_until_next_fruit: float = GROWTH_TIME
-var has_fruit
+var has_fruit: bool = false
 
 func update(obstacle: Obstacle, delta: float) -> void:
     if obstacle.transmuted_state != Obstacle.TransmutedState.DEFAULT:
-        fruit_tree_model.hide()
+        if has_fruit:
+            harvest_fruit()
         return
 
     if obstacle.burning_state.is_burned:

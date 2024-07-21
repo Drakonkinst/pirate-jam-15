@@ -56,7 +56,13 @@ func _do_destroy(target_pos: Vector2) -> bool:
 
 func _do_potion(target_pos: Vector2) -> bool:
     var projectile_manager: ProjectileManager = GlobalVariables.get_projectile_manager()
-    projectile_manager.throw_projectile(ThrownProjectile.Type.POTION_OIL, target_pos)
+    # projectile_manager.throw_projectile(ThrownProjectile.Type.POTION_OIL, target_pos)
+    # projectile_manager.throw_random_projectile(target_pos)
+    if randf() < 0.5:
+        projectile_manager.throw_projectile(ThrownProjectile.Type.POTION_STONE, target_pos)
+    else:
+        projectile_manager.throw_projectile(ThrownProjectile.Type.POTION_QUARTZ, target_pos)
+
     potion_cooldown.start()
     return true
 

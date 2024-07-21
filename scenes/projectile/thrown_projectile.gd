@@ -12,6 +12,7 @@ enum Type {
 @onready var sprite: Sprite2D = $Sprite2D
 
 @export var rotation_speed_degrees: float = 180.0
+@export var behavior: ProjectileBehavior
 
 var velocity: Vector2 = Vector2.ZERO
 var target_y: float = 500
@@ -25,5 +26,6 @@ func _physics_process(delta: float) -> void:
     # Check if it has reached its target y position on its downward arc
     # Then it has reached its target
     if position.y >= target_y && velocity.y > 0:
-        # TODO: Has hit its target on its downward arc
+        if behavior:
+            behavior.on_land(Vector2(position.x, target_y))
         queue_free()

@@ -20,6 +20,7 @@ func _ready():
     pass
 
 func _process(delta):
+    return
     var adjacent_tile = get_left_tile()
     if adjacent_tile and adjacent_tile.obstacle != null:
         obstacle = adjacent_tile.obstacle
