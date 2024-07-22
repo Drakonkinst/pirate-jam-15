@@ -40,7 +40,8 @@ func set_type(p_type: PickupType):
     choose_target()
 
 func choose_target():
-    target = Vector2(0,500)
+    # Should choose based on item type to go to the relevant resource tracker icon/label
+    target = Vector2(200,100)
 
 func collect_resource():
     var player_resources = GlobalVariables.player_resources
@@ -68,7 +69,9 @@ func cleanup():
 
 func play_pickup_tween():
     var tween = create_tween()
+    # tween.set_parallel(true)
     tween.tween_property(self,"position", target,2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+    # tween.tween_property(%Sprite2D,"modulate",Color.RED,2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
     tween.tween_callback(cleanup)
 
 func _on_area_2d_mouse_entered():

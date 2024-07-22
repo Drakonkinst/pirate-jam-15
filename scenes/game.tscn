@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=27 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
+[ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://assets/ui/resource_hud.tscn" id="3_oot8a"]
 [ext_resource type="PackedScene" uid="uid://cqbxejr72xyb3" path="res://scenes/hud/tool_bar_hud.tscn" id="9_dlv2r"]
 [ext_resource type="Script" path="res://scenes/obstacle_manager.gd" id="10_uoctj"]
 [ext_resource type="PackedScene" uid="uid://bdnr8tlvaswxs" path="res://scenes/obstacle/tree.tscn" id="11_4iroc"]
@@ -104,6 +105,8 @@ horizontal_alignment = 1
 [node name="ToolBarHud" parent="CanvasLayer" node_paths=PackedStringArray("toolbar") instance=ExtResource("9_dlv2r")]
 mouse_filter = 1
 toolbar = NodePath("../../ToolBar")
+
+[node name="ResourceHud" parent="CanvasLayer" instance=ExtResource("3_oot8a")]
 
 [node name="Input" type="Node2D" parent="."]
 
