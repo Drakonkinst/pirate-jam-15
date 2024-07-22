@@ -123,9 +123,32 @@ func _on_burning_state_fire_tick() -> void:
 func _on_burning_state_fire_expired() -> void:
     put_out_fire()
 
+func create_pickup_drop() -> Pickup: 
+    var pickup_drop = load("res://scenes/effect/pickup.tscn").instantiate()
+    var pickup_type: Pickup.PickupType
+    # Making assumption here just because Type is not specified in this class
+    match transmuted_state:
+        TransmutedState.DEFAULT:
+            pickup_type = Pickup.PickupType.GOLD
+        TransmutedState.WOOD:
+            pickup_type = Pickup.PickupType.SAP
+        TransmutedState.QUARTZ:
+            pickup_type = Pickup.PickupType.QUARTZ
+        TransmutedState.STONE:
+            pickup_type = Pickup.PickupType.GOLD
+    pickup_drop.set_type(pickup_type)
+    pickup_drop.global_position = global_position
+    
+    #Damn - Logan
+    get_parent().get_parent().get_parent().get_parent().add_child(pickup_drop)
+
+    return pickup_drop
+
 func _on_health_death() -> void:
     # TODO: May want to wait a bit for the health to animate before killing?
     # TODO: Maybe health can emit a "finished animation"
+    create_pickup_drop()
+
     removed.emit()
 
 func _on_burning_state_burnt() -> void:
