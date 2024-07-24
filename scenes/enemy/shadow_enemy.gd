@@ -1,37 +1,22 @@
-extends Node2D
+extends CharacterBody2D
 
+class_name ShadowEnemy
 
-@export var move_speed = 150.0
+@export var move_speed = 1500.0
 @export var row = 0 
 
-enum EnemyState {
-    MOVING,
-    ATTACKING,
-}
-
-var state = EnemyState.MOVING
 
 var moving: bool = true
 var obstacle: Obstacle = null
 
+@export var state_machine: StateMachine
 @onready var sprite = %Sprite
 
 func _ready():
     pass
 
-func _process(delta):
-    var adjacent_tile = get_left_tile()
-    if adjacent_tile and adjacent_tile.obstacle != null:
-        obstacle = adjacent_tile.obstacle
-        state = EnemyState.ATTACKING
-    else:
-        state = EnemyState.MOVING
-
-    match state:
-        EnemyState.MOVING:
-            walk(delta)
-        EnemyState.ATTACKING:
-            attack(obstacle)
+func _physics_process(_delta):
+    move_and_slide()
 
 func get_left_tile() -> GridTile:
     var size_x = sprite.texture.get_width() * sprite.scale.x
@@ -44,8 +29,6 @@ func get_left_tile() -> GridTile:
 func attack(target_obstacle: Obstacle):
     # TODO: Implement small timer
     if target_obstacle != null:
-        target_obstacle.damage(1)
+        target_obstacle.damage(5)
 
-func walk(delta):
-    global_position += Vector2(-move_speed * delta,0)
 

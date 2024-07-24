@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2a8ngge05k7t"]
+[gd_scene load_steps=7 format=3 uid="uid://c2a8ngge05k7t"]
 
 [ext_resource type="Script" path="res://scenes/enemy/shadow_enemy.gd" id="1_qvcdo"]
 [ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/ShadowTemp2.png" id="2_ghkbo"]
+[ext_resource type="Script" path="res://state_machine.gd" id="3_0rj1h"]
+[ext_resource type="Script" path="res://scenes/enemy/states/walk_state.gd" id="4_pvnhg"]
+[ext_resource type="Script" path="res://scenes/enemy/states/attack_state.gd" id="5_hpdbb"]
 
-[node name="ShadowEnemy" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_efe6m"]
+
+[node name="ShadowEnemy" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
 script = ExtResource("1_qvcdo")
+move_speed = 10000.0
+state_machine = NodePath("StateMachine")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -13,3 +20,21 @@ scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_ghkbo")
 region_enabled = true
 region_rect = Rect2(600, 100, 2150, 2350)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_0rj1h")
+initial_state = NodePath("EnemyWalkState")
+
+[node name="EnemyWalkState" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_pvnhg")
+enemy = NodePath("../..")
+
+[node name="EnemyAttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_hpdbb")
+enemy = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_efe6m")
