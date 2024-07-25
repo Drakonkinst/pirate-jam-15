@@ -4,7 +4,7 @@ class_name TreeBehavior
 
 const GROWTH_MIN_TIME: float = 5
 const GROWTH_MAX_TIME: float = 10
-const MAX_FRUIT := 7
+const MAX_FRUIT := 4
 
 @export var fruit_tree_model: Sprite2D
 @export var original_tree_model: Sprite2D
@@ -52,7 +52,6 @@ func grow_fruit() -> void:
 func harvest_fruit() -> void:
     for harvest_point in fruit_harvest_points:
         if harvest_point.has_fruit:
-            print("SPAWN FRUIT")
             GlobalVariables.get_pickup_manager().spawn_pickup_drop(Pickup.PickupType.FRUIT, harvest_point.global_position)
             harvest_point.hide_fruit()
 
