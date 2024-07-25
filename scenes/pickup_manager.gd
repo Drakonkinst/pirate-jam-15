@@ -29,7 +29,11 @@ func _ready() -> void:
     # Are there better ways to do this? Yes. However
     pickup_textures = [gold_texture, sap_texture, stone_texture, fruit_texture, quartz_texture, fire_texture]
 
-func spawn_pickup_drop(type: Pickup.PickupType, pos: Vector2) -> Pickup:
+func spawn_pickup_drop(type: Pickup.PickupType, pos: Vector2, count = 1) -> void:
+    for i in count:
+        _create_pickup(type, pos)
+
+func _create_pickup(type: Pickup.PickupType, pos: Vector2) -> Pickup:
     var pickup_obj = pickup_scene.instantiate()
     pickup_parent.add_child(pickup_obj)
 

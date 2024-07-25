@@ -17,11 +17,11 @@ const SCALE_MULTIPLIER := 0.1
 const TWEEN_TIME := 1.5
 
 const FLOAT_MIN_TIME := 1
-const FLOAT_MAX_TIME := 1.5
+const FLOAT_MAX_TIME := 1.2
 const FLOAT_MIN_ANGLE := 240.0
 const FLOAT_MAX_ANGLE := 300.0
-const FLOAT_SPEED := 250.0
-const GRAVITY := 350.0
+const FLOAT_SPEED := 300.0
+const GRAVITY := 450.0
 
 const BOBBING_SPEED := 3.0
 const BOBBING_AMPLITUDE := 7.0
@@ -100,7 +100,7 @@ func play_pickup_tween():
     tween.tween_callback(cleanup)
 
 func _on_area_2d_mouse_entered():
-    if collected:
+    if collected or floating:
         return
     collected = true
     play_pickup_tween()

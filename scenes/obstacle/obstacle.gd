@@ -158,15 +158,12 @@ func create_pickup_drops():
     var adjusted_loot = _transmute_loot()
     for item: Pickup.PickupType in adjusted_loot.keys():
         var count: int = adjusted_loot[item]
-        for i in count:
-            GlobalVariables.get_pickup_manager().spawn_pickup_drop(item, global_position)
+        GlobalVariables.get_pickup_manager().spawn_pickup_drop(item, global_position, count)
 
 func _on_health_death() -> void:
     # TODO: Stretch goal to put an animation here
     destroy_timer.start()
     create_pickup_drops()
-
-
 
 func _on_burning_state_burnt() -> void:
     if data.should_use_burnt_texture:

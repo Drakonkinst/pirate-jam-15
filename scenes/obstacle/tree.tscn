@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bdnr8tlvaswxs"]
+[gd_scene load_steps=14 format=3 uid="uid://bdnr8tlvaswxs"]
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_ubi77"]
 [ext_resource type="Resource" uid="uid://c74t1c6d0mox1" path="res://data/obstacle/tree.tres" id="2_7gwrh"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bfy15rd0kvyfy" path="res://assets/textures/stone_tree.png" id="5_nf4ht"]
 [ext_resource type="Texture2D" uid="uid://bxpivg1861wjc" path="res://assets/textures/fruit_tree.png" id="5_uy6jq"]
 [ext_resource type="Script" path="res://scenes/obstacle/burn_leaves_behavior.gd" id="6_5ae8g"]
+[ext_resource type="PackedScene" uid="uid://wvvh0ntl07o4" path="res://scenes/obstacle/fruit_harvest_point.tscn" id="7_o2k7v"]
 [ext_resource type="Script" path="res://scenes/hud/mouse_over_area.gd" id="8_bp3vh"]
 
 [sub_resource type="Resource" id="Resource_44n8k"]
@@ -25,7 +26,7 @@ size = Vector2(141, 90)
 
 [node name="Tree" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_ubi77")]
 data = ExtResource("2_7gwrh")
-behaviors = [NodePath("TreeBehavior"), null]
+behaviors = [NodePath("TreeBehavior"), NodePath("BurnLeavesBehavior")]
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(-2, -13)
@@ -51,11 +52,43 @@ scale = Vector2(0.175, 0.175)
 [node name="FlameParticle3" parent="ObstacleModel1/Flaming" index="2"]
 position = Vector2(11.9094, 24.4026)
 
-[node name="TreeBehavior" type="Node2D" parent="." index="3" node_paths=PackedStringArray("fruit_tree_model", "original_tree_model", "harvest_area")]
+[node name="FruitHarvestPoint" parent="ObstacleModel1" index="3" instance=ExtResource("7_o2k7v")]
+position = Vector2(14, -28)
+rotation = 0.123704
+
+[node name="FruitHarvestPoint2" parent="ObstacleModel1" index="4" instance=ExtResource("7_o2k7v")]
+position = Vector2(-40, -23)
+rotation = -0.107386
+
+[node name="FruitHarvestPoint3" parent="ObstacleModel1" index="5" instance=ExtResource("7_o2k7v")]
+position = Vector2(-62, -42)
+rotation = 0.338973
+scale = Vector2(0.9, 0.9)
+
+[node name="FruitHarvestPoint4" parent="ObstacleModel1" index="6" instance=ExtResource("7_o2k7v")]
+position = Vector2(49, -12)
+rotation = -0.147549
+
+[node name="FruitHarvestPoint5" parent="ObstacleModel1" index="7" instance=ExtResource("7_o2k7v")]
+position = Vector2(64, -40)
+rotation = -0.147549
+scale = Vector2(0.9, 0.9)
+
+[node name="FruitHarvestPoint6" parent="ObstacleModel1" index="8" instance=ExtResource("7_o2k7v")]
+position = Vector2(30, -51)
+rotation = 0.0442387
+
+[node name="FruitHarvestPoint7" parent="ObstacleModel1" index="9" instance=ExtResource("7_o2k7v")]
+position = Vector2(-23, -40)
+rotation = 0.285018
+scale = Vector2(0.9, 0.9)
+
+[node name="TreeBehavior" type="Node2D" parent="." index="3" node_paths=PackedStringArray("fruit_tree_model", "original_tree_model", "harvest_area", "fruit_harvest_points")]
 script = ExtResource("5_chy1h")
 fruit_tree_model = NodePath("../ObstacleModel1/FruitTree")
 original_tree_model = NodePath("../ObstacleModel1/Base")
 harvest_area = NodePath("../MouseOverArea")
+fruit_harvest_points = [NodePath("../ObstacleModel1/FruitHarvestPoint"), NodePath("../ObstacleModel1/FruitHarvestPoint2"), NodePath("../ObstacleModel1/FruitHarvestPoint3"), NodePath("../ObstacleModel1/FruitHarvestPoint4"), NodePath("../ObstacleModel1/FruitHarvestPoint5"), NodePath("../ObstacleModel1/FruitHarvestPoint6"), NodePath("../ObstacleModel1/FruitHarvestPoint7")]
 tree_harvest_mask = 2
 
 [node name="BurnLeavesBehavior" type="Node2D" parent="." index="4"]
@@ -73,5 +106,6 @@ script = ExtResource("8_bp3vh")
 position = Vector2(-0.5, -66)
 shape = SubResource("RectangleShape2D_lhsll")
 
+[connection signal="removed" from="." to="TreeBehavior" method="_on_tree_removed"]
 [connection signal="mouse_entered" from="MouseOverArea" to="TreeBehavior" method="_on_area_2d_mouse_entered"]
 [connection signal="moused_over" from="MouseOverArea" to="TreeBehavior" method="_on_mouse_over_area_moused_over"]
