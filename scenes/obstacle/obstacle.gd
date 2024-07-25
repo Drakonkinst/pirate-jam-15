@@ -22,6 +22,7 @@ var transmuted_state: TransmutedState = TransmutedState.DEFAULT
 @onready var health: Health = $Health
 @onready var model: ObstacleModel = $ObstacleModel1 # Selects the default obstacle model in case there are no extras
 @onready var burning_state: BurningState = $BurningState
+@onready var destroy_timer: Timer = $DestroyTimer
 
 @export var data: ObstacleData
 @export var alternate_models: Array[ObstacleModel] # Optional array. If there are variations of the same model, can list them all here to choose randomly
@@ -139,11 +140,12 @@ func create_pickup_drop() -> Pickup:
     return GlobalVariables.get_pickup_manager().spawn_pickup_drop(pickup_type, global_position)
 
 func _on_health_death() -> void:
-    # TODO: May want to wait a bit for the health to animate before killing?
-    # TODO: Maybe health can emit a "finished animation"
+    # TODO: Stretch goal to put an animation here
+    destroy_timer.start()
+    # Can also disable "hitbox" at this state to let enemies move through, but this might unnecessarily complicate things
     create_pickup_drop()
 
-    removed.emit()
+
 
 func _on_burning_state_burnt() -> void:
     if data.should_use_burnt_texture:
@@ -163,3 +165,5 @@ func copy_burning_state(state: BurningState) -> void:
     else:
         put_out_fire()
 
+func _on_destroy_timer_timeout() -> void:
+    removed.emit()

@@ -10,7 +10,7 @@ const MAX_VALUE := 100
 
 @export var show_only_if_damaged: bool = true
 @export var speed: float = 100
-@export var delay_multiplier: float = 0.0085
+@export var delay_multiplier: float = 0.0025
 @export var should_change_colors: bool = true
 @export var healthy_color: Color
 @export var caution_color: Color

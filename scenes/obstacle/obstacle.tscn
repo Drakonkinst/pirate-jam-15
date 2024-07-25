@@ -54,8 +54,12 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.44, 1.44)
 
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="changed" from="Health" to="Healthbar" method="_on_health_changed"]
 [connection signal="death" from="Health" to="." method="_on_health_death"]
 [connection signal="burnt" from="BurningState" to="." method="_on_burning_state_burnt"]
 [connection signal="fire_expired" from="BurningState" to="." method="_on_burning_state_fire_expired"]
 [connection signal="fire_tick" from="BurningState" to="." method="_on_burning_state_fire_tick"]
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]
