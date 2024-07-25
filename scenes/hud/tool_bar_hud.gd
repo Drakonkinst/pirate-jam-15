@@ -8,6 +8,16 @@ const SELECT_3_INPUT = "select_3"
 const SELECT_4_INPUT = "select_4"
 const SELECT_5_INPUT = "select_5"
 
+const TOOL_ORDER: Array[ToolBar.Tool] = [
+    ToolBar.Tool.MAGIC_BOLT,
+    ToolBar.Tool.TORCH,
+    ToolBar.Tool.PICKAXE,
+    ToolBar.Tool.POTION,
+    ToolBar.Tool.SUMMON
+]
+@export var buttons: Array[TextureButton]
+@export var highlight_material: Material
+
 @onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 var toolbar: ToolBar
 
@@ -51,7 +61,11 @@ func _on_potion_button_button_down() -> void:
 func _on_summon_button_button_down() -> void:
     toolbar.set_tool(ToolBar.Tool.SUMMON)
 
-
 func _on_tool_bar_tool_changed(tool: ToolBar.Tool) -> void:
-    pass
     # TODO: Update current active tool
+    var tool_index = TOOL_ORDER.find(tool, 0)
+    for i in buttons.size():
+        if i == tool_index:
+            buttons[i].material = highlight_material
+        else:
+            buttons[i].material = null
