@@ -56,11 +56,11 @@ func throw_projectile(projectile: ThrownProjectile.Type, mouse_pos: Vector2) -> 
 
 # TODO: Do not throw if not in a good zone
 func is_valid_target(pos: Vector2, is_throwing: bool) -> bool:
-    var player_pos: Vector2 = player.global_position
+    var grid: Grid = GlobalVariables.get_grid()
     # Cannot throw behind
-    if pos.x <= player_pos.x:
+    if pos.x <= grid.find_grid_origin().x:
         return false
-    if is_throwing and not GlobalVariables.get_grid().is_on_grid(pos):
+    if is_throwing and not grid.is_on_grid(pos):
         return false
     return true
 

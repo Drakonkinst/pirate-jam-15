@@ -21,9 +21,11 @@ enum Tool {
 # TODO: Inventory counts
 var current_tool: Tool = Tool.MAGIC_BOLT
 var selected_potion: ThrownProjectile.Type
+var ordered_tool_cooldowns: Array[Timer]
 
 func _ready() -> void:
     tool_changed.emit(current_tool)
+    ordered_tool_cooldowns = [attack_cooldown, torch_cooldown, destroy_cooldown, potion_cooldown, summon_cooldown]
 
 func handle_action(target_pos: Vector2) -> bool:
     # Do action based on current tool
@@ -106,6 +108,17 @@ func set_tool(tool: Tool) -> void:
 
 func set_tool_slot(slot: int) -> void:
     set_tool(slot)
+
+# Return an ordered list of cooldown percentages for each ability in the toolbar
+func get_cooldown_array() -> Array[float]:
+    var results: Array[float] = []
+    for timer in ordered_tool_cooldowns:
+        results.append(_get_cooldown_percentage(timer))
+    return results
+
+func _get_cooldown_percentage(timer: Timer) -> float:
+    return timer.time_left / timer.wait_time
+
 
 func _on_attack_cooldown_timer_timeout() -> void:
     attack_cooldown.stop()

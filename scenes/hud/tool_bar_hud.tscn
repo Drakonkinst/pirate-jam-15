@@ -1,13 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqbxejr72xyb3"]
+[gd_scene load_steps=14 format=3 uid="uid://cqbxejr72xyb3"]
 
 [ext_resource type="Script" path="res://scenes/hud/tool_bar_hud.gd" id="1_nptwf"]
 [ext_resource type="Texture2D" uid="uid://tkvdjxmelk14" path="res://assets/ui/GUI-1.png.png" id="2_o1r3x"]
 [ext_resource type="Texture2D" uid="uid://de2rw7qb6ivnu" path="res://assets/textures/icon-cast.png" id="3_b6np5"]
 [ext_resource type="Material" uid="uid://dawr3v4rqfldd" path="res://data/sprite/highlight_material.tres" id="3_h2egh"]
 [ext_resource type="Texture2D" uid="uid://cmsofbqengwtf" path="res://assets/textures/icon-torch.png" id="4_qwe61"]
+[ext_resource type="Script" path="res://scenes/hud/tool_bar_icon.gd" id="5_bf7hs"]
 [ext_resource type="Texture2D" uid="uid://cl5iw1n8edw7j" path="res://assets/textures/icon-pickaxe.png" id="5_hxrcs"]
+[ext_resource type="Texture2D" uid="uid://dlor8yt37nk47" path="res://assets/textures/icon-torch-full.png" id="6_3olgf"]
+[ext_resource type="Texture2D" uid="uid://c1xsyfss3rwrv" path="res://assets/textures/icon-cast-full.png" id="6_iag50"]
 [ext_resource type="Texture2D" uid="uid://bkjao8srineem" path="res://assets/textures/icon-potion.png" id="6_wints"]
 [ext_resource type="Texture2D" uid="uid://72u44d545dyr" path="res://assets/textures/icon-summon.png" id="7_6xgn1"]
+[ext_resource type="Texture2D" uid="uid://dxsb05hlpce5t" path="res://assets/textures/icon-pickaxe-full.png" id="9_ae608"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ie0ih"]
 texture = ExtResource("2_o1r3x")
@@ -58,6 +62,22 @@ action_mode = 0
 texture_normal = ExtResource("3_b6np5")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("5_bf7hs")
+
+[node name="ProgressOverlay" type="TextureProgressBar" parent="MarginContainer/ActionsContainer/AttackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 176.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.313, 0.313)
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("6_iag50")
 
 [node name="TorchButton" type="TextureButton" parent="MarginContainer/ActionsContainer"]
 custom_minimum_size = Vector2(80, 80)
@@ -68,6 +88,22 @@ action_mode = 0
 texture_normal = ExtResource("4_qwe61")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("5_bf7hs")
+
+[node name="ProgressOverlay" type="TextureProgressBar" parent="MarginContainer/ActionsContainer/TorchButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 176.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.313, 0.313)
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("6_3olgf")
 
 [node name="DestroyButton" type="TextureButton" parent="MarginContainer/ActionsContainer"]
 custom_minimum_size = Vector2(80, 80)
@@ -78,6 +114,22 @@ action_mode = 0
 texture_normal = ExtResource("5_hxrcs")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("5_bf7hs")
+
+[node name="ProgressOverlay" type="TextureProgressBar" parent="MarginContainer/ActionsContainer/DestroyButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 176.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.313, 0.313)
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("9_ae608")
 
 [node name="PotionButton" type="TextureButton" parent="MarginContainer/ActionsContainer"]
 custom_minimum_size = Vector2(80, 80)
@@ -88,6 +140,23 @@ action_mode = 0
 texture_normal = ExtResource("6_wints")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("5_bf7hs")
+
+[node name="ProgressOverlay" type="TextureProgressBar" parent="MarginContainer/ActionsContainer/PotionButton"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 176.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.313, 0.313)
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("6_3olgf")
 
 [node name="SummonButton" type="TextureButton" parent="MarginContainer/ActionsContainer"]
 custom_minimum_size = Vector2(80, 80)
@@ -98,6 +167,23 @@ action_mode = 0
 texture_normal = ExtResource("7_6xgn1")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("5_bf7hs")
+
+[node name="ProgressOverlay" type="TextureProgressBar" parent="MarginContainer/ActionsContainer/SummonButton"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 176.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.313, 0.313)
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("6_3olgf")
 
 [connection signal="button_down" from="MarginContainer/ActionsContainer/AttackButton" to="." method="_on_attack_button_button_down"]
 [connection signal="button_up" from="MarginContainer/ActionsContainer/AttackButton" to="." method="_on_attack_button_button_up"]

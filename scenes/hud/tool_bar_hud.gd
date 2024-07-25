@@ -15,7 +15,7 @@ const TOOL_ORDER: Array[ToolBar.Tool] = [
     ToolBar.Tool.POTION,
     ToolBar.Tool.SUMMON
 ]
-@export var buttons: Array[TextureButton]
+@export var buttons: Array[ToolBarIcon]
 @export var highlight_material: Material
 
 @onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
@@ -25,6 +25,12 @@ var is_tab_open: bool = false
 
 func _ready() -> void:
     toolbar = GlobalVariables.get_toolbar()
+
+func _process(delta: float) -> void:
+    var cooldown_array: Array[float] = toolbar.get_cooldown_array()
+    for i in buttons.size():
+        buttons[i].update_cooldown(cooldown_array[i])
+
 
 func handle_click(mouse_pos: Vector2) -> bool:
     if is_tab_open:
@@ -66,6 +72,6 @@ func _on_tool_bar_tool_changed(tool: ToolBar.Tool) -> void:
     var tool_index = TOOL_ORDER.find(tool, 0)
     for i in buttons.size():
         if i == tool_index:
-            buttons[i].material = highlight_material
+            buttons[i].apply_material(highlight_material)
         else:
-            buttons[i].material = null
+            buttons[i].apply_material(null)
