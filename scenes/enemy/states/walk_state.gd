@@ -20,7 +20,7 @@ func update(_delta):
 
 func physics_update(delta):
     enemy.velocity = Vector2.LEFT * enemy.move_speed * delta
-    print("Walkin")
+    # print("Walkin")
 
 func start_attack(adjacent_obstacle):
     enemy.obstacle = adjacent_obstacle

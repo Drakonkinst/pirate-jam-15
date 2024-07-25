@@ -2,6 +2,8 @@ extends Node2D
 
 class_name ToolBar
 
+signal tool_changed(tool: Tool)
+
 # Should be same order as in UI
 enum Tool {
     MAGIC_BOLT, TORCH, PICKAXE, POTION, SUMMON
@@ -16,6 +18,9 @@ enum Tool {
 # TODO: Inventory counts
 var current_tool: Tool = Tool.MAGIC_BOLT
 var selected_potion: ThrownProjectile.Type
+
+func _ready() -> void:
+    tool_changed.emit(current_tool)
 
 func handle_action(target_pos: Vector2) -> bool:
     # Do action based on current tool
@@ -73,6 +78,7 @@ func _do_summon(target_pos: Vector2) -> bool:
 
 func set_tool(tool: Tool) -> void:
     current_tool = tool
+    tool_changed.emit(current_tool)
     print("Set tool to ", Tool.keys()[tool])
 
 func set_tool_slot(slot: int) -> void:

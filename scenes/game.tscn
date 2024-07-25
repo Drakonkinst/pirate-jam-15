@@ -1,7 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=39 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://assets/ui/resource_hud.tscn" id="3_oot8a"]
+[ext_resource type="Script" path="res://scenes/hud/cursor_effects.gd" id="4_vdaaq"]
+[ext_resource type="Texture2D" uid="uid://bmgy1sy6rb32q" path="res://assets/textures/circle_512.png" id="5_47rpd"]
 [ext_resource type="PackedScene" uid="uid://cqbxejr72xyb3" path="res://scenes/hud/tool_bar_hud.tscn" id="9_dlv2r"]
 [ext_resource type="Script" path="res://scenes/obstacle_manager.gd" id="10_uoctj"]
 [ext_resource type="PackedScene" uid="uid://bdnr8tlvaswxs" path="res://scenes/obstacle/tree.tscn" id="11_4iroc"]
@@ -58,12 +60,13 @@ class_name World
 
 "
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "toolbar")]
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
 obstacle_manager = NodePath("World/ObstacleManager")
 projectile_manager = NodePath("World/ProjectileManager")
 pickup_manager = NodePath("World/PickupManager")
+toolbar = NodePath("ToolBar")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
@@ -113,9 +116,8 @@ text = "Daytime
 "
 horizontal_alignment = 1
 
-[node name="ToolBarHud" parent="CanvasLayer" node_paths=PackedStringArray("toolbar") instance=ExtResource("9_dlv2r")]
+[node name="ToolBarHud" parent="CanvasLayer" instance=ExtResource("9_dlv2r")]
 mouse_filter = 1
-toolbar = NodePath("../../ToolBar")
 
 [node name="ResourceHud" parent="CanvasLayer" instance=ExtResource("3_oot8a")]
 
@@ -133,6 +135,14 @@ position = Vector2(292, 40)
 
 [node name="FruitAnchor" type="Node2D" parent="CanvasLayer/ResourceHud"]
 position = Vector2(376, 40)
+
+[node name="CursorEffects" type="Node2D" parent="CanvasLayer"]
+script = ExtResource("4_vdaaq")
+circle_area_texture = ExtResource("5_47rpd")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CursorEffects"]
+modulate = Color(1, 1, 1, 0.196078)
+texture = ExtResource("5_47rpd")
 
 [node name="Input" type="Node2D" parent="."]
 
@@ -170,7 +180,13 @@ one_shot = true
 script = SubResource("GDScript_hp6k0")
 
 [node name="Grid" parent="World" instance=ExtResource("11_7lv1o")]
-position = Vector2(125, 25)
+num_rows = null
+num_cols = null
+tile_width = null
+tile_height = null
+offset = null
+debug_marker_scene = ExtResource("20_capy2")
+show_debug = null
 
 [node name="ObstacleManager" type="Node2D" parent="World"]
 script = ExtResource("10_uoctj")
@@ -219,14 +235,14 @@ potion_wood_scene = ExtResource("22_i3eab")
 potion_stone_scene = ExtResource("23_65kor")
 potion_quartz_scene = ExtResource("24_50sjw")
 debug_marker_scene = ExtResource("20_capy2")
-show_debug = null
 throw_offset = Vector2(25, -75)
 fire_offset = Vector2(100, -50)
-arc_height_multiplier = null
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("19_c5v0p")]
 position = Vector2(238, 518)
 
+[connection signal="tool_changed" from="ToolBar" to="CanvasLayer/ToolBarHud" method="_on_tool_bar_tool_changed"]
+[connection signal="tool_changed" from="ToolBar" to="CanvasLayer/CursorEffects" method="_on_tool_bar_tool_changed"]
 [connection signal="timeout" from="ToolBar/AttackCooldown" to="ToolBar" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/DestroyCooldown" to="ToolBar" method="_on_destroy_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/TorchCooldown" to="ToolBar" method="_on_torch_cooldown_timeout"]

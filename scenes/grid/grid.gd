@@ -7,6 +7,9 @@ class_name Grid
 @export var num_cols := 9
 @export var tile_width := 150
 @export var tile_height := 125
+@export var offset: Vector2 = Vector2(25, -37.5)
+@export var debug_marker_scene: PackedScene
+@export var show_debug: bool = false
 
 var grid: Array[Array]
 
@@ -17,30 +20,25 @@ func get_tile(row: int, col: int) -> GridTile:
     return grid[row][col]
 
 func find_grid_origin() -> Vector2:
-    # Not sure why this doesn't fully center it but we're applying an offset anyways
     var screen_dimensions: Vector2 = get_viewport().get_visible_rect().size
     var grid_height: float = tile_height * num_rows
     var grid_width: float = tile_width * num_cols
-    var origin_x := (screen_dimensions.x - grid_width) / 4
+    var origin_x := (screen_dimensions.x - grid_width) / 2
     var origin_y := (screen_dimensions.y - grid_height) / 2
     var origin: Vector2 = position + Vector2(origin_x, origin_y)
+    origin += offset
     return origin
 
 func screenspace_to_tile(screen_space_pos: Vector2) -> GridTile:
     var origin = find_grid_origin()
-    var grid_space_pos = (screen_space_pos - origin)
+    var grid_offset = screen_space_pos - origin
 
-    #print("Gx: " + str(grid_space_pos.x) + ", Gy: " + str(grid_space_pos.y))
-    if grid_space_pos.x < 0 || grid_space_pos.x > (num_cols * tile_width):
+    var row = floori(grid_offset.y / tile_height)
+    var col = floori(grid_offset.x / tile_width)
+
+    if row < 0 || row >= num_rows || col < 0 || col >= num_cols:
         return null
-    elif grid_space_pos.y < 0 || grid_space_pos.y > (num_rows * tile_height):
-        return null
-
-    var row = floori(grid_space_pos.y / tile_height)
-    var col = floori(grid_space_pos.x / tile_width)
-    # print("Row: " + str(row) + ", Col: " + str(col))
-
-    return get_tile(row,col)
+    return get_tile(row, col)
 
 func get_y_extents() -> Vector2:
     var origin = find_grid_origin()
@@ -55,6 +53,7 @@ func get_tiles_in_radius(pos: Vector2, radius: float) -> Array[GridTile]:
             result.append(tile)
     return result
 
+# https://stackoverflow.com/a/402010
 func is_tile_in_radius(tile: GridTile, pos: Vector2, radius: float) -> bool:
     var tile_center: Vector2 = get_tile_center(tile)
     var delta_x = abs(pos.x - tile_center.x)
@@ -62,12 +61,12 @@ func is_tile_in_radius(tile: GridTile, pos: Vector2, radius: float) -> bool:
     var half_width = tile_width / 2.0
     var half_height = tile_height / 2.0
 
-    if delta_x > tile_width + radius:
+    if delta_x > half_width + radius:
         return false
     if delta_y > half_height + radius:
         return false
 
-    if delta_x <= tile_width:
+    if delta_x <= half_width:
         return true
     if delta_y <= half_height:
         return true
@@ -77,13 +76,19 @@ func is_tile_in_radius(tile: GridTile, pos: Vector2, radius: float) -> bool:
     var corner_dist_sq = half_x * half_x + half_y * half_y
     return corner_dist_sq <= radius * radius
 
+func _place_debug_circle(pos: Vector2):
+    if not show_debug:
+        return
+    var obj = debug_marker_scene.instantiate()
+    add_child(obj)
+    obj.position = pos
 
 func get_tile_center(tile: GridTile) -> Vector2:
     var origin = find_grid_origin()
-    var tile_center_x: float = origin.x + tile.col * tile_width + tile_width / 2
-    var tile_center_y: float = origin.y + tile.row * tile_height + tile_height / 2
-    return Vector2(tile_center_x, tile_center_y)
-
+    var tile_center_x: float = origin.x + tile.col * tile_width + (tile_width / 2.0)
+    var tile_center_y: float = origin.y + tile.row * tile_height + (tile_height / 2.0)
+    var pos = Vector2(tile_center_x, tile_center_y)
+    return pos
 
 func _ready():
     var origin: Vector2 = find_grid_origin()

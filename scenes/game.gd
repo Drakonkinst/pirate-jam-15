@@ -6,6 +6,7 @@ class_name Game
 @export var obstacle_manager: ObstacleManager
 @export var projectile_manager: ProjectileManager
 @export var pickup_manager: PickupManager
+@export var toolbar: ToolBar
 
 func _ready():
     # Grid already instantiated since it is a child

@@ -9,9 +9,12 @@ const SELECT_4_INPUT = "select_4"
 const SELECT_5_INPUT = "select_5"
 
 @onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
-@export var toolbar: ToolBar
+var toolbar: ToolBar
 
 var is_tab_open: bool = false
+
+func _ready() -> void:
+    toolbar = GlobalVariables.get_toolbar()
 
 func handle_click(mouse_pos: Vector2) -> bool:
     if is_tab_open:
@@ -47,3 +50,8 @@ func _on_potion_button_button_down() -> void:
 
 func _on_summon_button_button_down() -> void:
     toolbar.set_tool(ToolBar.Tool.SUMMON)
+
+
+func _on_tool_bar_tool_changed(tool: ToolBar.Tool) -> void:
+    pass
+    # TODO: Update current active tool
