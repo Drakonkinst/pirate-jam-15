@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2a8ngge05k7t"]
+[gd_scene load_steps=9 format=3 uid="uid://c2a8ngge05k7t"]
 
 [ext_resource type="Script" path="res://scenes/enemy/shadow_enemy.gd" id="1_qvcdo"]
+[ext_resource type="Script" path="res://scenes/health.gd" id="2_2tcm3"]
 [ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/ShadowTemp2.png" id="2_ghkbo"]
 [ext_resource type="Script" path="res://state_machine.gd" id="3_0rj1h"]
 [ext_resource type="Script" path="res://scenes/enemy/states/walk_state.gd" id="4_pvnhg"]
 [ext_resource type="Script" path="res://scenes/enemy/states/attack_state.gd" id="5_hpdbb"]
+[ext_resource type="PackedScene" uid="uid://jci63uf5o54n" path="res://scenes/ui/healthbar.tscn" id="7_d4e3b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_efe6m"]
 
@@ -12,6 +14,10 @@
 script = ExtResource("1_qvcdo")
 move_speed = 10000.0
 state_machine = NodePath("StateMachine")
+
+[node name="Health" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_2tcm3")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -38,3 +44,28 @@ enemy = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_efe6m")
+
+[node name="Healthbar" parent="." instance=ExtResource("7_d4e3b")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+size_flags_horizontal = 4
+show_only_if_damaged = false
+
+[node name="BarUnder" parent="Healthbar" index="0"]
+offset_left = -24.0
+offset_top = -31.0
+offset_right = 16.0
+offset_bottom = 9.0
+
+[node name="BarOver" parent="Healthbar" index="1"]
+offset_left = -24.0
+offset_top = -31.0
+offset_right = 16.0
+offset_bottom = 9.0
+
+[connection signal="changed" from="Health" to="Healthbar" method="_on_health_changed"]
+[connection signal="death" from="Health" to="." method="_on_health_death"]
+
+[editable path="Healthbar"]

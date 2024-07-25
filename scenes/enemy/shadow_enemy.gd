@@ -11,9 +11,11 @@ var obstacle: Obstacle = null
 
 @export var state_machine: StateMachine
 @onready var sprite = %Sprite
+@onready var health = %Health
 
 func _ready():
-    pass
+    health.set_max_health(100)
+    health.set_health(100)
 
 func _physics_process(_delta):
     move_and_slide()
@@ -31,4 +33,10 @@ func attack(target_obstacle: Obstacle):
     if target_obstacle != null:
         target_obstacle.damage(5)
 
+func damage(val):
+    health.damage(val)
+    print(health.health)
 
+
+func _on_health_death():
+    queue_free()
