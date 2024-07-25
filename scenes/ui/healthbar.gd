@@ -7,6 +7,7 @@ class_name HealthBar
 const PERCENT_TO_DISPLAY := 100
 const MIN_VALUE := 0
 const MAX_VALUE := 100
+const MAX_DELAY := 0.125
 
 @export var show_only_if_damaged: bool = true
 @export var speed: float = 100
@@ -40,8 +41,8 @@ func _process(delta: float) -> void:
 			speed_bonus += acceleration * delta
 		else:
 			var amount = abs(bar_under.value - target_value)
-			var wait_for = amount * delay_multiplier
-			delay += delta
+			var wait_for = min(amount * delay_multiplier, MAX_DELAY)
+			delay = delay + delta
 			if delay >= wait_for:
 				is_changing = true
 	elif is_changing:

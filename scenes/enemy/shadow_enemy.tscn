@@ -49,9 +49,10 @@ shape = SubResource("CircleShape2D_efe6m")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
+offset_top = -13.0
+offset_bottom = -13.0
 grow_horizontal = 2
 size_flags_horizontal = 4
-show_only_if_damaged = false
 
 [node name="BarUnder" parent="Healthbar" index="0"]
 offset_left = -24.0
