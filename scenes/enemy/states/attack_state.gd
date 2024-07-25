@@ -8,22 +8,22 @@ var cooldown = 0.25
 
 var timer = 0
 
-
 func enter():
     timer = 0
-    enemy.obstacle.removed.connect(end_attack)
 
 func exit():
     timer = 0
 
 func update(_delta):
-    if timer >= cooldown and enemy.obstacle:
+    var obstacle = enemy.target_tile.obstacle
+    # TODO: What if object turns into oil / can no longer be targeted?
+    if not obstacle:
+        enemy.target_tile = null
+        transitioned.emit(self,"EnemyWalkState")
+        return
+
+    if timer >= cooldown:
         timer = 0
-        enemy.attack(enemy.obstacle)
+        enemy.attack(enemy.target_tile)
     else:
         timer += _delta
-
-
-func end_attack():
-    enemy.obstacle = null
-    transitioned.emit(self,"EnemyWalkState")

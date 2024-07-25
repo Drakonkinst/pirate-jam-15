@@ -7,7 +7,7 @@ class_name ShadowEnemy
 
 
 var moving: bool = true
-var obstacle: Obstacle = null
+var target_tile: GridTile = null
 
 @export var state_machine: StateMachine
 @onready var sprite = %Sprite
@@ -28,10 +28,11 @@ func get_left_tile() -> GridTile:
     var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(shadow_left_position)
     return tile
 
-func attack(target_obstacle: Obstacle):
-    # TODO: Implement small timer
-    if target_obstacle != null:
-        target_obstacle.damage(5)
+func attack(tile: GridTile) -> bool:
+    if tile == null or tile.obstacle == null:
+        return false
+    tile.obstacle.damage(5)
+    return true
 
 func damage(val):
     health.damage(val)
