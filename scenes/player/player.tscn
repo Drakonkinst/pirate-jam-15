@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu2l6glnoatrb"]
+[gd_scene load_steps=12 format=3 uid="uid://cu2l6glnoatrb"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_g3hje"]
 [ext_resource type="Script" path="res://scenes/player/player_move_control.gd" id="2_pkgyp"]
 [ext_resource type="Script" path="res://scenes/player/player_resources.gd" id="2_rbopw"]
 [ext_resource type="Script" path="res://scenes/player/player_animation_control.gd" id="3_i8sua"]
 [ext_resource type="Texture2D" uid="uid://d1xkqdit3j7if" path="res://assets/textures/player_still.png" id="4_mtw81"]
+[ext_resource type="Texture2D" uid="uid://uvjkmo763iin" path="res://assets/textures/player_throw_1.png" id="6_enieh"]
+[ext_resource type="Texture2D" uid="uid://cowat18ewqkx8" path="res://assets/textures/player_throw_2.png" id="7_20v33"]
+[ext_resource type="Texture2D" uid="uid://bibv6qh5b4nhn" path="res://assets/textures/player_walk_1.png" id="8_b1f8t"]
+[ext_resource type="Texture2D" uid="uid://dtxsjpmlpwx0p" path="res://assets/textures/player_walk_2.png" id="9_hagu7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yycql"]
 
@@ -17,6 +21,34 @@ animations = [{
 "loop": true,
 "name": &"still",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_enieh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_20v33")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_b1f8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mtw81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hagu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mtw81")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -43,4 +75,6 @@ script = ExtResource("3_i8sua")
 position = Vector2(0, -122)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sti1p")
-animation = &"still"
+animation = &"walk"
+
+[connection signal="animation_finished" from="PlayerAnimationControl/Model" to="PlayerAnimationControl" method="_on_model_animation_finished"]

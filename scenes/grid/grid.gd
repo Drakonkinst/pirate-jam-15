@@ -7,7 +7,7 @@ class_name Grid
 @export var num_cols := 9
 @export var tile_width := 150
 @export var tile_height := 125
-@export var offset: Vector2 = Vector2(25, -37.5)
+@export var offset: Vector2 = Vector2(100, -10)
 @export var debug_marker_scene: PackedScene
 @export var show_debug: bool = false
 

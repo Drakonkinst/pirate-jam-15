@@ -22,8 +22,10 @@ func _physics_process(_delta: float) -> void:
     var mouse_pos = get_global_mouse_position()
 
     if GlobalVariables.get_toolbar().current_tool == ToolBar.Tool.PICKAXE and grid.screenspace_to_tile(mouse_pos) == self:
-        sprite.modulate.a = 0.8
+        sprite.modulate = Color.WHITE
+        sprite.modulate.a = 0.25
     else:
+        sprite.modulate = Color.BLACK
         sprite.modulate.a = default_opacity
 
     # if grid.screenspace_to_tile(mouse_pos) == self:

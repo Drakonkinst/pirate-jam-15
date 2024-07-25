@@ -3,6 +3,7 @@ extends Node2D
 class_name ToolBar
 
 signal tool_changed(tool: Tool)
+signal do_action(tool: Tool)
 
 # Should be same order as in UI
 enum Tool {
@@ -51,6 +52,7 @@ func _do_attack(target_pos: Vector2) -> bool:
     var success = projectile_manager.fire_bolt(target_pos)
     if success:
         attack_cooldown.start()
+        do_action.emit(ToolBar.Tool.MAGIC_BOLT)
     return success
 
 func _do_torch(target_pos: Vector2) -> bool:
@@ -58,6 +60,7 @@ func _do_torch(target_pos: Vector2) -> bool:
     var success = projectile_manager.throw_projectile(ThrownProjectile.Type.TORCH, target_pos)
     if success:
         torch_cooldown.start()
+        do_action.emit(ToolBar.Tool.TORCH)
     return success
 
 # TODO: Should work when mouse button held as well
@@ -70,6 +73,7 @@ func _do_destroy(target_pos: Vector2) -> bool:
         return false
     obstacle.damage(obstacle_damage)
     destroy_cooldown.start()
+    do_action.emit(ToolBar.Tool.PICKAXE)
     return true
 
 func _do_potion(target_pos: Vector2) -> bool:
@@ -85,11 +89,15 @@ func _do_potion(target_pos: Vector2) -> bool:
     var success = projectile_manager.throw_projectile(type, target_pos)
     if success:
         potion_cooldown.start()
+        do_action.emit(ToolBar.Tool.POTION)
     return success
 
 func _do_summon(target_pos: Vector2) -> bool:
     summon_cooldown.start()
-    return true
+    var success = true
+    if success:
+        do_action.emit(ToolBar.Tool.SUMMON)
+    return success
 
 func set_tool(tool: Tool) -> void:
     current_tool = tool

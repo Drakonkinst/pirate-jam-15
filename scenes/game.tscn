@@ -1,6 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=40 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
+[ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
 [ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://assets/ui/resource_hud.tscn" id="3_oot8a"]
 [ext_resource type="Script" path="res://scenes/hud/cursor_effects.gd" id="4_vdaaq"]
 [ext_resource type="Texture2D" uid="uid://bmgy1sy6rb32q" path="res://assets/textures/circle_512.png" id="5_47rpd"]
@@ -83,6 +84,20 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.180005, 0.180005, 0.180005, 1)
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5hatj")
+expand_mode = 1
+stretch_mode = 4
+
 [node name="DayTrackerContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 10
 anchor_right = 1.0
@@ -156,7 +171,6 @@ tool_bar = NodePath("../../CanvasLayer/ToolBarHud")
 
 [node name="ToolBar" type="Node2D" parent="."]
 script = ExtResource("20_akytf")
-obstacle_damage = null
 
 [node name="AttackCooldown" type="Timer" parent="ToolBar"]
 wait_time = 0.5
@@ -181,13 +195,7 @@ one_shot = true
 script = SubResource("GDScript_hp6k0")
 
 [node name="Grid" parent="World" instance=ExtResource("11_7lv1o")]
-num_rows = null
-num_cols = null
-tile_width = null
-tile_height = null
-offset = null
 debug_marker_scene = ExtResource("20_capy2")
-show_debug = null
 
 [node name="ObstacleManager" type="Node2D" parent="World"]
 script = ExtResource("10_uoctj")
@@ -237,11 +245,12 @@ potion_stone_scene = ExtResource("23_65kor")
 potion_quartz_scene = ExtResource("24_50sjw")
 debug_marker_scene = ExtResource("20_capy2")
 throw_offset = Vector2(25, -75)
-fire_offset = Vector2(100, -50)
+fire_offset = Vector2(80, -50)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("19_c5v0p")]
 position = Vector2(238, 518)
 
+[connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
 [connection signal="tool_changed" from="ToolBar" to="CanvasLayer/ToolBarHud" method="_on_tool_bar_tool_changed"]
 [connection signal="tool_changed" from="ToolBar" to="CanvasLayer/CursorEffects" method="_on_tool_bar_tool_changed"]
 [connection signal="timeout" from="ToolBar/AttackCooldown" to="ToolBar" method="_on_attack_cooldown_timeout"]
