@@ -15,6 +15,8 @@ enum Tool {
 @onready var potion_cooldown: Timer = $PotionCooldown
 @onready var summon_cooldown: Timer = $SummonCooldown
 
+@export var obstacle_damage: int = 10
+
 # TODO: Inventory counts
 var current_tool: Tool = Tool.MAGIC_BOLT
 var selected_potion: ThrownProjectile.Type
@@ -60,6 +62,13 @@ func _do_torch(target_pos: Vector2) -> bool:
 
 # TODO: Should work when mouse button held as well
 func _do_destroy(target_pos: Vector2) -> bool:
+    var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(target_pos)
+    if tile == null:
+        return false
+    var obstacle: Obstacle = tile.obstacle
+    if obstacle == null or obstacle.data.invulnerable:
+        return false
+    obstacle.damage(obstacle_damage)
     destroy_cooldown.start()
     return true
 

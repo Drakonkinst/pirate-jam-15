@@ -53,6 +53,13 @@ offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.44, 1.44)
+show_only_if_damaged = null
+speed = null
+acceleration = null
+delay_multiplier = null
+should_change_colors = null
+caution_threshold = null
+danger_threshold = null
 
 [node name="DestroyTimer" type="Timer" parent="."]
 wait_time = 0.2

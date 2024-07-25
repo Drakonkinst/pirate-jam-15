@@ -10,7 +10,8 @@ const MAX_VALUE := 100
 
 @export var show_only_if_damaged: bool = true
 @export var speed: float = 100
-@export var delay_multiplier: float = 0.0025
+@export var acceleration: float = 2000
+@export var delay_multiplier: float = 0.003
 @export var should_change_colors: bool = true
 @export var healthy_color: Color
 @export var caution_color: Color
@@ -23,6 +24,7 @@ const MAX_VALUE := 100
 var target_value: float
 var is_changing: bool = false
 var delay: float = 0
+var speed_bonus: float = 0
 
 func _ready() -> void:
     set_percentage(1, true)
@@ -31,11 +33,11 @@ func _process(delta: float) -> void:
     if bar_under.value != target_value:
         if is_changing:
             delay = 0
-            # TODO: Maybe switch this to actual easing instead of just lerping lol
             if bar_under.value < target_value:
-                bar_under.value = min(target_value, bar_under.value + speed * delta)
+                bar_under.value = min(target_value, bar_under.value + (speed + speed_bonus) * delta)
             else:
-                bar_under.value = max(target_value, bar_under.value - speed * delta)
+                bar_under.value = max(target_value, bar_under.value - (speed + speed_bonus) * delta)
+            speed_bonus += acceleration * delta
         else:
             var amount = abs(bar_under.value - target_value)
             var wait_for = amount * delay_multiplier
@@ -43,6 +45,7 @@ func _process(delta: float) -> void:
             if delay >= wait_for:
                 is_changing = true
     elif is_changing:
+        speed_bonus = 0
         is_changing = false
 
 # Jump the percentage without animating
@@ -60,6 +63,7 @@ func set_percentage(percent: float, instant: bool = false) -> void:
         else:
             bar_over.hide()
             bar_under.hide()
+    speed_bonus = 0
 
 func _update_color() -> void:
     if target_value < MAX_VALUE * danger_threshold:

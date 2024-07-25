@@ -5,8 +5,10 @@
 [resource]
 script = ExtResource("1_t5dtg")
 id = 7
-health = 10
+health = 15
+invulnerable = false
 size_multiplier = 0.25
 is_flammable = true
 should_use_burnt_texture = true
 can_pass_through = false
+can_transform = true
