@@ -49,16 +49,18 @@ func _fire_projectile_scene(projectile_scene: PackedScene, from: Vector2, to: Ve
     projectile.velocity = _calculate_trajectory(from, to)
 
 func throw_projectile(projectile: ThrownProjectile.Type, mouse_pos: Vector2) -> bool:
-    if not is_valid_target(mouse_pos):
+    if not is_valid_target(mouse_pos, true):
         return false
     _fire_projectile(projectile, player.global_position + throw_offset, mouse_pos)
     return true
 
 # TODO: Do not throw if not in a good zone
-func is_valid_target(pos: Vector2) -> bool:
+func is_valid_target(pos: Vector2, is_throwing: bool) -> bool:
     var player_pos: Vector2 = player.global_position
     # Cannot throw behind
     if pos.x <= player_pos.x:
+        return false
+    if is_throwing and not GlobalVariables.get_grid().is_on_grid(pos):
         return false
     return true
 
@@ -68,7 +70,7 @@ func throw_random_projectile(to: Vector2) -> bool:
     return throw_projectile(randi() % ThrownProjectile.Type.keys().size(), to)
 
 func fire_bolt(to: Vector2) -> bool:
-    if not is_valid_target(to):
+    if not is_valid_target(to, false):
         return false
     var bolt_obj = magic_bolt_scene.instantiate()
     add_child(bolt_obj)

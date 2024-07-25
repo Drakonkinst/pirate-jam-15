@@ -45,15 +45,18 @@ func handle_action(target_pos: Vector2) -> bool:
     return false
 
 func _do_attack(target_pos: Vector2) -> bool:
-    attack_cooldown.start()
     var projectile_manager: ProjectileManager = GlobalVariables.get_projectile_manager()
-    return projectile_manager.fire_bolt(target_pos)
+    var success = projectile_manager.fire_bolt(target_pos)
+    if success:
+        attack_cooldown.start()
+    return success
 
 func _do_torch(target_pos: Vector2) -> bool:
     var projectile_manager: ProjectileManager = GlobalVariables.get_projectile_manager()
-    projectile_manager.throw_projectile(ThrownProjectile.Type.TORCH, target_pos)
-    torch_cooldown.start()
-    return true
+    var success = projectile_manager.throw_projectile(ThrownProjectile.Type.TORCH, target_pos)
+    if success:
+        torch_cooldown.start()
+    return success
 
 # TODO: Should work when mouse button held as well
 func _do_destroy(target_pos: Vector2) -> bool:
@@ -62,15 +65,18 @@ func _do_destroy(target_pos: Vector2) -> bool:
 
 func _do_potion(target_pos: Vector2) -> bool:
     var projectile_manager: ProjectileManager = GlobalVariables.get_projectile_manager()
-    # projectile_manager.throw_projectile(ThrownProjectile.Type.POTION_OIL, target_pos)
     # projectile_manager.throw_random_projectile(target_pos)
-    if randf() < 0.5:
-        projectile_manager.throw_projectile(ThrownProjectile.Type.POTION_STONE, target_pos)
-    else:
-        projectile_manager.throw_projectile(ThrownProjectile.Type.POTION_QUARTZ, target_pos)
+    var type: ThrownProjectile.Type
 
-    potion_cooldown.start()
-    return true
+    if randf() < 0.5:
+        type = ThrownProjectile.Type.POTION_STONE
+    else:
+        type = ThrownProjectile.Type.POTION_QUARTZ
+
+    var success = projectile_manager.throw_projectile(type, target_pos)
+    if success:
+        potion_cooldown.start()
+    return success
 
 func _do_summon(target_pos: Vector2) -> bool:
     summon_cooldown.start()

@@ -90,6 +90,9 @@ func get_tile_center(tile: GridTile) -> Vector2:
     var pos = Vector2(tile_center_x, tile_center_y)
     return pos
 
+func is_on_grid(pos: Vector2) -> bool:
+    return screenspace_to_tile(pos) != null
+
 func _ready():
     var origin: Vector2 = find_grid_origin()
     for row in num_rows:

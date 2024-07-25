@@ -4,13 +4,24 @@ extends Node2D
 
 @export var circle_area_texture: Texture2D
 
+var current_tool_type: ToolBar.Tool
+
 func _physics_process(_delta: float) -> void:
+    _update_cursor()
+
+func _update_cursor() -> void:
     var mouse_pos = get_global_mouse_position()
     global_position = mouse_pos
 
     # TODO: if potion/torch, only show reticle if in valid area
+    if current_tool_type == ToolBar.Tool.POTION || current_tool_type == ToolBar.Tool.TORCH:
+        if GlobalVariables.get_projectile_manager().is_valid_target(mouse_pos, true):
+            sprite.show()
+        else:
+            sprite.hide()
 
 func _on_tool_bar_tool_changed(tool_type: ToolBar.Tool) -> void:
+    current_tool_type = tool_type
     match tool_type:
         ToolBar.Tool.POTION:
             sprite.show()
@@ -22,6 +33,7 @@ func _on_tool_bar_tool_changed(tool_type: ToolBar.Tool) -> void:
             _scale_sprite_to_size(50)
         ToolBar.Tool.MAGIC_BOLT:
             sprite.hide()
+    _update_cursor()
 
 
 func _scale_sprite_to_size(size: float) -> void:
