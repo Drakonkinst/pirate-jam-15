@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=37 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://assets/ui/resource_hud.tscn" id="3_oot8a"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://caimb710mdulv" path="res://scenes/projectile/potion_wood.tscn" id="22_i3eab"]
 [ext_resource type="PackedScene" uid="uid://bijsw4pri2ff" path="res://scenes/projectile/potion_stone.tscn" id="23_65kor"]
 [ext_resource type="PackedScene" uid="uid://cqj3ms8wjn564" path="res://scenes/projectile/potion_quartz.tscn" id="24_50sjw"]
+[ext_resource type="PackedScene" uid="uid://j6ftocfpm1hl" path="res://scenes/projectile/bolt.tscn" id="25_xb5cv"]
 [ext_resource type="Script" path="res://scenes/hud/click_handler.gd" id="28_xelsv"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
@@ -147,15 +148,14 @@ tool_bar = NodePath("../../CanvasLayer/ToolBarHud")
 script = ExtResource("20_akytf")
 
 [node name="AttackCooldown" type="Timer" parent="ToolBar"]
-wait_time = 3.0
+wait_time = 0.5
 one_shot = true
 
 [node name="DestroyCooldown" type="Timer" parent="ToolBar"]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="TorchCooldown" type="Timer" parent="ToolBar"]
-wait_time = 0.2
 one_shot = true
 
 [node name="PotionCooldown" type="Timer" parent="ToolBar"]
@@ -212,13 +212,17 @@ position = Vector2(1868, 763)
 
 [node name="ProjectileManager" type="Node2D" parent="World"]
 script = ExtResource("18_s1wrk")
+magic_bolt_scene = ExtResource("25_xb5cv")
 torch_scene = ExtResource("20_3f6c5")
 potion_oil_scene = ExtResource("21_12ehp")
 potion_wood_scene = ExtResource("22_i3eab")
 potion_stone_scene = ExtResource("23_65kor")
 potion_quartz_scene = ExtResource("24_50sjw")
 debug_marker_scene = ExtResource("20_capy2")
+show_debug = null
 throw_offset = Vector2(25, -75)
+fire_offset = Vector2(100, -50)
+arc_height_multiplier = null
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("19_c5v0p")]
 position = Vector2(238, 518)

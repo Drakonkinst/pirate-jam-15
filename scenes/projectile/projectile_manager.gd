@@ -8,7 +8,7 @@ const INVERT_Y: Vector2 = Vector2(1.0, -1.0)
 
 @onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 
-@export var magic_bolt_scene: PackedScene # TODO: Implement action
+@export var magic_bolt_scene: PackedScene
 @export var torch_scene: PackedScene
 @export var potion_oil_scene: PackedScene
 @export var potion_wood_scene: PackedScene
@@ -17,6 +17,7 @@ const INVERT_Y: Vector2 = Vector2(1.0, -1.0)
 @export var debug_marker_scene: PackedScene
 @export var show_debug: bool = false
 @export var throw_offset: Vector2
+@export var fire_offset: Vector2
 @export var arc_height_multiplier: float = 0.25
 
 func _get_scene_for_projectile(type: ThrownProjectile.Type) -> PackedScene:
@@ -55,12 +56,25 @@ func throw_projectile(projectile: ThrownProjectile.Type, mouse_pos: Vector2) -> 
 
 # TODO: Do not throw if not in a good zone
 func is_valid_target(pos: Vector2) -> bool:
+    var player_pos: Vector2 = player.global_position
+    # Cannot throw behind
+    if pos.x <= player_pos.x:
+        return false
     return true
 
 # For debug
 # Random bullshit, go!
 func throw_random_projectile(to: Vector2) -> bool:
     return throw_projectile(randi() % ThrownProjectile.Type.keys().size(), to)
+
+func fire_bolt(to: Vector2) -> bool:
+    if not is_valid_target(to):
+        return false
+    var bolt_obj = magic_bolt_scene.instantiate()
+    add_child(bolt_obj)
+    var bolt = bolt_obj as MagicBolt
+    bolt.init(player.global_position + fire_offset, to)
+    return true
 
 func _place_debug_circle(pos: Vector2):
     if not show_debug:

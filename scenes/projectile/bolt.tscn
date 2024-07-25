@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://j6ftocfpm1hl"]
+
+[ext_resource type="Script" path="res://scenes/projectile/bolt.gd" id="1_yh8mw"]
+[ext_resource type="Texture2D" uid="uid://bwv2muyhy70r3" path="res://assets/textures/Magic_Bolt-1.png" id="2_58b0u"]
+[ext_resource type="Texture2D" uid="uid://cwa427fcrk7n6" path="res://assets/textures/Magic_Bolt-2.png" id="3_yvp7j"]
+[ext_resource type="Texture2D" uid="uid://c4ai0kik4vt6s" path="res://assets/textures/Magic_Bolt-3.png" id="4_fb0r0"]
+[ext_resource type="Texture2D" uid="uid://dcnk73jmgt2i5" path="res://assets/textures/Magic_Bolt-4.png" id="5_4axcw"]
+[ext_resource type="Texture2D" uid="uid://dwp7obq6toxpw" path="res://assets/textures/Magic_Bolt-5.png" id="6_t5jio"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w6wfb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_58b0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yvp7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fb0r0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4axcw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_t5jio")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vplpl"]
+size = Vector2(35, 34)
+
+[node name="Bolt" type="Node2D"]
+script = ExtResource("1_yh8mw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_w6wfb")
+autoplay = "default"
+frame_progress = 0.317607
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(60.5, 2)
+shape = SubResource("RectangleShape2D_vplpl")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

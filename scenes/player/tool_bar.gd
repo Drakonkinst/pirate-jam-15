@@ -41,7 +41,8 @@ func handle_action(target_pos: Vector2) -> bool:
 
 func _do_attack(target_pos: Vector2) -> bool:
     attack_cooldown.start()
-    return true
+    var projectile_manager: ProjectileManager = GlobalVariables.get_projectile_manager()
+    return projectile_manager.fire_bolt(target_pos)
 
 func _do_torch(target_pos: Vector2) -> bool:
     var projectile_manager: ProjectileManager = GlobalVariables.get_projectile_manager()
