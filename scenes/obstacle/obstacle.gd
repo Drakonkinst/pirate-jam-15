@@ -129,14 +129,14 @@ func create_pickup_drop() -> Pickup:
     # Making assumption here just because Type is not specified in this class
     match transmuted_state:
         TransmutedState.DEFAULT:
+            # TODO
             pickup_type = Pickup.PickupType.GOLD
         TransmutedState.WOOD:
             pickup_type = Pickup.PickupType.SAP
         TransmutedState.QUARTZ:
             pickup_type = Pickup.PickupType.QUARTZ
         TransmutedState.STONE:
-            pickup_type = Pickup.PickupType.GOLD
-    
+            pickup_type = Pickup.PickupType.STONE
     return GlobalVariables.get_pickup_manager().spawn_pickup_drop(pickup_type, global_position)
 
 func _on_health_death() -> void:

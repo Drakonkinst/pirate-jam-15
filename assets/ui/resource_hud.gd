@@ -1,12 +1,13 @@
 extends Control
 
-
+class_name ResourceHud
 
 @onready var gold_count: Label = %GoldCount
 @onready var fire_crystal_count: Label = %FireCrystalCount
 @onready var quartz_crystal_count: Label = %QuartzCount
 @onready var amber_sap_count: Label = %AmberSapCount
 @onready var fruit_count: Label = %FruitCount
+@onready var stone_count: Label = %StoneCount
 @onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 
 func _process(_delta):

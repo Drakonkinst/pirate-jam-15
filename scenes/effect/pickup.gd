@@ -10,9 +10,10 @@ enum PickupType {
     QUARTZ,
     SAP,
     FRUIT,
+    STONE
 }
 
-const SCALE_MULTIPLIER := 0.05
+const SCALE_MULTIPLIER := 0.1
 const TWEEN_TIME := 1
 
 @export var target: Vector2

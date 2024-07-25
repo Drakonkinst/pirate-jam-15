@@ -10,22 +10,24 @@ class_name PickupManager
 @export var quartz_texture: Texture2D
 @export var sap_texture: Texture2D
 @export var fruit_texture: Texture2D
+@export var stone_texture: Texture2D
 
 @export var gui_targets: Array[Node2D]
 
 const PICKUP_ORDER: Array[Pickup.PickupType] = [
     Pickup.PickupType.GOLD,
-    Pickup.PickupType.FIRE,
-    Pickup.PickupType.QUARTZ,
     Pickup.PickupType.SAP,
+    Pickup.PickupType.STONE,
     Pickup.PickupType.FRUIT,
+    Pickup.PickupType.QUARTZ,
+    Pickup.PickupType.FIRE,
 ]
 
 var pickup_textures: Array[Texture2D]
 
 func _ready() -> void:
     # Are there better ways to do this? Yes. However
-    pickup_textures = [gold_texture, fire_texture, quartz_texture, sap_texture, fruit_texture]
+    pickup_textures = [gold_texture, sap_texture, stone_texture, fruit_texture, quartz_texture, fire_texture]
 
 func spawn_pickup_drop(type: Pickup.PickupType, pos: Vector2) -> Pickup:
     var pickup_obj = pickup_scene.instantiate()
