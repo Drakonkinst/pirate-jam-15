@@ -1,12 +1,19 @@
-[gd_resource type="Resource" script_class="ObstacleData" load_steps=2 format=3 uid="uid://ca15j4erbvp2l"]
+[gd_resource type="Resource" script_class="ObstacleData" load_steps=4 format=3 uid="uid://ca15j4erbvp2l"]
 
 [ext_resource type="Script" path="res://data/obstacle/obstacle_data.gd" id="1_qx5qe"]
+[ext_resource type="Script" path="res://data/item/loot_entry.gd" id="1_xnk6v"]
+
+[sub_resource type="Resource" id="Resource_gtswl"]
+script = ExtResource("1_xnk6v")
 
 [resource]
 script = ExtResource("1_qx5qe")
 id = 3
 health = 5
+invulnerable = false
 size_multiplier = 0.5
 is_flammable = false
 should_use_burnt_texture = false
 can_pass_through = false
+can_transform = true
+loot = SubResource("Resource_gtswl")

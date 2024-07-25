@@ -29,6 +29,7 @@ var transmuted_state: TransmutedState = TransmutedState.DEFAULT
 @export var behaviors: Array[ObstacleBehavior] # Optional array of behaviors
 
 var burned: bool = false
+var loot: Dictionary
 
 func _process(delta: float) -> void:
     for behavior: ObstacleBehavior in behaviors:
@@ -117,6 +118,10 @@ func _ready() -> void:
     health.invulnerable = data.invulnerable
     put_out_fire()
     init_model()
+    init_loot()
+
+func init_loot() -> void:
+    loot = data.loot.resolve()
 
 func _on_burning_state_fire_tick() -> void:
     damage(OBSTACLE_FIRE_DAMAGE)
@@ -124,26 +129,42 @@ func _on_burning_state_fire_tick() -> void:
 func _on_burning_state_fire_expired() -> void:
     put_out_fire()
 
-func create_pickup_drop() -> Pickup: 
-    var pickup_type: Pickup.PickupType
-    # Making assumption here just because Type is not specified in this class
+func _transmute_loot() -> Dictionary:
+    var transmuted_type: Pickup.PickupType = Pickup.PickupType.GOLD
+    var should_transmute = false
     match transmuted_state:
-        TransmutedState.DEFAULT:
-            # TODO
-            pickup_type = Pickup.PickupType.GOLD
         TransmutedState.WOOD:
-            pickup_type = Pickup.PickupType.SAP
+            transmuted_type = Pickup.PickupType.SAP
+            should_transmute = true
         TransmutedState.QUARTZ:
-            pickup_type = Pickup.PickupType.QUARTZ
+            transmuted_type = Pickup.PickupType.QUARTZ
+            should_transmute = true
         TransmutedState.STONE:
-            pickup_type = Pickup.PickupType.STONE
-    return GlobalVariables.get_pickup_manager().spawn_pickup_drop(pickup_type, global_position)
+            transmuted_type = Pickup.PickupType.STONE
+            should_transmute = true
+
+    if not should_transmute or transmuted_type == null:
+        return loot
+
+    var sum: int = 0
+    for value in loot.values():
+        sum += value
+
+    var result = {}
+    result[transmuted_type] = sum
+    return result
+
+func create_pickup_drops():
+    var adjusted_loot = _transmute_loot()
+    for item: Pickup.PickupType in adjusted_loot.keys():
+        var count: int = adjusted_loot[item]
+        for i in count:
+            GlobalVariables.get_pickup_manager().spawn_pickup_drop(item, global_position)
 
 func _on_health_death() -> void:
     # TODO: Stretch goal to put an animation here
     destroy_timer.start()
-    # Can also disable "hitbox" at this state to let enemies move through, but this might unnecessarily complicate things
-    create_pickup_drop()
+    create_pickup_drops()
 
 
 

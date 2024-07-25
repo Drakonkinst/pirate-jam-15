@@ -21,6 +21,7 @@ func update_count_labels():
     quartz_crystal_count.text = _get_label(Pickup.PickupType.QUARTZ)
     amber_sap_count.text = _get_label(Pickup.PickupType.SAP)
     fruit_count.text = _get_label(Pickup.PickupType.FRUIT)
+    stone_count.text = _get_label(Pickup.PickupType.STONE)
 
 func _get_label(type: Pickup.PickupType) -> String:
     return str(player.player_resources.get_count(type))
