@@ -124,7 +124,6 @@ func _on_burning_state_fire_expired() -> void:
     put_out_fire()
 
 func create_pickup_drop() -> Pickup: 
-    var pickup_drop = load("res://scenes/effect/pickup.tscn").instantiate()
     var pickup_type: Pickup.PickupType
     # Making assumption here just because Type is not specified in this class
     match transmuted_state:
@@ -136,13 +135,8 @@ func create_pickup_drop() -> Pickup:
             pickup_type = Pickup.PickupType.QUARTZ
         TransmutedState.STONE:
             pickup_type = Pickup.PickupType.GOLD
-    pickup_drop.set_type(pickup_type)
-    pickup_drop.global_position = global_position
     
-    #Damn - Logan
-    get_parent().get_parent().get_parent().get_parent().add_child(pickup_drop)
-
-    return pickup_drop
+    return GlobalVariables.get_obstacle_manager().spawn_pickup_drop(pickup_type, global_position)
 
 func _on_health_death() -> void:
     # TODO: May want to wait a bit for the health to animate before killing?

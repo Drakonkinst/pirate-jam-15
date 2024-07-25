@@ -3,7 +3,7 @@ extends ObstacleBehavior
 class_name BurnLeavesBehavior
 
 const BURNT_LEAVES_AFTER: float = 4
-const HEALTH_THRESHOLD: float = 0.75
+const HEALTH_THRESHOLD: float = 0.5
 
 @export var transform_into: Obstacle.Type
 

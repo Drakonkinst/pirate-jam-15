@@ -3,7 +3,6 @@ extends Node
 const PLAYER_GROUP = "player"
 
 @export var curr_game: Game = null
-var player_resources: PlayerResources = null
 
 func get_obstacle_manager() -> ObstacleManager:
     return curr_game.obstacle_manager

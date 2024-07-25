@@ -11,6 +11,26 @@ class_name ObstacleManager
 @export var dead_tree_scene: PackedScene
 @export var dead_sapling_scene: PackedScene
 
+@export var pickup_scene: PackedScene
+@export var pickup_parent: Node2D
+
+@export var gold_texture: Texture2D
+@export var fire_texture: Texture2D
+@export var quartz_texture: Texture2D
+@export var sap_texture: Texture2D
+@export var fruit_texture: Texture2D
+
+var pickupTextures: Dictionary
+
+func _ready() -> void:
+   pickupTextures = {
+        GOLD = gold_texture,
+        FIRE = fire_texture,
+        QUARTZ = quartz_texture,
+        SAP = sap_texture,
+        FRUIT = fruit_texture,
+    }
+
 func spawn_starting_obstacles(grid: Grid):
     # Just spawn 1 for testing
     # for tile: GridTile in GridIterator.new(grid):
@@ -85,3 +105,17 @@ func replace_obstacle_scene(new_obstacle_scene: PackedScene, tile: GridTile) -> 
         # Keep model offset
         new_obstacle.model.set_offset(original_obstacle.model.offset)
     return new_obstacle
+
+func spawn_pickup_drop(type: Pickup.PickupType, pos: Vector2) -> Pickup:
+    var pickup_obj = pickup_scene.instantiate()
+    pickup_parent.add_child(pickup_obj)
+
+    var pickup = pickup_obj as Pickup
+    var texture: Texture2D = pickupTextures.values()[type]
+
+    # print("Found texture ", texture, " for type ", Pickup.PickupType.keys()[type])
+    assert(texture != null)
+
+    pickup.set_type(type, texture)
+    pickup.global_position = pos
+    return pickup

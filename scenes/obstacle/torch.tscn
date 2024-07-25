@@ -13,7 +13,6 @@ position = Vector2(0, -61)
 texture = ExtResource("3_fn5ve")
 
 [node name="FlameParticle" parent="ObstacleModel1/Base" index="0" instance=ExtResource("4_5bhhw")]
-modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(5, 67.5)
 scale = Vector2(0.733, 0.733)
 

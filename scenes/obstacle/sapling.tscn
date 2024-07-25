@@ -21,7 +21,7 @@ texture = ExtResource("5_sbv58")
 
 [node name="Sapling" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_aelaq")]
 data = ExtResource("2_yt6tw")
-behaviors = [NodePath("SaplingBehavior"), NodePath("BurnLeavesBehavior")]
+behaviors = [null, null]
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(0, -4)

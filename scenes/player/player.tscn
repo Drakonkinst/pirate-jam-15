@@ -1,18 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu2l6glnoatrb"]
+[gd_scene load_steps=8 format=3 uid="uid://cu2l6glnoatrb"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_g3hje"]
-[ext_resource type="Script" path="res://data/player_resources.gd" id="2_ccidy"]
 [ext_resource type="Script" path="res://scenes/player/player_move_control.gd" id="2_pkgyp"]
+[ext_resource type="Script" path="res://scenes/player/player_resources.gd" id="2_rbopw"]
 [ext_resource type="Script" path="res://scenes/player/player_animation_control.gd" id="3_i8sua"]
 [ext_resource type="Texture2D" uid="uid://d1xkqdit3j7if" path="res://assets/textures/player_still.png" id="4_mtw81"]
-
-[sub_resource type="Resource" id="Resource_bstuv"]
-script = ExtResource("2_ccidy")
-gold = 1
-fire_crystals = 10
-amber_sap = 1
-fruit = 2
-quartz = 5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yycql"]
 
@@ -31,10 +23,12 @@ animations = [{
 position = Vector2(2, -3)
 motion_mode = 1
 script = ExtResource("1_g3hje")
-player_resources = SubResource("Resource_bstuv")
 
 [node name="PlayerMoveControl" type="Node2D" parent="."]
 script = ExtResource("2_pkgyp")
+
+[node name="PlayerResources" type="Node2D" parent="."]
+script = ExtResource("2_rbopw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -52)
