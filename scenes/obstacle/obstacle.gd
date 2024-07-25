@@ -136,7 +136,7 @@ func create_pickup_drop() -> Pickup:
         TransmutedState.STONE:
             pickup_type = Pickup.PickupType.GOLD
     
-    return GlobalVariables.get_obstacle_manager().spawn_pickup_drop(pickup_type, global_position)
+    return GlobalVariables.get_pickup_manager().spawn_pickup_drop(pickup_type, global_position)
 
 func _on_health_death() -> void:
     # TODO: May want to wait a bit for the health to animate before killing?

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=36 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://assets/ui/resource_hud.tscn" id="3_oot8a"]
@@ -12,17 +12,18 @@
 [ext_resource type="PackedScene" uid="uid://dutyvrutx3beh" path="res://scenes/obstacle/torch.tscn" id="14_q7ayn"]
 [ext_resource type="PackedScene" uid="uid://4ly726jco8yn" path="res://scenes/obstacle/sapling.tscn" id="15_0ctjf"]
 [ext_resource type="PackedScene" uid="uid://c68lf7id1osf4" path="res://scenes/obstacle/dead_sapling.tscn" id="15_e3p3e"]
+[ext_resource type="Script" path="res://scenes/pickup_manager.gd" id="16_c2f7e"]
 [ext_resource type="PackedScene" uid="uid://bgqgtp3ng3xpo" path="res://scenes/effect/pickup.tscn" id="16_lfyb5"]
 [ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/shadow_enemy.tscn" id="16_ylmnt"]
 [ext_resource type="Texture2D" uid="uid://ou74mxvymsi" path="res://assets/textures/tile_coin.png" id="17_xovgv"]
 [ext_resource type="Script" path="res://scenes/projectile/projectile_manager.gd" id="18_s1wrk"]
 [ext_resource type="Texture2D" uid="uid://3v5jfrkneqn7" path="res://assets/textures/fire_5.png" id="18_wmyr8"]
 [ext_resource type="PackedScene" uid="uid://cu2l6glnoatrb" path="res://scenes/player/player.tscn" id="19_c5v0p"]
-[ext_resource type="Texture2D" uid="uid://bosf5e3kq41vb" path="res://assets/textures/quartz_rock.png" id="19_yuoqo"]
 [ext_resource type="PackedScene" uid="uid://cx5t0lk1frgn2" path="res://scenes/projectile/torch.tscn" id="20_3f6c5"]
 [ext_resource type="Script" path="res://scenes/player/tool_bar.gd" id="20_akytf"]
 [ext_resource type="PackedScene" uid="uid://cj7mjnnov1jiq" path="res://scenes/player/debug_circle.tscn" id="20_capy2"]
 [ext_resource type="Texture2D" uid="uid://bfpkbkylvmc6" path="res://assets/textures/potion.png" id="20_mgfk6"]
+[ext_resource type="Texture2D" uid="uid://bxwpgwksan1se" path="res://assets/textures/quartz_tree.png" id="20_q5daa"]
 [ext_resource type="PackedScene" uid="uid://cj44eljqklllk" path="res://scenes/projectile/potion_oil.tscn" id="21_12ehp"]
 [ext_resource type="Texture2D" uid="uid://bxpivg1861wjc" path="res://assets/textures/fruit_tree.png" id="21_ou4n5"]
 [ext_resource type="Script" path="res://scenes/hud/mouse_over_handler.gd" id="22_30ic7"]
@@ -56,11 +57,12 @@ class_name World
 
 "
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager")]
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
 obstacle_manager = NodePath("World/ObstacleManager")
 projectile_manager = NodePath("World/ProjectileManager")
+pickup_manager = NodePath("World/PickupManager")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
@@ -116,6 +118,21 @@ toolbar = NodePath("../../ToolBar")
 
 [node name="ResourceHud" parent="CanvasLayer" instance=ExtResource("3_oot8a")]
 
+[node name="GoldAnchor" type="Node2D" parent="CanvasLayer/ResourceHud"]
+position = Vector2(40, 40)
+
+[node name="FireAnchor" type="Node2D" parent="CanvasLayer/ResourceHud"]
+position = Vector2(123, 40)
+
+[node name="QuartzAnchor" type="Node2D" parent="CanvasLayer/ResourceHud"]
+position = Vector2(208, 40)
+
+[node name="SapAnchor" type="Node2D" parent="CanvasLayer/ResourceHud"]
+position = Vector2(292, 40)
+
+[node name="FruitAnchor" type="Node2D" parent="CanvasLayer/ResourceHud"]
+position = Vector2(376, 40)
+
 [node name="Input" type="Node2D" parent="."]
 
 [node name="MouseOverHandler" type="Node2D" parent="Input"]
@@ -155,7 +172,7 @@ script = SubResource("GDScript_hp6k0")
 [node name="Grid" parent="World" instance=ExtResource("11_7lv1o")]
 position = Vector2(125, 25)
 
-[node name="ObstacleManager" type="Node2D" parent="World" node_paths=PackedStringArray("pickup_parent")]
+[node name="ObstacleManager" type="Node2D" parent="World"]
 script = ExtResource("10_uoctj")
 tree_scene = ExtResource("11_4iroc")
 rock_scene = ExtResource("12_bokvu")
@@ -164,15 +181,17 @@ torch_scene = ExtResource("14_q7ayn")
 sapling_scene = ExtResource("15_0ctjf")
 dead_tree_scene = ExtResource("14_gc0kp")
 dead_sapling_scene = ExtResource("15_e3p3e")
+
+[node name="PickupManager" type="Node2D" parent="World" node_paths=PackedStringArray("pickup_parent", "gui_targets")]
+script = ExtResource("16_c2f7e")
 pickup_scene = ExtResource("16_lfyb5")
-pickup_parent = NodePath("../PickupParent")
+pickup_parent = NodePath(".")
 gold_texture = ExtResource("17_xovgv")
 fire_texture = ExtResource("18_wmyr8")
-quartz_texture = ExtResource("19_yuoqo")
+quartz_texture = ExtResource("20_q5daa")
 sap_texture = ExtResource("20_mgfk6")
 fruit_texture = ExtResource("21_ou4n5")
-
-[node name="PickupParent" type="Node2D" parent="World"]
+gui_targets = [NodePath("../../CanvasLayer/ResourceHud/GoldAnchor"), NodePath("../../CanvasLayer/ResourceHud/FireAnchor"), NodePath("../../CanvasLayer/ResourceHud/QuartzAnchor"), NodePath("../../CanvasLayer/ResourceHud/SapAnchor"), NodePath("../../CanvasLayer/ResourceHud/FruitAnchor")]
 
 [node name="Enemies" type="Node2D" parent="World"]
 

@@ -3,8 +3,8 @@
 [ext_resource type="Theme" uid="uid://vuab2fkvice1" path="res://assets/themes/ResourcesHud.tres" id="1_qop7o"]
 [ext_resource type="Script" path="res://assets/ui/resource_hud.gd" id="2_mfbra"]
 [ext_resource type="Texture2D" uid="uid://ou74mxvymsi" path="res://assets/textures/tile_coin.png" id="3_mpk7w"]
-[ext_resource type="Texture2D" path="res://assets/textures/fire_5.png" id="4_c5pe1"]
-[ext_resource type="Texture2D" path="res://assets/textures/quartz_rock.png" id="5_prwdd"]
+[ext_resource type="Texture2D" uid="uid://3v5jfrkneqn7" path="res://assets/textures/fire_5.png" id="4_c5pe1"]
+[ext_resource type="Texture2D" uid="uid://bosf5e3kq41vb" path="res://assets/textures/quartz_rock.png" id="5_prwdd"]
 [ext_resource type="Texture2D" uid="uid://cbil27cpbctth" path="res://assets/textures/tree.png" id="6_064o4"]
 [ext_resource type="Texture2D" uid="uid://bxpivg1861wjc" path="res://assets/textures/fruit_tree.png" id="7_uk1j4"]
 
