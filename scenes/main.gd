@@ -3,6 +3,8 @@ extends Node
 @export var game_scene: PackedScene
 @export var main_menu_scene: PackedScene
 
+@onready var start_game_audio: AudioStreamPlayer = $StartGameAudio
+
 var game: Game
 var menu: MainMenu
 
@@ -21,4 +23,5 @@ func start_new_game() -> void:
     game = game_scene.instantiate()
     GlobalVariables.curr_game = game
     # TODO: Setup game signals
+    start_game_audio.play()
     add_child(game)

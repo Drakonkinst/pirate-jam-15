@@ -10,11 +10,9 @@ signal start_game
 
 func _on_start_menu_open_settings() -> void:
     settings_menu.show()
-    pass
 
 func _on_start_menu_open_credits() -> void:
     credits_menu.show()
-    pass
 
 func _on_start_menu_start_game() -> void:
     start_game.emit()

@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://kpyn3d6kwgcy"]
 
-[ext_resource type="AudioStream" uid="uid://pac142drhyka" path="res://assets/audio/sfx/select_006.ogg" id="1_c1s0s"]
+[ext_resource type="AudioStream" uid="uid://0ompo3r7kiab" path="res://assets/audio/SFXMenuButtonSelect.ogg" id="1_l8lsm"]
 
 [node name="UIClickAudio" type="AudioStreamPlayer"]
-stream = ExtResource("1_c1s0s")
+stream = ExtResource("1_l8lsm")
 volume_db = -15.0
 bus = &"Effects"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt0lq1q75bews"]
+[gd_scene load_steps=8 format=3 uid="uid://bt0lq1q75bews"]
 
 [ext_resource type="Theme" uid="uid://bkwik1tcqd4en" path="res://assets/themes/MainMenuTheme.tres" id="1_kgndr"]
 [ext_resource type="Script" path="res://scenes/menus/start_menu.gd" id="1_yjtan"]
@@ -6,8 +6,6 @@
 [ext_resource type="FontFile" uid="uid://cslgns4mab5dp" path="res://assets/themes/DungGeunMo.ttf" id="3_xngib"]
 [ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/ShadowTemp2.png" id="4_ri3ft"]
 [ext_resource type="PackedScene" uid="uid://kpyn3d6kwgcy" path="res://scenes/menus/ui_click_audio.tscn" id="5_mx8i8"]
-[ext_resource type="AudioStream" uid="uid://27llx87tgrh" path="res://assets/audio/sfx/confirmation_002.ogg" id="6_qvwjf"]
-[ext_resource type="AudioStream" uid="uid://b0e7oiuo6qjj4" path="res://assets/audio/sfx/select_002.ogg" id="7_yjvrb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_matrf"]
 
@@ -112,14 +110,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="UIClickAudio" parent="." instance=ExtResource("5_mx8i8")]
-
-[node name="StartupAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_qvwjf")
-bus = &"Effects"
-
-[node name="SelectPlayAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_yjvrb")
-bus = &"Effects"
 
 [connection signal="pressed" from="Control/SelectionButtons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Control/SelectionButtons/SettingsButton" to="." method="_on_settings_button_pressed"]

@@ -3,10 +3,10 @@
 [ext_resource type="Theme" uid="uid://bkwik1tcqd4en" path="res://assets/themes/MainMenuTheme.tres" id="1_3d27v"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="2_g1n0c"]
 [ext_resource type="PackedScene" uid="uid://bt0lq1q75bews" path="res://scenes/menus/start_menu.tscn" id="4_kptvt"]
-[ext_resource type="Script" path="res://scenes/menus/main_menu_music.gd" id="5_3w1dp"]
 [ext_resource type="AudioStream" uid="uid://cogm0qnpf2tab" path="res://assets/audio/MUSICMainMenuINTRO.ogg" id="5_ir8h2"]
 [ext_resource type="PackedScene" uid="uid://dwdhl2q8gkokd" path="res://scenes/menus/settings_menu.tscn" id="5_n8xjg"]
 [ext_resource type="PackedScene" uid="uid://bqlemk2n7ch6l" path="res://scenes/menus/credits_menu.tscn" id="5_wb2sl"]
+[ext_resource type="Script" path="res://scenes/audio/main_menu_music.gd" id="7_67w2x"]
 [ext_resource type="AudioStream" uid="uid://dq073c68yiviu" path="res://assets/audio/MUSICMainMenuLOOP.ogg" id="7_xfywl"]
 
 [node name="MainMenu" type="Control"]
@@ -44,7 +44,7 @@ visible = false
 stream = ExtResource("5_ir8h2")
 autoplay = true
 bus = &"Music"
-script = ExtResource("5_3w1dp")
+script = ExtResource("7_67w2x")
 loop_audio = ExtResource("7_xfywl")
 
 [connection signal="open_credits" from="CanvasLayer/StartMenu" to="." method="_on_start_menu_open_credits"]
