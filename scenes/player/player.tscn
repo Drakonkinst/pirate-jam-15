@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://scenes/player/player_move_control.gd" id="2_pkgyp"]
 [ext_resource type="Script" path="res://scenes/player/player_resources.gd" id="2_rbopw"]
 [ext_resource type="Script" path="res://scenes/player/player_animation_control.gd" id="3_i8sua"]
-[ext_resource type="Texture2D" uid="uid://d1xkqdit3j7if" path="res://assets/textures/player_still.png" id="4_mtw81"]
-[ext_resource type="Texture2D" uid="uid://uvjkmo763iin" path="res://assets/textures/player_throw_1.png" id="6_enieh"]
-[ext_resource type="Texture2D" uid="uid://cowat18ewqkx8" path="res://assets/textures/player_throw_2.png" id="7_20v33"]
-[ext_resource type="Texture2D" uid="uid://bibv6qh5b4nhn" path="res://assets/textures/player_walk_1.png" id="8_b1f8t"]
-[ext_resource type="Texture2D" uid="uid://dtxsjpmlpwx0p" path="res://assets/textures/player_walk_2.png" id="9_hagu7"]
+[ext_resource type="Texture2D" uid="uid://d1xkqdit3j7if" path="res://assets/textures/animated/player_still.png" id="4_mtw81"]
+[ext_resource type="Texture2D" uid="uid://uvjkmo763iin" path="res://assets/textures/animated/player_throw_1.png" id="6_enieh"]
+[ext_resource type="Texture2D" uid="uid://cowat18ewqkx8" path="res://assets/textures/animated/player_throw_2.png" id="7_20v33"]
+[ext_resource type="Texture2D" uid="uid://bibv6qh5b4nhn" path="res://assets/textures/animated/player_walk_1.png" id="8_b1f8t"]
+[ext_resource type="Texture2D" uid="uid://dtxsjpmlpwx0p" path="res://assets/textures/animated/player_walk_2.png" id="9_hagu7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yycql"]
 

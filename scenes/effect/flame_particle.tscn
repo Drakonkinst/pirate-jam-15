@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://do1ux20syj75b"]
 
-[ext_resource type="Texture2D" uid="uid://da3xiklcborp8" path="res://assets/textures/fire_1.png" id="1_ehuis"]
-[ext_resource type="Texture2D" uid="uid://ngc767quipt3" path="res://assets/textures/fire_2.png" id="2_oogpe"]
-[ext_resource type="Texture2D" uid="uid://bnu33sxsx8a23" path="res://assets/textures/fire_3.png" id="3_fabel"]
-[ext_resource type="Texture2D" uid="uid://h6whgqpc8obv" path="res://assets/textures/fire_4.png" id="4_5uvxt"]
-[ext_resource type="Texture2D" uid="uid://3v5jfrkneqn7" path="res://assets/textures/fire_5.png" id="5_1m2yb"]
-[ext_resource type="Texture2D" uid="uid://7hxedn8vllyn" path="res://assets/textures/fire_6.png" id="6_0jje4"]
+[ext_resource type="Texture2D" uid="uid://da3xiklcborp8" path="res://assets/textures/animated/fire_1.png" id="1_ehuis"]
+[ext_resource type="Texture2D" uid="uid://ngc767quipt3" path="res://assets/textures/animated/fire_2.png" id="2_oogpe"]
+[ext_resource type="Texture2D" uid="uid://bnu33sxsx8a23" path="res://assets/textures/animated/fire_3.png" id="3_fabel"]
+[ext_resource type="Texture2D" uid="uid://h6whgqpc8obv" path="res://assets/textures/animated/fire_4.png" id="4_5uvxt"]
+[ext_resource type="Texture2D" uid="uid://3v5jfrkneqn7" path="res://assets/textures/animated/fire_5.png" id="5_1m2yb"]
+[ext_resource type="Texture2D" uid="uid://7hxedn8vllyn" path="res://assets/textures/animated/fire_6.png" id="6_0jje4"]
 [ext_resource type="Script" path="res://scenes/effect/flame_particle.gd" id="7_woc2g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pcteh"]

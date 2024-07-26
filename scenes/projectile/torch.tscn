@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cx5t0lk1frgn2"]
 
 [ext_resource type="PackedScene" uid="uid://cyq7jll2t5va" path="res://scenes/projectile/thrown_projectile.tscn" id="1_3sqi8"]
-[ext_resource type="Texture2D" uid="uid://4mxu6kmceihf" path="res://assets/textures/torch.png" id="2_mbyeh"]
+[ext_resource type="Texture2D" uid="uid://4mxu6kmceihf" path="res://assets/textures/obstacle/torch.png" id="2_mbyeh"]
 [ext_resource type="PackedScene" uid="uid://do1ux20syj75b" path="res://scenes/effect/flame_particle.tscn" id="3_ux4go"]
 [ext_resource type="Script" path="res://scenes/projectile/torch_behavior.gd" id="4_5wssx"]
 

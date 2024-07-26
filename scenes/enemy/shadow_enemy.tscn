@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/enemy/shadow_enemy.gd" id="1_qvcdo"]
 [ext_resource type="Script" path="res://scenes/health.gd" id="2_2tcm3"]
-[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/ShadowTemp2.png" id="2_ghkbo"]
+[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/ShadowTemp2.png" id="2_ghkbo"]
 [ext_resource type="Script" path="res://state_machine.gd" id="3_0rj1h"]
 [ext_resource type="Script" path="res://scenes/enemy/states/walk_state.gd" id="4_pvnhg"]
 [ext_resource type="Script" path="res://scenes/enemy/states/attack_state.gd" id="5_hpdbb"]

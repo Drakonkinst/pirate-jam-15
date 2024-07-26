@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_wyyjx"]
 [ext_resource type="Resource" uid="uid://d1jxwgbai44ey" path="res://data/obstacle/dead_tree.tres" id="2_n2om6"]
 [ext_resource type="Script" path="res://data/obstacle/transmutable_entry.gd" id="3_kewb3"]
-[ext_resource type="Texture2D" uid="uid://p8b4goedsn71" path="res://assets/textures/dead_quartz_tree.png" id="4_5i77k"]
-[ext_resource type="Texture2D" uid="uid://csnxq1oyrtsa0" path="res://assets/textures/stone_dead_tree.png" id="5_eag33"]
-[ext_resource type="Texture2D" uid="uid://catifqjuiedc4" path="res://assets/textures/dead_tree.png" id="5_g0axf"]
+[ext_resource type="Texture2D" uid="uid://p8b4goedsn71" path="res://assets/textures/obstacle/dead_quartz_tree.png" id="4_5i77k"]
+[ext_resource type="Texture2D" uid="uid://csnxq1oyrtsa0" path="res://assets/textures/obstacle/stone_dead_tree.png" id="5_eag33"]
+[ext_resource type="Texture2D" uid="uid://catifqjuiedc4" path="res://assets/textures/obstacle/dead_tree.png" id="5_g0axf"]
 
 [sub_resource type="Resource" id="Resource_44n8k"]
 script = ExtResource("3_kewb3")

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_ofhq0"]
 [ext_resource type="Resource" uid="uid://ca15j4erbvp2l" path="res://data/obstacle/torch.tres" id="2_jnbvw"]
-[ext_resource type="Texture2D" uid="uid://4mxu6kmceihf" path="res://assets/textures/torch.png" id="3_fn5ve"]
+[ext_resource type="Texture2D" uid="uid://4mxu6kmceihf" path="res://assets/textures/obstacle/torch.png" id="3_fn5ve"]
 [ext_resource type="PackedScene" uid="uid://do1ux20syj75b" path="res://scenes/effect/flame_particle.tscn" id="4_5bhhw"]
 
 [node name="Torch" instance=ExtResource("1_ofhq0")]

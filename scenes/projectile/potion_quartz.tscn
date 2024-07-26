@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cyq7jll2t5va" path="res://scenes/projectile/thrown_projectile.tscn" id="1_ignrh"]
 [ext_resource type="Script" path="res://scenes/projectile/potion_transform_behavior.gd" id="2_5pcb7"]
-[ext_resource type="Texture2D" uid="uid://3fi7oa62uert" path="res://assets/textures/quartz_potion.png" id="2_s4miq"]
+[ext_resource type="Texture2D" uid="uid://3fi7oa62uert" path="res://assets/textures/potion/quartz_potion.png" id="2_s4miq"]
 
 [node name="Projectile" node_paths=PackedStringArray("behavior") instance=ExtResource("1_ignrh")]
 behavior = NodePath("Behavior")

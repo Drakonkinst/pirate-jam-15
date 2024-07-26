@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://j6ftocfpm1hl"]
 
 [ext_resource type="Script" path="res://scenes/projectile/bolt.gd" id="1_yh8mw"]
-[ext_resource type="Texture2D" uid="uid://bwv2muyhy70r3" path="res://assets/textures/Magic_Bolt-1.png" id="2_58b0u"]
-[ext_resource type="Texture2D" uid="uid://cwa427fcrk7n6" path="res://assets/textures/Magic_Bolt-2.png" id="3_yvp7j"]
-[ext_resource type="Texture2D" uid="uid://c4ai0kik4vt6s" path="res://assets/textures/Magic_Bolt-3.png" id="4_fb0r0"]
-[ext_resource type="Texture2D" uid="uid://dcnk73jmgt2i5" path="res://assets/textures/Magic_Bolt-4.png" id="5_4axcw"]
-[ext_resource type="Texture2D" uid="uid://dwp7obq6toxpw" path="res://assets/textures/Magic_Bolt-5.png" id="6_t5jio"]
+[ext_resource type="Texture2D" uid="uid://bwv2muyhy70r3" path="res://assets/textures/animated/Magic_Bolt-1.png" id="2_58b0u"]
+[ext_resource type="Texture2D" uid="uid://cwa427fcrk7n6" path="res://assets/textures/animated/Magic_Bolt-2.png" id="3_yvp7j"]
+[ext_resource type="Texture2D" uid="uid://c4ai0kik4vt6s" path="res://assets/textures/animated/Magic_Bolt-3.png" id="4_fb0r0"]
+[ext_resource type="Texture2D" uid="uid://dcnk73jmgt2i5" path="res://assets/textures/animated/Magic_Bolt-4.png" id="5_4axcw"]
+[ext_resource type="Texture2D" uid="uid://dwp7obq6toxpw" path="res://assets/textures/animated/Magic_Bolt-5.png" id="6_t5jio"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w6wfb"]
 animations = [{

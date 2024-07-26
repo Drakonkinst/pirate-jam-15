@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_aelaq"]
 [ext_resource type="Resource" uid="uid://dvrp2cbwh7e8v" path="res://data/obstacle/sapling.tres" id="2_yt6tw"]
-[ext_resource type="Texture2D" uid="uid://dy0cbkmdp5mcd" path="res://assets/textures/sapling.png" id="3_krrjn"]
+[ext_resource type="Texture2D" uid="uid://dy0cbkmdp5mcd" path="res://assets/textures/obstacle/sapling.png" id="3_krrjn"]
 [ext_resource type="Script" path="res://data/obstacle/transmutable_entry.gd" id="3_x8dol"]
-[ext_resource type="Texture2D" uid="uid://b5whko5t3gtse" path="res://assets/textures/quartz_sapling.png" id="4_kwc8d"]
+[ext_resource type="Texture2D" uid="uid://b5whko5t3gtse" path="res://assets/textures/obstacle/quartz_sapling.png" id="4_kwc8d"]
 [ext_resource type="Script" path="res://scenes/obstacle/sapling_behavior.gd" id="4_l6r4w"]
 [ext_resource type="Script" path="res://scenes/obstacle/burn_leaves_behavior.gd" id="5_lpq0v"]
-[ext_resource type="Texture2D" uid="uid://c58meyqftlxx7" path="res://assets/textures/stone_sapling.png" id="5_sbv58"]
+[ext_resource type="Texture2D" uid="uid://c58meyqftlxx7" path="res://assets/textures/obstacle/stone_sapling.png" id="5_sbv58"]
 
 [sub_resource type="Resource" id="Resource_53op8"]
 script = ExtResource("3_x8dol")

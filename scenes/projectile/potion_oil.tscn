@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cj44eljqklllk"]
 
 [ext_resource type="PackedScene" uid="uid://cyq7jll2t5va" path="res://scenes/projectile/thrown_projectile.tscn" id="1_ub8xh"]
-[ext_resource type="Texture2D" uid="uid://uibvlcal4fy0" path="res://assets/textures/potion_oil.png" id="2_v5i22"]
+[ext_resource type="Texture2D" uid="uid://uibvlcal4fy0" path="res://assets/textures/potion/potion_oil.png" id="2_v5i22"]
 [ext_resource type="Script" path="res://scenes/projectile/potion_oil_behavior.gd" id="3_6g05p"]
 
 [node name="Projectile" node_paths=PackedStringArray("behavior") instance=ExtResource("1_ub8xh")]
