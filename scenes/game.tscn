@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=59 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -239,6 +239,7 @@ one_shot = true
 script = ExtResource("11_gvs78")
 
 [node name="EquipAttackAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("13_lykkh")])
@@ -249,6 +250,7 @@ script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("15_rjc6w")])
 
 [node name="EquipPickaxeAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("14_drgnp")])

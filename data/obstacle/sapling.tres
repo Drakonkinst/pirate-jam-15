@@ -6,7 +6,7 @@
 [sub_resource type="Resource" id="Resource_a4npq"]
 script = ExtResource("1_3ppnq")
 item = 3
-min_count = 1
+min_count = 0
 max_count = 1
 
 [resource]

@@ -16,7 +16,15 @@ class_name ToolBarAudio
 
 # MAGIC_BOLT, TORCH, PICKAXE, POTION, SUMMON
 
+# Ignore the first tool change on game start
+var curr_tool: ToolBar.Tool = ToolBar.Tool.MAGIC_BOLT
+
 func _on_tool_bar_tool_changed(tool_type: ToolBar.Tool) -> void:
+    var has_changed = tool_type != curr_tool
+    curr_tool = tool_type
+    if not has_changed:
+        return
+
     match tool_type:
         ToolBar.Tool.MAGIC_BOLT:
             equip_attack.play_random()
