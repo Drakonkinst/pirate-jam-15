@@ -15,6 +15,10 @@ const INVERT_Y: Vector2 = Vector2(1.0, -1.0)
 @export var potion_stone_scene: PackedScene
 @export var potion_quartz_scene: PackedScene
 @export var debug_marker_scene: PackedScene
+@export var explosion_scene: PackedScene
+@export var splat_scene: PackedScene
+@export var explosion_parent: Node2D
+@export var splat_parent: Node2D
 @export var show_debug: bool = false
 @export var throw_offset: Vector2
 @export var fire_offset: Vector2
@@ -48,19 +52,34 @@ func _fire_projectile_scene(projectile_scene: PackedScene, from: Vector2, to: Ve
     projectile.gravity = GRAVITY
     projectile.velocity = _calculate_trajectory(from, to)
 
+func place_explosion(pos: Vector2) -> Explosion:
+    var explosion_obj = explosion_scene.instantiate()
+    explosion_obj.position = pos
+    explosion_parent.add_child(explosion_obj)
+    var explosion = explosion_obj as Explosion
+    return explosion
+
+func place_splat(pos: Vector2) -> Splat:
+    var splat_obj = splat_scene.instantiate()
+    splat_obj.position = pos
+    splat_obj.z_index = -1 # Appear below obstacles on the grid
+    splat_parent.add_child(splat_obj)
+    var splat = splat_obj as Splat
+    return splat
+
+
 func throw_projectile(projectile: ThrownProjectile.Type, mouse_pos: Vector2) -> bool:
-    if not is_valid_target(mouse_pos, true):
+    if not is_valid_target(mouse_pos):
         return false
     _fire_projectile(projectile, player.global_position + throw_offset, mouse_pos)
     return true
 
-# TODO: Do not throw if not in a good zone
-func is_valid_target(pos: Vector2, is_throwing: bool) -> bool:
+func is_valid_target(pos: Vector2) -> bool:
     var grid: Grid = GlobalVariables.get_grid()
     # Cannot throw behind
     if pos.x <= grid.find_grid_origin().x:
         return false
-    if is_throwing and not grid.is_on_grid(pos):
+    if not grid.is_on_grid(pos):
         return false
     return true
 
@@ -70,8 +89,6 @@ func throw_random_projectile(to: Vector2) -> bool:
     return throw_projectile(randi() % ThrownProjectile.Type.keys().size(), to)
 
 func fire_bolt(to: Vector2) -> bool:
-    if not is_valid_target(to, false):
-        return false
     var bolt_obj = magic_bolt_scene.instantiate()
     add_child(bolt_obj)
     var bolt = bolt_obj as MagicBolt

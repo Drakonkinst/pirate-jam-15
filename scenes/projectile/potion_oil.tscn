@@ -14,3 +14,4 @@ texture = ExtResource("2_v5i22")
 
 [node name="Behavior" type="Node2D" parent="." index="2"]
 script = ExtResource("3_6g05p")
+tint_color = Color(0.160265, 0.0955214, 0.27516, 1)

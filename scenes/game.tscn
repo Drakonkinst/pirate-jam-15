@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=43 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -36,6 +36,8 @@
 [ext_resource type="Texture2D" uid="uid://b12vk7snwti44" path="res://assets/textures/resource_fruit.png" id="26_tx8vj"]
 [ext_resource type="Texture2D" uid="uid://cp74hu4ij71w1" path="res://assets/textures/resource_stone.png" id="27_wwljy"]
 [ext_resource type="Script" path="res://scenes/hud/click_handler.gd" id="28_xelsv"]
+[ext_resource type="PackedScene" uid="uid://cu6wwp5my8ay" path="res://scenes/effect/explosion.tscn" id="36_y78bo"]
+[ext_resource type="PackedScene" uid="uid://5ye7ihrmklny" path="res://scenes/effect/splat.tscn" id="37_6rhao"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -83,9 +85,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.180005, 0.180005, 0.180005, 1)
+color = Color(0.572549, 0.588235, 0.478431, 1)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -202,6 +205,7 @@ script = SubResource("GDScript_hp6k0")
 debug_marker_scene = ExtResource("20_capy2")
 
 [node name="ObstacleManager" type="Node2D" parent="World"]
+z_index = 1
 script = ExtResource("10_uoctj")
 tree_scene = ExtResource("11_4iroc")
 rock_scene = ExtResource("12_bokvu")
@@ -212,6 +216,7 @@ dead_tree_scene = ExtResource("14_gc0kp")
 dead_sapling_scene = ExtResource("15_e3p3e")
 
 [node name="PickupManager" type="Node2D" parent="World" node_paths=PackedStringArray("pickup_parent", "gui_targets")]
+z_index = 2
 script = ExtResource("16_c2f7e")
 pickup_scene = ExtResource("16_lfyb5")
 pickup_parent = NodePath(".")
@@ -224,6 +229,7 @@ stone_texture = ExtResource("27_wwljy")
 gui_targets = [NodePath("../../CanvasLayer/ResourceHud/GoldAnchor"), NodePath("../../CanvasLayer/ResourceHud/SapAnchor"), NodePath("../../CanvasLayer/ResourceHud/StoneAnchor"), NodePath("../../CanvasLayer/ResourceHud/FruitAnchor"), NodePath("../../CanvasLayer/ResourceHud/QuartzAnchor"), NodePath("../../CanvasLayer/ResourceHud/FireAnchor")]
 
 [node name="Enemies" type="Node2D" parent="World"]
+z_index = 3
 
 [node name="ShadowEnemy" parent="World/Enemies" instance=ExtResource("16_ylmnt")]
 position = Vector2(1868, 260)
@@ -240,7 +246,8 @@ position = Vector2(1866, 608)
 [node name="ShadowEnemy5" parent="World/Enemies" instance=ExtResource("16_ylmnt")]
 position = Vector2(1864, 738)
 
-[node name="ProjectileManager" type="Node2D" parent="World"]
+[node name="ProjectileManager" type="Node2D" parent="World" node_paths=PackedStringArray("explosion_parent", "splat_parent")]
+z_index = 4
 script = ExtResource("18_s1wrk")
 magic_bolt_scene = ExtResource("25_xb5cv")
 torch_scene = ExtResource("20_3f6c5")
@@ -249,6 +256,10 @@ potion_wood_scene = ExtResource("22_i3eab")
 potion_stone_scene = ExtResource("23_65kor")
 potion_quartz_scene = ExtResource("24_50sjw")
 debug_marker_scene = ExtResource("20_capy2")
+explosion_scene = ExtResource("36_y78bo")
+splat_scene = ExtResource("37_6rhao")
+explosion_parent = NodePath(".")
+splat_parent = NodePath("../Grid")
 throw_offset = Vector2(25, -75)
 fire_offset = Vector2(80, -50)
 

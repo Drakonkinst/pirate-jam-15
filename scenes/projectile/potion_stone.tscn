@@ -15,3 +15,4 @@ texture = ExtResource("2_x688b")
 [node name="Behavior" type="Node2D" parent="." index="2"]
 script = ExtResource("3_sqpam")
 transform_into = 2
+tint_color = Color(0.247227, 0.325486, 0.385928, 1)

@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://wvvh0ntl07o4"]
 
 [ext_resource type="Script" path="res://scenes/obstacle/fruit_harvest_point.gd" id="1_1pgnj"]
-[ext_resource type="Texture2D" uid="uid://b12vk7snwti44" path="res://assets/textures/resource_fruit.png" id="1_w3nla"]
+[ext_resource type="Texture2D" uid="uid://6hvy1k557e0s" path="res://assets/textures/apple_small.png" id="2_v3ijx"]
 
 [node name="FruitHarvestPoint" type="Node2D"]
 script = ExtResource("1_1pgnj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.175, 0.175)
-texture = ExtResource("1_w3nla")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_v3ijx")

@@ -2,8 +2,8 @@ extends ObstacleBehavior
 
 class_name TreeBehavior
 
-const GROWTH_MIN_TIME: float = 5
-const GROWTH_MAX_TIME: float = 10
+const GROWTH_MIN_TIME: float = 15
+const GROWTH_MAX_TIME: float = 30
 const MAX_FRUIT := 4
 
 @export var fruit_tree_model: Sprite2D
@@ -54,6 +54,7 @@ func harvest_fruit() -> void:
         if harvest_point.has_fruit:
             GlobalVariables.get_pickup_manager().spawn_pickup_drop(Pickup.PickupType.FRUIT, harvest_point.global_position)
             harvest_point.hide_fruit()
+    num_fruit = 0
 
 func _on_mouse_over_area_moused_over() -> void:
     if num_fruit:

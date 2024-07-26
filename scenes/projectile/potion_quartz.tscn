@@ -15,3 +15,4 @@ texture = ExtResource("2_s4miq")
 [node name="Behavior" type="Node2D" parent="." index="2"]
 script = ExtResource("2_5pcb7")
 transform_into = 3
+tint_color = Color(0.584314, 0.678431, 0.8, 1)
