@@ -3,14 +3,16 @@
 [ext_resource type="Script" path="res://scenes/enemy/shadow_enemy.gd" id="1_qvcdo"]
 [ext_resource type="Script" path="res://scenes/health.gd" id="2_2tcm3"]
 [ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/ShadowTemp2.png" id="2_ghkbo"]
-[ext_resource type="Script" path="res://state_machine.gd" id="3_0rj1h"]
+[ext_resource type="Script" path="res://scenes/enemy/state_machine.gd" id="3_0rj1h"]
 [ext_resource type="Script" path="res://scenes/enemy/states/walk_state.gd" id="4_pvnhg"]
 [ext_resource type="Script" path="res://scenes/enemy/states/attack_state.gd" id="5_hpdbb"]
 [ext_resource type="PackedScene" uid="uid://jci63uf5o54n" path="res://scenes/ui/healthbar.tscn" id="7_d4e3b"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_efe6m"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xycco"]
 
 [node name="ShadowEnemy" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_qvcdo")
 move_speed = 10000.0
 state_machine = NodePath("StateMachine")
@@ -44,7 +46,7 @@ enemy = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(3.8, 3.8)
-shape = SubResource("CircleShape2D_efe6m")
+shape = SubResource("RectangleShape2D_xycco")
 
 [node name="Healthbar" parent="." instance=ExtResource("7_d4e3b")]
 anchors_preset = 5

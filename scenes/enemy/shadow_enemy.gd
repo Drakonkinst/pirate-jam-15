@@ -22,7 +22,7 @@ func _physics_process(_delta):
 
 func get_left_tile() -> GridTile:
     var size_x = sprite.texture.get_width() * sprite.scale.x
-    var detection_offset = Vector2(-size_x, 0)
+    var detection_offset = Vector2(-size_x / 2, 0)
     var shadow_left_position: Vector2 = global_position + detection_offset
 
     var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(shadow_left_position)

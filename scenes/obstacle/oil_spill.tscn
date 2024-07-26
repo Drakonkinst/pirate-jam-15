@@ -30,12 +30,3 @@ position = Vector2(-1.44356, 22.0562)
 
 [node name="OilSpillBehavior" type="Node2D" parent="." index="3"]
 script = ExtResource("4_ir1mx")
-
-[node name="Healthbar" parent="." index="4"]
-show_only_if_damaged = true
-speed = 100.0
-acceleration = 2000.0
-delay_multiplier = 0.003
-should_change_colors = true
-caution_threshold = 0.5
-danger_threshold = 0.2

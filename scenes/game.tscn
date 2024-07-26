@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=46 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -37,6 +37,8 @@
 [ext_resource type="Texture2D" uid="uid://b12vk7snwti44" path="res://assets/textures/resource/resource_fruit.png" id="26_tx8vj"]
 [ext_resource type="Texture2D" uid="uid://cp74hu4ij71w1" path="res://assets/textures/resource/resource_stone.png" id="27_wwljy"]
 [ext_resource type="Script" path="res://scenes/hud/click_handler.gd" id="28_xelsv"]
+[ext_resource type="Script" path="res://scenes/enemy/enemy_spawner.gd" id="29_uoojh"]
+[ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/Level1SpawnSchedule.tres" id="31_e2klb"]
 [ext_resource type="PackedScene" uid="uid://cu6wwp5my8ay" path="res://scenes/effect/explosion.tscn" id="36_y78bo"]
 [ext_resource type="PackedScene" uid="uid://5ye7ihrmklny" path="res://scenes/effect/splat.tscn" id="37_6rhao"]
 
@@ -249,21 +251,29 @@ gui_targets = [NodePath("../../HUD/ResourceHud/GoldAnchor"), NodePath("../../HUD
 
 [node name="Enemies" type="Node2D" parent="World"]
 z_index = 3
+script = ExtResource("29_uoojh")
+shadow_enemy = ExtResource("16_ylmnt")
+spawning_schedule = ExtResource("31_e2klb")
+endless_mode = true
 
-[node name="ShadowEnemy" parent="World/Enemies" instance=ExtResource("16_ylmnt")]
-position = Vector2(1868, 260)
+[node name="Spawns" type="Node2D" parent="World/Enemies"]
+unique_name_in_owner = true
+position = Vector2(1868, 10)
 
-[node name="ShadowEnemy2" parent="World/Enemies" instance=ExtResource("16_ylmnt")]
-position = Vector2(1868, 366)
+[node name="Spawn0" type="Node2D" parent="World/Enemies/Spawns"]
+position = Vector2(0, 260)
 
-[node name="ShadowEnemy3" parent="World/Enemies" instance=ExtResource("16_ylmnt")]
-position = Vector2(1868, 500)
+[node name="Spawn1" type="Node2D" parent="World/Enemies/Spawns"]
+position = Vector2(0, 385)
 
-[node name="ShadowEnemy4" parent="World/Enemies" instance=ExtResource("16_ylmnt")]
-position = Vector2(1866, 608)
+[node name="Spawn2" type="Node2D" parent="World/Enemies/Spawns"]
+position = Vector2(0, 510)
 
-[node name="ShadowEnemy5" parent="World/Enemies" instance=ExtResource("16_ylmnt")]
-position = Vector2(1864, 738)
+[node name="Spawn3" type="Node2D" parent="World/Enemies/Spawns"]
+position = Vector2(0, 635)
+
+[node name="Spawn4" type="Node2D" parent="World/Enemies/Spawns"]
+position = Vector2(0, 760)
 
 [node name="ProjectileManager" type="Node2D" parent="World" node_paths=PackedStringArray("explosion_parent", "splat_parent")]
 z_index = 4
@@ -286,8 +296,8 @@ fire_offset = Vector2(80, -50)
 position = Vector2(238, 518)
 
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
-[connection signal="tool_changed" from="ToolBar" to="HUD/ToolBarHud" method="_on_tool_bar_tool_changed"]
 [connection signal="tool_changed" from="ToolBar" to="HUD/CursorEffects" method="_on_tool_bar_tool_changed"]
+[connection signal="tool_changed" from="ToolBar" to="HUD/ToolBarHud" method="_on_tool_bar_tool_changed"]
 [connection signal="timeout" from="ToolBar/AttackCooldown" to="ToolBar" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/DestroyCooldown" to="ToolBar" method="_on_destroy_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/TorchCooldown" to="ToolBar" method="_on_torch_cooldown_timeout"]
