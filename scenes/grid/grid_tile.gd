@@ -13,9 +13,10 @@ var row: int
 var col: int
 var obstacle: Obstacle = null
 var default_opacity: float
+var default_color: Color
 
 func _ready() -> void:
-    default_opacity = sprite.modulate.a
+    default_color = sprite.modulate
 
 func _physics_process(_delta: float) -> void:
     var grid = GlobalVariables.get_grid()
@@ -25,8 +26,7 @@ func _physics_process(_delta: float) -> void:
         sprite.modulate = Color.WHITE
         sprite.modulate.a = 0.25
     else:
-        sprite.modulate = Color.BLACK
-        sprite.modulate.a = default_opacity
+        sprite.modulate = default_color
 
     # if grid.screenspace_to_tile(mouse_pos) == self:
     #     sprite.modulate.a = 1

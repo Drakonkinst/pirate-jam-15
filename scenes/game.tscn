@@ -90,6 +90,7 @@ toolbar = NodePath("ToolBar")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
+zoom = Vector2(1.15, 1.15)
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -147,8 +148,7 @@ texture = ExtResource("5_47rpd")
 [node name="DayTrackerContainer" type="MarginContainer" parent="HUD"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 2.0
-offset_bottom = 162.0
+offset_bottom = 160.0
 grow_horizontal = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 500
@@ -157,9 +157,9 @@ theme_override_constants/margin_right = 500
 theme_override_constants/margin_bottom = 30
 
 [node name="ProgressBar" type="ProgressBar" parent="HUD/DayTrackerContainer"]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_horizontal = 4
 tooltip_text = "Time Left in Daytime"
 theme = SubResource("Theme_yptux")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -201,6 +201,7 @@ position = Vector2(537.333, 76)
 position = Vector2(378.667, 76)
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("pause_control") instance=ExtResource("50_t4lxk")]
+visible = false
 pause_control = NodePath("../PauseControl")
 
 [node name="Input" type="Node2D" parent="."]
@@ -288,6 +289,7 @@ script = ExtResource("12_hqgvj")
 script = SubResource("GDScript_hp6k0")
 
 [node name="Grid" parent="World" instance=ExtResource("11_7lv1o")]
+offset = Vector2(30, 0)
 debug_marker_scene = ExtResource("20_capy2")
 
 [node name="ObstacleManager" type="Node2D" parent="World"]

@@ -7,7 +7,7 @@ class_name Grid
 @export var num_cols := 9
 @export var tile_width := 150
 @export var tile_height := 125
-@export var offset: Vector2 = Vector2(100, -10)
+@export var offset: Vector2 = Vector2(30, -10)
 @export var debug_marker_scene: PackedScene
 @export var show_debug: bool = false
 
@@ -42,8 +42,8 @@ func screenspace_to_tile(screen_space_pos: Vector2) -> GridTile:
 
 func get_y_extents() -> Vector2:
     var origin = find_grid_origin()
-    var min_extent = origin.y
-    var max_extent = min_extent + tile_height * num_rows
+    var min_extent = origin.y + tile_height / 2.0
+    var max_extent = origin.y + tile_height * num_rows
     return Vector2(min_extent, max_extent)
 
 func get_tiles_in_radius(pos: Vector2, radius: float) -> Array[GridTile]:
