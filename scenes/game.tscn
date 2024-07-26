@@ -41,6 +41,7 @@
 [ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/Level1SpawnSchedule.tres" id="31_e2klb"]
 [ext_resource type="PackedScene" uid="uid://cu6wwp5my8ay" path="res://scenes/effect/explosion.tscn" id="36_y78bo"]
 [ext_resource type="PackedScene" uid="uid://5ye7ihrmklny" path="res://scenes/effect/splat.tscn" id="37_6rhao"]
+[ext_resource type="Script" path="res://scenes/pause_control.gd" id="40_uejed"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -294,6 +295,9 @@ fire_offset = Vector2(80, -50)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("19_c5v0p")]
 position = Vector2(238, 518)
+
+[node name="PauseControl" type="Node2D" parent="."]
+script = ExtResource("40_uejed")
 
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
 [connection signal="tool_changed" from="ToolBar" to="HUD/CursorEffects" method="_on_tool_bar_tool_changed"]

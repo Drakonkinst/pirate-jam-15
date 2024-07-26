@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwdhl2q8gkokd"]
+
+[ext_resource type="Script" path="res://scenes/menus/settings_menu.gd" id="1_nqp0l"]
+[ext_resource type="Theme" uid="uid://bkwik1tcqd4en" path="res://assets/themes/MainMenuTheme.tres" id="2_p2fb5"]
+[ext_resource type="FontFile" uid="uid://cslgns4mab5dp" path="res://assets/themes/DungGeunMo.ttf" id="3_upg0e"]
+[ext_resource type="Theme" uid="uid://t4eahik3spf0" path="res://assets/themes/SettingsButtons.tres" id="4_i5or2"]
+[ext_resource type="PackedScene" uid="uid://kpyn3d6kwgcy" path="res://scenes/menus/ui_click_audio.tscn" id="5_grkcc"]
+
+[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("music_slider", "effects_slider")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 1923.0
+offset_bottom = 1077.0
+script = ExtResource("1_nqp0l")
+music_slider = NodePath("MarginContainer/VBoxContainer/OptionsList/Music/MusicSlider")
+effects_slider = NodePath("MarginContainer/VBoxContainer/OptionsList/Effects/EffectsSlider")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_i5or2")
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 200
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("4_i5or2")
+color = Color(0.550216, 0.346178, 0.417029, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PageTitleContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_p2fb5")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PageTitleContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_p2fb5")
+theme_override_fonts/font = ExtResource("3_upg0e")
+text = "Settings"
+
+[node name="OptionsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+theme = ExtResource("4_i5or2")
+
+[node name="Music" type="VBoxContainer" parent="MarginContainer/VBoxContainer/OptionsList"]
+layout_mode = 2
+theme = ExtResource("4_i5or2")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/OptionsList/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/OptionsList/Music"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Effects" type="VBoxContainer" parent="MarginContainer/VBoxContainer/OptionsList"]
+layout_mode = 2
+theme = ExtResource("4_i5or2")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/OptionsList/Effects"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Effects"
+horizontal_alignment = 1
+
+[node name="EffectsSlider" type="HSlider" parent="MarginContainer/VBoxContainer/OptionsList/Effects"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/OptionsList"]
+layout_mode = 2
+alignment = 1
+
+[node name="ReturnButton" type="Button" parent="MarginContainer/VBoxContainer/OptionsList/HBoxContainer"]
+custom_minimum_size = Vector2(500, 125)
+layout_mode = 2
+theme = ExtResource("2_p2fb5")
+text = "Return"
+
+[node name="UIClickAudio" parent="." instance=ExtResource("5_grkcc")]
+
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/OptionsList/Music/MusicSlider" to="." method="_on_music_slider_mouse_exited"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/OptionsList/Music/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/OptionsList/Effects/EffectsSlider" to="." method="_on_effects_slider_mouse_exited"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/OptionsList/Effects/EffectsSlider" to="." method="_on_effects_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/OptionsList/HBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]

@@ -11,4 +11,4 @@ Button/fonts/font = ExtResource("1_yqvns")
 CheckButton/styles/normal = SubResource("StyleBoxFlat_2hakt")
 Label/font_sizes/font_size = 48
 Label/fonts/font = ExtResource("1_yqvns")
-VBoxContainer/constants/separation = 30
+VBoxContainer/constants/separation = 40
