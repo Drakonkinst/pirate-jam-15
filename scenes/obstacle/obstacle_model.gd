@@ -9,7 +9,7 @@ class_name ObstacleModel
 @export var transmutable_map: Array[TransmutableEntry]
 @export var random_offset: Vector2
 
-var original_texture: Texture
+var original_texture: Texture2D
 var original_position: Vector2
 var offset: Vector2 = Vector2.ZERO
 
@@ -20,6 +20,12 @@ func _ready() -> void:
         var offset_x = randf_range(-random_offset.x, random_offset.x)
         var offset_y = randf_range(-random_offset.y, random_offset.y)
         set_offset(Vector2(offset_x, offset_y))
+
+func set_base_texture(texture: Texture2D) -> void:
+    var using_base_texture = original_texture == model.texture
+    original_texture = texture
+    if using_base_texture:
+        model.texture = texture
 
 func set_offset(value: Vector2):
     offset = value

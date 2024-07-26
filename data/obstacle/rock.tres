@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="ObstacleData" load_steps=11 format=3 uid="uid://cva2uitfiqme8"]
+[gd_resource type="Resource" script_class="ObstacleData" load_steps=14 format=3 uid="uid://cva2uitfiqme8"]
 
 [ext_resource type="Script" path="res://data/obstacle/obstacle_data.gd" id="1_7y4gq"]
 [ext_resource type="Script" path="res://data/item/loot_item_entry.gd" id="1_mehvv"]
+[ext_resource type="Script" path="res://data/item/loot_entry.gd" id="2_ay57e"]
 [ext_resource type="Script" path="res://data/item/loot_choice_entry.gd" id="3_bgknh"]
 [ext_resource type="Script" path="res://data/item/loot_multiple_entry.gd" id="4_um7gc"]
 
@@ -29,13 +30,19 @@ item = 3
 min_count = 0
 max_count = 2
 
+[sub_resource type="Resource" id="Resource_5g0x4"]
+script = ExtResource("2_ay57e")
+
+[sub_resource type="Resource" id="Resource_58mjw"]
+script = ExtResource("2_ay57e")
+
 [sub_resource type="Resource" id="Resource_tpu5y"]
 script = ExtResource("3_bgknh")
-entries = Array[Resource("res://data/item/loot_entry.gd")]([SubResource("Resource_am88v"), SubResource("Resource_0sjy2"), SubResource("Resource_cw2ji")])
+entries = Array[ExtResource("2_ay57e")]([SubResource("Resource_am88v"), SubResource("Resource_0sjy2"), SubResource("Resource_cw2ji"), SubResource("Resource_5g0x4"), SubResource("Resource_58mjw")])
 
 [sub_resource type="Resource" id="Resource_8okcm"]
 script = ExtResource("4_um7gc")
-entries = Array[Resource("res://data/item/loot_entry.gd")]([SubResource("Resource_ciytp"), SubResource("Resource_tpu5y")])
+entries = Array[ExtResource("2_ay57e")]([SubResource("Resource_ciytp"), SubResource("Resource_tpu5y")])
 
 [resource]
 script = ExtResource("1_7y4gq")

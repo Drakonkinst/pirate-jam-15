@@ -1,7 +1,8 @@
-[gd_scene load_steps=43 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=44 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
+[ext_resource type="Texture2D" uid="uid://cmsxn8hkmq3g8" path="res://assets/textures/background_alt.png" id="3_l1dqf"]
 [ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://assets/ui/resource_hud.tscn" id="3_oot8a"]
 [ext_resource type="Script" path="res://scenes/hud/cursor_effects.gd" id="4_vdaaq"]
 [ext_resource type="Texture2D" uid="uid://bmgy1sy6rb32q" path="res://assets/textures/circle_512.png" id="5_47rpd"]
@@ -75,10 +76,10 @@ toolbar = NodePath("ToolBar")
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="Background"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -87,8 +88,8 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.572549, 0.588235, 0.478431, 1)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-visible = false
+[node name="Background1" type="TextureRect" parent="Background"]
+modulate = Color(0.809706, 0.641797, 0.561743, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -102,7 +103,33 @@ texture = ExtResource("2_5hatj")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="DayTrackerContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="Background2" type="TextureRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_l1dqf")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="CursorEffects" type="Node2D" parent="HUD"]
+z_index = 999
+z_as_relative = false
+script = ExtResource("4_vdaaq")
+circle_area_texture = ExtResource("5_47rpd")
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/CursorEffects"]
+modulate = Color(1, 1, 1, 0.196078)
+texture = ExtResource("5_47rpd")
+
+[node name="DayTrackerContainer" type="MarginContainer" parent="HUD"]
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 2.0
@@ -114,7 +141,7 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 500
 theme_override_constants/margin_bottom = 30
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/DayTrackerContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="HUD/DayTrackerContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 4
@@ -127,7 +154,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_mihx5")
 rounded = true
 show_percentage = false
 
-[node name="Label" type="Label" parent="CanvasLayer/DayTrackerContainer"]
+[node name="Label" type="Label" parent="HUD/DayTrackerContainer"]
 layout_mode = 2
 theme = SubResource("Theme_f8suf")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -135,36 +162,28 @@ text = "Daytime
 "
 horizontal_alignment = 1
 
-[node name="ToolBarHud" parent="CanvasLayer" instance=ExtResource("9_dlv2r")]
+[node name="ToolBarHud" parent="HUD" instance=ExtResource("9_dlv2r")]
 mouse_filter = 1
 
-[node name="ResourceHud" parent="CanvasLayer" instance=ExtResource("3_oot8a")]
+[node name="ResourceHud" parent="HUD" instance=ExtResource("3_oot8a")]
 
-[node name="GoldAnchor" type="Node2D" parent="CanvasLayer/ResourceHud"]
+[node name="GoldAnchor" type="Node2D" parent="HUD/ResourceHud"]
 position = Vector2(76, 81.3333)
 
-[node name="FireAnchor" type="Node2D" parent="CanvasLayer/ResourceHud"]
+[node name="FireAnchor" type="Node2D" parent="HUD/ResourceHud"]
 position = Vector2(850.667, 76)
 
-[node name="QuartzAnchor" type="Node2D" parent="CanvasLayer/ResourceHud"]
+[node name="QuartzAnchor" type="Node2D" parent="HUD/ResourceHud"]
 position = Vector2(693.333, 73.3333)
 
-[node name="SapAnchor" type="Node2D" parent="CanvasLayer/ResourceHud"]
+[node name="SapAnchor" type="Node2D" parent="HUD/ResourceHud"]
 position = Vector2(229.333, 69.3333)
 
-[node name="FruitAnchor" type="Node2D" parent="CanvasLayer/ResourceHud"]
+[node name="FruitAnchor" type="Node2D" parent="HUD/ResourceHud"]
 position = Vector2(537.333, 76)
 
-[node name="StoneAnchor" type="Node2D" parent="CanvasLayer/ResourceHud"]
+[node name="StoneAnchor" type="Node2D" parent="HUD/ResourceHud"]
 position = Vector2(378.667, 76)
-
-[node name="CursorEffects" type="Node2D" parent="CanvasLayer"]
-script = ExtResource("4_vdaaq")
-circle_area_texture = ExtResource("5_47rpd")
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CursorEffects"]
-modulate = Color(1, 1, 1, 0.196078)
-texture = ExtResource("5_47rpd")
 
 [node name="Input" type="Node2D" parent="."]
 
@@ -174,7 +193,7 @@ mouse_over_mask = 2
 
 [node name="ClickHandler" type="Node2D" parent="Input" node_paths=PackedStringArray("tool_bar")]
 script = ExtResource("28_xelsv")
-tool_bar = NodePath("../../CanvasLayer/ToolBarHud")
+tool_bar = NodePath("../../HUD/ToolBarHud")
 
 [node name="ToolBar" type="Node2D" parent="."]
 script = ExtResource("20_akytf")
@@ -226,7 +245,7 @@ quartz_texture = ExtResource("24_qssr7")
 sap_texture = ExtResource("25_lh07w")
 fruit_texture = ExtResource("26_tx8vj")
 stone_texture = ExtResource("27_wwljy")
-gui_targets = [NodePath("../../CanvasLayer/ResourceHud/GoldAnchor"), NodePath("../../CanvasLayer/ResourceHud/SapAnchor"), NodePath("../../CanvasLayer/ResourceHud/StoneAnchor"), NodePath("../../CanvasLayer/ResourceHud/FruitAnchor"), NodePath("../../CanvasLayer/ResourceHud/QuartzAnchor"), NodePath("../../CanvasLayer/ResourceHud/FireAnchor")]
+gui_targets = [NodePath("../../HUD/ResourceHud/GoldAnchor"), NodePath("../../HUD/ResourceHud/SapAnchor"), NodePath("../../HUD/ResourceHud/StoneAnchor"), NodePath("../../HUD/ResourceHud/FruitAnchor"), NodePath("../../HUD/ResourceHud/QuartzAnchor"), NodePath("../../HUD/ResourceHud/FireAnchor")]
 
 [node name="Enemies" type="Node2D" parent="World"]
 z_index = 3
@@ -267,8 +286,8 @@ fire_offset = Vector2(80, -50)
 position = Vector2(238, 518)
 
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
-[connection signal="tool_changed" from="ToolBar" to="CanvasLayer/ToolBarHud" method="_on_tool_bar_tool_changed"]
-[connection signal="tool_changed" from="ToolBar" to="CanvasLayer/CursorEffects" method="_on_tool_bar_tool_changed"]
+[connection signal="tool_changed" from="ToolBar" to="HUD/ToolBarHud" method="_on_tool_bar_tool_changed"]
+[connection signal="tool_changed" from="ToolBar" to="HUD/CursorEffects" method="_on_tool_bar_tool_changed"]
 [connection signal="timeout" from="ToolBar/AttackCooldown" to="ToolBar" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/DestroyCooldown" to="ToolBar" method="_on_destroy_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/TorchCooldown" to="ToolBar" method="_on_torch_cooldown_timeout"]

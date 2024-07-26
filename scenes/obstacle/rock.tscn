@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ci5x7iudnfatv"]
+[gd_scene load_steps=13 format=3 uid="uid://ci5x7iudnfatv"]
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_tp0j5"]
 [ext_resource type="Resource" uid="uid://cva2uitfiqme8" path="res://data/obstacle/rock.tres" id="2_l51pq"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bosf5e3kq41vb" path="res://assets/textures/obstacle/quartz_rock.png" id="4_8vkia"]
 [ext_resource type="Texture2D" uid="uid://cjukxpjlt8ero" path="res://assets/textures/obstacle/treeified_rock.png" id="5_pvi3p"]
 [ext_resource type="Texture2D" uid="uid://bao28ayxfk54j" path="res://assets/textures/obstacle/rock.png" id="6_c0425"]
+[ext_resource type="Script" path="res://scenes/obstacle/stone_variants_behavior.gd" id="7_lu4jj"]
+[ext_resource type="Texture2D" uid="uid://cjyxivaksw701" path="res://assets/textures/obstacle/green_rock.png" id="8_1cdkk"]
+[ext_resource type="Texture2D" uid="uid://c5quk88ocojif" path="res://assets/textures/obstacle/fire_rock.png" id="9_us7vg"]
+[ext_resource type="Texture2D" uid="uid://pdrfp61olllo" path="res://assets/textures/obstacle/quartz_ore_rock.png" id="10_yu8ok"]
 
 [sub_resource type="Resource" id="Resource_t0gkr"]
 script = ExtResource("3_u5mqm")
@@ -17,8 +21,9 @@ script = ExtResource("3_u5mqm")
 state = 1
 texture = ExtResource("5_pvi3p")
 
-[node name="Rock" instance=ExtResource("1_tp0j5")]
+[node name="Rock" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_tp0j5")]
 data = ExtResource("2_l51pq")
+behaviors = [NodePath("StoneVariantsBehavior")]
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(0, -17)
@@ -30,3 +35,9 @@ texture = ExtResource("6_c0425")
 [node name="Flaming" parent="ObstacleModel1" index="1"]
 visible = false
 position = Vector2(-3, -25)
+
+[node name="StoneVariantsBehavior" type="Node2D" parent="." index="5"]
+script = ExtResource("7_lu4jj")
+tree_crystal = ExtResource("8_1cdkk")
+fire_crystal = ExtResource("9_us7vg")
+quartz_crystal = ExtResource("10_yu8ok")
