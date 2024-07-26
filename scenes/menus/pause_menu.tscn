@@ -1,6 +1,65 @@
-[gd_scene load_steps=2 format=3 uid="uid://cf2tuwo60rd2s"]
+[gd_scene load_steps=6 format=3 uid="uid://dp8q0ibg5x7oc"]
 
 [ext_resource type="Script" path="res://scenes/menus/pause_menu.gd" id="1_m7m0e"]
+[ext_resource type="PackedScene" uid="uid://dwdhl2q8gkokd" path="res://scenes/menus/settings_menu.tscn" id="2_khs8f"]
+[ext_resource type="Shader" path="res://shader/paused.gdshader" id="3_wsghj"]
+[ext_resource type="PackedScene" uid="uid://kpyn3d6kwgcy" path="res://scenes/menus/ui_click_audio.tscn" id="4_o0d51"]
 
-[node name="PauseMenu" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xchq8"]
+shader = ExtResource("3_wsghj")
+shader_parameter/blur_amount = 1.0
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 2
 script = ExtResource("1_m7m0e")
+
+[node name="BlurBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_xchq8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.25098)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitToMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit to Menu"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("2_khs8f")]
+visible = false
+
+[node name="UIClickAudio" parent="." instance=ExtResource("4_o0d51")]
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
+[connection signal="pressed_back" from="SettingsMenu" to="." method="_on_settings_menu_pressed_back"]

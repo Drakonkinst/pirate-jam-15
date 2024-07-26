@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 class_name PauseMenu
 
@@ -15,17 +15,19 @@ func _ready() -> void:
 
 func _on_pause_control_unpaused() -> void:
     hide()
+    GlobalVariables.unmuffle_music()
 
 func _on_pause_control_paused() -> void:
     show()
     settings_menu.hide()
+    GlobalVariables.muffle_music()
 
-func _on_options_button_pressed() -> void:
+func _on_settings_button_pressed() -> void:
     settings_menu.show()
     ui_click_audio.play()
 
-func _on_options_menu_pressed_back() -> void:
-    pass
+func _on_settings_menu_pressed_back() -> void:
+    settings_menu.hide()
 
 func _on_resume_button_pressed() -> void:
     pause_control.unpause()

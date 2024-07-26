@@ -7,9 +7,12 @@ const PAUSE_INPUT := "pause"
 signal paused
 signal unpaused
 
+@export var on_pause_audio: AudioRandomizer
+@export var off_pause_audio: AudioRandomizer
+
 var disabled := false
 
-func _input(event) -> void:
+func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed(PAUSE_INPUT) and not disabled:
         _toggle_pause()
 
@@ -18,8 +21,10 @@ func _toggle_pause() -> void:
     get_tree().paused = not is_paused
     if is_paused:
         unpaused.emit()
+        off_pause_audio.play_random()
     else:
         paused.emit()
+        on_pause_audio.play_random()
 
 func disable() -> void:
     disabled = true
@@ -33,3 +38,4 @@ func unpause() -> void:
     if not get_tree().paused:
         return
     _toggle_pause()
+    print("PLAY")

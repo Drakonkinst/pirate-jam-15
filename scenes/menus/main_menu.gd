@@ -8,6 +8,12 @@ signal start_game
 @onready var settings_menu: SettingsMenu = %SettingsMenu
 @onready var credits_menu: CreditsMenu = %CreditsMenu
 
+func _ready() -> void:
+    GlobalVariables.unmuffle_music()
+    get_tree().paused = false
+    settings_menu.hide()
+    credits_menu.hide()
+
 func _on_start_menu_open_settings() -> void:
     settings_menu.show()
 

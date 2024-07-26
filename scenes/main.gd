@@ -22,6 +22,12 @@ func start_new_game() -> void:
         menu = null
     game = game_scene.instantiate()
     GlobalVariables.curr_game = game
-    # TODO: Setup game signals
+    game.quit_to_menu.connect(quit_to_menu)
     start_game_audio.play()
     add_child(game)
+
+func quit_to_menu() -> void:
+    if game != null:
+        remove_child(game)
+        game = null
+    init_main_menu()

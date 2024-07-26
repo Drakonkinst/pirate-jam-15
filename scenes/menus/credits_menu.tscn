@@ -64,6 +64,5 @@ theme = ExtResource("2_wcwh0")
 text = "Return"
 
 [node name="UIClickAudio" parent="." instance=ExtResource("4_r41db")]
-bus = &"Master"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CreditsList/HBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]

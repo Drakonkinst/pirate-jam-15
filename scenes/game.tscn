@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=57 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -51,6 +51,9 @@
 [ext_resource type="PackedScene" uid="uid://5ye7ihrmklny" path="res://scenes/effect/splat.tscn" id="37_6rhao"]
 [ext_resource type="Script" path="res://scenes/pause_control.gd" id="40_uejed"]
 [ext_resource type="AudioStream" uid="uid://bi8dingytba6n" path="res://assets/audio/MUSICBackground.ogg" id="49_dv2lr"]
+[ext_resource type="PackedScene" uid="uid://dp8q0ibg5x7oc" path="res://scenes/menus/pause_menu.tscn" id="50_t4lxk"]
+[ext_resource type="AudioStream" uid="uid://b0e7oiuo6qjj4" path="res://assets/audio/sfx/SFXUnpause.ogg" id="51_jfmbr"]
+[ext_resource type="AudioStream" uid="uid://pac142drhyka" path="res://assets/audio/sfx/SFXPause.ogg" id="52_2xtnb"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -196,6 +199,9 @@ position = Vector2(537.333, 76)
 
 [node name="StoneAnchor" type="Node2D" parent="HUD/ResourceHud"]
 position = Vector2(378.667, 76)
+
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("pause_control") instance=ExtResource("50_t4lxk")]
+pause_control = NodePath("../PauseControl")
 
 [node name="Input" type="Node2D" parent="."]
 
@@ -352,14 +358,35 @@ fire_offset = Vector2(80, -50)
 [node name="Player" parent="." groups=["player"] instance=ExtResource("19_c5v0p")]
 position = Vector2(238, 518)
 
-[node name="PauseControl" type="Node2D" parent="."]
-script = ExtResource("40_uejed")
-
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("49_dv2lr")
 autoplay = true
 bus = &"Music"
 
+[node name="PauseControl" type="Node2D" parent="." node_paths=PackedStringArray("on_pause_audio", "off_pause_audio")]
+process_mode = 3
+script = ExtResource("40_uejed")
+on_pause_audio = NodePath("PauseAudio")
+off_pause_audio = NodePath("UnpauseAudio")
+
+[node name="PauseAudio" type="AudioStreamPlayer" parent="PauseControl"]
+volume_db = -15.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("52_2xtnb")])
+min_pitch = 1.0
+max_pitch = 1.0
+
+[node name="UnpauseAudio" type="AudioStreamPlayer" parent="PauseControl"]
+volume_db = -15.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("51_jfmbr")])
+min_pitch = 1.0
+max_pitch = 1.0
+
+[connection signal="pressed_quit_to_menu" from="PauseMenu" to="." method="_on_pause_menu_pressed_quit_to_menu"]
 [connection signal="do_action" from="ToolBar" to="ToolBar/ToolBarAudio" method="_on_tool_bar_do_action"]
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
 [connection signal="tool_changed" from="ToolBar" to="HUD/CursorEffects" method="_on_tool_bar_tool_changed"]
@@ -370,3 +397,5 @@ bus = &"Music"
 [connection signal="timeout" from="ToolBar/TorchCooldown" to="ToolBar" method="_on_torch_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/PotionCooldown" to="ToolBar" method="_on_potion_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/SummonCooldown" to="ToolBar" method="_on_summon_cooldown_timeout"]
+[connection signal="paused" from="PauseControl" to="PauseMenu" method="_on_pause_control_paused"]
+[connection signal="unpaused" from="PauseControl" to="PauseMenu" method="_on_pause_control_unpaused"]
