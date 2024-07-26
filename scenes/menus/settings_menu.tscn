@@ -100,6 +100,7 @@ theme = ExtResource("2_p2fb5")
 text = "Return"
 
 [node name="UIClickAudio" parent="." instance=ExtResource("5_grkcc")]
+bus = &"Master"
 
 [connection signal="mouse_exited" from="MarginContainer/VBoxContainer/OptionsList/Music/MusicSlider" to="." method="_on_music_slider_mouse_exited"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/OptionsList/Music/MusicSlider" to="." method="_on_music_slider_value_changed"]

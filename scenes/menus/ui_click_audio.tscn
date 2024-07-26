@@ -5,4 +5,4 @@
 [node name="UIClickAudio" type="AudioStreamPlayer"]
 stream = ExtResource("1_c1s0s")
 volume_db = -15.0
-bus = &"SFX"
+bus = &"Effects"

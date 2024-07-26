@@ -115,11 +115,11 @@ grow_vertical = 2
 
 [node name="StartupAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_qvwjf")
-bus = &"SFX"
+bus = &"Effects"
 
 [node name="SelectPlayAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_yjvrb")
-bus = &"SFX"
+bus = &"Effects"
 
 [connection signal="pressed" from="Control/SelectionButtons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Control/SelectionButtons/SettingsButton" to="." method="_on_settings_button_pressed"]

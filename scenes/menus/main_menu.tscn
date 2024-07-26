@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bao5hykhax873"]
+[gd_scene load_steps=9 format=3 uid="uid://bao5hykhax873"]
 
 [ext_resource type="Theme" uid="uid://bkwik1tcqd4en" path="res://assets/themes/MainMenuTheme.tres" id="1_3d27v"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="2_g1n0c"]
 [ext_resource type="PackedScene" uid="uid://bt0lq1q75bews" path="res://scenes/menus/start_menu.tscn" id="4_kptvt"]
+[ext_resource type="Script" path="res://scenes/menus/main_menu_music.gd" id="5_3w1dp"]
+[ext_resource type="AudioStream" uid="uid://cogm0qnpf2tab" path="res://assets/audio/MUSICMainMenuINTRO.ogg" id="5_ir8h2"]
 [ext_resource type="PackedScene" uid="uid://dwdhl2q8gkokd" path="res://scenes/menus/settings_menu.tscn" id="5_n8xjg"]
+[ext_resource type="PackedScene" uid="uid://bqlemk2n7ch6l" path="res://scenes/menus/credits_menu.tscn" id="5_wb2sl"]
+[ext_resource type="AudioStream" uid="uid://dq073c68yiviu" path="res://assets/audio/MUSICMainMenuLOOP.ogg" id="7_xfywl"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -16,9 +20,6 @@ theme = ExtResource("1_3d27v")
 script = ExtResource("2_g1n0c")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer"]
-unique_name_in_owner = true
 
 [node name="Background" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -35,7 +36,20 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 visible = false
 
+[node name="CreditsMenu" parent="CanvasLayer" instance=ExtResource("5_wb2sl")]
+unique_name_in_owner = true
+visible = false
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ir8h2")
+autoplay = true
+bus = &"Music"
+script = ExtResource("5_3w1dp")
+loop_audio = ExtResource("7_xfywl")
+
 [connection signal="open_credits" from="CanvasLayer/StartMenu" to="." method="_on_start_menu_open_credits"]
 [connection signal="open_settings" from="CanvasLayer/StartMenu" to="." method="_on_start_menu_open_settings"]
 [connection signal="start_game" from="CanvasLayer/StartMenu" to="." method="_on_start_menu_start_game"]
 [connection signal="pressed_back" from="CanvasLayer/SettingsMenu" to="." method="_on_settings_menu_pressed_back"]
+[connection signal="pressed_back" from="CanvasLayer/CreditsMenu" to="." method="_on_credits_menu_pressed_back"]
+[connection signal="finished" from="MainMenuMusic" to="MainMenuMusic" method="_on_finished"]
