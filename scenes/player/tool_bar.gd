@@ -83,13 +83,14 @@ func _do_potion(target_pos: Vector2) -> bool:
     # projectile_manager.throw_random_projectile(target_pos)
     var type: ThrownProjectile.Type
 
-    var choice = randi() % 4
+    var choice = randi() % 3
     if choice == 1:
         type = ThrownProjectile.Type.POTION_STONE
     elif choice == 2:
         type = ThrownProjectile.Type.POTION_QUARTZ
     elif choice == 3:
-        type = ThrownProjectile.Type.POTION_OIL
+        # type = ThrownProjectile.Type.POTION_OIL
+        pass
     else:
         type = ThrownProjectile.Type.POTION_WOOD
 

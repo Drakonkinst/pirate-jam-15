@@ -42,5 +42,7 @@ func set_transmuted_state(state: Obstacle.TransmutedState) -> bool:
         if entry.state == state:
             model.texture = entry.texture
             return true
-    model.texture = original_texture
+    if state == Obstacle.TransmutedState.DEFAULT:
+        model.texture = original_texture
+        return true
     return false

@@ -69,17 +69,17 @@ func place_splat(pos: Vector2) -> Splat:
 
 
 func throw_projectile(projectile: ThrownProjectile.Type, mouse_pos: Vector2) -> bool:
-    if not is_valid_target(mouse_pos):
+    if not is_valid_target(mouse_pos, true):
         return false
     _fire_projectile(projectile, player.global_position + throw_offset, mouse_pos)
     return true
 
-func is_valid_target(pos: Vector2) -> bool:
+func is_valid_target(pos: Vector2, is_throwing: bool) -> bool:
     var grid: Grid = GlobalVariables.get_grid()
     # Cannot throw behind
     if pos.x <= grid.find_grid_origin().x:
         return false
-    if not grid.is_on_grid(pos):
+    if is_throwing and not grid.is_on_grid(pos):
         return false
     return true
 
@@ -89,6 +89,8 @@ func throw_random_projectile(to: Vector2) -> bool:
     return throw_projectile(randi() % ThrownProjectile.Type.keys().size(), to)
 
 func fire_bolt(to: Vector2) -> bool:
+    if not is_valid_target(to, false):
+        return false
     var bolt_obj = magic_bolt_scene.instantiate()
     add_child(bolt_obj)
     var bolt = bolt_obj as MagicBolt

@@ -9,6 +9,7 @@ script = ExtResource("1_xnk6v")
 [resource]
 script = ExtResource("1_qx5qe")
 id = 3
+transmuted_base_type = 0
 health = 5
 invulnerable = false
 size_multiplier = 0.5

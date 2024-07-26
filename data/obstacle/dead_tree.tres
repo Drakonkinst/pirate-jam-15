@@ -9,6 +9,7 @@ script = ExtResource("1_p51jg")
 [resource]
 script = ExtResource("1_0braj")
 id = 6
+transmuted_base_type = 0
 health = 40
 invulnerable = false
 size_multiplier = 1.0

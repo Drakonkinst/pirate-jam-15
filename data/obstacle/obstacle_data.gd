@@ -3,6 +3,7 @@ extends Resource
 class_name ObstacleData
 
 @export var id: Obstacle.Type
+@export var transmuted_base_type: Obstacle.TransmutedState
 @export var health: int = 10
 @export var invulnerable: bool = false
 @export var size_multiplier: float = 1 # Multiplied with the material when transmutated

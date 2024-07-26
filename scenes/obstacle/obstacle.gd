@@ -13,6 +13,7 @@ enum TransmutedState {
 }
 
 signal removed
+signal transmuted(obstacle: Obstacle)
 
 const OBSTACLE_FIRE_DAMAGE: int = 1
 
@@ -28,7 +29,6 @@ var transmuted_state: TransmutedState = TransmutedState.DEFAULT
 @export var alternate_models: Array[ObstacleModel] # Optional array. If there are variations of the same model, can list them all here to choose randomly
 @export var behaviors: Array[ObstacleBehavior] # Optional array of behaviors
 
-var burned: bool = false
 var loot: Dictionary
 
 func _process(delta: float) -> void:
@@ -59,17 +59,30 @@ func kill() -> void:
 
 # Only transmute if there is a valid model
 func set_transmuted_state(state: TransmutedState) -> bool:
+    if state == data.transmuted_base_type:
+        return reset_transmuted_state()
     var success: bool = model.set_transmuted_state(state)
     if success:
         transmuted_state = state
         on_transmuted_state_change()
+    transmuted.emit(self)
     return success
+
+func reset_transmuted_state() -> bool:
+    transmuted_state = TransmutedState.DEFAULT
+    model.set_transmuted_state(transmuted_state)
+    update_health_from_transmutation(transmuted_state)
+    if burning_state.is_burning() and not is_flammable():
+        put_out_fire()
+    burning_state.is_burned = false
+    transmuted.emit(self)
+    return true
 
 func on_transmuted_state_change():
     update_health_from_transmutation(transmuted_state)
     if burning_state.is_burning() and not is_flammable():
         put_out_fire()
-    burned = false
+    burning_state.is_burned = false
 
 # Health updates to match the material after transmutating
 func update_health_from_transmutation(state: TransmutedState) -> void:
@@ -86,7 +99,7 @@ func update_health_from_transmutation(state: TransmutedState) -> void:
 func get_material_multiplier(state: TransmutedState) -> int:
     match state:
         TransmutedState.DEFAULT:
-            return data.max_health
+            return data.health
         TransmutedState.WOOD:
             return 40
         TransmutedState.STONE:
@@ -168,7 +181,7 @@ func _on_health_death() -> void:
 func _on_burning_state_burnt() -> void:
     if data.should_use_burnt_texture:
         model.set_burned_overlay()
-        burned = true
+        burning_state.is_burned = true
 
 func copy_burning_state(state: BurningState) -> void:
     burning_state.burning_time_remaining = state.burning_time_remaining

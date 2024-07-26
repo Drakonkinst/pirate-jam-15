@@ -40,6 +40,7 @@ entries = Array[Resource("res://data/item/loot_entry.gd")]([SubResource("Resourc
 [resource]
 script = ExtResource("1_7y4gq")
 id = 2
+transmuted_base_type = 2
 health = 80
 invulnerable = false
 size_multiplier = 1.0

@@ -12,6 +12,7 @@ max_count = 1
 [resource]
 script = ExtResource("1_sovwx")
 id = 5
+transmuted_base_type = 1
 health = 15
 invulnerable = false
 size_multiplier = 0.25
