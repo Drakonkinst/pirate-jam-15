@@ -28,5 +28,6 @@ scale = Vector2(0.211608, 0.211608)
 [node name="FlameParticle3" parent="ObstacleModel1/Flaming" index="2"]
 position = Vector2(-1.44356, 22.0562)
 
-[node name="OilSpillBehavior" type="Node2D" parent="." index="3"]
+[node name="OilSpillBehavior" type="Node2D" parent="." index="3" node_paths=PackedStringArray("model")]
 script = ExtResource("4_ir1mx")
+model = NodePath("../ObstacleModel1")
