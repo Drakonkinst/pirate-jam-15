@@ -197,23 +197,55 @@ mouse_filter = 1
 
 [node name="ResourceHud" parent="HUD" instance=ExtResource("3_oot8a")]
 
-[node name="GoldAnchor" type="Node2D" parent="HUD/ResourceHud"]
-position = Vector2(76, 81.3333)
+[node name="OffsetFromZoom" type="Control" parent="HUD/ResourceHud"]
+anchors_preset = 0
+offset_left = 168.0
+offset_top = 96.0
+offset_right = 208.0
+offset_bottom = 136.0
+scale = Vector2(0.87, 0.87)
 
-[node name="FireAnchor" type="Node2D" parent="HUD/ResourceHud"]
-position = Vector2(850.667, 76)
+[node name="GoldAnchor" type="Control" parent="HUD/ResourceHud/OffsetFromZoom"]
+anchors_preset = 0
+offset_left = 76.0
+offset_top = 81.3333
+offset_right = 76.0
+offset_bottom = 81.3333
 
-[node name="QuartzAnchor" type="Node2D" parent="HUD/ResourceHud"]
-position = Vector2(693.333, 73.3333)
+[node name="FireAnchor" type="Control" parent="HUD/ResourceHud/OffsetFromZoom"]
+anchors_preset = 0
+offset_left = 850.667
+offset_top = 76.0
+offset_right = 850.667
+offset_bottom = 76.0
 
-[node name="SapAnchor" type="Node2D" parent="HUD/ResourceHud"]
-position = Vector2(229.333, 69.3333)
+[node name="QuartzAnchor" type="Control" parent="HUD/ResourceHud/OffsetFromZoom"]
+anchors_preset = 0
+offset_left = 693.333
+offset_top = 73.3333
+offset_right = 693.333
+offset_bottom = 73.3333
 
-[node name="FruitAnchor" type="Node2D" parent="HUD/ResourceHud"]
-position = Vector2(537.333, 76)
+[node name="SapAnchor" type="Control" parent="HUD/ResourceHud/OffsetFromZoom"]
+anchors_preset = 0
+offset_left = 229.333
+offset_top = 69.3333
+offset_right = 229.333
+offset_bottom = 69.3333
 
-[node name="StoneAnchor" type="Node2D" parent="HUD/ResourceHud"]
-position = Vector2(378.667, 76)
+[node name="FruitAnchor" type="Control" parent="HUD/ResourceHud/OffsetFromZoom"]
+anchors_preset = 0
+offset_left = 537.333
+offset_top = 76.0
+offset_right = 537.333
+offset_bottom = 76.0
+
+[node name="StoneAnchor" type="Control" parent="HUD/ResourceHud/OffsetFromZoom"]
+anchors_preset = 0
+offset_left = 378.667
+offset_top = 76.0
+offset_right = 378.667
+offset_bottom = 76.0
 
 [node name="DialogueManager" parent="." node_paths=PackedStringArray("textbox", "speaker", "pause_control", "player_default_portrait", "villain_default_portrait", "minion_default_portrait") instance=ExtResource("8_7d0d0")]
 process_mode = 3
@@ -227,6 +259,7 @@ minion_default_portrait = NodePath("DialogueBox/MinionPortrait")
 current_conversation = ExtResource("9_nf1db")
 
 [node name="DialogueOverlay" type="TextureRect" parent="DialogueManager"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -236,6 +269,7 @@ mouse_filter = 2
 texture = SubResource("GradientTexture2D_q44x3")
 
 [node name="DialogueBox" type="Control" parent="DialogueManager"]
+visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -454,7 +488,7 @@ quartz_texture = ExtResource("24_qssr7")
 sap_texture = ExtResource("25_lh07w")
 fruit_texture = ExtResource("26_tx8vj")
 stone_texture = ExtResource("27_wwljy")
-gui_targets = [NodePath("../../HUD/ResourceHud/GoldAnchor"), NodePath("../../HUD/ResourceHud/SapAnchor"), NodePath("../../HUD/ResourceHud/StoneAnchor"), NodePath("../../HUD/ResourceHud/FruitAnchor"), NodePath("../../HUD/ResourceHud/QuartzAnchor"), NodePath("../../HUD/ResourceHud/FireAnchor")]
+gui_targets = [NodePath("../../HUD/ResourceHud/OffsetFromZoom/GoldAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/SapAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/StoneAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/FruitAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/QuartzAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/FireAnchor")]
 
 [node name="Enemies" type="Node2D" parent="World"]
 z_index = 3

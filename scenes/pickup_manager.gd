@@ -12,7 +12,7 @@ class_name PickupManager
 @export var fruit_texture: Texture2D
 @export var stone_texture: Texture2D
 
-@export var gui_targets: Array[Node2D]
+@export var gui_targets: Array[Node]
 
 const PICKUP_ORDER: Array[Pickup.PickupType] = [
     Pickup.PickupType.GOLD,
