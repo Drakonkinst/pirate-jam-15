@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=67 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://g0r7v65brbxf" path="res://scenes/grid/grid.tscn" id="11_7lv1o"]
 [ext_resource type="Script" path="res://scenes/audio/tool_bar_audio.gd" id="11_gvs78"]
 [ext_resource type="PackedScene" uid="uid://ci5x7iudnfatv" path="res://scenes/obstacle/rock.tscn" id="12_bokvu"]
-[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/ShadowTemp2.png" id="12_dk08j"]
+[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/shadow_creature.png" id="12_dk08j"]
 [ext_resource type="Script" path="res://scenes/audio/audio_randomizer.gd" id="12_hqgvj"]
 [ext_resource type="AudioStream" uid="uid://b5iybe17vtcm5" path="res://assets/audio/SFXMagicBoltSelected.ogg" id="13_lykkh"]
 [ext_resource type="PackedScene" uid="uid://hmw6qr2yjefw" path="res://scenes/obstacle/oil_spill.tscn" id="13_tpqui"]
@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://q37qqy3fjdg2" path="res://assets/textures/resource/resource_quartz.png" id="24_qssr7"]
 [ext_resource type="Texture2D" uid="uid://bi6hufoa61ksj" path="res://assets/textures/resource/resource_wood.png" id="25_lh07w"]
 [ext_resource type="PackedScene" uid="uid://j6ftocfpm1hl" path="res://scenes/projectile/bolt.tscn" id="25_xb5cv"]
+[ext_resource type="Script" path="res://scenes/player/tool_inventory.gd" id="25_yxm1x"]
 [ext_resource type="Texture2D" uid="uid://b12vk7snwti44" path="res://assets/textures/resource/resource_fruit.png" id="26_tx8vj"]
 [ext_resource type="Texture2D" uid="uid://cp74hu4ij71w1" path="res://assets/textures/resource/resource_stone.png" id="27_wwljy"]
 [ext_resource type="Script" path="res://scenes/hud/click_handler.gd" id="28_xelsv"]
@@ -391,6 +392,7 @@ tool_bar = NodePath("../../HUD/ToolBarHud")
 
 [node name="ToolBar" type="Node2D" parent="."]
 script = ExtResource("20_akytf")
+obstacle_damage = null
 
 [node name="AttackCooldown" type="Timer" parent="ToolBar"]
 wait_time = 0.5
@@ -459,6 +461,10 @@ script = ExtResource("12_hqgvj")
 [node name="DoSummonAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
+
+[node name="ToolInventory" type="Node2D" parent="ToolBar"]
+position = Vector2(-1, 0)
+script = ExtResource("25_yxm1x")
 
 [node name="World" type="Node2D" parent="."]
 script = SubResource("GDScript_hp6k0")

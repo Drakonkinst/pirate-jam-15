@@ -15,10 +15,10 @@ enum Tool {
 @onready var torch_cooldown: Timer = $TorchCooldown
 @onready var potion_cooldown: Timer = $PotionCooldown
 @onready var summon_cooldown: Timer = $SummonCooldown
+@onready var tool_inventory: ToolInventory = $ToolInventory
 
 @export var obstacle_damage: int = 10
 
-# TODO: Inventory counts
 var current_tool: Tool = Tool.MAGIC_BOLT
 var selected_potion: ThrownProjectile.Type = ThrownProjectile.Type.POTION_WOOD
 var ordered_tool_cooldowns: Array[Timer]
@@ -50,6 +50,10 @@ func handle_action(target_pos: Vector2) -> bool:
     return false
 
 func set_selected_potion(type: ThrownProjectile.Type) -> void:
+    selected_potion = type
+
+# TODO
+func set_selected_summon(type: ThrownProjectile.Type) -> void:
     selected_potion = type
 
 func _do_attack(target_pos: Vector2) -> bool:

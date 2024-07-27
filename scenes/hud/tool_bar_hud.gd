@@ -27,6 +27,7 @@ const POTION_ORDER: Array[ThrownProjectile.Type] = [
 @export var potion_expand_menu: ExpandMenu
 @export var summon_expand_menu: ExpandMenu
 @export var potion_tool_icons: Array[Texture2D]
+@export var summon_tool_icons: Array[Texture2D]
 
 @onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 var toolbar: ToolBar
@@ -37,6 +38,8 @@ var started_first_click: bool = false
 func _ready() -> void:
     toolbar = GlobalVariables.get_toolbar()
     _set_selected_potion(0)
+    # TODO
+    # _set_selected_summon(0)
 
 func _process(_delta: float) -> void:
     var cooldown_array: Array[float] = toolbar.get_cooldown_array()
@@ -63,6 +66,14 @@ func _set_selected_potion(index: int) -> void:
     toolbar.set_selected_potion(POTION_ORDER[index])
     var tool_index: int = TOOL_ORDER.find(ToolBar.Tool.POTION)
     var new_texture: Texture2D = potion_tool_icons[index]
+    # buttons[tool_index].texture_normal = new_texture
+    buttons[tool_index].progress_overlay.texture_progress = new_texture
+
+func _set_selected_summon(index: int) -> void:
+    # TODO
+    # toolbar.set_selected_summon(POTION_ORDER[index])
+    var tool_index: int = TOOL_ORDER.find(ToolBar.Tool.SUMMON)
+    var new_texture: Texture2D = summon_tool_icons[index]
     # buttons[tool_index].texture_normal = new_texture
     buttons[tool_index].progress_overlay.texture_progress = new_texture
 
@@ -94,7 +105,6 @@ func _on_summon_button_button_down() -> void:
     toolbar.set_tool(ToolBar.Tool.SUMMON)
 
 func _on_tool_bar_tool_changed(tool: ToolBar.Tool) -> void:
-    # TODO: Update current active tool
     var tool_index = TOOL_ORDER.find(tool, 0)
     var needs_thin = tool == ToolBar.Tool.POTION or tool == ToolBar.Tool.SUMMON
     for i in buttons.size():
@@ -112,8 +122,7 @@ func _on_potion_expand_menu_click_index(index: int) -> void:
 
 func _on_summon_expand_menu_click_index(index: int) -> void:
     toolbar.set_tool(ToolBar.Tool.SUMMON)
-    # TODO
-    pass
+    _set_selected_summon(index)
 
 func _on_potion_expand_menu_menu_opened() -> void:
     summon_expand_menu.hide_dropdown()

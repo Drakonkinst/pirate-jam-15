@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg1gsn84xamax"
-path="res://.godot/imported/explosion-wood-2.png-21b83755640afb4ac25a0264b3d0dbce.ctex"
+uid="uid://b54vaj87h68p5"
+path="res://.godot/imported/shadow_creature_1.png-32c3264b20886b8a05b8d1fe463fa42e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/animated/explosion-wood-2.png"
-dest_files=["res://.godot/imported/explosion-wood-2.png-21b83755640afb4ac25a0264b3d0dbce.ctex"]
+source_file="res://assets/textures/enemy/profile/shadow_creature_1.png"
+dest_files=["res://.godot/imported/shadow_creature_1.png-32c3264b20886b8a05b8d1fe463fa42e.ctex"]
 
 [params]
 

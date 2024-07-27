@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2eb6eyl4dfsb"
-path="res://.godot/imported/tree_sprite.png-483754c2b44aa29275a4aaf4acbcc80a.ctex"
+uid="uid://cis2vokqjryh7"
+path="res://.godot/imported/shadow_creature_3.png-a416ee2aaf781f55f759eac916d19e59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemy/tree_sprite.png"
-dest_files=["res://.godot/imported/tree_sprite.png-483754c2b44aa29275a4aaf4acbcc80a.ctex"]
+source_file="res://assets/textures/enemy/profile/shadow_creature_3.png"
+dest_files=["res://.godot/imported/shadow_creature_3.png-a416ee2aaf781f55f759eac916d19e59.ctex"]
 
 [params]
 

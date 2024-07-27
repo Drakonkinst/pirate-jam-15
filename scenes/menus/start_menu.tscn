@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/menus/start_menu.gd" id="1_yjtan"]
 [ext_resource type="Script" path="res://scenes/menus/hide_if_web.gd" id="2_ufl12"]
 [ext_resource type="FontFile" uid="uid://cslgns4mab5dp" path="res://assets/themes/DungGeunMo.ttf" id="3_xngib"]
-[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/ShadowTemp2.png" id="4_ri3ft"]
+[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/shadow_creature.png" id="4_ri3ft"]
 [ext_resource type="PackedScene" uid="uid://kpyn3d6kwgcy" path="res://scenes/menus/ui_click_audio.tscn" id="5_mx8i8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_matrf"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://26wk5q548sxm"
-path="res://.godot/imported/ShadowTemp3.png-d94a0d3eb68bea0e12d46b8aad6de9ad.ctex"
+path="res://.godot/imported/rock_golem.png-102a52391d627789dd2d2e4ff35577e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemy/ShadowTemp3.png"
-dest_files=["res://.godot/imported/ShadowTemp3.png-d94a0d3eb68bea0e12d46b8aad6de9ad.ctex"]
+source_file="res://assets/textures/enemy/profile/rock_golem.png"
+dest_files=["res://.godot/imported/rock_golem.png-102a52391d627789dd2d2e4ff35577e1.ctex"]
 
 [params]
 
