@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=69 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -50,6 +50,8 @@
 [ext_resource type="Script" path="res://scenes/player/tool_inventory.gd" id="25_yxm1x"]
 [ext_resource type="Texture2D" uid="uid://b12vk7snwti44" path="res://assets/textures/resource/resource_fruit.png" id="26_tx8vj"]
 [ext_resource type="Texture2D" uid="uid://cp74hu4ij71w1" path="res://assets/textures/resource/resource_stone.png" id="27_wwljy"]
+[ext_resource type="PackedScene" uid="uid://xwlygvxjdnu2" path="res://scenes/light/light_circle.tscn" id="28_iy4br"]
+[ext_resource type="Script" path="res://scenes/light/light_manager.gd" id="28_m2bqy"]
 [ext_resource type="Script" path="res://scenes/hud/click_handler.gd" id="28_xelsv"]
 [ext_resource type="Script" path="res://scenes/enemy/enemy_spawner.gd" id="29_uoojh"]
 [ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/Level1SpawnSchedule.tres" id="31_e2klb"]
@@ -95,13 +97,14 @@ class_name World
 
 "
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "toolbar")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "toolbar")]
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
 obstacle_manager = NodePath("World/ObstacleManager")
 projectile_manager = NodePath("World/ProjectileManager")
 pickup_manager = NodePath("World/PickupManager")
 dialogue_manager = NodePath("DialogueManager")
+light_manager = NodePath("World/Grid/LightManager")
 toolbar = NodePath("ToolBar")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -470,6 +473,11 @@ script = SubResource("GDScript_hp6k0")
 [node name="Grid" parent="World" instance=ExtResource("11_7lv1o")]
 offset = Vector2(30, 0)
 debug_marker_scene = ExtResource("20_capy2")
+
+[node name="LightManager" type="CanvasGroup" parent="World/Grid"]
+self_modulate = Color(1, 1, 1, 0.156863)
+script = ExtResource("28_m2bqy")
+light_circle_scene = ExtResource("28_iy4br")
 
 [node name="ObstacleManager" type="Node2D" parent="World"]
 z_index = 1

@@ -19,5 +19,9 @@ position = Vector2(-22.2222, 82.2222)
 rotation = -1.51517
 scale = Vector2(0.75, 0.75)
 
-[node name="Behavior" type="Node2D" parent="." index="2"]
+[node name="Behavior" type="Node2D" parent="." index="2" node_paths=PackedStringArray("light_anchor")]
 script = ExtResource("4_5wssx")
+light_anchor = NodePath("../LightAnchor")
+
+[node name="LightAnchor" type="Node2D" parent="." index="3"]
+position = Vector2(0, -23)

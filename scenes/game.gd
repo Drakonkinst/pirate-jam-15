@@ -9,6 +9,7 @@ signal quit_to_menu
 @export var projectile_manager: ProjectileManager
 @export var pickup_manager: PickupManager
 @export var dialogue_manager: DialogueManager
+@export var light_manager: LightManager
 @export var toolbar: ToolBar
 
 @onready var pause_control: PauseControl = $PauseControl

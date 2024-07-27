@@ -3,6 +3,7 @@ extends Node
 const PLAYER_GROUP := "player"
 const POTION_RADIUS := 100
 const CONFIG_PATH = "user://settings.cfg"
+const TORCH_LIGHT_RADIUS := 200.0
 
 @export var curr_game: Game = null
 
@@ -15,6 +16,9 @@ func get_obstacle_manager() -> ObstacleManager:
 
 func get_projectile_manager() -> ProjectileManager:
     return curr_game.projectile_manager
+
+func get_light_manager() -> LightManager:
+    return curr_game.light_manager
 
 func get_dialogue_manager() -> DialogueManager:
     return curr_game.dialogue_manager

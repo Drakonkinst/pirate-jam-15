@@ -6,3 +6,6 @@ class_name ProjectileBehavior
 
 func on_land(_pos: Vector2):
     pass
+
+func on_ready(_projectile: ThrownProjectile):
+    pass
