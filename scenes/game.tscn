@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=66 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -6,12 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://assets/ui/resource_hud.tscn" id="3_oot8a"]
 [ext_resource type="Script" path="res://scenes/hud/cursor_effects.gd" id="4_vdaaq"]
 [ext_resource type="Texture2D" uid="uid://bmgy1sy6rb32q" path="res://assets/textures/circle_512.png" id="5_47rpd"]
+[ext_resource type="PackedScene" uid="uid://c27pf3yvahh2t" path="res://scenes/dialogue/dialogue_manager.tscn" id="8_7d0d0"]
+[ext_resource type="Texture2D" uid="uid://vs1qri71bqx6" path="res://assets/textures/player_portrait.png" id="9_crwft"]
 [ext_resource type="PackedScene" uid="uid://cqbxejr72xyb3" path="res://scenes/hud/tool_bar_hud.tscn" id="9_dlv2r"]
+[ext_resource type="Resource" uid="uid://dre5kdk0osd5h" path="res://data/dialogue/sample_convo.tres" id="9_nf1db"]
+[ext_resource type="Texture2D" uid="uid://ckaoxt7bilkcr" path="res://assets/textures/1x1.png" id="9_yvt3t"]
 [ext_resource type="Script" path="res://scenes/obstacle_manager.gd" id="10_uoctj"]
 [ext_resource type="PackedScene" uid="uid://bdnr8tlvaswxs" path="res://scenes/obstacle/tree.tscn" id="11_4iroc"]
 [ext_resource type="PackedScene" uid="uid://g0r7v65brbxf" path="res://scenes/grid/grid.tscn" id="11_7lv1o"]
 [ext_resource type="Script" path="res://scenes/audio/tool_bar_audio.gd" id="11_gvs78"]
 [ext_resource type="PackedScene" uid="uid://ci5x7iudnfatv" path="res://scenes/obstacle/rock.tscn" id="12_bokvu"]
+[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/ShadowTemp2.png" id="12_dk08j"]
 [ext_resource type="Script" path="res://scenes/audio/audio_randomizer.gd" id="12_hqgvj"]
 [ext_resource type="AudioStream" uid="uid://b5iybe17vtcm5" path="res://assets/audio/SFXMagicBoltSelected.ogg" id="13_lykkh"]
 [ext_resource type="PackedScene" uid="uid://hmw6qr2yjefw" path="res://scenes/obstacle/oil_spill.tscn" id="13_tpqui"]
@@ -72,6 +77,15 @@ corner_radius_bottom_left = 15
 [sub_resource type="Theme" id="Theme_f8suf"]
 default_font_size = 32
 
+[sub_resource type="Gradient" id="Gradient_82ifm"]
+colors = PackedColorArray(0, 0, 0, 0.419608, 0, 0, 0, 0.870588)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q44x3"]
+gradient = SubResource("Gradient_82ifm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.987179, 1)
+
 [sub_resource type="GDScript" id="GDScript_hp6k0"]
 script/source = "extends Node2D
 
@@ -80,12 +94,13 @@ class_name World
 
 "
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "toolbar")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "toolbar")]
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
 obstacle_manager = NodePath("World/ObstacleManager")
 projectile_manager = NodePath("World/ProjectileManager")
 pickup_manager = NodePath("World/PickupManager")
+dialogue_manager = NodePath("DialogueManager")
 toolbar = NodePath("ToolBar")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -200,7 +215,126 @@ position = Vector2(537.333, 76)
 [node name="StoneAnchor" type="Node2D" parent="HUD/ResourceHud"]
 position = Vector2(378.667, 76)
 
+[node name="DialogueManager" parent="." node_paths=PackedStringArray("textbox", "speaker", "pause_control", "player_default_portrait", "villain_default_portrait", "minion_default_portrait") instance=ExtResource("8_7d0d0")]
+process_mode = 3
+layer = 2
+textbox = NodePath("DialogueBox/MarginContainer/DialogueText")
+speaker = NodePath("DialogueBox/SpeakerText")
+pause_control = NodePath("../PauseControl")
+player_default_portrait = NodePath("DialogueBox/PlayerPortrait")
+villain_default_portrait = NodePath("DialogueBox/VillainPortrait")
+minion_default_portrait = NodePath("DialogueBox/MinionPortrait")
+current_conversation = ExtResource("9_nf1db")
+
+[node name="DialogueOverlay" type="TextureRect" parent="DialogueManager"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_q44x3")
+
+[node name="DialogueBox" type="Control" parent="DialogueManager"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -380.0
+offset_right = 600.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Background" type="TextureRect" parent="DialogueManager/DialogueBox"]
+modulate = Color(0.201527, 0.201527, 0.201527, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_yvt3t")
+
+[node name="HintText" type="RichTextLabel" parent="DialogueManager/DialogueBox"]
+layout_mode = 2
+offset_left = 874.0
+offset_top = 250.0
+offset_right = 1374.0
+offset_bottom = 350.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.577008, 0.577008, 0.577008, 1)
+theme_override_font_sizes/normal_font_size = 26
+text = "(Click to skip / advance)"
+metadata/_edit_use_anchors_ = true
+
+[node name="SpeakerText" type="RichTextLabel" parent="DialogueManager/DialogueBox"]
+layout_mode = 2
+offset_left = 28.0
+offset_top = 2.0
+offset_right = 1168.0
+offset_bottom = 102.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "Lux"
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogueManager/DialogueBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 65
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 60
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueManager/DialogueBox/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "This is some text. When there is enough text, it will wrap the text to go onto the next line."
+
+[node name="PlayerPortrait" type="TextureRect" parent="DialogueManager/DialogueBox"]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -428.0
+offset_right = 1482.0
+offset_bottom = 1072.0
+scale = Vector2(0.3, 0.3)
+mouse_filter = 2
+texture = ExtResource("9_crwft")
+
+[node name="VillainPortrait" type="TextureRect" parent="DialogueManager/DialogueBox"]
+layout_mode = 0
+offset_left = 758.0
+offset_top = -428.0
+offset_right = 2265.0
+offset_bottom = 1072.0
+scale = Vector2(0.3, 0.3)
+mouse_filter = 2
+texture = ExtResource("9_crwft")
+flip_h = true
+
+[node name="MinionPortrait" type="TextureRect" parent="DialogueManager/DialogueBox"]
+layout_mode = 0
+offset_left = 880.0
+offset_top = -241.0
+offset_right = 4180.0
+offset_bottom = 2309.0
+scale = Vector2(0.1, 0.1)
+mouse_filter = 2
+texture = ExtResource("12_dk08j")
+
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("pause_control") instance=ExtResource("50_t4lxk")]
+layer = 3
 visible = false
 pause_control = NodePath("../PauseControl")
 
@@ -321,7 +455,6 @@ z_index = 3
 script = ExtResource("29_uoojh")
 shadow_enemy = ExtResource("16_ylmnt")
 spawning_schedule = ExtResource("31_e2klb")
-endless_mode = true
 
 [node name="Spawns" type="Node2D" parent="World/Enemies"]
 unique_name_in_owner = true

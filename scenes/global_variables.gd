@@ -16,6 +16,9 @@ func get_obstacle_manager() -> ObstacleManager:
 func get_projectile_manager() -> ProjectileManager:
     return curr_game.projectile_manager
 
+func get_dialogue_manager() -> DialogueManager:
+    return curr_game.dialogue_manager
+
 func get_pickup_manager() -> PickupManager:
     return curr_game.pickup_manager
 

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Speaker" load_steps=2 format=3 uid="uid://barupah5mvn4y"]
+
+[ext_resource type="Script" path="res://scenes/dialogue/speaker.gd" id="1_ygayr"]
+
+[resource]
+script = ExtResource("1_ygayr")
+id = "minion"
+name = "Shadow Creature"
+text_color = Color(1, 1, 1, 1)

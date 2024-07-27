@@ -29,6 +29,9 @@ func _toggle_pause() -> void:
 func disable() -> void:
     disabled = true
 
+func enable() -> void:
+    disabled = false
+
 func pause() -> void:
     if get_tree().paused:
         return

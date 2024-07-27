@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=10 format=3 uid="uid://dre5kdk0osd5h"]
+
+[ext_resource type="Script" path="res://scenes/dialogue/conversation_line.gd" id="1_t4kpv"]
+[ext_resource type="Resource" uid="uid://ckhv75piusks0" path="res://data/dialogue/speaker_player.tres" id="2_2gqpi"]
+[ext_resource type="Resource" uid="uid://cpitq8aifldof" path="res://data/dialogue/speaker_villain.tres" id="3_g7v1w"]
+[ext_resource type="Script" path="res://scenes/dialogue/conversation.gd" id="3_vt1vn"]
+[ext_resource type="Resource" uid="uid://barupah5mvn4y" path="res://data/dialogue/speaker_minion.tres" id="4_6rt7l"]
+
+[sub_resource type="Resource" id="Resource_anqha"]
+script = ExtResource("1_t4kpv")
+speaker = ExtResource("2_2gqpi")
+text = "Hello there!"
+
+[sub_resource type="Resource" id="Resource_qsp5h"]
+script = ExtResource("1_t4kpv")
+speaker = ExtResource("3_g7v1w")
+text = "General Kenobi! You are a bold one."
+
+[sub_resource type="Resource" id="Resource_38oxr"]
+script = ExtResource("1_t4kpv")
+speaker = ExtResource("2_2gqpi")
+text = "Your move."
+
+[sub_resource type="Resource" id="Resource_5rmsy"]
+script = ExtResource("1_t4kpv")
+speaker = ExtResource("4_6rt7l")
+text = "Hey, he said the thing!"
+
+[resource]
+script = ExtResource("3_vt1vn")
+lines = Array[ExtResource("1_t4kpv")]([SubResource("Resource_anqha"), SubResource("Resource_qsp5h"), SubResource("Resource_38oxr"), SubResource("Resource_5rmsy")])

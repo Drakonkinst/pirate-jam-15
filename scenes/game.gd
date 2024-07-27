@@ -8,6 +8,7 @@ signal quit_to_menu
 @export var obstacle_manager: ObstacleManager
 @export var projectile_manager: ProjectileManager
 @export var pickup_manager: PickupManager
+@export var dialogue_manager: DialogueManager
 @export var toolbar: ToolBar
 
 @onready var pause_control: PauseControl = $PauseControl
@@ -16,6 +17,7 @@ func _ready():
     pause_control.unpause()
     # Grid already instantiated since it is a child
     obstacle_manager.spawn_starting_obstacles(grid)
+    dialogue_manager.play_conversation(dialogue_manager.current_conversation)
 
 func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_released("ui_cancel"):
