@@ -1,5 +1,7 @@
 extends Node
 
+const QUIT_INPUT := "ui_cancel"
+
 @export var game_scene: PackedScene
 @export var main_menu_scene: PackedScene
 
@@ -31,3 +33,7 @@ func quit_to_menu() -> void:
         remove_child(game)
         game = null
     init_main_menu()
+
+func _unhandled_input(event: InputEvent) -> void:
+    if event.is_action_released(QUIT_INPUT):
+        get_tree().quit()

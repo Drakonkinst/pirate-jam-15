@@ -6,12 +6,14 @@ signal finish_conversation
 
 const CHARACTERS_PER_SECOND := 20
 const CLICK_INPUT := "click"
+const PROP_FONT_COLOR := "theme_override_colors/font_color"
+
 const PLAYER_DEFAULT := "player"
 const VILLAIN_DEFAULT := "villain"
 const MINION_DEFAULT := "minion"
 
-@export var textbox: RichTextLabel
-@export var speaker: RichTextLabel
+@export var textbox: Label
+@export var speaker: Label
 @export var pause_control: PauseControl
 @onready var overlay: TextureRect = $DialogueOverlay
 @onready var dialogue_container: Control = $DialogueBox
@@ -72,6 +74,7 @@ func advance_step() -> void:
     update_portrait(line.speaker.id)
     speaker.text = line.speaker.name
     textbox.text = line.text
+    textbox.set(PROP_FONT_COLOR, line.speaker.text_color)
     num_chars_in_line = line.text.length()
     typing = true
     line_progress = 0.0
@@ -94,7 +97,6 @@ func end_conversation() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed(CLICK_INPUT):
-        print("CLICK")
         handle_click()
 
 func handle_click() -> bool:

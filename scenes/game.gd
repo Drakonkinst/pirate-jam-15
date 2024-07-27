@@ -19,9 +19,5 @@ func _ready():
     obstacle_manager.spawn_starting_obstacles(grid)
     dialogue_manager.play_conversation(dialogue_manager.current_conversation)
 
-func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_released("ui_cancel"):
-        get_tree().quit()
-
 func _on_pause_menu_pressed_quit_to_menu() -> void:
     quit_to_menu.emit()

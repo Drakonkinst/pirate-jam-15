@@ -6,4 +6,4 @@
 script = ExtResource("1_6kv8b")
 id = "villain"
 name = "Umbra"
-text_color = Color(1, 1, 1, 1)
+text_color = Color(0.784314, 0.8, 1, 1)

@@ -261,26 +261,30 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("9_yvt3t")
 
-[node name="HintText" type="RichTextLabel" parent="DialogueManager/DialogueBox"]
+[node name="HintText" type="Label" parent="DialogueManager/DialogueBox"]
 layout_mode = 2
+anchor_left = -0.153333
+anchor_top = -0.196667
+anchor_right = -0.153333
+anchor_bottom = -0.196667
 offset_left = 874.0
 offset_top = 250.0
 offset_right = 1374.0
 offset_bottom = 350.0
-mouse_filter = 2
-theme_override_colors/default_color = Color(0.577008, 0.577008, 0.577008, 1)
-theme_override_font_sizes/normal_font_size = 26
+theme_override_colors/font_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_font_sizes/font_size = 26
 text = "(Click to skip / advance)"
+horizontal_alignment = 2
+vertical_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="SpeakerText" type="RichTextLabel" parent="DialogueManager/DialogueBox"]
+[node name="SpeakerText" type="Label" parent="DialogueManager/DialogueBox"]
 layout_mode = 2
 offset_left = 28.0
 offset_top = 2.0
 offset_right = 1168.0
 offset_bottom = 102.0
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/font_size = 48
 text = "Lux"
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogueManager/DialogueBox"]
@@ -296,11 +300,13 @@ theme_override_constants/margin_top = 65
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 60
 
-[node name="DialogueText" type="RichTextLabel" parent="DialogueManager/DialogueBox/MarginContainer"]
+[node name="DialogueText" type="Label" parent="DialogueManager/DialogueBox/MarginContainer"]
+custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 32
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
 text = "This is some text. When there is enough text, it will wrap the text to go onto the next line."
+autowrap_mode = 3
 
 [node name="PlayerPortrait" type="TextureRect" parent="DialogueManager/DialogueBox"]
 layout_mode = 0

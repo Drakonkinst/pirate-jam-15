@@ -6,4 +6,4 @@
 script = ExtResource("1_hs50g")
 id = "player"
 name = "Lux"
-text_color = Color(1, 1, 1, 1)
+text_color = Color(1, 1, 0.760784, 1)
