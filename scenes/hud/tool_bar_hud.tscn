@@ -25,7 +25,7 @@ texture = ExtResource("2_o1r3x")
 texture_margin_left = 1.0
 texture_margin_right = 1.0
 
-[node name="ToolBarHud" type="Control" node_paths=PackedStringArray("buttons", "potion_expand_menu", "summon_expand_menu")]
+[node name="ToolBarHud" type="Control" node_paths=PackedStringArray("buttons", "potion_expand_menu", "summon_expand_menu", "current_potion_count", "current_summon_count")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,6 +39,8 @@ highlight_thin_material = ExtResource("3_x5q4i")
 potion_expand_menu = NodePath("PotionExpandMenu")
 summon_expand_menu = NodePath("SummonExpandMenu")
 potion_tool_icons = Array[Texture2D]([ExtResource("16_0rq7f"), ExtResource("17_1fsco"), ExtResource("18_yd8uy"), ExtResource("19_vxb4t")])
+current_potion_count = NodePath("PotionCount")
+current_summon_count = NodePath("SummonCount")
 
 [node name="Background" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -202,6 +204,34 @@ option_4_texture = ExtResource("19_vxb4t")
 layout_mode = 1
 offset_left = 612.0
 offset_right = 652.0
+
+[node name="PotionCount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 518.0
+offset_top = -43.0
+offset_right = 558.0
+offset_bottom = -20.0
+grow_vertical = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SummonCount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 647.0
+offset_top = -43.0
+offset_right = 687.0
+offset_bottom = -20.0
+grow_vertical = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="button_down" from="MarginContainer/ActionsContainer/AttackButton" to="." method="_on_attack_button_button_down"]
 [connection signal="button_up" from="MarginContainer/ActionsContainer/AttackButton" to="." method="_on_attack_button_button_up"]

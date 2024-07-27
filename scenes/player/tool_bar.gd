@@ -4,6 +4,7 @@ class_name ToolBar
 
 signal tool_changed(tool: Tool)
 signal do_action(tool: Tool)
+signal tool_inventory_updated
 
 # Should be same order as in UI
 enum Tool {
@@ -26,6 +27,7 @@ var ordered_tool_cooldowns: Array[Timer]
 func _ready() -> void:
     tool_changed.emit(current_tool)
     ordered_tool_cooldowns = [attack_cooldown, torch_cooldown, destroy_cooldown, potion_cooldown, summon_cooldown]
+    tool_inventory_updated.emit()
 
 func handle_action(target_pos: Vector2) -> bool:
     # Do action based on current tool
@@ -90,10 +92,12 @@ func _do_potion(target_pos: Vector2) -> bool:
     # projectile_manager.throw_random_projectile(target_pos)
     var type: ThrownProjectile.Type = selected_potion
     # TODO: Check inventory
-    var success = projectile_manager.throw_projectile(type, target_pos)
+    var success = tool_inventory.get_potion_count(type) > 0 and projectile_manager.throw_projectile(type, target_pos)
     if success:
         potion_cooldown.start()
+        tool_inventory.add_potion_count(type, -1)
         do_action.emit(ToolBar.Tool.POTION)
+        tool_inventory_updated.emit()
     return success
 
 func _do_summon(target_pos: Vector2) -> bool:
@@ -101,6 +105,9 @@ func _do_summon(target_pos: Vector2) -> bool:
     var success = true
     if success:
         do_action.emit(ToolBar.Tool.SUMMON)
+        # TODO
+        # tool_inventory.summon(type, -1)
+        tool_inventory_updated.emit()
     return success
 
 func set_tool(tool: Tool) -> void:
@@ -136,3 +143,6 @@ func _on_potion_cooldown_timer_timeout() -> void:
 
 func _on_summon_cooldown_timer_timeout() -> void:
     summon_cooldown.stop()
+
+func _on_tool_inventory_updated() -> void:
+    tool_inventory_updated.emit()
