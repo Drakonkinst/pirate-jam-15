@@ -40,4 +40,5 @@ func damage(val):
 
 
 func _on_health_death():
+    GlobalVariables.get_pickup_manager().spawn_pickup_drop(Pickup.PickupType.GOLD,global_position,1)
     queue_free()
