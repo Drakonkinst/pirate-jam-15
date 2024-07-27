@@ -20,7 +20,7 @@ enum Tool {
 
 # TODO: Inventory counts
 var current_tool: Tool = Tool.MAGIC_BOLT
-var selected_potion: ThrownProjectile.Type
+var selected_potion: ThrownProjectile.Type = ThrownProjectile.Type.POTION_WOOD
 var ordered_tool_cooldowns: Array[Timer]
 
 func _ready() -> void:
@@ -48,6 +48,9 @@ func handle_action(target_pos: Vector2) -> bool:
         _:
             print("Unknown tool")
     return false
+
+func set_selected_potion(type: ThrownProjectile.Type) -> void:
+    selected_potion = type
 
 func _do_attack(target_pos: Vector2) -> bool:
     var projectile_manager: ProjectileManager = GlobalVariables.get_projectile_manager()
@@ -81,19 +84,8 @@ func _do_destroy(target_pos: Vector2) -> bool:
 func _do_potion(target_pos: Vector2) -> bool:
     var projectile_manager: ProjectileManager = GlobalVariables.get_projectile_manager()
     # projectile_manager.throw_random_projectile(target_pos)
-    var type: ThrownProjectile.Type
-
-    var choice = randi() % 3
-    if choice == 1:
-        type = ThrownProjectile.Type.POTION_STONE
-    elif choice == 2:
-        type = ThrownProjectile.Type.POTION_QUARTZ
-    elif choice == 3:
-        # type = ThrownProjectile.Type.POTION_OIL
-        pass
-    else:
-        type = ThrownProjectile.Type.POTION_WOOD
-
+    var type: ThrownProjectile.Type = selected_potion
+    # TODO: Check inventory
     var success = projectile_manager.throw_projectile(type, target_pos)
     if success:
         potion_cooldown.start()

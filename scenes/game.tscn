@@ -194,6 +194,7 @@ horizontal_alignment = 1
 
 [node name="ToolBarHud" parent="HUD" instance=ExtResource("9_dlv2r")]
 mouse_filter = 1
+potion_tool_icons = null
 
 [node name="ResourceHud" parent="HUD" instance=ExtResource("3_oot8a")]
 
@@ -307,7 +308,7 @@ offset_right = 1374.0
 offset_bottom = 350.0
 theme_override_colors/font_color = Color(0.593134, 0.593134, 0.593134, 1)
 theme_override_font_sizes/font_size = 26
-text = "(Click to skip / advance)"
+text = "(Click to advance, X to skip)"
 horizontal_alignment = 2
 vertical_alignment = 2
 metadata/_edit_use_anchors_ = true

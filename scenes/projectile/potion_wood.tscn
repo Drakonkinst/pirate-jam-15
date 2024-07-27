@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://caimb710mdulv"]
 
 [ext_resource type="PackedScene" uid="uid://cyq7jll2t5va" path="res://scenes/projectile/thrown_projectile.tscn" id="1_bm66x"]
-[ext_resource type="Texture2D" uid="uid://klv2cy861ymq" path="res://assets/textures/potion/wood_potion.png" id="2_c3puv"]
+[ext_resource type="Texture2D" uid="uid://klv2cy861ymq" path="res://assets/textures/potion/potion_wood.png" id="2_wa5g7"]
 [ext_resource type="Script" path="res://scenes/projectile/potion_transform_behavior.gd" id="3_3utad"]
 
 [node name="Projectile" node_paths=PackedStringArray("behavior") instance=ExtResource("1_bm66x")]
 behavior = NodePath("Behavior")
 
 [node name="Sprite2D" parent="." index="1"]
-position = Vector2(0, -48)
+position = Vector2(0, -3)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_c3puv")
+texture = ExtResource("2_wa5g7")
 
 [node name="Behavior" type="Node2D" parent="." index="2"]
 script = ExtResource("3_3utad")

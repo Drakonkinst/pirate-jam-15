@@ -8,7 +8,7 @@
 behavior = NodePath("Behavior")
 
 [node name="Sprite2D" parent="." index="1"]
-position = Vector2(0, -48)
+position = Vector2(0, -3)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_cbooe")
 

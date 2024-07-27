@@ -15,30 +15,56 @@ const TOOL_ORDER: Array[ToolBar.Tool] = [
     ToolBar.Tool.POTION,
     ToolBar.Tool.SUMMON
 ]
+const POTION_ORDER: Array[ThrownProjectile.Type] = [
+    ThrownProjectile.Type.POTION_WOOD,
+    ThrownProjectile.Type.POTION_STONE,
+    ThrownProjectile.Type.POTION_QUARTZ,
+    ThrownProjectile.Type.POTION_OIL,
+]
 @export var buttons: Array[ToolBarIcon]
 @export var highlight_material: Material
+@export var highlight_thin_material: Material
+@export var potion_expand_menu: ExpandMenu
+@export var summon_expand_menu: ExpandMenu
+@export var potion_tool_icons: Array[Texture2D]
 
 @onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 var toolbar: ToolBar
 
 var is_tab_open: bool = false
+var started_first_click: bool = false
 
 func _ready() -> void:
     toolbar = GlobalVariables.get_toolbar()
+    _set_selected_potion(0)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     var cooldown_array: Array[float] = toolbar.get_cooldown_array()
     for i in buttons.size():
         buttons[i].update_cooldown(cooldown_array[i])
 
-
-func handle_click(mouse_pos: Vector2) -> bool:
+func handle_click(mouse_pos: Vector2, first_click: bool) -> bool:
     if is_tab_open:
-        # TODO: Close tab
+        potion_expand_menu.hide_dropdown()
+        summon_expand_menu.hide_dropdown()
         is_tab_open = false
         return true
 
-    return toolbar.handle_action(mouse_pos)
+    if first_click:
+        started_first_click = true
+    if started_first_click:
+        return toolbar.handle_action(mouse_pos)
+    return false
+
+func off_click() -> void:
+    started_first_click = false
+
+func _set_selected_potion(index: int) -> void:
+    toolbar.set_selected_potion(POTION_ORDER[index])
+    var tool_index: int = TOOL_ORDER.find(ToolBar.Tool.POTION)
+    var new_texture: Texture2D = potion_tool_icons[index]
+    # buttons[tool_index].texture_normal = new_texture
+    buttons[tool_index].progress_overlay.texture_progress = new_texture
 
 func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed(SELECT_1_INPUT):
@@ -70,8 +96,35 @@ func _on_summon_button_button_down() -> void:
 func _on_tool_bar_tool_changed(tool: ToolBar.Tool) -> void:
     # TODO: Update current active tool
     var tool_index = TOOL_ORDER.find(tool, 0)
+    var needs_thin = tool == ToolBar.Tool.POTION or tool == ToolBar.Tool.SUMMON
     for i in buttons.size():
         if i == tool_index:
-            buttons[i].apply_material(highlight_material)
+            if needs_thin:
+                buttons[i].apply_material(highlight_thin_material)
+            else:
+                buttons[i].apply_material(highlight_material)
         else:
             buttons[i].apply_material(null)
+
+func _on_potion_expand_menu_click_index(index: int) -> void:
+    toolbar.set_tool(ToolBar.Tool.POTION)
+    _set_selected_potion(index)
+
+func _on_summon_expand_menu_click_index(index: int) -> void:
+    toolbar.set_tool(ToolBar.Tool.SUMMON)
+    # TODO
+    pass
+
+func _on_potion_expand_menu_menu_opened() -> void:
+    summon_expand_menu.hide_dropdown()
+    is_tab_open = true
+
+func _on_summon_expand_menu_menu_opened() -> void:
+    potion_expand_menu.hide_dropdown()
+    is_tab_open = true
+
+func _on_potion_expand_menu_menu_closed() -> void:
+    is_tab_open = false
+
+func _on_summon_expand_menu_menu_closed() -> void:
+    is_tab_open = false

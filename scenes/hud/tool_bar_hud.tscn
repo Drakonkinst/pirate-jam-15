@@ -1,24 +1,31 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqbxejr72xyb3"]
+[gd_scene load_steps=21 format=3 uid="uid://cqbxejr72xyb3"]
 
 [ext_resource type="Script" path="res://scenes/hud/tool_bar_hud.gd" id="1_nptwf"]
 [ext_resource type="Texture2D" uid="uid://tkvdjxmelk14" path="res://assets/ui/GUI-1.png.png" id="2_o1r3x"]
 [ext_resource type="Texture2D" uid="uid://de2rw7qb6ivnu" path="res://assets/textures/icon/icon-cast.png" id="3_b6np5"]
 [ext_resource type="Material" uid="uid://dawr3v4rqfldd" path="res://data/sprite/highlight_material.tres" id="3_h2egh"]
+[ext_resource type="Material" uid="uid://dripghlxlqi8y" path="res://data/sprite/highlight_thin_material.tres" id="3_x5q4i"]
 [ext_resource type="Texture2D" uid="uid://cmsofbqengwtf" path="res://assets/textures/icon/icon-torch.png" id="4_qwe61"]
 [ext_resource type="Script" path="res://scenes/hud/tool_bar_icon.gd" id="5_bf7hs"]
 [ext_resource type="Texture2D" uid="uid://cl5iw1n8edw7j" path="res://assets/textures/icon/icon-pickaxe.png" id="5_hxrcs"]
 [ext_resource type="Texture2D" uid="uid://dlor8yt37nk47" path="res://assets/textures/icon/icon-torch-full.png" id="6_3olgf"]
 [ext_resource type="Texture2D" uid="uid://c1xsyfss3rwrv" path="res://assets/textures/icon/icon-cast-full.png" id="6_iag50"]
-[ext_resource type="Texture2D" uid="uid://bkjao8srineem" path="res://assets/textures/icon/icon-potion.png" id="6_wints"]
 [ext_resource type="Texture2D" uid="uid://72u44d545dyr" path="res://assets/textures/icon/icon-summon.png" id="7_6xgn1"]
 [ext_resource type="Texture2D" uid="uid://dxsb05hlpce5t" path="res://assets/textures/icon/icon-pickaxe-full.png" id="9_ae608"]
+[ext_resource type="PackedScene" uid="uid://chutr6l0yecw4" path="res://scenes/menus/expand_menu.tscn" id="13_642hw"]
+[ext_resource type="Texture2D" uid="uid://dwkbhyexca3yh" path="res://assets/textures/icon/icon-summon-full.png" id="14_cueg8"]
+[ext_resource type="Texture2D" uid="uid://klv2cy861ymq" path="res://assets/textures/potion/potion_wood.png" id="16_0rq7f"]
+[ext_resource type="Texture2D" uid="uid://c3whl0vb4wi2d" path="res://assets/textures/potion/potion_grayscale.png" id="16_rj06c"]
+[ext_resource type="Texture2D" uid="uid://d0qqo84efcd8e" path="res://assets/textures/potion/stone_potion.png" id="17_1fsco"]
+[ext_resource type="Texture2D" uid="uid://3fi7oa62uert" path="res://assets/textures/potion/quartz_potion.png" id="18_yd8uy"]
+[ext_resource type="Texture2D" uid="uid://uibvlcal4fy0" path="res://assets/textures/potion/potion_oil.png" id="19_vxb4t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ie0ih"]
 texture = ExtResource("2_o1r3x")
 texture_margin_left = 1.0
 texture_margin_right = 1.0
 
-[node name="ToolBarHud" type="Control" node_paths=PackedStringArray("buttons")]
+[node name="ToolBarHud" type="Control" node_paths=PackedStringArray("buttons", "potion_expand_menu", "summon_expand_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +35,10 @@ grow_vertical = 2
 script = ExtResource("1_nptwf")
 buttons = [NodePath("MarginContainer/ActionsContainer/AttackButton"), NodePath("MarginContainer/ActionsContainer/TorchButton"), NodePath("MarginContainer/ActionsContainer/DestroyButton"), NodePath("MarginContainer/ActionsContainer/PotionButton"), NodePath("MarginContainer/ActionsContainer/SummonButton")]
 highlight_material = ExtResource("3_h2egh")
+highlight_thin_material = ExtResource("3_x5q4i")
+potion_expand_menu = NodePath("PotionExpandMenu")
+summon_expand_menu = NodePath("SummonExpandMenu")
+potion_tool_icons = Array[Texture2D]([ExtResource("16_0rq7f"), ExtResource("17_1fsco"), ExtResource("18_yd8uy"), ExtResource("19_vxb4t")])
 
 [node name="Background" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -132,31 +143,26 @@ nine_patch_stretch = true
 texture_progress = ExtResource("9_ae608")
 
 [node name="PotionButton" type="TextureButton" parent="MarginContainer/ActionsContainer"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(70, 100)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 action_mode = 0
-texture_normal = ExtResource("6_wints")
+texture_normal = ExtResource("16_rj06c")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("5_bf7hs")
 
 [node name="ProgressOverlay" type="TextureProgressBar" parent="MarginContainer/ActionsContainer/PotionButton"]
-visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+offset_top = 15.0
 offset_right = 176.0
-offset_bottom = 176.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.313, 0.313)
+offset_bottom = 191.0
+scale = Vector2(0.4, 0.4)
 value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
-texture_progress = ExtResource("6_3olgf")
+texture_progress = ExtResource("16_0rq7f")
 
 [node name="SummonButton" type="TextureButton" parent="MarginContainer/ActionsContainer"]
 custom_minimum_size = Vector2(80, 80)
@@ -170,7 +176,7 @@ stretch_mode = 5
 script = ExtResource("5_bf7hs")
 
 [node name="ProgressOverlay" type="TextureProgressBar" parent="MarginContainer/ActionsContainer/SummonButton"]
-visible = false
+modulate = Color(0, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,7 +189,19 @@ scale = Vector2(0.313, 0.313)
 value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
-texture_progress = ExtResource("6_3olgf")
+texture_progress = ExtResource("14_cueg8")
+
+[node name="PotionExpandMenu" parent="." instance=ExtResource("13_642hw")]
+layout_mode = 1
+option_1_texture = ExtResource("16_0rq7f")
+option_2_texture = ExtResource("17_1fsco")
+option_3_texture = ExtResource("18_yd8uy")
+option_4_texture = ExtResource("19_vxb4t")
+
+[node name="SummonExpandMenu" parent="." instance=ExtResource("13_642hw")]
+layout_mode = 1
+offset_left = 612.0
+offset_right = 652.0
 
 [connection signal="button_down" from="MarginContainer/ActionsContainer/AttackButton" to="." method="_on_attack_button_button_down"]
 [connection signal="button_up" from="MarginContainer/ActionsContainer/AttackButton" to="." method="_on_attack_button_button_up"]
@@ -191,3 +209,9 @@ texture_progress = ExtResource("6_3olgf")
 [connection signal="button_down" from="MarginContainer/ActionsContainer/DestroyButton" to="." method="_on_destroy_button_button_down"]
 [connection signal="button_down" from="MarginContainer/ActionsContainer/PotionButton" to="." method="_on_potion_button_button_down"]
 [connection signal="button_down" from="MarginContainer/ActionsContainer/SummonButton" to="." method="_on_summon_button_button_down"]
+[connection signal="click_index" from="PotionExpandMenu" to="." method="_on_potion_expand_menu_click_index"]
+[connection signal="menu_closed" from="PotionExpandMenu" to="." method="_on_potion_expand_menu_menu_closed"]
+[connection signal="menu_opened" from="PotionExpandMenu" to="." method="_on_potion_expand_menu_menu_opened"]
+[connection signal="click_index" from="SummonExpandMenu" to="." method="_on_summon_expand_menu_click_index"]
+[connection signal="menu_closed" from="SummonExpandMenu" to="." method="_on_summon_expand_menu_menu_closed"]
+[connection signal="menu_opened" from="SummonExpandMenu" to="." method="_on_summon_expand_menu_menu_opened"]

@@ -6,6 +6,7 @@ signal finish_conversation
 
 const CHARACTERS_PER_SECOND := 20
 const CLICK_INPUT := "click"
+const CLOSE_DIALOGUE_INPUT := "close_dialogue"
 const PROP_FONT_COLOR := "theme_override_colors/font_color"
 
 const PLAYER_DEFAULT := "player"
@@ -96,11 +97,9 @@ func end_conversation() -> void:
     disable()
 
 func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_pressed(CLICK_INPUT):
-        handle_click()
-
-func handle_click() -> bool:
     if not active:
-        return false
-    skip_to_next_line()
-    return true
+        return
+    if event.is_action_pressed(CLICK_INPUT):
+        skip_to_next_line()
+    if event.is_action_pressed(CLOSE_DIALOGUE_INPUT):
+        end_conversation()

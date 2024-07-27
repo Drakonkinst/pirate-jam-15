@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da3hjesdv4i0i"
-path="res://.godot/imported/wood_potion.png-f7597733a36303f9c34c232833691e1a.ctex"
+uid="uid://klv2cy861ymq"
+path="res://.godot/imported/potion_wood.png-0c1168257f34ee2ac9eda2d29ce1772d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/potion/wood_potion.png"
-dest_files=["res://.godot/imported/wood_potion.png-f7597733a36303f9c34c232833691e1a.ctex"]
+source_file="res://assets/textures/potion/potion_wood.png"
+dest_files=["res://.godot/imported/potion_wood.png-0c1168257f34ee2ac9eda2d29ce1772d.ctex"]
 
 [params]
 
