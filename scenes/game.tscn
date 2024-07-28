@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=78 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -37,24 +37,31 @@
 [ext_resource type="Script" path="res://scenes/player/tool_bar.gd" id="20_akytf"]
 [ext_resource type="PackedScene" uid="uid://cj7mjnnov1jiq" path="res://scenes/player/debug_circle.tscn" id="20_capy2"]
 [ext_resource type="PackedScene" uid="uid://cj44eljqklllk" path="res://scenes/projectile/potion_oil.tscn" id="21_12ehp"]
+[ext_resource type="AudioStream" uid="uid://sl2rq8fwd4mh" path="res://assets/audio/SFXMagicBoltCast2.ogg" id="22_1s61m"]
 [ext_resource type="Texture2D" uid="uid://5cl3ivaiy1tn" path="res://assets/textures/resource/resource_shadow.png" id="22_2cmqr"]
 [ext_resource type="Script" path="res://scenes/hud/mouse_over_handler.gd" id="22_30ic7"]
 [ext_resource type="PackedScene" uid="uid://caimb710mdulv" path="res://scenes/projectile/potion_wood.tscn" id="22_i3eab"]
+[ext_resource type="AudioStream" uid="uid://ckrrxrss41ydo" path="res://assets/audio/SFXPotionSelected.ogg" id="22_vevts"]
 [ext_resource type="PackedScene" uid="uid://bijsw4pri2ff" path="res://scenes/projectile/potion_stone.tscn" id="23_65kor"]
+[ext_resource type="AudioStream" uid="uid://o23of6cpw8qf" path="res://assets/audio/SFXMagicBoltCast3.ogg" id="23_a2iab"]
 [ext_resource type="Texture2D" uid="uid://c0f67wjooigon" path="res://assets/textures/resource/resource_fire.png" id="23_c6f8w"]
 [ext_resource type="PackedScene" uid="uid://cqj3ms8wjn564" path="res://scenes/projectile/potion_quartz.tscn" id="24_50sjw"]
+[ext_resource type="AudioStream" uid="uid://bt50416hqjcxb" path="res://assets/audio/SFXMagicBoltCast.ogg" id="24_m7fgo"]
 [ext_resource type="Texture2D" uid="uid://q37qqy3fjdg2" path="res://assets/textures/resource/resource_quartz.png" id="24_qssr7"]
 [ext_resource type="Texture2D" uid="uid://bi6hufoa61ksj" path="res://assets/textures/resource/resource_wood.png" id="25_lh07w"]
 [ext_resource type="PackedScene" uid="uid://j6ftocfpm1hl" path="res://scenes/projectile/bolt.tscn" id="25_xb5cv"]
 [ext_resource type="Script" path="res://scenes/player/tool_inventory.gd" id="25_yxm1x"]
 [ext_resource type="Texture2D" uid="uid://b12vk7snwti44" path="res://assets/textures/resource/resource_fruit.png" id="26_tx8vj"]
 [ext_resource type="Texture2D" uid="uid://cp74hu4ij71w1" path="res://assets/textures/resource/resource_stone.png" id="27_wwljy"]
+[ext_resource type="AudioStream" uid="uid://bx485s10qbsuq" path="res://assets/audio/SFXPotionThrow.ogg" id="28_dd6wx"]
 [ext_resource type="Script" path="res://scenes/light/light_manager.gd" id="28_m2bqy"]
 [ext_resource type="Script" path="res://scenes/hud/click_handler.gd" id="28_xelsv"]
 [ext_resource type="PackedScene" uid="uid://xwlygvxjdnu2" path="res://scenes/light/light_torch.tscn" id="29_tx1bu"]
+[ext_resource type="AudioStream" uid="uid://dh5yd5227d7un" path="res://assets/audio/SFXPotionThrow2.ogg" id="29_u3u3v"]
 [ext_resource type="Script" path="res://scenes/enemy/enemy_spawner.gd" id="29_uoojh"]
 [ext_resource type="PackedScene" uid="uid://qqbtem7vl5pf" path="res://scenes/enemy/shadow_sprite_enemy.tscn" id="30_8m317"]
 [ext_resource type="PackedScene" uid="uid://c8pxl8kvqxfqw" path="res://scenes/light/light_quartz.tscn" id="30_52igg"]
+[ext_resource type="AudioStream" uid="uid://bj1altj7pui7m" path="res://assets/audio/SFXPotionThrow3.ogg" id="30_wlvrs"]
 [ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/Level1SpawnSchedule.tres" id="31_e2klb"]
 [ext_resource type="PackedScene" uid="uid://dbb3qghct8ehc" path="res://scenes/enemy/golem_enemy.tscn" id="31_e8cvn"]
 [ext_resource type="PackedScene" uid="uid://cu6wwp5my8ay" path="res://scenes/effect/explosion.tscn" id="36_y78bo"]
@@ -63,7 +70,7 @@
 [ext_resource type="AudioStream" uid="uid://bi8dingytba6n" path="res://assets/audio/MUSICBackground.ogg" id="49_dv2lr"]
 [ext_resource type="PackedScene" uid="uid://dp8q0ibg5x7oc" path="res://scenes/menus/pause_menu.tscn" id="50_t4lxk"]
 [ext_resource type="AudioStream" uid="uid://b0e7oiuo6qjj4" path="res://assets/audio/sfx/SFXUnpause.ogg" id="51_jfmbr"]
-[ext_resource type="AudioStream" uid="uid://pac142drhyka" path="res://assets/audio/sfx/SFXPause.ogg" id="52_2xtnb"]
+[ext_resource type="AudioStream" uid="uid://bwy3k3hsarsjf" path="res://assets/audio/SFXMenuPause.ogg" id="66_807vn"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -439,14 +446,17 @@ audio_tracks = Array[AudioStream]([ExtResource("14_drgnp")])
 [node name="EquipPotionAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("22_vevts")])
 
 [node name="EquipSummonAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
 
 [node name="DoAttackAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("22_1s61m"), ExtResource("23_a2iab"), ExtResource("24_m7fgo")])
 
 [node name="DoTorchAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
 bus = &"Effects"
@@ -460,6 +470,7 @@ script = ExtResource("12_hqgvj")
 [node name="DoPotionAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
 
 [node name="DoSummonAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
 bus = &"Effects"
@@ -568,7 +579,7 @@ off_pause_audio = NodePath("UnpauseAudio")
 volume_db = -15.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("52_2xtnb")])
+audio_tracks = Array[AudioStream]([ExtResource("66_807vn")])
 min_pitch = 1.0
 max_pitch = 1.0
 
