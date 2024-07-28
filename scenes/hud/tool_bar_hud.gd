@@ -7,6 +7,8 @@ const SELECT_2_INPUT = "select_2"
 const SELECT_3_INPUT = "select_3"
 const SELECT_4_INPUT = "select_4"
 const SELECT_5_INPUT = "select_5"
+const HOTBAR_NEXT = "hotbar_next"
+const HOTBAR_PREV = "hotbar_prev"
 
 const TOOL_ORDER: Array[ToolBar.Tool] = [
     ToolBar.Tool.MAGIC_BOLT,
@@ -36,6 +38,7 @@ var toolbar: ToolBar
 
 var is_tab_open: bool = false
 var started_first_click: bool = false
+var current_tool_index: int = 0
 
 func _ready() -> void:
     toolbar = GlobalVariables.get_toolbar()
@@ -48,6 +51,7 @@ func _process(_delta: float) -> void:
     for i in buttons.size():
         buttons[i].update_cooldown(cooldown_array[i])
 
+# Really it should be ToolBar handling input and not the UI component, but ah well
 func handle_click(mouse_pos: Vector2, first_click: bool) -> bool:
     if is_tab_open:
         potion_expand_menu.hide_dropdown()
@@ -90,6 +94,12 @@ func _unhandled_input(event: InputEvent) -> void:
         toolbar.set_tool_slot(3)
     if event.is_action_pressed(SELECT_5_INPUT):
         toolbar.set_tool_slot(4)
+    if event.is_action_pressed(HOTBAR_NEXT):
+        var next_slot = (current_tool_index + 1) % TOOL_ORDER.size()
+        toolbar.set_tool_slot(next_slot)
+    elif event.is_action_pressed(HOTBAR_PREV):
+        var prev_slot = (current_tool_index + TOOL_ORDER.size() - 1) % TOOL_ORDER.size()
+        toolbar.set_tool_slot(prev_slot)
 
 func _on_attack_button_button_down() -> void:
     toolbar.set_tool(ToolBar.Tool.MAGIC_BOLT)
@@ -117,6 +127,7 @@ func _on_tool_bar_tool_changed(tool: ToolBar.Tool) -> void:
                 buttons[i].apply_material(highlight_material)
         else:
             buttons[i].apply_material(null)
+    current_tool_index = tool_index
 
 func _on_potion_expand_menu_click_index(index: int) -> void:
     toolbar.set_tool(ToolBar.Tool.POTION)

@@ -15,7 +15,6 @@ func spawn_tracking(track_node: Node2D, radius: float, type: Type) -> void:
     light.init(track_node, radius, type)
 
 func _process(_delta: float) -> void:
-    print(get_children().size(), " LIGHTS")
     pass
 
 func is_in_light(pos: Vector2) -> bool:

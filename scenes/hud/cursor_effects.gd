@@ -38,6 +38,10 @@ func _on_tool_bar_tool_changed(tool_type: ToolBar.Tool) -> void:
             _scale_sprite_to_size(50)
         ToolBar.Tool.MAGIC_BOLT:
             sprite.hide()
+        ToolBar.Tool.PICKAXE:
+            sprite.hide()
+        ToolBar.Tool.SUMMON:
+            sprite.hide()
     _update_cursor()
 
 

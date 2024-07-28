@@ -430,7 +430,7 @@ script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("15_rjc6w")])
 
 [node name="EquipPickaxeAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-volume_db = -10.0
+volume_db = -15.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("14_drgnp")])
