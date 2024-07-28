@@ -32,7 +32,6 @@ func _update_model(obstacle: Obstacle) -> void:
 func update(obstacle: Obstacle, _delta: float) -> void:
     if obstacle.transmuted_state == Obstacle.TransmutedState.DEFAULT and is_quartz:
         obstacle.calc_num_surrounding_lights()
-        print(obstacle.num_surrounding_lights)
         if obstacle.num_surrounding_lights > 0 and not obstacle.has_light():
             obstacle.light_circle = GlobalVariables.get_light_manager().spawn_tracking(obstacle.light_anchor, GlobalVariables.QUARTZ_CRYSTAL_LIGHT_RADIUS, LightManager.Type.QUARTZ)
         elif obstacle.num_surrounding_lights <= 0 and obstacle.has_light():

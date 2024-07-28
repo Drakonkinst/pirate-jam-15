@@ -2,12 +2,12 @@ extends CharacterBody2D
 
 class_name Enemy
 
-@export var move_speed = 1500.0
 @export var row = 0 
 @export var enemy_data: EnemyData
 
 var moving: bool = true
 var target_tile: GridTile = null
+var is_ally: bool = false
 
 @export var state_machine: StateMachine
 @onready var sprite = %Sprite
@@ -20,12 +20,16 @@ func _ready():
 func _physics_process(_delta):
 	move_and_slide()
 
-func get_left_tile() -> GridTile:
+func get_tile_ahead() -> GridTile:
 	var size_x = sprite.texture.get_width() * sprite.scale.x
 	var detection_offset = Vector2(-size_x / 4, 0)
-	var shadow_left_position: Vector2 = global_position + detection_offset
+	var shadow_ahead_position: Vector2
+	if is_ally:
+		shadow_ahead_position = global_position - detection_offset
+	else:
+		shadow_ahead_position = global_position + detection_offset
 
-	var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(shadow_left_position)
+	var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(shadow_ahead_position)
 	return tile
 
 func get_current_tile() -> GridTile:

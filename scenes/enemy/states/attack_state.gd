@@ -15,11 +15,12 @@ func exit():
 	timer = 0
 
 func update(_delta):
-	var obstacle = enemy.target_tile.obstacle
-	# TODO: What if object turns into oil / can no longer be targeted?
-	if not obstacle:
+	if not enemy.target_tile.has_valid_obstacle_target():
 		enemy.target_tile = null
-		transitioned.emit(self,"EnemyWalkState")
+		transitioned.emit(self, "EnemyWalkState")
+		return
+
+	if enemy.is_ally:
 		return
 
 	if timer >= cooldown:

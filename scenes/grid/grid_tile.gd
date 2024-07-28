@@ -50,6 +50,9 @@ func set_obstacle(obj: Obstacle) -> void:
     obstacle.set_tile(self)
     obstacle.removed.connect(_on_obstacle_removed)
 
+func has_valid_obstacle_target() -> bool:
+    return obstacle != null and not obstacle.data.can_pass_through
+
 func scale_sprite(tile_width: float, tile_height: float) -> void:
     var texture_width = sprite.texture.get_width()
     var texture_height = sprite.texture.get_height()
