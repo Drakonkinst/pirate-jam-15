@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://bu1wggooa0cd"]
+
+[ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/enemy.tscn" id="1_meisp"]
+[ext_resource type="Texture2D" uid="uid://baih51akw6x86" path="res://assets/textures/enemy/golem/Rock_Golem_1.PNG" id="2_xfxns"]
+[ext_resource type="Resource" uid="uid://d2iphbjhwbx4u" path="res://data/enemy/golemdata/windgolem.tres" id="2_xgc10"]
+[ext_resource type="Texture2D" uid="uid://bdul80ndc7npr" path="res://assets/textures/enemy/golem/Rock_Golem_2.PNG" id="3_8gehq"]
+[ext_resource type="Texture2D" uid="uid://u18egycwx068" path="res://assets/textures/enemy/golem/Rock_Golem_3.PNG" id="4_bop5l"]
+[ext_resource type="Texture2D" uid="uid://c2qvbjgq4uidf" path="res://assets/textures/enemy/golem/Rock_Golem_4.PNG" id="5_38apg"]
+[ext_resource type="Script" path="res://scenes/enemy/states/walk_state.gd" id="6_8q8i4"]
+[ext_resource type="Script" path="res://scenes/enemy/states/attack_state.gd" id="7_sbdtt"]
+
+[sub_resource type="Animation" id="Animation_an6pc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_xfxns")]
+}
+
+[sub_resource type="Animation" id="Animation_llao3"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_xfxns"), ExtResource("3_8gehq"), ExtResource("4_bop5l"), ExtResource("5_38apg"), ExtResource("3_8gehq")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h0swy"]
+_data = {
+"RESET": SubResource("Animation_an6pc"),
+"walk": SubResource("Animation_llao3")
+}
+
+[node name="WindGolem" instance=ExtResource("1_meisp")]
+enemy_data = ExtResource("2_xgc10")
+
+[node name="Sprite" type="Sprite2D" parent="." index="1"]
+unique_name_in_owner = true
+modulate = Color(1.75, 1.75, 1, 1)
+y_sort_enabled = true
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_xfxns")
+offset = Vector2(0, -100)
+region_rect = Rect2(600, 100, 2150, 2350)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_h0swy")
+}
+
+[node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("EnemyWalkState")
+
+[node name="EnemyWalkState" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_8q8i4")
+enemy = NodePath("../..")
+
+[node name="EnemyAttackState" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy")]
+script = ExtResource("7_sbdtt")
+enemy = NodePath("../..")
+
+[editable path="Healthbar"]

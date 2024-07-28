@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbb3qghct8ehc"]
+[gd_scene load_steps=12 format=3 uid="uid://dbb3qghct8ehc"]
 
-[ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/enemy.tscn" id="1_0lg53"]
-[ext_resource type="Texture2D" uid="uid://26wk5q548sxm" path="res://assets/textures/enemy/ShadowTemp3.png" id="2_43yuh"]
-[ext_resource type="Resource" uid="uid://b044c372ru7i5" path="res://data/enemy/shadowgolemdata.tres" id="2_e3uvx"]
-[ext_resource type="Script" path="res://scenes/enemy/states/walk_state.gd" id="3_rk6vm"]
-[ext_resource type="Script" path="res://scenes/enemy/states/attack_state.gd" id="4_i1t3s"]
+[ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/enemy.tscn" id="1_kcotu"]
+[ext_resource type="Resource" uid="uid://b044c372ru7i5" path="res://data/enemy/golemdata/shadowgolemdata.tres" id="2_b128n"]
+[ext_resource type="Texture2D" uid="uid://baih51akw6x86" path="res://assets/textures/enemy/golem/Rock_Golem_1.PNG" id="3_ierkq"]
+[ext_resource type="Texture2D" uid="uid://bdul80ndc7npr" path="res://assets/textures/enemy/golem/Rock_Golem_2.PNG" id="4_ba5eo"]
+[ext_resource type="Texture2D" uid="uid://u18egycwx068" path="res://assets/textures/enemy/golem/Rock_Golem_3.PNG" id="5_coifq"]
+[ext_resource type="Texture2D" uid="uid://c2qvbjgq4uidf" path="res://assets/textures/enemy/golem/Rock_Golem_4.PNG" id="6_35umv"]
+[ext_resource type="Script" path="res://scenes/enemy/states/walk_state.gd" id="7_pwms5"]
+[ext_resource type="Script" path="res://scenes/enemy/states/attack_state.gd" id="8_d1y44"]
 
 [sub_resource type="Animation" id="Animation_an6pc"]
 length = 0.001
@@ -18,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_43yuh")]
+"values": [ExtResource("3_ierkq")]
 }
 
 [sub_resource type="Animation" id="Animation_llao3"]
@@ -32,10 +35,10 @@ tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("2_43yuh"), ExtResource("2_43yuh"), ExtResource("2_43yuh"), ExtResource("2_43yuh")]
+"values": [ExtResource("3_ierkq"), ExtResource("4_ba5eo"), ExtResource("5_coifq"), ExtResource("6_35umv"), ExtResource("4_ba5eo")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h0swy"]
@@ -44,15 +47,15 @@ _data = {
 "walk": SubResource("Animation_llao3")
 }
 
-[node name="GolemEnemy" instance=ExtResource("1_0lg53")]
-enemy_data = ExtResource("2_e3uvx")
+[node name="GolemEnemy" instance=ExtResource("1_kcotu")]
+enemy_data = ExtResource("2_b128n")
 
 [node name="Sprite" type="Sprite2D" parent="." index="1"]
 unique_name_in_owner = true
 y_sort_enabled = true
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("2_43yuh")
-offset = Vector2(0, -600)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_ierkq")
+offset = Vector2(0, -100)
 region_rect = Rect2(600, 100, 2150, 2350)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
@@ -64,12 +67,11 @@ libraries = {
 initial_state = NodePath("EnemyWalkState")
 
 [node name="EnemyWalkState" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy")]
-script = ExtResource("3_rk6vm")
+script = ExtResource("7_pwms5")
 enemy = NodePath("../..")
-slow_ratio = null
 
 [node name="EnemyAttackState" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy")]
-script = ExtResource("4_i1t3s")
+script = ExtResource("8_d1y44")
 enemy = NodePath("../..")
 
 [editable path="Healthbar"]

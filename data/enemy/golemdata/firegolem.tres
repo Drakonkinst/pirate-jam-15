@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://b3xfvl434mqom"]
+
+[ext_resource type="Script" path="res://data/enemy/enemy_data.gd" id="1_cewft"]
+
+[resource]
+script = ExtResource("1_cewft")
+health = 250
+attack_damage = 25
+attack_frequency = 1.0

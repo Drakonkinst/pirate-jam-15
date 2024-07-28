@@ -13,5 +13,5 @@ enum RowPosition {
 
 
 @export var spawn_time: float
-@export var spawn_type: EnemySpawner.EnemyType = EnemySpawner.EnemyType.ShadowSprite
+@export var spawn_type: EnemySpawner.EnemyType = EnemySpawner.EnemyType.RockSprite
 @export var row: RowPosition = RowPosition.Random
