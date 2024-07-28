@@ -5,9 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://chkleabis36tk" path="res://assets/textures/obstacle/oil_spill.png" id="2_ulbsa"]
 [ext_resource type="Script" path="res://scenes/obstacle/oil_spill_behavior.gd" id="4_ir1mx"]
 
-[node name="OilSpill" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_nl8qt")]
+[node name="OilSpill" instance=ExtResource("1_nl8qt")]
 data = ExtResource("2_krvas")
-behaviors = [NodePath("OilSpillBehavior")]
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(0, -3)
@@ -27,6 +26,9 @@ scale = Vector2(0.211608, 0.211608)
 
 [node name="FlameParticle3" parent="ObstacleModel1/Flaming" index="2"]
 position = Vector2(-1.44356, 22.0562)
+
+[node name="LightAnchor" parent="ObstacleModel1" index="2"]
+position = Vector2(-10, -7)
 
 [node name="OilSpillBehavior" type="Node2D" parent="." index="3" node_paths=PackedStringArray("model")]
 script = ExtResource("4_ir1mx")

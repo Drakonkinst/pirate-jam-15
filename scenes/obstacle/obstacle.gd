@@ -28,14 +28,36 @@ var transmuted_state: TransmutedState = TransmutedState.DEFAULT
 @export var data: ObstacleData
 @export var alternate_models: Array[ObstacleModel] # Optional array. If there are variations of the same model, can list them all here to choose randomly
 @export var behaviors: Array[ObstacleBehavior] # Optional array of behaviors
+@export var light_anchor: Node2D
 
+var light_circle: LightCircle
 var loot: Dictionary
+var num_surrounding_lights = 0
 
 func _process(delta: float) -> void:
     for behavior: ObstacleBehavior in behaviors:
         # Quick null check just in case
         if behavior:
             behavior.update(self, delta)
+
+    # Quartz obstacles can receive light sources from OBSTACLES only (not moving objects/enemies)
+    # Also assumes quartz cannot also be caught on fire
+    if transmuted_state == TransmutedState.QUARTZ:
+        calc_num_surrounding_lights()
+        if num_surrounding_lights <= 0 and has_light():
+            delete_light()
+        elif num_surrounding_lights > 0 and not has_light():
+            light_circle = GlobalVariables.get_light_manager().spawn_tracking(light_anchor, GlobalVariables.QUARTZ_LIGHT_RADIUS, LightManager.Type.QUARTZ)
+
+func calc_num_surrounding_lights() -> void:
+    num_surrounding_lights = 0
+    var neighbors: Array[GridTile] = GlobalVariables.get_grid().get_neighbors(tile, false, false)
+    for neighbor in neighbors:
+        if neighbor.obstacle and (neighbor.obstacle.has_light() or neighbor.obstacle.data.id == Obstacle.Type.TORCH):
+            num_surrounding_lights += 1
+
+func has_light() -> bool:
+    return light_circle != null and is_instance_valid(light_circle)
 
 func choose_model() -> void:
     if alternate_models.size() <= 0:
@@ -124,9 +146,20 @@ func set_on_fire(duration: float) -> void:
     burning_state.start_burning_time(duration)
     model.set_flaming(true)
 
+    # Spawn light
+    if has_light():
+        return
+    light_circle = GlobalVariables.get_light_manager().spawn_tracking(light_anchor, GlobalVariables.FLAMING_OBJECT_LIGHT_RADIUS, LightManager.Type.FIRE)
+
 func put_out_fire() -> void:
     burning_state.reset_burning_time()
     model.set_flaming(false)
+    if has_light():
+        delete_light()
+
+func delete_light() -> void:
+    light_circle.queue_free()
+    light_circle = null
 
 func is_flammable() -> bool:
     if transmuted_state == TransmutedState.DEFAULT:

@@ -36,6 +36,9 @@ texture = ExtResource("6_c0425")
 visible = false
 position = Vector2(-3, -25)
 
+[node name="LightAnchor" parent="ObstacleModel1" index="2"]
+position = Vector2(0, 3)
+
 [node name="StoneVariantsBehavior" type="Node2D" parent="." index="5"]
 script = ExtResource("7_lu4jj")
 tree_crystal = ExtResource("8_1cdkk")

@@ -23,9 +23,8 @@ script = ExtResource("3_5fetk")
 state = 1
 texture = ExtResource("3_g02xa")
 
-[node name="DeadSapling" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_cr6mj")]
+[node name="DeadSapling" instance=ExtResource("1_cr6mj")]
 data = ExtResource("2_s53sl")
-behaviors = [NodePath("TransformOnTransmute")]
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(0, -4)
@@ -46,6 +45,9 @@ position = Vector2(-6.06767, 36.2942)
 
 [node name="FlameParticle3" parent="ObstacleModel1/Flaming" index="2"]
 position = Vector2(12.1353, 34.7162)
+
+[node name="LightAnchor" parent="ObstacleModel1" index="2"]
+position = Vector2(0, -3)
 
 [node name="Healthbar" parent="." index="3"]
 offset_top = -79.0

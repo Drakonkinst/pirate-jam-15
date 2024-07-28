@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=71 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -49,11 +49,12 @@
 [ext_resource type="Script" path="res://scenes/player/tool_inventory.gd" id="25_yxm1x"]
 [ext_resource type="Texture2D" uid="uid://b12vk7snwti44" path="res://assets/textures/resource/resource_fruit.png" id="26_tx8vj"]
 [ext_resource type="Texture2D" uid="uid://cp74hu4ij71w1" path="res://assets/textures/resource/resource_stone.png" id="27_wwljy"]
-[ext_resource type="PackedScene" uid="uid://xwlygvxjdnu2" path="res://scenes/light/light_circle.tscn" id="28_iy4br"]
 [ext_resource type="Script" path="res://scenes/light/light_manager.gd" id="28_m2bqy"]
 [ext_resource type="Script" path="res://scenes/hud/click_handler.gd" id="28_xelsv"]
+[ext_resource type="PackedScene" uid="uid://xwlygvxjdnu2" path="res://scenes/light/light_torch.tscn" id="29_tx1bu"]
 [ext_resource type="Script" path="res://scenes/enemy/enemy_spawner.gd" id="29_uoojh"]
 [ext_resource type="PackedScene" uid="uid://qqbtem7vl5pf" path="res://scenes/enemy/shadow_sprite_enemy.tscn" id="30_8m317"]
+[ext_resource type="PackedScene" uid="uid://c8pxl8kvqxfqw" path="res://scenes/light/light_quartz.tscn" id="30_52igg"]
 [ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/Level1SpawnSchedule.tres" id="31_e2klb"]
 [ext_resource type="PackedScene" uid="uid://dbb3qghct8ehc" path="res://scenes/enemy/golem_enemy.tscn" id="31_e8cvn"]
 [ext_resource type="PackedScene" uid="uid://cu6wwp5my8ay" path="res://scenes/effect/explosion.tscn" id="36_y78bo"]
@@ -478,7 +479,8 @@ debug_marker_scene = ExtResource("20_capy2")
 [node name="LightManager" type="CanvasGroup" parent="World/Grid"]
 self_modulate = Color(1, 1, 1, 0.156863)
 script = ExtResource("28_m2bqy")
-light_circle_scene = ExtResource("28_iy4br")
+light_torch_scene = ExtResource("29_tx1bu")
+light_quartz_scene = ExtResource("30_52igg")
 
 [node name="ObstacleManager" type="Node2D" parent="World"]
 z_index = 1

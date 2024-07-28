@@ -98,13 +98,16 @@ func get_tile_center(tile: GridTile) -> Vector2:
 func is_on_grid(pos: Vector2) -> bool:
     return screenspace_to_tile(pos) != null
 
-func get_neighbors(center_tile: GridTile, allow_diagonal = false) -> Array[GridTile]:
+func get_neighbors(center_tile: GridTile, allow_diagonal = false, allow_center = false) -> Array[GridTile]:
     var results: Array[GridTile] = []
     var center_row = center_tile.row
     var center_col = center_tile.col
     for row_offset in range(-1, 2):
         for col_offset in range(-1, 2):
-            if abs(row_offset) + abs(col_offset) > 1 and not allow_diagonal:
+            var magnitude = abs(row_offset) + abs(col_offset)
+            if magnitude > 1 and not allow_diagonal:
+                continue
+            if magnitude == 0 and not allow_center:
                 continue
             var row = center_row + row_offset
             var col = center_col + col_offset

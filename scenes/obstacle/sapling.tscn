@@ -19,9 +19,8 @@ script = ExtResource("3_x8dol")
 state = 2
 texture = ExtResource("5_sbv58")
 
-[node name="Sapling" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_aelaq")]
+[node name="Sapling" instance=ExtResource("1_aelaq")]
 data = ExtResource("2_yt6tw")
-behaviors = [NodePath("SaplingBehavior"), NodePath("BurnLeavesBehavior")]
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(0, -4)
@@ -43,6 +42,9 @@ position = Vector2(-8.49473, 32.3492)
 
 [node name="FlameParticle3" parent="ObstacleModel1/Flaming" index="2"]
 position = Vector2(16.3827, 25.2481)
+
+[node name="LightAnchor" parent="ObstacleModel1" index="2"]
+position = Vector2(0, -11)
 
 [node name="SaplingBehavior" type="Node2D" parent="." index="3"]
 script = ExtResource("4_l6r4w")

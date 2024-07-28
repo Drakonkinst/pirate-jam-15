@@ -3,7 +3,12 @@ extends Node
 const PLAYER_GROUP := "player"
 const POTION_RADIUS := 100
 const CONFIG_PATH = "user://settings.cfg"
+
+# Light radius
 const TORCH_LIGHT_RADIUS := 200.0
+const FLAMING_OBJECT_LIGHT_RADIUS := 175.0
+const QUARTZ_LIGHT_RADIUS := 250.0
+const QUARTZ_CRYSTAL_LIGHT_RADIUS := 200.0
 
 # Fire durations
 const TORCH_FIRE_DURATION := 5.0

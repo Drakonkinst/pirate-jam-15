@@ -9,8 +9,9 @@
 [ext_resource type="Script" path="res://scenes/burning_state.gd" id="7_at5li"]
 [ext_resource type="PackedScene" uid="uid://jci63uf5o54n" path="res://scenes/ui/healthbar.tscn" id="8_q4lad"]
 
-[node name="Obstacle" type="Node2D"]
+[node name="Obstacle" type="Node2D" node_paths=PackedStringArray("light_anchor")]
 script = ExtResource("1_pck6l")
+light_anchor = NodePath("ObstacleModel1/LightAnchor")
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("2_3c27n")
@@ -36,6 +37,9 @@ position = Vector2(-6.8569, 30.034)
 
 [node name="FlameParticle3" parent="ObstacleModel1/Flaming" instance=ExtResource("6_rjvnb")]
 position = Vector2(9.38313, 30.5033)
+
+[node name="LightAnchor" type="Node2D" parent="ObstacleModel1"]
+position = Vector2(0, -45)
 
 [node name="BurningState" type="Node2D" parent="."]
 script = ExtResource("7_at5li")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8pxl8kvqxfqw"]
+
+[ext_resource type="Texture2D" uid="uid://bmgy1sy6rb32q" path="res://assets/textures/circle_512.png" id="1_8ubao"]
+[ext_resource type="Script" path="res://scenes/light/light_circle.gd" id="2_auvjc"]
+[ext_resource type="Script" path="res://scenes/light/light_glow.gd" id="3_y1bwa"]
+[ext_resource type="FastNoiseLite" uid="uid://b14gn25tqvfvl" path="res://scenes/light/quartz_noise.tres" id="4_olxm2"]
+
+[node name="LightCircle" type="Sprite2D"]
+modulate = Color(0.999999, 0.996274, 0.754355, 1)
+position = Vector2(861, 511)
+texture = ExtResource("1_8ubao")
+script = ExtResource("2_auvjc")
+
+[node name="LightGlow" type="Node2D" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("3_y1bwa")
+sprite = NodePath("..")
+noise = ExtResource("4_olxm2")
+max_bonus = 0.1
