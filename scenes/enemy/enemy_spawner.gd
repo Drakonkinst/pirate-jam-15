@@ -2,8 +2,17 @@ extends Node2D
 
 class_name EnemySpawner
 
-@export var shadow_enemy: PackedScene
-@export var golem_enemy: PackedScene
+@export var rock_sprite: PackedScene
+@export var fire_sprite: PackedScene
+@export var wind_sprite: PackedScene
+@export var tree_sprite: PackedScene
+
+
+@export var rock_golem: PackedScene
+@export var fire_golem: PackedScene
+@export var wind_golem: PackedScene
+@export var tree_golem: PackedScene
+
 @onready var spawns_node = %Spawns
 @export var spawning_schedule: SpawningSchedule
 @export var endless_mode: bool
@@ -13,17 +22,15 @@ class_name EnemySpawner
 
 enum EnemyType {
     # Sprites
-    ShadowSprite,
-    AmberSprite,
-    QuartzSprite,
+    RockSprite,
+    TreeSprite,
+    WindSprite,
     FireSprite,
-    StoneSprite,
     # Golems
-    ShadowGolem,
-    AmberGolem,
-    QuartzGolem,
+    RockGolem,
+    TreeGolem,
+    WindGolem,
     FireGolem,
-    StoneGolem,
 }
 
 var game_timer = 0.0
@@ -86,12 +93,27 @@ func endless_get_spawn_data():
 func spawn_type_to_scene(spawn_type):
     var enemy_scene: PackedScene
     match spawn_type:
-        EnemyType.ShadowSprite:
-            enemy_scene = shadow_enemy
-        EnemyType.StoneGolem:
-            enemy_scene = golem_enemy
+        #Sprite
+        EnemyType.RockSprite:
+            enemy_scene = rock_sprite
+        EnemyType.FireSprite:
+            enemy_scene = fire_sprite
+        EnemyType.WindSprite:
+            enemy_scene = wind_sprite
+        EnemyType.TreeSprite:
+            enemy_scene = tree_sprite
+        #Golem
+        EnemyType.RockGolem:
+            enemy_scene = rock_golem
+        EnemyType.FireGolem:
+            enemy_scene = fire_golem
+        EnemyType.WindGolem:
+            enemy_scene = wind_golem
+        EnemyType.TreeGolem:
+            enemy_scene = tree_golem
+        #Default to regular sprite
         _:
-            enemy_scene = shadow_enemy
+            enemy_scene = rock_sprite
     return enemy_scene
 
 

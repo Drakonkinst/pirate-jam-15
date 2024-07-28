@@ -18,9 +18,8 @@ state_machine = NodePath("StateMachine")
 unique_name_in_owner = true
 script = ExtResource("2_2tcm3")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_0rj1h")
-initial_state = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(3.8, 3.8)
