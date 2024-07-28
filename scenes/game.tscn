@@ -112,7 +112,7 @@ class_name World
 
 "
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "toolbar")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar")]
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
 obstacle_manager = NodePath("World/ObstacleManager")
@@ -120,6 +120,7 @@ projectile_manager = NodePath("World/ProjectileManager")
 pickup_manager = NodePath("World/PickupManager")
 dialogue_manager = NodePath("DialogueManager")
 light_manager = NodePath("World/Grid/LightManager")
+enemy_spawner = NodePath("World/Enemies")
 toolbar = NodePath("ToolBar")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -525,6 +526,7 @@ gui_targets = [NodePath("../../HUD/ResourceHud/OffsetFromZoom/GoldAnchor"), Node
 
 [node name="Enemies" type="Node2D" parent="World"]
 z_index = 3
+y_sort_enabled = true
 script = ExtResource("29_uoojh")
 rock_sprite = ExtResource("47_0ykye")
 fire_sprite = ExtResource("48_pfolc")
@@ -536,23 +538,42 @@ wind_golem = ExtResource("53_i7n8v")
 tree_golem = ExtResource("54_mtxj2")
 spawning_schedule = ExtResource("31_e2klb")
 
-[node name="Spawns" type="Node2D" parent="World/Enemies"]
+[node name="EnemySpawns" type="Node2D" parent="World/Enemies"]
 unique_name_in_owner = true
-position = Vector2(1868, 10)
+position = Vector2(1868, 30)
 
-[node name="Spawn0" type="Node2D" parent="World/Enemies/Spawns"]
+[node name="Spawn0" type="Node2D" parent="World/Enemies/EnemySpawns"]
 position = Vector2(0, 260)
 
-[node name="Spawn1" type="Node2D" parent="World/Enemies/Spawns"]
+[node name="Spawn1" type="Node2D" parent="World/Enemies/EnemySpawns"]
 position = Vector2(0, 385)
 
-[node name="Spawn2" type="Node2D" parent="World/Enemies/Spawns"]
+[node name="Spawn2" type="Node2D" parent="World/Enemies/EnemySpawns"]
 position = Vector2(0, 510)
 
-[node name="Spawn3" type="Node2D" parent="World/Enemies/Spawns"]
+[node name="Spawn3" type="Node2D" parent="World/Enemies/EnemySpawns"]
 position = Vector2(0, 635)
 
-[node name="Spawn4" type="Node2D" parent="World/Enemies/Spawns"]
+[node name="Spawn4" type="Node2D" parent="World/Enemies/EnemySpawns"]
+position = Vector2(0, 760)
+
+[node name="AllySpawns" type="Node2D" parent="World/Enemies"]
+unique_name_in_owner = true
+position = Vector2(346, 30)
+
+[node name="Spawn0" type="Node2D" parent="World/Enemies/AllySpawns"]
+position = Vector2(0, 260)
+
+[node name="Spawn1" type="Node2D" parent="World/Enemies/AllySpawns"]
+position = Vector2(0, 385)
+
+[node name="Spawn2" type="Node2D" parent="World/Enemies/AllySpawns"]
+position = Vector2(0, 510)
+
+[node name="Spawn3" type="Node2D" parent="World/Enemies/AllySpawns"]
+position = Vector2(0, 635)
+
+[node name="Spawn4" type="Node2D" parent="World/Enemies/AllySpawns"]
 position = Vector2(0, 760)
 
 [node name="ProjectileManager" type="Node2D" parent="World" node_paths=PackedStringArray("explosion_parent", "splat_parent")]

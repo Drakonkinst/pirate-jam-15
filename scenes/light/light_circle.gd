@@ -16,7 +16,6 @@ func init(track_node: Node2D, radius: float, type: LightManager.Type) -> void:
     scale = Vector2(radius / texture_width, radius / texture_height)
     light_radius = radius
     light_glow.original_scale = scale
-    # TODO: Use lightManager.Type to determine tint
 
 func is_in_circle(pos: Vector2) -> bool:
     var delta_x = abs(pos.x - global_position.x)
@@ -24,7 +23,6 @@ func is_in_circle(pos: Vector2) -> bool:
     var dist_sq = delta_x * delta_x + delta_y * delta_y
     return dist_sq <= light_radius * light_radius
 
-# TODO: Can do some sort of cool animation here
 func _process(_delta: float) -> void:
     if is_instance_valid(tracking) and tracking != null and not tracking.is_queued_for_deletion():
         global_position = tracking.global_position

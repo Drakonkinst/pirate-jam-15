@@ -23,6 +23,12 @@ const POTION_ORDER: Array[ThrownProjectile.Type] = [
     ThrownProjectile.Type.POTION_QUARTZ,
     ThrownProjectile.Type.POTION_OIL,
 ]
+const SUMMON_ORDER: Array[EnemySpawner.EnemyType] = [
+    EnemySpawner.EnemyType.TreeSprite,
+    EnemySpawner.EnemyType.RockSprite,
+    EnemySpawner.EnemyType.WindSprite,
+    EnemySpawner.EnemyType.FireSprite
+]
 @export var buttons: Array[ToolBarIcon]
 @export var highlight_material: Material
 @export var highlight_thin_material: Material
@@ -76,8 +82,7 @@ func _set_selected_potion(index: int) -> void:
     buttons[tool_index].progress_overlay.texture_progress = new_texture
 
 func _set_selected_summon(index: int) -> void:
-    # TODO
-    # toolbar.set_selected_summon(POTION_ORDER[index])
+    toolbar.set_selected_summon(SUMMON_ORDER[index])
     var tool_index: int = TOOL_ORDER.find(ToolBar.Tool.SUMMON)
     var new_texture: Texture2D = summon_tool_icons[index]
     # buttons[tool_index].texture_normal = new_texture
@@ -157,7 +162,6 @@ func _on_tool_bar_tool_inventory_updated() -> void:
     summon_expand_menu.update_counts(toolbar.tool_inventory.get_summon_counts())
     var potion_count = toolbar.tool_inventory.get_potion_count(toolbar.selected_potion)
     current_potion_count.text = str(potion_count)
-    # TODO
-    var summon_count = 0
+    var summon_count = toolbar.tool_inventory.get_summon_count(toolbar.selected_summon)
     current_summon_count.text = str(summon_count)
 

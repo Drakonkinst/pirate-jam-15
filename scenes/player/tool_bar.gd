@@ -17,11 +17,13 @@ enum Tool {
 @onready var potion_cooldown: Timer = $PotionCooldown
 @onready var summon_cooldown: Timer = $SummonCooldown
 @onready var tool_inventory: ToolInventory = $ToolInventory
+@onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 
 @export var obstacle_damage: int = 10
 
 var current_tool: Tool = Tool.MAGIC_BOLT
 var selected_potion: ThrownProjectile.Type = ThrownProjectile.Type.POTION_WOOD
+var selected_summon: EnemySpawner.EnemyType = EnemySpawner.EnemyType.TreeSprite
 var ordered_tool_cooldowns: Array[Timer]
 
 func _ready() -> void:
@@ -54,9 +56,8 @@ func handle_action(target_pos: Vector2) -> bool:
 func set_selected_potion(type: ThrownProjectile.Type) -> void:
     selected_potion = type
 
-# TODO
-func set_selected_summon(type: ThrownProjectile.Type) -> void:
-    selected_potion = type
+func set_selected_summon(type: EnemySpawner.EnemyType) -> void:
+    selected_summon = type
 
 func _do_attack(target_pos: Vector2) -> bool:
     var projectile_manager: ProjectileManager = GlobalVariables.get_projectile_manager()
@@ -74,7 +75,6 @@ func _do_torch(target_pos: Vector2) -> bool:
         do_action.emit(ToolBar.Tool.TORCH)
     return success
 
-# TODO: Should work when mouse button held as well
 func _do_destroy(target_pos: Vector2) -> bool:
     var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(target_pos)
     if tile == null:
@@ -91,7 +91,6 @@ func _do_potion(target_pos: Vector2) -> bool:
     var projectile_manager: ProjectileManager = GlobalVariables.get_projectile_manager()
     # projectile_manager.throw_random_projectile(target_pos)
     var type: ThrownProjectile.Type = selected_potion
-    # TODO: Check inventory
     var success = tool_inventory.get_potion_count(type) > 0 and projectile_manager.throw_projectile(type, target_pos)
     if success:
         potion_cooldown.start()
@@ -100,13 +99,17 @@ func _do_potion(target_pos: Vector2) -> bool:
         tool_inventory_updated.emit()
     return success
 
-func _do_summon(target_pos: Vector2) -> bool:
-    summon_cooldown.start()
-    var success = true
+func _do_summon(_target_pos: Vector2) -> bool:
+    # Based on player position
+    var row = GlobalVariables.get_grid().get_grid_row_at_pos(player.position)
+    print("SPAWN AT ROW ", row)
+    var type: EnemySpawner.EnemyType = selected_summon
+    var success = tool_inventory.get_summon_count(type) > 0
     if success:
+        GlobalVariables.get_enemy_spawner().spawn_ally(row, selected_summon)
+        summon_cooldown.start()
+        tool_inventory.add_summon_count(type, -1)
         do_action.emit(ToolBar.Tool.SUMMON)
-        # TODO
-        # tool_inventory.summon(type, -1)
         tool_inventory_updated.emit()
     return success
 

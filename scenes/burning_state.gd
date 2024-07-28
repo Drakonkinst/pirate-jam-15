@@ -9,7 +9,6 @@ signal burnt
 const TICK_INTERVAL: float = 1.0
 const BURNED_AFTER: float = 2
 
-# TODO: Small change for fire to spread? Do we want this mechanic?
 var burning_time_remaining: float = 0
 var total_time_burned: float = 0
 var time_until_next_tick: float = 0

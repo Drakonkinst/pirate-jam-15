@@ -32,6 +32,10 @@ func get_tile_ahead() -> GridTile:
 	var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(shadow_ahead_position)
 	return tile
 
+func set_ally() -> void:
+	is_ally = true
+	sprite.flip_h = true
+
 func get_current_tile() -> GridTile:
 	var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(global_position)
 	return tile

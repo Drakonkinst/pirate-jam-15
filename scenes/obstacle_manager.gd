@@ -2,7 +2,6 @@ extends Node2D
 
 class_name ObstacleManager
 
-# TODO: Spawn more types of objects
 @export var tree_scene: PackedScene
 @export var rock_scene: PackedScene
 @export var oil_spill_scene: PackedScene

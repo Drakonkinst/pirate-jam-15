@@ -6,7 +6,7 @@ const BORDER = 5
 
 @export var sprite: Sprite2D
 @export var collision_shape: CollisionShape2D
-
+@onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 @onready var obstacle_parent: Node2D = $ObstacleParent
 
 var row: int
@@ -19,10 +19,7 @@ func _ready() -> void:
     default_color = sprite.modulate
 
 func _physics_process(_delta: float) -> void:
-    var grid = GlobalVariables.get_grid()
-    var mouse_pos = get_global_mouse_position()
-
-    if GlobalVariables.get_toolbar().current_tool == ToolBar.Tool.PICKAXE and grid.screenspace_to_tile(mouse_pos) == self:
+    if _should_highlight():
         sprite.modulate = Color.WHITE
         sprite.modulate.a = 0.25
     else:
@@ -34,6 +31,17 @@ func _physics_process(_delta: float) -> void:
     #     sprite.modulate.a = 0.75
     # else:
     #     sprite.modulate.a = default_opacity
+
+func _should_highlight() -> bool:
+    var grid = GlobalVariables.get_grid()
+    var mouse_pos = get_global_mouse_position()
+    var current_tool: ToolBar.Tool = GlobalVariables.get_toolbar().current_tool
+    if current_tool == ToolBar.Tool.PICKAXE:
+        return grid.screenspace_to_tile(mouse_pos) == self
+    if current_tool == ToolBar.Tool.SUMMON:
+        var player_row = grid.get_grid_row_at_pos(player.global_position)
+        return col == 0 && row == player_row
+    return false
 
 func clear_obstacle() -> void:
     # Remove all children

@@ -7,18 +7,18 @@ class_name EnemySpawner
 @export var wind_sprite: PackedScene
 @export var tree_sprite: PackedScene
 
-
 @export var rock_golem: PackedScene
 @export var fire_golem: PackedScene
 @export var wind_golem: PackedScene
 @export var tree_golem: PackedScene
 
-@onready var spawns_node = %Spawns
+@onready var enemy_spawns = %EnemySpawns
+@onready var ally_spawns = %AllySpawns
 @export var spawning_schedule: SpawningSchedule
 @export var endless_mode: bool
+@export var spawn_max_offset: float = 20.0
 
 @onready var num_spawns = len(spawning_schedule.spawns)
-
 
 enum EnemyType {
     # Sprites
@@ -59,22 +59,47 @@ func _process(delta):
 
 func check_spawn() -> bool:
     if game_timer >= next_spawn_time and current_spawn_idx < num_spawns:
-        spawn_enemy(next_spawn_row,next_spawn_scene)
+        spawn_enemy_scene(next_spawn_row, next_spawn_scene)
         return true
     return false
-    
 
-func spawn_enemy(row: int, enemy_scene: PackedScene):
-    var new_enemy = enemy_scene.instantiate()
-    new_enemy.position = get_spawn_point_position(row)
-    new_enemy.row = row
-    add_child(new_enemy)
+func spawn_enemy(row: int, enemy: EnemySpawner.EnemyType) -> Enemy:
+    return spawn_enemy_scene(row, spawn_type_to_scene(enemy))
+
+func spawn_ally(row: int, enemy: EnemySpawner.EnemyType) -> Enemy:
+    return spawn_ally_scene(row, spawn_type_to_scene(enemy))
+
+func spawn_enemy_scene(row: int, enemy_scene: PackedScene) -> Enemy:
+    var enemy_obj = enemy_scene.instantiate()
+    enemy_obj.position = get_enemy_spawn_position(row)
+    enemy_obj.row = row
+    add_child(enemy_obj)
+    var enemy = enemy_obj as Enemy
     current_spawn_idx += 1
+    return enemy
 
-func get_spawn_point_position(idx: int):    
-    var spawn = spawns_node.get_child(idx)
-    print(spawn.name)
-    return spawn.global_position
+func spawn_ally_scene(row: int, enemy_scene: PackedScene) -> Enemy:
+    var enemy_obj = enemy_scene.instantiate()
+    enemy_obj.position = get_ally_spawn_position(row)
+    enemy_obj.row = row
+    var ally = enemy_obj as Enemy
+    add_child(enemy_obj)
+    ally.set_ally()
+    return ally
+
+func get_enemy_spawn_position(row: int):
+    var spawn = enemy_spawns.get_child(row)
+    # print(spawn.name)
+    var spawn_pos = spawn.global_position
+    spawn_pos += Vector2(0, randf_range(-spawn_max_offset, spawn_max_offset))
+    return spawn_pos
+
+func get_ally_spawn_position(row: int):
+    var spawn = ally_spawns.get_child(row)
+    # print(spawn.name)
+    var spawn_pos = spawn.global_position
+    spawn_pos += Vector2(0, randf_range(-spawn_max_offset, spawn_max_offset))
+    return spawn_pos
 
 func get_spawn_data():
     var next_spawn = spawning_schedule.spawns[current_spawn_idx]
@@ -90,7 +115,7 @@ func endless_get_spawn_data():
     next_spawn_time = game_timer + 1 + (randi() % 2)
     next_spawn_row = randi_range(0,4)
 
-func spawn_type_to_scene(spawn_type):
+func spawn_type_to_scene(spawn_type: EnemySpawner.EnemyType):
     var enemy_scene: PackedScene
     match spawn_type:
         #Sprite

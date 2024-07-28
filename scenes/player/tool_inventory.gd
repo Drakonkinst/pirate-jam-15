@@ -12,7 +12,12 @@ const POTION_ORDER: Array[ThrownProjectile.Type] = [
     ThrownProjectile.Type.POTION_QUARTZ,
     ThrownProjectile.Type.POTION_OIL,
 ]
-# TODO: Make another one for summons
+const SUMMON_ORDER: Array[EnemySpawner.EnemyType] = [
+    EnemySpawner.EnemyType.TreeSprite,
+    EnemySpawner.EnemyType.RockSprite,
+    EnemySpawner.EnemyType.WindSprite,
+    EnemySpawner.EnemyType.FireSprite
+]
 
 # We could do something nice and scalable
 # Anyways here, have an array
@@ -22,8 +27,7 @@ var summon_counts: Array[int]
 func _ready() -> void:
     for i in POTION_ORDER.size():
         potion_counts.append(STARTING_COUNT)
-    # TODO: init summon counts
-    for i in 4:
+    for i in SUMMON_ORDER.size():
         summon_counts.append(STARTING_COUNT)
 
 func get_potion_count(type: ThrownProjectile.Type) -> int:
@@ -42,7 +46,18 @@ func add_potion_count(type: ThrownProjectile.Type, value: int) -> void:
 func get_potion_counts() -> Array[int]:
     return potion_counts
 
-# TODO: Add methods for summons
+func get_summon_count(type: EnemySpawner.EnemyType) -> int:
+    var index: int = SUMMON_ORDER.find(type)
+    return summon_counts[index]
+
+func set_summon_count(type: EnemySpawner.EnemyType, value: int) -> void:
+    var index: int = SUMMON_ORDER.find(type)
+    summon_counts[index] = clamp(value, 0, ITEM_MAX)
+    updated.emit()
+
+func add_summon_count(type: EnemySpawner.EnemyType, value: int) -> void:
+    var new_count = get_summon_count(type) + value
+    set_summon_count(type, new_count)
 
 func get_summon_counts() -> Array[int]:
     return summon_counts

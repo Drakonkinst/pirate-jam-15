@@ -35,6 +35,9 @@ func get_dialogue_manager() -> DialogueManager:
 func get_pickup_manager() -> PickupManager:
     return curr_game.pickup_manager
 
+func get_enemy_spawner() -> EnemySpawner:
+    return curr_game.enemy_spawner
+
 func get_toolbar() -> ToolBar:
     return curr_game.toolbar
 

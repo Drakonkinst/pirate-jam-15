@@ -48,6 +48,7 @@ _data = {
 }
 
 [node name="WindSprite" instance=ExtResource("1_oebdi")]
+z_index = 1
 enemy_data = ExtResource("2_wlqrk")
 
 [node name="Sprite" type="Sprite2D" parent="." index="1"]
