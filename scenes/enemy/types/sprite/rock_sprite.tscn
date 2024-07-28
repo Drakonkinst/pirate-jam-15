@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://qqbtem7vl5pf"]
+
+[ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/enemy.tscn" id="1_tjlg7"]
+[ext_resource type="Resource" uid="uid://bp0ds1hd06hnc" path="res://data/enemy/spritedata/rock_sprite.tres" id="2_uyo4d"]
+[ext_resource type="SpriteFrames" uid="uid://da8gei5h0vy15" path="res://data/animations/rock_sprite.tres" id="3_210jw"]
+[ext_resource type="Script" path="res://scenes/enemy/states/walk_state.gd" id="3_xiyje"]
+[ext_resource type="Script" path="res://scenes/enemy/states/attack_state.gd" id="4_ahaso"]
+
+[node name="ShadowSpriteEnemy" instance=ExtResource("1_tjlg7")]
+enemy_data = ExtResource("2_uyo4d")
+
+[node name="Sprite" parent="." index="1"]
+sprite_frames = ExtResource("3_210jw")
+frame_progress = 0.0
+
+[node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("EnemyWalkState")
+
+[node name="EnemyWalkState" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy")]
+script = ExtResource("3_xiyje")
+enemy = NodePath("../..")
+
+[node name="EnemyAttackState" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_ahaso")
+enemy = NodePath("../..")
+
+[editable path="Healthbar"]

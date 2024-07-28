@@ -61,12 +61,12 @@
 [ext_resource type="Script" path="res://scenes/enemy/enemy_spawner.gd" id="29_uoojh"]
 [ext_resource type="PackedScene" uid="uid://c8pxl8kvqxfqw" path="res://scenes/light/light_quartz.tscn" id="30_52igg"]
 [ext_resource type="AudioStream" uid="uid://bj1altj7pui7m" path="res://assets/audio/SFXPotionThrow3.ogg" id="30_wlvrs"]
-[ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/Level1SpawnSchedule.tres" id="31_e2klb"]
+[ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/level_1.tres" id="31_e2klb"]
 [ext_resource type="PackedScene" uid="uid://cu6wwp5my8ay" path="res://scenes/effect/explosion.tscn" id="36_y78bo"]
 [ext_resource type="PackedScene" uid="uid://5ye7ihrmklny" path="res://scenes/effect/splat.tscn" id="37_6rhao"]
 [ext_resource type="Script" path="res://scenes/pause_control.gd" id="40_uejed"]
-[ext_resource type="PackedScene" uid="uid://qqbtem7vl5pf" path="res://scenes/enemy/types/sprite/shadow_sprite_enemy.tscn" id="47_0ykye"]
-[ext_resource type="PackedScene" uid="uid://dbb3qghct8ehc" path="res://scenes/enemy/types/golem/golem_enemy.tscn" id="48_1g0gr"]
+[ext_resource type="PackedScene" uid="uid://qqbtem7vl5pf" path="res://scenes/enemy/types/sprite/rock_sprite.tscn" id="47_0ykye"]
+[ext_resource type="PackedScene" uid="uid://dbb3qghct8ehc" path="res://scenes/enemy/types/golem/rock_golem.tscn" id="48_1g0gr"]
 [ext_resource type="PackedScene" uid="uid://5cwnirn55jnd" path="res://scenes/enemy/types/sprite/fire_sprite.tscn" id="48_pfolc"]
 [ext_resource type="AudioStream" uid="uid://bi8dingytba6n" path="res://assets/audio/MUSICBackground.ogg" id="49_dv2lr"]
 [ext_resource type="PackedScene" uid="uid://bfrbgovkbdcr8" path="res://scenes/enemy/types/sprite/wind_sprite.tscn" id="49_k2mie"]
@@ -115,7 +115,7 @@ class_name World
 [node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar")]
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
-obstacle_manager = NodePath("World/ObstacleManager")
+obstacle_manager = NodePath("ObstacleManager")
 projectile_manager = NodePath("World/ProjectileManager")
 pickup_manager = NodePath("World/PickupManager")
 dialogue_manager = NodePath("DialogueManager")
@@ -488,9 +488,13 @@ position = Vector2(-1, 0)
 script = ExtResource("25_yxm1x")
 
 [node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
 script = SubResource("GDScript_hp6k0")
 
 [node name="Grid" parent="World" instance=ExtResource("11_7lv1o")]
+z_index = 2
+z_as_relative = false
+y_sort_enabled = true
 offset = Vector2(30, 0)
 debug_marker_scene = ExtResource("20_capy2")
 
@@ -500,32 +504,8 @@ script = ExtResource("28_m2bqy")
 light_torch_scene = ExtResource("29_tx1bu")
 light_quartz_scene = ExtResource("30_52igg")
 
-[node name="ObstacleManager" type="Node2D" parent="World"]
-z_index = 1
-script = ExtResource("10_uoctj")
-tree_scene = ExtResource("11_4iroc")
-rock_scene = ExtResource("12_bokvu")
-oil_spill_scene = ExtResource("13_tpqui")
-torch_scene = ExtResource("14_q7ayn")
-sapling_scene = ExtResource("15_0ctjf")
-dead_tree_scene = ExtResource("14_gc0kp")
-dead_sapling_scene = ExtResource("15_e3p3e")
-
-[node name="PickupManager" type="Node2D" parent="World" node_paths=PackedStringArray("pickup_parent", "gui_targets")]
-z_index = 2
-script = ExtResource("16_c2f7e")
-pickup_scene = ExtResource("16_lfyb5")
-pickup_parent = NodePath(".")
-gold_texture = ExtResource("22_2cmqr")
-fire_texture = ExtResource("23_c6f8w")
-quartz_texture = ExtResource("24_qssr7")
-sap_texture = ExtResource("25_lh07w")
-fruit_texture = ExtResource("26_tx8vj")
-stone_texture = ExtResource("27_wwljy")
-gui_targets = [NodePath("../../HUD/ResourceHud/OffsetFromZoom/GoldAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/SapAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/StoneAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/FruitAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/QuartzAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/FireAnchor")]
-
 [node name="Enemies" type="Node2D" parent="World"]
-z_index = 3
+z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("29_uoojh")
 rock_sprite = ExtResource("47_0ykye")
@@ -576,8 +556,24 @@ position = Vector2(0, 635)
 [node name="Spawn4" type="Node2D" parent="World/Enemies/AllySpawns"]
 position = Vector2(0, 760)
 
+[node name="PickupManager" type="Node2D" parent="World" node_paths=PackedStringArray("pickup_parent", "gui_targets")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+script = ExtResource("16_c2f7e")
+pickup_scene = ExtResource("16_lfyb5")
+pickup_parent = NodePath(".")
+gold_texture = ExtResource("22_2cmqr")
+fire_texture = ExtResource("23_c6f8w")
+quartz_texture = ExtResource("24_qssr7")
+sap_texture = ExtResource("25_lh07w")
+fruit_texture = ExtResource("26_tx8vj")
+stone_texture = ExtResource("27_wwljy")
+gui_targets = [NodePath("../../HUD/ResourceHud/OffsetFromZoom/GoldAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/SapAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/StoneAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/FruitAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/QuartzAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/FireAnchor")]
+
 [node name="ProjectileManager" type="Node2D" parent="World" node_paths=PackedStringArray("explosion_parent", "splat_parent")]
-z_index = 4
+z_index = 7
+z_as_relative = false
 script = ExtResource("18_s1wrk")
 magic_bolt_scene = ExtResource("25_xb5cv")
 torch_scene = ExtResource("20_3f6c5")
@@ -601,6 +597,17 @@ process_mode = 3
 stream = ExtResource("49_dv2lr")
 autoplay = true
 bus = &"Music"
+
+[node name="ObstacleManager" type="Node2D" parent="."]
+z_index = 1
+script = ExtResource("10_uoctj")
+tree_scene = ExtResource("11_4iroc")
+rock_scene = ExtResource("12_bokvu")
+oil_spill_scene = ExtResource("13_tpqui")
+torch_scene = ExtResource("14_q7ayn")
+sapling_scene = ExtResource("15_0ctjf")
+dead_tree_scene = ExtResource("14_gc0kp")
+dead_sapling_scene = ExtResource("15_e3p3e")
 
 [node name="PauseControl" type="Node2D" parent="." node_paths=PackedStringArray("on_pause_audio", "off_pause_audio")]
 process_mode = 3

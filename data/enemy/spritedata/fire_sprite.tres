@@ -6,4 +6,5 @@
 script = ExtResource("1_46eng")
 health = 100
 attack_damage = 5
-attack_frequency = 0.25
+attack_frequency = 1.0
+move_speed = 7500.0

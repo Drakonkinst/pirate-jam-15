@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://da8gei5h0vy15"]
+
+[ext_resource type="Texture2D" uid="uid://dxfxj7axhrl6" path="res://assets/textures/enemy/sprite/rock/Rock_Shadow_Spirit_1.PNG" id="1_l8wtw"]
+[ext_resource type="Texture2D" uid="uid://cexryxf1qjajx" path="res://assets/textures/enemy/sprite/rock/Rock_Shadow_Spirit_2.PNG" id="2_ksr5a"]
+[ext_resource type="Texture2D" uid="uid://cudaarenowr6o" path="res://assets/textures/enemy/sprite/rock/Rock_Shadow_Spirit_3.PNG" id="3_h030y"]
+[ext_resource type="Texture2D" uid="uid://uh1ilxq05ngw" path="res://assets/textures/enemy/sprite/rock/Rock_Shadow_Spirit_4.PNG" id="4_mhylv"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l8wtw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ksr5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h030y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mhylv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]

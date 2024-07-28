@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://de65l4sd4bnae"]
+
+[ext_resource type="Texture2D" uid="uid://baih51akw6x86" path="res://assets/textures/enemy/golem/Rock_Golem_1.PNG" id="1_xl7aa"]
+[ext_resource type="Texture2D" uid="uid://bdul80ndc7npr" path="res://assets/textures/enemy/golem/Rock_Golem_2.PNG" id="2_lj7xh"]
+[ext_resource type="Texture2D" uid="uid://u18egycwx068" path="res://assets/textures/enemy/golem/Rock_Golem_3.PNG" id="3_75ag2"]
+[ext_resource type="Texture2D" uid="uid://c2qvbjgq4uidf" path="res://assets/textures/enemy/golem/Rock_Golem_4.PNG" id="4_b1cih"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xl7aa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lj7xh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_75ag2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b1cih")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]

@@ -1,70 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://5cwnirn55jnd"]
+[gd_scene load_steps=6 format=3 uid="uid://5cwnirn55jnd"]
 
 [ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/enemy.tscn" id="1_v7ycc"]
-[ext_resource type="Resource" uid="uid://dkv0sjcec2qct" path="res://data/enemy/spritedata/firesprite.tres" id="2_hnacr"]
-[ext_resource type="Texture2D" uid="uid://sg3ls2pop1xj" path="res://assets/animations/shadowsprite/Rock_Shadow_Spirit_1.PNG" id="2_l7fjk"]
-[ext_resource type="Texture2D" uid="uid://3raayxvdd0ir" path="res://assets/animations/shadowsprite/Rock_Shadow_Spirit_2.PNG" id="3_u2vtx"]
-[ext_resource type="Texture2D" uid="uid://ba5so85qp61im" path="res://assets/animations/shadowsprite/Rock_Shadow_Spirit_3.PNG" id="4_3h7rl"]
-[ext_resource type="Texture2D" uid="uid://dt5ed3h23dng0" path="res://assets/animations/shadowsprite/Rock_Shadow_Spirit_4.PNG" id="5_3fu0e"]
+[ext_resource type="Resource" uid="uid://dkv0sjcec2qct" path="res://data/enemy/spritedata/fire_sprite.tres" id="2_hnacr"]
+[ext_resource type="SpriteFrames" uid="uid://e4o1voe4uboa" path="res://data/animations/fire_sprite.tres" id="3_5na1y"]
 [ext_resource type="Script" path="res://scenes/enemy/states/walk_state.gd" id="6_ccff0"]
 [ext_resource type="Script" path="res://scenes/enemy/states/attack_state.gd" id="7_sa0ai"]
 
-[sub_resource type="Animation" id="Animation_djahb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_l7fjk")]
-}
-
-[sub_resource type="Animation" id="Animation_dniqi"]
-resource_name = "walk"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("2_l7fjk"), ExtResource("3_u2vtx"), ExtResource("4_3h7rl"), ExtResource("5_3fu0e"), ExtResource("3_u2vtx")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_633r6"]
-_data = {
-"RESET": SubResource("Animation_djahb"),
-"walk": SubResource("Animation_dniqi")
-}
-
 [node name="FireSprite" instance=ExtResource("1_v7ycc")]
-z_index = 1
 enemy_data = ExtResource("2_hnacr")
 
-[node name="Sprite" type="Sprite2D" parent="." index="1"]
-unique_name_in_owner = true
-modulate = Color(1.5, 1, 0.8, 1)
-y_sort_enabled = true
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_l7fjk")
-region_rect = Rect2(600, 100, 2150, 2350)
+[node name="Sprite" parent="." index="1"]
+sprite_frames = ExtResource("3_5na1y")
+frame_progress = 0.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
-libraries = {
-"": SubResource("AnimationLibrary_633r6")
-}
-
-[node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("EnemyWalkState")
 
 [node name="EnemyWalkState" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy")]
@@ -74,5 +23,8 @@ enemy = NodePath("../..")
 [node name="EnemyAttackState" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_sa0ai")
 enemy = NodePath("../..")
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(0.5, -0.5)
 
 [editable path="Healthbar"]

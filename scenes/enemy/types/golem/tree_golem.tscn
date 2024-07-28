@@ -1,71 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://cue740t2tc7o5"]
+[gd_scene load_steps=7 format=3 uid="uid://cue740t2tc7o5"]
 
 [ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/enemy.tscn" id="1_ghl72"]
-[ext_resource type="Texture2D" uid="uid://baih51akw6x86" path="res://assets/textures/enemy/golem/Rock_Golem_1.PNG" id="2_k15b5"]
-[ext_resource type="Resource" uid="uid://cugl0hkcggdac" path="res://data/enemy/golemdata/treegolem.tres" id="2_psi8u"]
-[ext_resource type="Texture2D" uid="uid://bdul80ndc7npr" path="res://assets/textures/enemy/golem/Rock_Golem_2.PNG" id="3_uf0jp"]
-[ext_resource type="Texture2D" uid="uid://u18egycwx068" path="res://assets/textures/enemy/golem/Rock_Golem_3.PNG" id="4_uk8mi"]
-[ext_resource type="Texture2D" uid="uid://c2qvbjgq4uidf" path="res://assets/textures/enemy/golem/Rock_Golem_4.PNG" id="5_plwni"]
+[ext_resource type="Resource" uid="uid://cugl0hkcggdac" path="res://data/enemy/golemdata/tree_golem.tres" id="2_psi8u"]
+[ext_resource type="SpriteFrames" uid="uid://de65l4sd4bnae" path="res://data/animations/rock_golem.tres" id="3_5rg82"]
 [ext_resource type="Script" path="res://scenes/enemy/states/walk_state.gd" id="6_kj3eq"]
+[ext_resource type="Shape2D" uid="uid://cyg8pldk2mnjr" path="res://data/enemy/golem_hitbox.tres" id="6_urbfi"]
 [ext_resource type="Script" path="res://scenes/enemy/states/attack_state.gd" id="7_jse6a"]
 
-[sub_resource type="Animation" id="Animation_an6pc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_k15b5")]
-}
-
-[sub_resource type="Animation" id="Animation_llao3"]
-resource_name = "walk"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("2_k15b5"), ExtResource("3_uf0jp"), ExtResource("4_uk8mi"), ExtResource("5_plwni"), ExtResource("3_uf0jp")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h0swy"]
-_data = {
-"RESET": SubResource("Animation_an6pc"),
-"walk": SubResource("Animation_llao3")
-}
-
 [node name="TreeGolem" instance=ExtResource("1_ghl72")]
-modulate = Color(0.403922, 1, 1, 1)
 enemy_data = ExtResource("2_psi8u")
 
-[node name="Sprite" type="Sprite2D" parent="." index="1"]
-unique_name_in_owner = true
-modulate = Color(1, 1.25, 1, 1)
-y_sort_enabled = true
+[node name="Sprite" parent="." index="1"]
+modulate = Color(0.403922, 1, 0.27451, 1)
+position = Vector2(0, -40)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_k15b5")
-offset = Vector2(0, -100)
-region_rect = Rect2(600, 100, 2150, 2350)
+sprite_frames = ExtResource("3_5rg82")
+frame_progress = 0.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
-libraries = {
-"": SubResource("AnimationLibrary_h0swy")
-}
-
-[node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("EnemyWalkState")
 
 [node name="EnemyWalkState" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy")]
@@ -75,5 +27,13 @@ enemy = NodePath("../..")
 [node name="EnemyAttackState" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_jse6a")
 enemy = NodePath("../..")
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(-5, -40)
+shape = ExtResource("6_urbfi")
+
+[node name="Healthbar" parent="." index="4"]
+offset_top = -110.0
+offset_bottom = -110.0
 
 [editable path="Healthbar"]

@@ -14,7 +14,7 @@ func enter():
 func exit():
 	timer = 0
 
-func update(_delta):
+func update(delta: float):
 	if not enemy.target_tile.has_valid_obstacle_target():
 		enemy.target_tile = null
 		transitioned.emit(self, "EnemyWalkState")
@@ -27,4 +27,4 @@ func update(_delta):
 		timer = 0
 		enemy.attack(enemy.target_tile)
 	else:
-		timer += _delta
+		timer += delta

@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://csimfu8kk0sm2"]
+
+[ext_resource type="Texture2D" uid="uid://cgjr868g45v0" path="res://assets/textures/enemy/sprite/wind/Wind_Shadow_Spirit_1.PNG" id="1_57cbv"]
+[ext_resource type="Texture2D" uid="uid://cl5c6tayuos5h" path="res://assets/textures/enemy/sprite/wind/Wind_Shadow_Spirit_2.PNG" id="2_ona77"]
+[ext_resource type="Texture2D" uid="uid://cw5jlkebcquoy" path="res://assets/textures/enemy/sprite/wind/Wind_Shadow_Spirit_3.PNG" id="3_v8tsm"]
+[ext_resource type="Texture2D" uid="uid://bkbi142an0huw" path="res://assets/textures/enemy/sprite/wind/Wind_Shadow_Spirit_4.PNG" id="4_wm0q0"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_57cbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ona77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v8tsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wm0q0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]

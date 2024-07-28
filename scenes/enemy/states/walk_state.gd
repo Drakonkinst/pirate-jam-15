@@ -6,17 +6,18 @@ const OIL_SLOW_FACTOR = 0.75
 const LIGHT_SLOW_FACTOR = 0.5
 
 @export var enemy: Enemy
-@onready var animPlayer: AnimationPlayer = enemy.get_node("AnimationPlayer")
 
 var speed_multiplier = 1.0
 
 func enter():
 	# Change to walking animation
-	animPlayer.play("walk")
+	enemy.sprite.frame = 0
+	enemy.sprite.play()
 
 func exit():
 	# End current Animation
-	animPlayer.stop()
+	enemy.sprite.frame = 0
+	enemy.sprite.pause()
 	enemy.velocity = Vector2.ZERO
 
 func update(_delta):

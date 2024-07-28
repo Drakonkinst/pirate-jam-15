@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbb3qghct8ehc"]
+
+[ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/enemy.tscn" id="1_r4nsp"]
+[ext_resource type="Resource" uid="uid://b044c372ru7i5" path="res://data/enemy/golemdata/rock_golem.tres" id="2_4jrnd"]
+[ext_resource type="SpriteFrames" uid="uid://de65l4sd4bnae" path="res://data/animations/rock_golem.tres" id="3_1uair"]
+[ext_resource type="Script" path="res://scenes/enemy/states/walk_state.gd" id="4_itl4g"]
+[ext_resource type="Script" path="res://scenes/enemy/states/attack_state.gd" id="5_j7ydf"]
+[ext_resource type="Shape2D" uid="uid://cyg8pldk2mnjr" path="res://data/enemy/golem_hitbox.tres" id="6_jmap8"]
+
+[node name="GolemEnemy" instance=ExtResource("1_r4nsp")]
+enemy_data = ExtResource("2_4jrnd")
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2(0, -40)
+scale = Vector2(0.4, 0.4)
+sprite_frames = ExtResource("3_1uair")
+frame_progress = 0.0
+
+[node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("EnemyWalkState")
+
+[node name="EnemyWalkState" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_itl4g")
+enemy = NodePath("../..")
+
+[node name="EnemyAttackState" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_j7ydf")
+enemy = NodePath("../..")
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(-5, -40)
+shape = ExtResource("6_jmap8")
+
+[node name="Healthbar" parent="." index="4"]
+offset_top = -110.0
+offset_bottom = -110.0
+
+[editable path="Healthbar"]

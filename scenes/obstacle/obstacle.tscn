@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://jci63uf5o54n" path="res://scenes/ui/healthbar.tscn" id="8_q4lad"]
 
 [node name="Obstacle" type="Node2D" node_paths=PackedStringArray("light_anchor")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 script = ExtResource("1_pck6l")
 light_anchor = NodePath("ObstacleModel1/LightAnchor")
 

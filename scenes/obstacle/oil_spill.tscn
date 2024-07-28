@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/obstacle/oil_spill_behavior.gd" id="4_ir1mx"]
 
 [node name="OilSpill" instance=ExtResource("1_nl8qt")]
+z_index = 4
 data = ExtResource("2_krvas")
 
 [node name="ObstacleModel1" parent="." index="1"]
