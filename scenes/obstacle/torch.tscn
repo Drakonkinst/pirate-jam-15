@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://do1ux20syj75b" path="res://scenes/effect/flame_particle.tscn" id="4_5bhhw"]
 [ext_resource type="Script" path="res://scenes/obstacle/torch_behavior.gd" id="5_vsa0l"]
 
-[node name="Torch" instance=ExtResource("1_ofhq0")]
+[node name="Torch" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_ofhq0")]
 data = ExtResource("2_jnbvw")
+behaviors = [NodePath("TorchObstacleBehavior")]
 
 [node name="Base" parent="ObstacleModel1" index="0"]
 position = Vector2(0, -61)
@@ -20,9 +21,9 @@ scale = Vector2(0.733, 0.733)
 [node name="Flaming" parent="ObstacleModel1" index="1"]
 visible = false
 
-[node name="LightAnchor2" type="Node2D" parent="ObstacleModel1" index="2"]
-position = Vector2(0, -24)
+[node name="LightAnchor" parent="ObstacleModel1" index="2"]
+position = Vector2(0, -22)
 
-[node name="TorchObstacleBehavior" type="Node2D" parent="." index="5" node_paths=PackedStringArray("light_anchor")]
+[node name="TorchObstacleBehavior" type="Node2D" parent="." index="5" node_paths=PackedStringArray("fire_particle")]
 script = ExtResource("5_vsa0l")
-light_anchor = NodePath("../ObstacleModel1/LightAnchor")
+fire_particle = NodePath("../ObstacleModel1/Base/FlameParticle")

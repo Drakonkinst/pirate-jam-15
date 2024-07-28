@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_cewft")
-health = 300
+health = 800
 attack_damage = 25
 attack_frequency = 2.0
 move_speed = 5000.0

@@ -23,8 +23,9 @@ script = ExtResource("3_5fetk")
 state = 1
 texture = ExtResource("3_g02xa")
 
-[node name="DeadSapling" instance=ExtResource("1_cr6mj")]
+[node name="DeadSapling" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_cr6mj")]
 data = ExtResource("2_s53sl")
+behaviors = [NodePath("TransformOnTransmute")]
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(0, -4)

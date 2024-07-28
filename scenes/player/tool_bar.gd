@@ -102,7 +102,6 @@ func _do_potion(target_pos: Vector2) -> bool:
 func _do_summon(_target_pos: Vector2) -> bool:
     # Based on player position
     var row = GlobalVariables.get_grid().get_grid_row_at_pos(player.position)
-    print("SPAWN AT ROW ", row)
     var type: EnemySpawner.EnemyType = selected_summon
     var success = tool_inventory.get_summon_count(type) > 0
     if success:

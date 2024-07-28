@@ -500,6 +500,9 @@ debug_marker_scene = ExtResource("20_capy2")
 
 [node name="LightManager" type="CanvasGroup" parent="World/Grid"]
 self_modulate = Color(1, 1, 1, 0.156863)
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -3)
 script = ExtResource("28_m2bqy")
 light_torch_scene = ExtResource("29_tx1bu")
 light_quartz_scene = ExtResource("30_52igg")
@@ -517,6 +520,7 @@ fire_golem = ExtResource("52_ebjpr")
 wind_golem = ExtResource("53_i7n8v")
 tree_golem = ExtResource("54_mtxj2")
 spawning_schedule = ExtResource("31_e2klb")
+endless_mode = true
 
 [node name="EnemySpawns" type="Node2D" parent="World/Enemies"]
 unique_name_in_owner = true

@@ -53,7 +53,7 @@ func calc_num_surrounding_lights() -> void:
     num_surrounding_lights = 0
     var neighbors: Array[GridTile] = GlobalVariables.get_grid().get_neighbors(tile, false, false)
     for neighbor in neighbors:
-        if neighbor.obstacle and (neighbor.obstacle.has_light() or neighbor.obstacle.data.id == Obstacle.Type.TORCH):
+        if neighbor.obstacle and neighbor.obstacle.has_light():
             num_surrounding_lights += 1
 
 func has_light() -> bool:
@@ -119,7 +119,6 @@ func update_health_from_transmutation(state: TransmutedState) -> void:
     # Formula: New Health = (Current Health / Max Health) * Size Multiplier * Material Multiplier
     var health_percent = health.get_percentage()
     var material_multiplier = get_material_multiplier(state)
-    #print(health_percent, " ", data.size_multiplier, " ", material_multiplier)
     var new_health: int = ceili(health_percent * data.size_multiplier * material_multiplier)
     var new_max_health: int = ceili(data.size_multiplier * material_multiplier)
     print("Transmutated health ", health_percent, " of ", Type.keys()[data.id], " to ", TransmutedState.keys()[state], " = ", new_health)
@@ -154,9 +153,10 @@ func set_on_fire(duration: float) -> void:
 func put_out_fire() -> void:
     burning_state.reset_burning_time()
     model.set_flaming(false)
-    if has_light():
+    if has_light() and data.id != Obstacle.Type.TORCH:
         delete_light()
 
+# Must always be preceded by a has_light() check
 func delete_light() -> void:
     light_circle.queue_free()
     light_circle = null

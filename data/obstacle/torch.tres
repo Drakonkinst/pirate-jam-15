@@ -17,4 +17,5 @@ is_flammable = false
 should_use_burnt_texture = false
 can_pass_through = true
 can_transform = true
+replaceable = true
 loot = SubResource("Resource_gtswl")

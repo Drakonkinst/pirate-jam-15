@@ -70,7 +70,6 @@ func set_music_volume(value: float, save: bool = true) -> void:
         config.save(CONFIG_PATH)
 
 func set_effects_volume(value: float, save: bool = true) -> void:
-    print("SET EFFECTS VOLUME ", value)
     AudioServer.set_bus_volume_db(effects, linear_to_db(value))
     if save:
         config.set_value("audio", "effects", value)

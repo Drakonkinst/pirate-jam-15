@@ -24,8 +24,9 @@ texture = ExtResource("5_igec0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhsll"]
 size = Vector2(141, 90)
 
-[node name="Tree" instance=ExtResource("1_ubi77")]
+[node name="Tree" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_ubi77")]
 data = ExtResource("2_7gwrh")
+behaviors = [NodePath("TreeBehavior"), NodePath("BurnLeavesBehavior")]
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(-2, -13)

@@ -11,5 +11,6 @@ class_name ObstacleData
 @export var should_use_burnt_texture: bool = false
 @export var can_pass_through: bool = false
 @export var can_transform: bool = true
+@export var replaceable: bool = false
 
 @export var loot: LootEntry
