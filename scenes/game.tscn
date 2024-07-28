@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=68 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -29,7 +29,6 @@
 [ext_resource type="AudioStream" uid="uid://1lf81bxd8lv" path="res://assets/audio/SFXTorchThrow2.ogg" id="16_17j03"]
 [ext_resource type="Script" path="res://scenes/pickup_manager.gd" id="16_c2f7e"]
 [ext_resource type="PackedScene" uid="uid://bgqgtp3ng3xpo" path="res://scenes/effect/pickup.tscn" id="16_lfyb5"]
-[ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/shadow_enemy.tscn" id="16_ylmnt"]
 [ext_resource type="AudioStream" uid="uid://vte5efiqisp7" path="res://assets/audio/SFXTorchThrow3.ogg" id="17_a7jxu"]
 [ext_resource type="AudioStream" uid="uid://c0god3bplix1" path="res://assets/audio/SFXTorchThrow.ogg" id="18_3tbfr"]
 [ext_resource type="Script" path="res://scenes/projectile/projectile_manager.gd" id="18_s1wrk"]
@@ -52,7 +51,9 @@
 [ext_resource type="Texture2D" uid="uid://cp74hu4ij71w1" path="res://assets/textures/resource/resource_stone.png" id="27_wwljy"]
 [ext_resource type="Script" path="res://scenes/hud/click_handler.gd" id="28_xelsv"]
 [ext_resource type="Script" path="res://scenes/enemy/enemy_spawner.gd" id="29_uoojh"]
+[ext_resource type="PackedScene" uid="uid://qqbtem7vl5pf" path="res://scenes/enemy/shadow_sprite_enemy.tscn" id="30_8m317"]
 [ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/Level1SpawnSchedule.tres" id="31_e2klb"]
+[ext_resource type="PackedScene" uid="uid://dbb3qghct8ehc" path="res://scenes/enemy/golem_enemy.tscn" id="31_e8cvn"]
 [ext_resource type="PackedScene" uid="uid://cu6wwp5my8ay" path="res://scenes/effect/explosion.tscn" id="36_y78bo"]
 [ext_resource type="PackedScene" uid="uid://5ye7ihrmklny" path="res://scenes/effect/splat.tscn" id="37_6rhao"]
 [ext_resource type="Script" path="res://scenes/pause_control.gd" id="40_uejed"]
@@ -500,7 +501,8 @@ gui_targets = [NodePath("../../HUD/ResourceHud/OffsetFromZoom/GoldAnchor"), Node
 [node name="Enemies" type="Node2D" parent="World"]
 z_index = 3
 script = ExtResource("29_uoojh")
-shadow_enemy = ExtResource("16_ylmnt")
+shadow_enemy = ExtResource("30_8m317")
+golem_enemy = ExtResource("31_e8cvn")
 spawning_schedule = ExtResource("31_e2klb")
 
 [node name="Spawns" type="Node2D" parent="World/Enemies"]

@@ -2,28 +2,28 @@ extends State
 
 class_name EnemyAttackState
 
-@export var enemy: ShadowEnemy
+@export var enemy: Enemy
 
-var cooldown = 0.25
+@onready var cooldown = enemy.enemy_data.attack_frequency
 
-var timer = 0
+@onready var timer = 0
 
 func enter():
-    timer = 0
+	timer = 0
 
 func exit():
-    timer = 0
+	timer = 0
 
 func update(_delta):
-    var obstacle = enemy.target_tile.obstacle
-    # TODO: What if object turns into oil / can no longer be targeted?
-    if not obstacle:
-        enemy.target_tile = null
-        transitioned.emit(self,"EnemyWalkState")
-        return
+	var obstacle = enemy.target_tile.obstacle
+	# TODO: What if object turns into oil / can no longer be targeted?
+	if not obstacle:
+		enemy.target_tile = null
+		transitioned.emit(self,"EnemyWalkState")
+		return
 
-    if timer >= cooldown:
-        timer = 0
-        enemy.attack(enemy.target_tile)
-    else:
-        timer += _delta
+	if timer >= cooldown:
+		timer = 0
+		enemy.attack(enemy.target_tile)
+	else:
+		timer += _delta
