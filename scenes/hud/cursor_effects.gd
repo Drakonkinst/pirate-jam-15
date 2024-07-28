@@ -15,7 +15,12 @@ func _update_cursor() -> void:
 
     # TODO: if potion/torch, only show reticle if in valid area
     if current_tool_type == ToolBar.Tool.POTION || current_tool_type == ToolBar.Tool.TORCH:
-        if GlobalVariables.get_projectile_manager().is_valid_target(mouse_pos, true):
+        var should_show = GlobalVariables.get_projectile_manager().is_valid_target(mouse_pos, true)
+        var toolbar: ToolBar = GlobalVariables.get_toolbar()
+        if current_tool_type == ToolBar.Tool.POTION and toolbar.tool_inventory.get_potion_count(toolbar.selected_potion) <= 0:
+            should_show = false
+
+        if should_show:
             sprite.show()
         else:
             sprite.hide()

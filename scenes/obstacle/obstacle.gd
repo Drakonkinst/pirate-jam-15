@@ -66,6 +66,10 @@ func set_transmuted_state(state: TransmutedState) -> bool:
         transmuted_state = state
         on_transmuted_state_change()
     transmuted.emit(self)
+    for behavior: ObstacleBehavior in behaviors:
+        # Quick null check just in case
+        if behavior:
+            behavior.on_transmute(self, state)
     return success
 
 func reset_transmuted_state() -> bool:
@@ -76,6 +80,10 @@ func reset_transmuted_state() -> bool:
         put_out_fire()
     burning_state.is_burned = false
     transmuted.emit(self)
+    for behavior: ObstacleBehavior in behaviors:
+        # Quick null check just in case
+        if behavior:
+            behavior.on_transmute(self, TransmutedState.DEFAULT)
     return true
 
 func on_transmuted_state_change():
@@ -132,6 +140,10 @@ func _ready() -> void:
     put_out_fire()
     init_model()
     init_loot()
+    for behavior: ObstacleBehavior in behaviors:
+        # Quick null check just in case
+        if behavior:
+            behavior.init(self)
 
 func init_loot() -> void:
     loot = data.loot.resolve()

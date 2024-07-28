@@ -18,6 +18,10 @@ var velocity: Vector2 = Vector2.ZERO
 var target_y: float = 500
 var gravity: float # Set by ProjectileManager
 
+func _ready() -> void:
+    if behavior:
+        behavior.on_ready(self)
+
 func _physics_process(delta: float) -> void:
     velocity.y += gravity * delta
     position += velocity * delta

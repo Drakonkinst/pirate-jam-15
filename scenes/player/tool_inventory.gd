@@ -2,7 +2,10 @@ extends Node2D
 
 class_name ToolInventory
 
+signal updated
+
 const ITEM_MAX := 99
+const STARTING_COUNT := 10 # TODO: Update to 0 when done testing
 const POTION_ORDER: Array[ThrownProjectile.Type] = [
     ThrownProjectile.Type.POTION_WOOD,
     ThrownProjectile.Type.POTION_STONE,
@@ -18,10 +21,10 @@ var summon_counts: Array[int]
 
 func _ready() -> void:
     for i in POTION_ORDER.size():
-        potion_counts.append(0)
+        potion_counts.append(STARTING_COUNT)
     # TODO: init summon counts
     for i in 4:
-        summon_counts.append(0)
+        summon_counts.append(STARTING_COUNT)
 
 func get_potion_count(type: ThrownProjectile.Type) -> int:
     var index: int = POTION_ORDER.find(type)
@@ -30,6 +33,7 @@ func get_potion_count(type: ThrownProjectile.Type) -> int:
 func set_potion_count(type: ThrownProjectile.Type, value: int) -> void:
     var index: int = POTION_ORDER.find(type)
     potion_counts[index] = clamp(value, 0, ITEM_MAX)
+    updated.emit()
 
 func add_potion_count(type: ThrownProjectile.Type, value: int) -> void:
     var new_count = get_potion_count(type) + value

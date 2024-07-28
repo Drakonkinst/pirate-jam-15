@@ -28,6 +28,8 @@ const POTION_ORDER: Array[ThrownProjectile.Type] = [
 @export var summon_expand_menu: ExpandMenu
 @export var potion_tool_icons: Array[Texture2D]
 @export var summon_tool_icons: Array[Texture2D]
+@export var current_potion_count: Label
+@export var current_summon_count: Label
 
 @onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 var toolbar: ToolBar
@@ -137,3 +139,14 @@ func _on_potion_expand_menu_menu_closed() -> void:
 
 func _on_summon_expand_menu_menu_closed() -> void:
     is_tab_open = false
+
+func _on_tool_bar_tool_inventory_updated() -> void:
+    # Update cooldown counts
+    potion_expand_menu.update_counts(toolbar.tool_inventory.get_potion_counts())
+    summon_expand_menu.update_counts(toolbar.tool_inventory.get_summon_counts())
+    var potion_count = toolbar.tool_inventory.get_potion_count(toolbar.selected_potion)
+    current_potion_count.text = str(potion_count)
+    # TODO
+    var summon_count = 0
+    current_summon_count.text = str(summon_count)
+

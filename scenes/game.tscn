@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=70 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -49,6 +49,8 @@
 [ext_resource type="Script" path="res://scenes/player/tool_inventory.gd" id="25_yxm1x"]
 [ext_resource type="Texture2D" uid="uid://b12vk7snwti44" path="res://assets/textures/resource/resource_fruit.png" id="26_tx8vj"]
 [ext_resource type="Texture2D" uid="uid://cp74hu4ij71w1" path="res://assets/textures/resource/resource_stone.png" id="27_wwljy"]
+[ext_resource type="PackedScene" uid="uid://xwlygvxjdnu2" path="res://scenes/light/light_circle.tscn" id="28_iy4br"]
+[ext_resource type="Script" path="res://scenes/light/light_manager.gd" id="28_m2bqy"]
 [ext_resource type="Script" path="res://scenes/hud/click_handler.gd" id="28_xelsv"]
 [ext_resource type="Script" path="res://scenes/enemy/enemy_spawner.gd" id="29_uoojh"]
 [ext_resource type="PackedScene" uid="uid://qqbtem7vl5pf" path="res://scenes/enemy/shadow_sprite_enemy.tscn" id="30_8m317"]
@@ -96,13 +98,14 @@ class_name World
 
 "
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "toolbar")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "toolbar")]
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
 obstacle_manager = NodePath("World/ObstacleManager")
 projectile_manager = NodePath("World/ProjectileManager")
 pickup_manager = NodePath("World/PickupManager")
 dialogue_manager = NodePath("DialogueManager")
+light_manager = NodePath("World/Grid/LightManager")
 toolbar = NodePath("ToolBar")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -196,7 +199,6 @@ horizontal_alignment = 1
 
 [node name="ToolBarHud" parent="HUD" instance=ExtResource("9_dlv2r")]
 mouse_filter = 1
-potion_tool_icons = null
 
 [node name="ResourceHud" parent="HUD" instance=ExtResource("3_oot8a")]
 
@@ -393,7 +395,6 @@ tool_bar = NodePath("../../HUD/ToolBarHud")
 
 [node name="ToolBar" type="Node2D" parent="."]
 script = ExtResource("20_akytf")
-obstacle_damage = null
 
 [node name="AttackCooldown" type="Timer" parent="ToolBar"]
 wait_time = 0.5
@@ -473,6 +474,11 @@ script = SubResource("GDScript_hp6k0")
 [node name="Grid" parent="World" instance=ExtResource("11_7lv1o")]
 offset = Vector2(30, 0)
 debug_marker_scene = ExtResource("20_capy2")
+
+[node name="LightManager" type="CanvasGroup" parent="World/Grid"]
+self_modulate = Color(1, 1, 1, 0.156863)
+script = ExtResource("28_m2bqy")
+light_circle_scene = ExtResource("28_iy4br")
 
 [node name="ObstacleManager" type="Node2D" parent="World"]
 z_index = 1
@@ -573,15 +579,18 @@ min_pitch = 1.0
 max_pitch = 1.0
 
 [connection signal="pressed_quit_to_menu" from="PauseMenu" to="." method="_on_pause_menu_pressed_quit_to_menu"]
+[connection signal="do_action" from="ToolBar" to="HUD/ToolBarHud" method="_on_tool_bar_do_action"]
 [connection signal="do_action" from="ToolBar" to="ToolBar/ToolBarAudio" method="_on_tool_bar_do_action"]
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
 [connection signal="tool_changed" from="ToolBar" to="HUD/CursorEffects" method="_on_tool_bar_tool_changed"]
 [connection signal="tool_changed" from="ToolBar" to="HUD/ToolBarHud" method="_on_tool_bar_tool_changed"]
 [connection signal="tool_changed" from="ToolBar" to="ToolBar/ToolBarAudio" method="_on_tool_bar_tool_changed"]
+[connection signal="tool_inventory_updated" from="ToolBar" to="HUD/ToolBarHud" method="_on_tool_bar_tool_inventory_updated"]
 [connection signal="timeout" from="ToolBar/AttackCooldown" to="ToolBar" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/DestroyCooldown" to="ToolBar" method="_on_destroy_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/TorchCooldown" to="ToolBar" method="_on_torch_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/PotionCooldown" to="ToolBar" method="_on_potion_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/SummonCooldown" to="ToolBar" method="_on_summon_cooldown_timeout"]
+[connection signal="updated" from="ToolBar/ToolInventory" to="ToolBar" method="_on_tool_inventory_updated"]
 [connection signal="paused" from="PauseControl" to="PauseMenu" method="_on_pause_control_paused"]
 [connection signal="unpaused" from="PauseControl" to="PauseMenu" method="_on_pause_control_unpaused"]

@@ -19,12 +19,23 @@ signal menu_closed
 @onready var button_3: TextureButton = %Button3
 @onready var button_4: TextureButton = %Button4
 
+@onready var count_1: Label = %Count1
+@onready var count_2: Label = %Count2
+@onready var count_3: Label = %Count3
+@onready var count_4: Label = %Count4
+
 func _ready() -> void:
     hide_dropdown()
     button_1.texture_normal = option_1_texture
     button_2.texture_normal = option_2_texture
     button_3.texture_normal = option_3_texture
     button_4.texture_normal = option_4_texture
+
+func update_counts(counts: Array[int]) -> void:
+    count_1.text = str(counts[0])
+    count_2.text = str(counts[1])
+    count_3.text = str(counts[2])
+    count_4.text = str(counts[3])
 
 func hide_dropdown() -> void:
     expand_button.show()
