@@ -2,7 +2,6 @@ extends ProjectileBehavior
 
 class_name TorchBehavior
 
-@export var fire_time: float = 5.0
 @export var light_anchor: Node2D
 
 func on_ready(_projectile: ThrownProjectile):
@@ -16,6 +15,6 @@ func on_land(_pos: Vector2):
     if tile == null:
         return
     if tile.obstacle:
-        tile.obstacle.set_on_fire(fire_time)
+        tile.obstacle.set_on_fire(GlobalVariables.TORCH_FIRE_DURATION)
     else:
         obstacle_manager.spawn_obstacle(Obstacle.Type.TORCH, tile)

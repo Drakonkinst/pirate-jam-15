@@ -150,6 +150,20 @@ func init_loot() -> void:
 
 func _on_burning_state_fire_tick() -> void:
     damage(OBSTACLE_FIRE_DAMAGE)
+    # Don't spread fire till after the first tick
+    if burning_state.total_time_burned < 1.0:
+        return
+
+    var chance_spread = 0.15
+    if data.id == Obstacle.Type.OIL_SPILL:
+        chance_spread = 0.25
+    _spread_fire(chance_spread)
+
+func _spread_fire(chance: float) -> void:
+    var neighbors: Array[GridTile] = GlobalVariables.get_grid().get_neighbors(tile, true)
+    for neighbor in neighbors:
+        if randf() < chance and neighbor.obstacle:
+            neighbor.obstacle.set_on_fire(GlobalVariables.FIRE_SPREAD_DURATION)
 
 func _on_burning_state_fire_expired() -> void:
     put_out_fire()

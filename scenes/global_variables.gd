@@ -5,6 +5,10 @@ const POTION_RADIUS := 100
 const CONFIG_PATH = "user://settings.cfg"
 const TORCH_LIGHT_RADIUS := 200.0
 
+# Fire durations
+const TORCH_FIRE_DURATION := 5.0
+const FIRE_SPREAD_DURATION := 5.0
+
 @export var curr_game: Game = null
 
 var config := ConfigFile.new()

@@ -19,6 +19,11 @@ func get_tile(row: int, col: int) -> GridTile:
     col = clamp(0, col, num_cols - 1)
     return grid[row][col]
 
+func is_valid_tile(row: int, col: int) -> bool:
+    if row < 0 || row >= num_rows || col < 0 || col >= num_cols:
+        return false
+    return true
+
 func find_grid_origin() -> Vector2:
     var screen_dimensions: Vector2 = get_viewport().get_visible_rect().size
     var grid_height: float = tile_height * num_rows
@@ -36,7 +41,7 @@ func screenspace_to_tile(screen_space_pos: Vector2) -> GridTile:
     var row = floori(grid_offset.y / tile_height)
     var col = floori(grid_offset.x / tile_width)
 
-    if row < 0 || row >= num_rows || col < 0 || col >= num_cols:
+    if not is_valid_tile(row, col):
         return null
     return get_tile(row, col)
 
@@ -92,6 +97,22 @@ func get_tile_center(tile: GridTile) -> Vector2:
 
 func is_on_grid(pos: Vector2) -> bool:
     return screenspace_to_tile(pos) != null
+
+func get_neighbors(center_tile: GridTile, allow_diagonal = false) -> Array[GridTile]:
+    var results: Array[GridTile] = []
+    var center_row = center_tile.row
+    var center_col = center_tile.col
+    for row_offset in range(-1, 2):
+        for col_offset in range(-1, 2):
+            if abs(row_offset) + abs(col_offset) > 1 and not allow_diagonal:
+                continue
+            var row = center_row + row_offset
+            var col = center_col + col_offset
+            if not is_valid_tile(row, col):
+                continue
+            var tile: GridTile = get_tile(row, col)
+            results.append(tile)
+    return results
 
 func _ready():
     var origin: Vector2 = find_grid_origin()
