@@ -561,7 +561,7 @@ position = Vector2(0, 635)
 position = Vector2(0, 760)
 
 [node name="PickupManager" type="Node2D" parent="World" node_paths=PackedStringArray("pickup_parent", "gui_targets")]
-z_index = 5
+z_index = 6
 z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("16_c2f7e")

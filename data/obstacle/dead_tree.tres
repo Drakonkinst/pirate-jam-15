@@ -17,4 +17,5 @@ is_flammable = true
 should_use_burnt_texture = true
 can_pass_through = false
 can_transform = true
+replaceable = false
 loot = SubResource("Resource_xwact")

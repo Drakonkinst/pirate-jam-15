@@ -17,4 +17,5 @@ is_flammable = true
 should_use_burnt_texture = false
 can_pass_through = true
 can_transform = false
+replaceable = false
 loot = SubResource("Resource_cvagp")

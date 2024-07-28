@@ -22,7 +22,7 @@ state = 2
 texture = ExtResource("5_igec0")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhsll"]
-size = Vector2(141, 90)
+size = Vector2(141, 96)
 
 [node name="Tree" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_ubi77")]
 data = ExtResource("2_7gwrh")
@@ -103,7 +103,8 @@ monitoring = false
 script = ExtResource("8_bp3vh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseOverArea" index="0"]
-position = Vector2(-0.5, -66)
+z_index = 900
+position = Vector2(-0.5, -63)
 shape = SubResource("RectangleShape2D_lhsll")
 
 [connection signal="removed" from="." to="TreeBehavior" method="_on_tree_removed"]
