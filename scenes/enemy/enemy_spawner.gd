@@ -115,6 +115,14 @@ func endless_get_spawn_data():
     next_spawn_time = game_timer + 1 + (randi() % 2)
     next_spawn_row = randi_range(0,4)
 
+func get_enemies_in_tile(tile: GridTile) -> Array[Enemy]:
+    var result: Array[Enemy] = []
+    var grid = GlobalVariables.get_grid()
+    for node in get_children():
+        if node is Enemy and grid.screenspace_to_tile(node.global_position) == tile:
+            result.append(node as Enemy)
+    return result
+
 func spawn_type_to_scene(spawn_type: EnemySpawner.EnemyType):
     var enemy_scene: PackedScene
     match spawn_type:

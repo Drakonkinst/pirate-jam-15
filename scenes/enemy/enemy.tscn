@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2a8ngge05k7t"]
+[gd_scene load_steps=17 format=3 uid="uid://c2a8ngge05k7t"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_qvcdo"]
 [ext_resource type="Script" path="res://scenes/health.gd" id="2_2tcm3"]
 [ext_resource type="Script" path="res://scenes/enemy/state_machine.gd" id="3_0rj1h"]
 [ext_resource type="SpriteFrames" uid="uid://ddbc1ljenr45i" path="res://data/animations/tree_sprite.tres" id="3_5wrtp"]
+[ext_resource type="PackedScene" uid="uid://do1ux20syj75b" path="res://scenes/effect/flame_particle.tscn" id="4_5on0e"]
 [ext_resource type="Script" path="res://scenes/audio/audio_randomizer.gd" id="6_tmba5"]
 [ext_resource type="PackedScene" uid="uid://jci63uf5o54n" path="res://scenes/ui/healthbar.tscn" id="7_d4e3b"]
 [ext_resource type="AudioStream" uid="uid://dc6jwxh5heqqt" path="res://assets/audio/SFXEnemyGetsHit2.ogg" id="7_dwchw"]
@@ -13,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://b0qbh3o7xvnek" path="res://assets/audio/SFXEnemyGetsHit6.ogg" id="11_qveh1"]
 [ext_resource type="AudioStream" uid="uid://djh62cxoi5pwm" path="res://assets/audio/SFXEnemyGetsHit7.ogg" id="12_7vsi2"]
 [ext_resource type="AudioStream" uid="uid://b8duc2x3v40qh" path="res://assets/audio/SFXEnemyGetsHit.ogg" id="13_pduw2"]
+[ext_resource type="Script" path="res://scenes/burning_state.gd" id="14_hd7jp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xycco"]
 size = Vector2(22.3684, 23.4211)
@@ -37,6 +39,21 @@ scale = Vector2(0.3, 0.3)
 sprite_frames = ExtResource("3_5wrtp")
 autoplay = "default"
 frame_progress = 0.650725
+
+[node name="Flaming" type="Node2D" parent="Sprite"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(3.33333, -190)
+scale = Vector2(7.10541, 5.46425)
+
+[node name="FlameParticle" parent="Sprite/Flaming" instance=ExtResource("4_5on0e")]
+position = Vector2(4.69126, 18.3008)
+
+[node name="FlameParticle2" parent="Sprite/Flaming" instance=ExtResource("4_5on0e")]
+position = Vector2(-7.50602, 26.8411)
+
+[node name="FlameParticle3" parent="Sprite/Flaming" instance=ExtResource("4_5on0e")]
+position = Vector2(9.38252, 40.2617)
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_0rj1h")
@@ -75,7 +92,17 @@ audio_tracks = Array[AudioStream]([ExtResource("7_dwchw"), ExtResource("8_quhrp"
 min_pitch = 1.25
 max_pitch = 1.6
 
+[node name="BurningState" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("14_hd7jp")
+
+[node name="LightAnchor" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [connection signal="changed" from="Health" to="Healthbar" method="_on_health_changed"]
 [connection signal="death" from="Health" to="." method="_on_health_death"]
+[connection signal="burnt" from="BurningState" to="." method="_on_burning_state_burnt"]
+[connection signal="fire_expired" from="BurningState" to="." method="_on_burning_state_fire_expired"]
+[connection signal="fire_tick" from="BurningState" to="." method="_on_burning_state_fire_tick"]
 
 [editable path="Healthbar"]

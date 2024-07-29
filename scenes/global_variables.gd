@@ -7,6 +7,7 @@ const CONFIG_PATH = "user://settings.cfg"
 # Light radius
 const TORCH_LIGHT_RADIUS := 200.0
 const FLAMING_OBJECT_LIGHT_RADIUS := 175.0
+const FLAMING_ENEMY_LIGHT_RADIUS := 175.0
 const QUARTZ_LIGHT_RADIUS := 250.0
 const QUARTZ_CRYSTAL_LIGHT_RADIUS := 200.0
 
