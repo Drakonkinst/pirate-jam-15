@@ -5,6 +5,7 @@ class_name Enemy
 const DEFAULT_ANIMATION = "default"
 const ENEMY_FIRE_DAMAGE := 20
 const ENEMY_STEP_ON_FIRE_TIME := 1.0
+const ENEMY_OBSTACLE_FIRE_TIME := 1.0
 
 @export var row = 0
 @export var enemy_data: EnemyData
@@ -22,6 +23,7 @@ var is_ally: bool = false
 @onready var light_anchor: Node2D = %LightAnchor
 var size_x: float
 var light_circle: LightCircle
+var loot: Dictionary
 
 func _ready():
     health.set_max_health(enemy_data.health)
@@ -30,6 +32,7 @@ func _ready():
     sprite.pause()
     size_x = sprite.sprite_frames.get_frame_texture(DEFAULT_ANIMATION, 0).get_width() * sprite.scale.x
     state_machine.init()
+    loot = enemy_data.loot.resolve()
 
 func _process(_delta: float) -> void:
     var grid: Grid = GlobalVariables.get_grid()
@@ -61,6 +64,8 @@ func get_current_tile() -> GridTile:
 func attack(tile: GridTile) -> bool:
     if tile == null or tile.obstacle == null:
         return false
+    if enemy_data.type == EnemySpawner.EnemyType.FireSprite:
+        tile.obstacle.set_on_fire(ENEMY_OBSTACLE_FIRE_TIME)
     tile.obstacle.damage(enemy_data.attack_damage)
     attack_audio.play_random()
     return true
@@ -68,9 +73,13 @@ func attack(tile: GridTile) -> bool:
 func damage(val):
     health.damage(val)
 
+func _create_pickup_drops():
+    for item: Pickup.PickupType in loot.keys():
+        var count: int = loot[item]
+        GlobalVariables.get_pickup_manager().spawn_pickup_drop(item, global_position, count)
+
 func _on_health_death():
-    # TODO: Fix loot
-    GlobalVariables.get_pickup_manager().spawn_pickup_drop(Pickup.PickupType.SHADOWSAND, global_position, 1)
+    _create_pickup_drops()
     if enemy_data.type == EnemySpawner.EnemyType.TreeGolem:
         _place_obstacle_nearby(Obstacle.Type.SAPLING)
     elif enemy_data.type == EnemySpawner.EnemyType.RockGolem:
@@ -92,10 +101,10 @@ func _place_obstacle_nearby(obstacle: Obstacle.Type) -> bool:
     return false
 
 func _place_obstacle_on(options: Array[GridTile], obstacle) -> bool:
-    for option: GridTile in options:
-        if option.obstacle and not option.obstacle.data.replaceable:
+    for tile: GridTile in options:
+        if tile.obstacle and not tile.obstacle.data.replaceable:
             continue
-        option.set_obstacle(obstacle)
+        GlobalVariables.get_obstacle_manager().spawn_obstacle(obstacle, tile)
         return true
     return false
 

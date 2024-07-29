@@ -1,6 +1,24 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://b044c372ru7i5"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=7 format=3 uid="uid://b044c372ru7i5"]
 
+[ext_resource type="Script" path="res://data/item/loot_item_entry.gd" id="1_8mdny"]
 [ext_resource type="Script" path="res://data/enemy/enemy_data.gd" id="1_vn25q"]
+[ext_resource type="Script" path="res://data/item/loot_multiple_entry.gd" id="2_qar0s"]
+
+[sub_resource type="Resource" id="Resource_fas5i"]
+script = ExtResource("1_8mdny")
+item = 0
+min_count = 7
+max_count = 10
+
+[sub_resource type="Resource" id="Resource_ynuvm"]
+script = ExtResource("1_8mdny")
+item = 5
+min_count = 1
+max_count = 3
+
+[sub_resource type="Resource" id="Resource_1yua8"]
+script = ExtResource("2_qar0s")
+entries = Array[Resource("res://data/item/loot_entry.gd")]([SubResource("Resource_fas5i"), SubResource("Resource_ynuvm")])
 
 [resource]
 script = ExtResource("1_vn25q")
@@ -9,3 +27,5 @@ health = 1000
 attack_damage = 50
 attack_frequency = 3.0
 move_speed = 2500.0
+loot = SubResource("Resource_1yua8")
+flammable = false

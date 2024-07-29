@@ -36,7 +36,7 @@ texture = ExtResource("6_c0425")
 
 [node name="Flaming" parent="ObstacleModel1" index="1"]
 visible = false
-position = Vector2(-3, -25)
+position = Vector2(-3, -52)
 
 [node name="LightAnchor" parent="ObstacleModel1" index="2"]
 position = Vector2(0, 3)

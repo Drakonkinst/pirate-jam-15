@@ -472,6 +472,7 @@ script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("22_1s61m"), ExtResource("23_a2iab"), ExtResource("24_m7fgo")])
 
 [node name="DoTorchAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("16_17j03"), ExtResource("17_a7jxu"), ExtResource("18_3tbfr")])

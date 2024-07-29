@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://5cwnirn55jnd"]
+[gd_scene load_steps=7 format=3 uid="uid://5cwnirn55jnd"]
 
 [ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/enemy.tscn" id="1_v7ycc"]
 [ext_resource type="Resource" uid="uid://dkv0sjcec2qct" path="res://data/enemy/spritedata/fire_sprite.tres" id="2_hnacr"]
 [ext_resource type="SpriteFrames" uid="uid://e4o1voe4uboa" path="res://data/animations/fire_sprite.tres" id="3_5na1y"]
+[ext_resource type="PackedScene" uid="uid://do1ux20syj75b" path="res://scenes/effect/flame_particle.tscn" id="4_7cc7x"]
 [ext_resource type="Script" path="res://scenes/enemy/states/walk_state.gd" id="6_ccff0"]
 [ext_resource type="Script" path="res://scenes/enemy/states/attack_state.gd" id="7_sa0ai"]
 
@@ -12,6 +13,10 @@ enemy_data = ExtResource("2_hnacr")
 [node name="Sprite" parent="." index="1"]
 sprite_frames = ExtResource("3_5na1y")
 frame_progress = 0.0
+
+[node name="FlameParticle4" parent="Sprite" index="0" instance=ExtResource("4_7cc7x")]
+position = Vector2(113.333, -6.66666)
+scale = Vector2(1.10343, 0.848566)
 
 [node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("EnemyWalkState")

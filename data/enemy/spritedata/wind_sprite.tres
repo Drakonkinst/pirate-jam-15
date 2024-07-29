@@ -1,11 +1,22 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://d3ty1i1j0iw60"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://d3ty1i1j0iw60"]
 
+[ext_resource type="Script" path="res://data/item/loot_item_entry.gd" id="1_knveg"]
 [ext_resource type="Script" path="res://data/enemy/enemy_data.gd" id="1_myj3a"]
+
+[sub_resource type="Resource" id="Resource_53qd4"]
+script = ExtResource("1_knveg")
+item = 0
+min_count = 3
+max_count = 5
 
 [resource]
 script = ExtResource("1_myj3a")
 type = 2
-health = 100
+health = 50
 attack_damage = 5
-attack_frequency = 1.0
-move_speed = 7500.0
+attack_frequency = 0.5
+move_speed = 12000.0
+loot = SubResource("Resource_53qd4")
+flammable = true
+chance_transform = 0.25
+can_absorb = Array[int]([])
