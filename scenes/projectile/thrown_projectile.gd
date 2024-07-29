@@ -6,7 +6,7 @@ extends Node2D
 class_name ThrownProjectile
 
 enum Type {
-    TORCH, POTION_OIL, POTION_WOOD, POTION_STONE, POTION_QUARTZ
+	TORCH, POTION_OIL, POTION_WOOD, POTION_STONE, POTION_QUARTZ
 }
 
 @onready var sprite: Sprite2D = $Sprite2D
@@ -19,17 +19,17 @@ var target_y: float = 500
 var gravity: float # Set by ProjectileManager
 
 func _ready() -> void:
-    if behavior:
-        behavior.on_ready(self)
+	if behavior:
+		behavior.on_ready(self)
 
 func _physics_process(delta: float) -> void:
-    velocity.y += gravity * delta
-    position += velocity * delta
-    rotation += deg_to_rad(rotation_speed_degrees * delta)
+	velocity.y += gravity * delta
+	position += velocity * delta
+	rotation += deg_to_rad(rotation_speed_degrees * delta)
 
-    # Check if it has reached its target y position on its downward arc
-    # Then it has reached its target
-    if position.y >= target_y && velocity.y > 0:
-        if behavior:
-            behavior.on_land(Vector2(position.x, target_y))
-        queue_free()
+	# Check if it has reached its target y position on its downward arc
+	# Then it has reached its target
+	if position.y >= target_y && velocity.y > 0:
+		if behavior:
+			behavior.on_land(Vector2(position.x, target_y))
+		queue_free()

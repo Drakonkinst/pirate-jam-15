@@ -21,62 +21,62 @@ var music := AudioServer.get_bus_index("Music")
 var effects := AudioServer.get_bus_index("Effects")
 
 func get_obstacle_manager() -> ObstacleManager:
-    return curr_game.obstacle_manager
+	return curr_game.obstacle_manager
 
 func get_projectile_manager() -> ProjectileManager:
-    return curr_game.projectile_manager
+	return curr_game.projectile_manager
 
 func get_light_manager() -> LightManager:
-    return curr_game.light_manager
+	return curr_game.light_manager
 
 func get_dialogue_manager() -> DialogueManager:
-    return curr_game.dialogue_manager
+	return curr_game.dialogue_manager
 
 func get_pickup_manager() -> PickupManager:
-    return curr_game.pickup_manager
+	return curr_game.pickup_manager
 
 func get_enemy_spawner() -> EnemySpawner:
-    return curr_game.enemy_spawner
+	return curr_game.enemy_spawner
 
 func get_toolbar() -> ToolBar:
-    return curr_game.toolbar
+	return curr_game.toolbar
 
 func get_grid() -> Grid:
-    return curr_game.grid
+	return curr_game.grid
 
 func _load_config() -> void:
-    var err := config.load(CONFIG_PATH)
-    if err == OK:
-        if config.has_section_key("audio", "music"):
-            set_music_volume(config.get_value("audio", "music"), false)
-        else:
-            set_music_volume(1.0, false)
-        if config.has_section_key("audio", "effects"):
-            set_effects_volume(config.get_value("audio", "effects"), false)
-        else:
-            set_effects_volume(1.0, false)
-        config.save(CONFIG_PATH)
+	var err := config.load(CONFIG_PATH)
+	if err == OK:
+		if config.has_section_key("audio", "music"):
+			set_music_volume(config.get_value("audio", "music"), false)
+		else:
+			set_music_volume(1.0, false)
+		if config.has_section_key("audio", "effects"):
+			set_effects_volume(config.get_value("audio", "effects"), false)
+		else:
+			set_effects_volume(1.0, false)
+		config.save(CONFIG_PATH)
 
 func muffle_music() -> void:
-    AudioServer.get_bus_effect(music, 0).resonance = 0.1
+	AudioServer.get_bus_effect(music, 0).resonance = 0.1
 
 func unmuffle_music() -> void:
-    AudioServer.get_bus_effect(music, 0).resonance = 0.5
+	AudioServer.get_bus_effect(music, 0).resonance = 0.5
 
 func set_music_volume(value: float, save: bool = true) -> void:
-    AudioServer.set_bus_volume_db(music, linear_to_db(value))
-    if save:
-        config.set_value("audio", "music", value)
-        config.save(CONFIG_PATH)
+	AudioServer.set_bus_volume_db(music, linear_to_db(value))
+	if save:
+		config.set_value("audio", "music", value)
+		config.save(CONFIG_PATH)
 
 func set_effects_volume(value: float, save: bool = true) -> void:
-    AudioServer.set_bus_volume_db(effects, linear_to_db(value))
-    if save:
-        config.set_value("audio", "effects", value)
-        config.save(CONFIG_PATH)
+	AudioServer.set_bus_volume_db(effects, linear_to_db(value))
+	if save:
+		config.set_value("audio", "effects", value)
+		config.save(CONFIG_PATH)
 
 func get_music_volume() -> float:
-    return db_to_linear(AudioServer.get_bus_volume_db(music))
+	return db_to_linear(AudioServer.get_bus_volume_db(music))
 
 func get_effects_volume() -> float:
-    return db_to_linear(AudioServer.get_bus_volume_db(effects))
+	return db_to_linear(AudioServer.get_bus_volume_db(effects))

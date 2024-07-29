@@ -11,15 +11,15 @@ class_name PlayerResources
 var inventory: Dictionary
 
 func initialize() -> void:
-    for i in Pickup.PickupType.keys().size():
-        set_count(i, 0)
+	for i in Pickup.PickupType.keys().size():
+		set_count(i, 0)
 
 func get_count(type: Pickup.PickupType) -> int:
-    return inventory[type]
+	return inventory[type]
 
 func add_count(type: Pickup.PickupType, value = 1) -> void:
-    var current_count = get_count(type)
-    set_count(type, current_count + value)
+	var current_count = get_count(type)
+	set_count(type, current_count + value)
 
 func set_count(type: Pickup.PickupType, value: int) -> void:
-    inventory[type] = value
+	inventory[type] = value

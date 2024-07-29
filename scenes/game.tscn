@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=85 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://assets/ui/resource_hud.tscn" id="3_oot8a"]
 [ext_resource type="Script" path="res://scenes/hud/cursor_effects.gd" id="4_vdaaq"]
 [ext_resource type="Texture2D" uid="uid://bmgy1sy6rb32q" path="res://assets/textures/circle_512.png" id="5_47rpd"]
+[ext_resource type="PackedScene" uid="uid://dyifllpcx6yhy" path="res://scenes/ui/potion_craft_menu.tscn" id="7_urdin"]
 [ext_resource type="PackedScene" uid="uid://c27pf3yvahh2t" path="res://scenes/dialogue/dialogue_manager.tscn" id="8_7d0d0"]
 [ext_resource type="Texture2D" uid="uid://vs1qri71bqx6" path="res://assets/textures/player_portrait.png" id="9_crwft"]
 [ext_resource type="PackedScene" uid="uid://cqbxejr72xyb3" path="res://scenes/hud/tool_bar_hud.tscn" id="9_dlv2r"]
@@ -214,6 +215,8 @@ horizontal_alignment = 1
 
 [node name="ToolBarHud" parent="HUD" instance=ExtResource("9_dlv2r")]
 mouse_filter = 1
+
+[node name="PotionCraftMenu" parent="HUD" instance=ExtResource("7_urdin")]
 
 [node name="ResourceHud" parent="HUD" instance=ExtResource("3_oot8a")]
 
