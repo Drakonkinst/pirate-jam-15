@@ -30,6 +30,9 @@ func get_projectile_manager() -> ProjectileManager:
 func get_light_manager() -> LightManager:
 	return curr_game.light_manager
 
+func get_base_health() -> BaseHealth:
+	return curr_game.base_health
+
 func get_dialogue_manager() -> DialogueManager:
 	return curr_game.dialogue_manager
 

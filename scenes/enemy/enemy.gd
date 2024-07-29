@@ -24,6 +24,7 @@ var is_ally: bool = false
 var size_x: float
 var light_circle: LightCircle
 var loot: Dictionary
+var has_reached_end: bool = false
 
 func _ready():
     health.set_max_health(enemy_data.health)
@@ -38,10 +39,21 @@ func _process(_delta: float) -> void:
     var grid: Grid = GlobalVariables.get_grid()
     var tile: GridTile = grid.screenspace_to_tile(global_position)
     if tile == null:
+        if not is_ally and has_reached_end:
+            # TODO: Deal damage to player
+            GlobalVariables.curr_game.damage_player(enemy_data.attack_damage)
+            queue_free()
+            pass
         return
     var obstacle: Obstacle = tile.obstacle
     if obstacle and obstacle.burning_state.is_burning():
         set_on_fire(ENEMY_STEP_ON_FIRE_TIME)
+    if is_ally:
+        if grid.should_ally_stop(tile):
+            has_reached_end = true
+    else:
+        if grid.should_enemy_stop(tile):
+            has_reached_end = true
 
 func _physics_process(_delta):
     move_and_slide()

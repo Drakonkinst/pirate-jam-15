@@ -257,7 +257,7 @@ func create_pickup_drops():
         GlobalVariables.get_pickup_manager().spawn_pickup_drop(item, global_position, count)
 
 func _on_health_death() -> void:
-    # TODO: Stretch goal to put an animation here
+    # FIXME: Stretch goal to put an animation here
     destroy_timer.start()
     destroy_audio.play_random()
     hide()

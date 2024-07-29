@@ -50,8 +50,7 @@ var current_tool_index: int = 0
 func _ready() -> void:
     toolbar = GlobalVariables.get_toolbar()
     _set_selected_potion(0)
-    # TODO
-    # _set_selected_summon(0)
+    _set_selected_summon(0)
 
 func _process(_delta: float) -> void:
     var cooldown_array: Array[float] = toolbar.get_cooldown_array()

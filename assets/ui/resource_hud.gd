@@ -12,7 +12,7 @@ class_name ResourceHud
 
 func _process(_delta):
 	# Should probably use the .changed signal on the player resource instead
-	# TODO: Yeah lol
+	# FIXME: Yeah lol
 	update_count_labels()
 
 func update_count_labels():

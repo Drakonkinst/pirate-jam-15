@@ -35,7 +35,7 @@ func update(_delta):
 		speed_multiplier *= LIGHT_SLOW_FACTOR
 
 	# Stop moving at end if ally is at end of grid
-	if enemy.is_ally and (adjacent_tile == null or GlobalVariables.get_grid().should_ally_stop(adjacent_tile)):
+	if enemy.is_ally and enemy.has_reached_end:
 		speed_multiplier *= 0
 		enemy.sprite.pause()
 

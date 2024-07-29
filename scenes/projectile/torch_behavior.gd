@@ -19,7 +19,6 @@ func on_land(_pos: Vector2):
             continue
         enemy.set_on_fire(ENEMY_TORCH_FIRE)
 
-    # TODO: Light any enemies in the same tile on fire
     if tile == null:
         return
 

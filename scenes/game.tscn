@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=98 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -19,11 +19,14 @@
 [ext_resource type="PackedScene" uid="uid://bdnr8tlvaswxs" path="res://scenes/obstacle/tree.tscn" id="11_4iroc"]
 [ext_resource type="PackedScene" uid="uid://g0r7v65brbxf" path="res://scenes/grid/grid.tscn" id="11_7lv1o"]
 [ext_resource type="Script" path="res://scenes/audio/tool_bar_audio.gd" id="11_gvs78"]
+[ext_resource type="Script" path="res://scenes/player/base_health.gd" id="12_7pc3e"]
 [ext_resource type="PackedScene" uid="uid://ci5x7iudnfatv" path="res://scenes/obstacle/rock.tscn" id="12_bokvu"]
 [ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/rock_sprite.png" id="12_dk08j"]
+[ext_resource type="PackedScene" uid="uid://jci63uf5o54n" path="res://scenes/ui/healthbar.tscn" id="12_h7wtm"]
 [ext_resource type="Script" path="res://scenes/audio/audio_randomizer.gd" id="12_hqgvj"]
 [ext_resource type="AudioStream" uid="uid://b5iybe17vtcm5" path="res://assets/audio/SFXMagicBoltSelected.ogg" id="13_lykkh"]
 [ext_resource type="PackedScene" uid="uid://hmw6qr2yjefw" path="res://scenes/obstacle/oil_spill.tscn" id="13_tpqui"]
+[ext_resource type="Script" path="res://scenes/health.gd" id="14_dohtn"]
 [ext_resource type="PackedScene" uid="uid://bcqx4m1p240sb" path="res://scenes/obstacle/dead_tree.tscn" id="14_gc0kp"]
 [ext_resource type="PackedScene" uid="uid://dutyvrutx3beh" path="res://scenes/obstacle/torch.tscn" id="14_q7ayn"]
 [ext_resource type="PackedScene" uid="uid://4ly726jco8yn" path="res://scenes/obstacle/sapling.tscn" id="15_0ctjf"]
@@ -123,7 +126,7 @@ class_name World
 
 "
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar", "base_health")]
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
 obstacle_manager = NodePath("ObstacleManager")
@@ -133,6 +136,7 @@ dialogue_manager = NodePath("DialogueManager")
 light_manager = NodePath("World/Grid/LightManager")
 enemy_spawner = NodePath("World/Enemies")
 toolbar = NodePath("ToolBar")
+base_health = NodePath("HUD/BaseHealth")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
@@ -285,6 +289,7 @@ modulate = Color(1, 1, 1, 0.196078)
 texture = ExtResource("5_47rpd")
 
 [node name="DayTrackerContainer" type="MarginContainer" parent="HUD"]
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 160.0
@@ -317,6 +322,10 @@ text = "Daytime
 horizontal_alignment = 1
 
 [node name="ToolBarHud" parent="HUD" instance=ExtResource("9_dlv2r")]
+offset_left = 5.0
+offset_top = -42.0
+offset_right = 5.0
+offset_bottom = -42.0
 mouse_filter = 1
 
 [node name="PotionCraftMenu" parent="HUD" instance=ExtResource("7_urdin")]
@@ -372,6 +381,48 @@ offset_left = 378.667
 offset_top = 76.0
 offset_right = 378.667
 offset_bottom = 76.0
+
+[node name="BaseHealth" type="Control" parent="HUD"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1906.0
+offset_top = 1037.0
+offset_right = -1866.0
+offset_bottom = 1077.0
+grow_horizontal = 0
+scale = Vector2(18.36, 1.84)
+script = ExtResource("12_7pc3e")
+
+[node name="Health" type="Node" parent="HUD/BaseHealth"]
+script = ExtResource("14_dohtn")
+
+[node name="Healthbar" parent="HUD/BaseHealth" instance=ExtResource("12_h7wtm")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 3.28)
+size_flags_horizontal = 4
+show_only_if_damaged = false
+
+[node name="BarUnder" parent="HUD/BaseHealth/Healthbar" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.16)
+
+[node name="BarOver" parent="HUD/BaseHealth/Healthbar" index="1"]
+scale = Vector2(1, 0.16)
 
 [node name="DialogueManager" parent="." node_paths=PackedStringArray("textbox", "speaker", "pause_control", "player_default_portrait", "villain_default_portrait", "minion_default_portrait") instance=ExtResource("8_7d0d0")]
 process_mode = 3
@@ -778,6 +829,10 @@ volume_db = -5.0
 bus = &"Effects"
 script = ExtResource("81_tor4d")
 
+[connection signal="game_over" from="HUD/BaseHealth" to="." method="_on_base_health_game_over"]
+[connection signal="changed" from="HUD/BaseHealth/Health" to="HUD/BaseHealth" method="_on_health_changed"]
+[connection signal="changed" from="HUD/BaseHealth/Health" to="HUD/BaseHealth/Healthbar" method="_on_health_changed"]
+[connection signal="death" from="HUD/BaseHealth/Health" to="HUD/BaseHealth" method="_on_health_death"]
 [connection signal="pressed_quit_to_menu" from="PauseMenu" to="." method="_on_pause_menu_pressed_quit_to_menu"]
 [connection signal="do_action" from="ToolBar" to="ToolBar/ToolBarAudio" method="_on_tool_bar_do_action"]
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
@@ -793,3 +848,5 @@ script = ExtResource("81_tor4d")
 [connection signal="updated" from="ToolBar/ToolInventory" to="ToolBar" method="_on_tool_inventory_updated"]
 [connection signal="paused" from="PauseControl" to="PauseMenu" method="_on_pause_control_paused"]
 [connection signal="unpaused" from="PauseControl" to="PauseMenu" method="_on_pause_control_unpaused"]
+
+[editable path="HUD/BaseHealth/Healthbar"]
