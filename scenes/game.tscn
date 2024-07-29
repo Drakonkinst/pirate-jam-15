@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://g0r7v65brbxf" path="res://scenes/grid/grid.tscn" id="11_7lv1o"]
 [ext_resource type="Script" path="res://scenes/audio/tool_bar_audio.gd" id="11_gvs78"]
 [ext_resource type="PackedScene" uid="uid://ci5x7iudnfatv" path="res://scenes/obstacle/rock.tscn" id="12_bokvu"]
-[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/shadow_creature.png" id="12_dk08j"]
+[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/rock_sprite.png" id="12_dk08j"]
 [ext_resource type="Script" path="res://scenes/audio/audio_randomizer.gd" id="12_hqgvj"]
 [ext_resource type="AudioStream" uid="uid://b5iybe17vtcm5" path="res://assets/audio/SFXMagicBoltSelected.ogg" id="13_lykkh"]
 [ext_resource type="PackedScene" uid="uid://hmw6qr2yjefw" path="res://scenes/obstacle/oil_spill.tscn" id="13_tpqui"]

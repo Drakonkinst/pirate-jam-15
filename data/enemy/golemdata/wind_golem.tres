@@ -15,3 +15,5 @@ attack_frequency = 2.0
 move_speed = 5000.0
 loot = SubResource("Resource_f585s")
 flammable = true
+chance_transform = 0.25
+can_absorb = Array[int]([])

@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://iyvv0afbxsw1"]
+
+[ext_resource type="Shader" path="res://shader/highlight.gdshader" id="1_trmvj"]
+
+[resource]
+shader = ExtResource("1_trmvj")
+shader_parameter/color = Color(0.921569, 0.764706, 0.278431, 1)
+shader_parameter/width = 50.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = false
+shader_parameter/number_of_images = Vector2(1, 1)

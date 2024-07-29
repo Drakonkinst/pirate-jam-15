@@ -51,6 +51,9 @@ func get_grid_row_at_pos(pos: Vector2) -> int:
     var row = floori(grid_offset.y / tile_height)
     return clamp(row, 0, num_rows - 1)
 
+func should_ally_stop(tile: GridTile) -> bool:
+    return tile.col == num_cols - 1
+
 func get_y_extents() -> Vector2:
     var origin = find_grid_origin()
     var min_extent = origin.y + tile_height / 2.0

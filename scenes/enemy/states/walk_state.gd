@@ -34,6 +34,11 @@ func update(_delta):
 	if GlobalVariables.get_light_manager().is_in_light(enemy.global_position):
 		speed_multiplier *= LIGHT_SLOW_FACTOR
 
+	# Stop moving at end if ally is at end of grid
+	if enemy.is_ally and (adjacent_tile == null or GlobalVariables.get_grid().should_ally_stop(adjacent_tile)):
+		speed_multiplier *= 0
+		enemy.sprite.pause()
+
 func physics_update(delta):
 	var direction: Vector2 = Vector2.LEFT
 	if enemy.is_ally:
@@ -43,4 +48,4 @@ func physics_update(delta):
 
 func start_attack(adjacent_tile: GridTile):
 	enemy.target_tile = adjacent_tile
-	transitioned.emit(self,"EnemyAttackState")
+	transitioned.emit(self, "EnemyAttackState")
