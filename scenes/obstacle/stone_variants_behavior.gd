@@ -7,6 +7,7 @@ class_name StoneVariantsBehavior
 @export var quartz_crystal: Texture2D
 
 var is_quartz: bool = false
+var quartz_light: bool = false
 
 func init(obstacle: Obstacle) -> void:
     _update_model(obstacle)
@@ -34,8 +35,13 @@ func update(obstacle: Obstacle, _delta: float) -> void:
         obstacle.calc_num_surrounding_lights()
         if obstacle.num_surrounding_lights > 0 and not obstacle.has_light():
             obstacle.light_circle = GlobalVariables.get_light_manager().spawn_tracking(obstacle.light_anchor, GlobalVariables.QUARTZ_CRYSTAL_LIGHT_RADIUS, LightManager.Type.QUARTZ)
+            quartz_light = true
         elif obstacle.num_surrounding_lights <= 0 and obstacle.has_light():
             obstacle.delete_light()
+            quartz_light = false
+    if obstacle.transmuted_state == Obstacle.TransmutedState.QUARTZ and quartz_light:
+        obstacle.delete_light()
+        quartz_light = false
 
 func _has_at_least_one(pickup_type: Pickup.PickupType, obstacle: Obstacle) -> bool:
     return pickup_type in obstacle.loot and obstacle.loot[pickup_type] > 0

@@ -73,7 +73,7 @@
 [ext_resource type="PackedScene" uid="uid://bfrbgovkbdcr8" path="res://scenes/enemy/types/sprite/wind_sprite.tscn" id="49_k2mie"]
 [ext_resource type="PackedScene" uid="uid://cxj6wphfe51ue" path="res://scenes/enemy/types/sprite/tree_sprite.tscn" id="50_qd5sr"]
 [ext_resource type="PackedScene" uid="uid://dp8q0ibg5x7oc" path="res://scenes/menus/pause_menu.tscn" id="50_t4lxk"]
-[ext_resource type="AudioStream" uid="uid://b0e7oiuo6qjj4" path="res://assets/audio/sfx/SFXUnpause.ogg" id="51_jfmbr"]
+[ext_resource type="AudioStream" uid="uid://b0e7oiuo6qjj4" path="res://assets/audio/SFXUnpause.ogg" id="51_jfmbr"]
 [ext_resource type="PackedScene" uid="uid://b0su8vtbd7ue6" path="res://scenes/enemy/types/golem/fire_golem.tscn" id="52_ebjpr"]
 [ext_resource type="PackedScene" uid="uid://bu1wggooa0cd" path="res://scenes/enemy/types/golem/wind_golem.tscn" id="53_i7n8v"]
 [ext_resource type="PackedScene" uid="uid://cue740t2tc7o5" path="res://scenes/enemy/types/golem/tree_golem.tscn" id="54_mtxj2"]
@@ -217,6 +217,7 @@ horizontal_alignment = 1
 mouse_filter = 1
 
 [node name="PotionCraftMenu" parent="HUD" instance=ExtResource("7_urdin")]
+mouse_filter = 1
 
 [node name="ResourceHud" parent="HUD" instance=ExtResource("3_oot8a")]
 
@@ -639,7 +640,6 @@ min_pitch = 1.0
 max_pitch = 1.0
 
 [connection signal="pressed_quit_to_menu" from="PauseMenu" to="." method="_on_pause_menu_pressed_quit_to_menu"]
-[connection signal="do_action" from="ToolBar" to="HUD/ToolBarHud" method="_on_tool_bar_do_action"]
 [connection signal="do_action" from="ToolBar" to="ToolBar/ToolBarAudio" method="_on_tool_bar_do_action"]
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
 [connection signal="tool_changed" from="ToolBar" to="HUD/CursorEffects" method="_on_tool_bar_tool_changed"]

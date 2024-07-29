@@ -19,13 +19,12 @@ script = ExtResource("3_x8dol")
 state = 2
 texture = ExtResource("5_sbv58")
 
-[node name="Sapling" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_aelaq")]
+[node name="Sapling" instance=ExtResource("1_aelaq")]
 data = ExtResource("2_yt6tw")
-behaviors = [NodePath("SaplingBehavior"), NodePath("BurnLeavesBehavior")]
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(0, -4)
-transmutable_map = Array[ExtResource("3_x8dol")]([SubResource("Resource_53op8"), SubResource("Resource_flev8")])
+transmutable_map = [SubResource("Resource_53op8"), SubResource("Resource_flev8")]
 
 [node name="Base" parent="ObstacleModel1" index="0"]
 texture = ExtResource("3_krrjn")

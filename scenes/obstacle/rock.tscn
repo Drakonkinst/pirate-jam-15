@@ -21,13 +21,12 @@ script = ExtResource("3_u5mqm")
 state = 1
 texture = ExtResource("5_pvi3p")
 
-[node name="Rock" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_tp0j5")]
+[node name="Rock" instance=ExtResource("1_tp0j5")]
 data = ExtResource("2_l51pq")
-behaviors = [NodePath("StoneVariantsBehavior")]
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(0, -17)
-transmutable_map = Array[ExtResource("3_u5mqm")]([SubResource("Resource_t0gkr"), SubResource("Resource_ps1qu")])
+transmutable_map = [SubResource("Resource_t0gkr"), SubResource("Resource_ps1qu")]
 
 [node name="Base" parent="ObstacleModel1" index="0"]
 texture = ExtResource("6_c0425")

@@ -23,13 +23,12 @@ script = ExtResource("3_5fetk")
 state = 1
 texture = ExtResource("3_g02xa")
 
-[node name="DeadSapling" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_cr6mj")]
+[node name="DeadSapling" instance=ExtResource("1_cr6mj")]
 data = ExtResource("2_s53sl")
-behaviors = [NodePath("TransformOnTransmute")]
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(0, -4)
-transmutable_map = Array[ExtResource("3_5fetk")]([SubResource("Resource_47jju"), SubResource("Resource_yk4j5"), SubResource("Resource_wbwqs")])
+transmutable_map = [SubResource("Resource_47jju"), SubResource("Resource_yk4j5"), SubResource("Resource_wbwqs")]
 
 [node name="Base" parent="ObstacleModel1" index="0"]
 texture = ExtResource("3_g02xa")
