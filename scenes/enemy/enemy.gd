@@ -5,7 +5,7 @@ class_name Enemy
 const DEFAULT_ANIMATION = "default"
 const ENEMY_FIRE_DAMAGE := 20
 const ENEMY_STEP_ON_FIRE_TIME := 1.0
-const ENEMY_OBSTACLE_FIRE_TIME := 1.0
+const ENEMY_OBSTACLE_FIRE_TIME := 2.0
 
 @export var row = 0
 @export var enemy_data: EnemyData
@@ -104,7 +104,7 @@ func _place_obstacle_on(options: Array[GridTile], obstacle) -> bool:
     for tile: GridTile in options:
         if tile.obstacle and not tile.obstacle.data.replaceable:
             continue
-        GlobalVariables.get_obstacle_manager().spawn_obstacle(obstacle, tile)
+        GlobalVariables.get_obstacle_manager().spawn_obstacle(obstacle, tile, true)
         return true
     return false
 

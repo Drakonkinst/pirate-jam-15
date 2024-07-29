@@ -10,6 +10,9 @@ class_name ObstacleManager
 @export var dead_tree_scene: PackedScene
 @export var dead_sapling_scene: PackedScene
 
+@export var tree_spawn_audio: AudioRandomizer
+@export var rock_spawn_audio: AudioRandomizer
+
 func spawn_starting_obstacles(grid: Grid):
     # Just spawn 1 for testing
     # for tile: GridTile in GridIterator.new(grid):
@@ -50,8 +53,15 @@ func get_scene_for_obstacle(type: Obstacle.Type) -> PackedScene:
             print("Unknown scene for obstacle ", Obstacle.Type.keys()[type])
             return null
 
-func spawn_obstacle(obstacle: Obstacle.Type, tile: GridTile) -> Obstacle:
-    return spawn_obstacle_scene(get_scene_for_obstacle(obstacle), tile)
+func spawn_obstacle(obstacle: Obstacle.Type, tile: GridTile, make_sound: bool = false) -> Obstacle:
+    var success = spawn_obstacle_scene(get_scene_for_obstacle(obstacle), tile)
+    if success:
+        if make_sound:
+            if obstacle == Obstacle.Type.SAPLING:
+                tree_spawn_audio.play_random()
+            elif obstacle == Obstacle.Type.ROCK:
+                rock_spawn_audio.play_random()
+    return success
 
 func replace_obstacle(new_obstacle: Obstacle.Type, tile: GridTile) -> Obstacle:
     return replace_obstacle_scene(get_scene_for_obstacle(new_obstacle), tile)

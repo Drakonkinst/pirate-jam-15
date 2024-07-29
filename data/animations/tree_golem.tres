@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dxjjdphv87jxq"]
+
+[ext_resource type="Texture2D" uid="uid://biwsa2gshckf1" path="res://assets/textures/enemy/golem/Tree_Golem_1.PNG" id="1_v5a57"]
+[ext_resource type="Texture2D" uid="uid://so3f0jlxv67i" path="res://assets/textures/enemy/golem/Tree_Golem_2.PNG" id="2_bfkfm"]
+[ext_resource type="Texture2D" uid="uid://cw70sn6fs2p3i" path="res://assets/textures/enemy/golem/Tree_Golem_3.PNG" id="3_nle7v"]
+[ext_resource type="Texture2D" uid="uid://dyj6qflkq8aoo" path="res://assets/textures/enemy/golem/Tree_Golem_4.PNG" id="4_nvgfi"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v5a57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bfkfm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nle7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nvgfi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]

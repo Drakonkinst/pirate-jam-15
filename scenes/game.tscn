@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=93 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -84,6 +84,8 @@
 [ext_resource type="AudioStream" uid="uid://0ompo3r7kiab" path="res://assets/audio/SFXMenuButtonSelect.ogg" id="78_rohyd"]
 [ext_resource type="AudioStream" uid="uid://c6tajhavixgha" path="res://assets/audio/SFXFireLOOP.ogg" id="80_tnref"]
 [ext_resource type="Script" path="res://scenes/audio/fire_audio.gd" id="81_tor4d"]
+[ext_resource type="AudioStream" uid="uid://dgfyxil3bgkr1" path="res://assets/audio/SFXTreeBreaks.ogg" id="85_mupes"]
+[ext_resource type="AudioStream" uid="uid://corjypnip0syj" path="res://assets/audio/SFXRockBreaks.ogg" id="86_icjs6"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -713,7 +715,7 @@ stream = ExtResource("49_dv2lr")
 autoplay = true
 bus = &"Music"
 
-[node name="ObstacleManager" type="Node2D" parent="."]
+[node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("tree_spawn_audio", "rock_spawn_audio")]
 z_index = 1
 script = ExtResource("10_uoctj")
 tree_scene = ExtResource("11_4iroc")
@@ -723,6 +725,19 @@ torch_scene = ExtResource("14_q7ayn")
 sapling_scene = ExtResource("15_0ctjf")
 dead_tree_scene = ExtResource("14_gc0kp")
 dead_sapling_scene = ExtResource("15_e3p3e")
+tree_spawn_audio = NodePath("TreeSpawnAudio")
+rock_spawn_audio = NodePath("RockSpawnAudio")
+
+[node name="TreeSpawnAudio" type="AudioStreamPlayer" parent="ObstacleManager"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("85_mupes")])
+
+[node name="RockSpawnAudio" type="AudioStreamPlayer" parent="ObstacleManager"]
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("86_icjs6")])
 
 [node name="PauseControl" type="Node2D" parent="." node_paths=PackedStringArray("on_pause_audio", "off_pause_audio")]
 process_mode = 3
