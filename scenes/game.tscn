@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=88 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -63,6 +63,7 @@
 [ext_resource type="AudioStream" uid="uid://dme4j5gng2i3k" path="res://assets/audio/SFXPickaxeHit.ogg" id="30_tgwhu"]
 [ext_resource type="AudioStream" uid="uid://bj1altj7pui7m" path="res://assets/audio/SFXPotionThrow3.ogg" id="30_wlvrs"]
 [ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/level_1.tres" id="31_e2klb"]
+[ext_resource type="AudioStream" uid="uid://b2nopdgqiolbn" path="res://assets/audio/SFXSummon.ogg" id="34_loc10"]
 [ext_resource type="PackedScene" uid="uid://cu6wwp5my8ay" path="res://scenes/effect/explosion.tscn" id="36_y78bo"]
 [ext_resource type="PackedScene" uid="uid://5ye7ihrmklny" path="res://scenes/effect/splat.tscn" id="37_6rhao"]
 [ext_resource type="Script" path="res://scenes/pause_control.gd" id="40_uejed"]
@@ -78,6 +79,8 @@
 [ext_resource type="PackedScene" uid="uid://cue740t2tc7o5" path="res://scenes/enemy/types/golem/tree_golem.tscn" id="54_mtxj2"]
 [ext_resource type="AudioStream" uid="uid://bwy3k3hsarsjf" path="res://assets/audio/SFXMenuPause.ogg" id="66_807vn"]
 [ext_resource type="AudioStream" uid="uid://0ompo3r7kiab" path="res://assets/audio/SFXMenuButtonSelect.ogg" id="78_rohyd"]
+[ext_resource type="AudioStream" uid="uid://c6tajhavixgha" path="res://assets/audio/SFXFireLOOP.ogg" id="80_tnref"]
+[ext_resource type="Script" path="res://scenes/audio/fire_audio.gd" id="81_tor4d"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -488,8 +491,12 @@ script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
 
 [node name="DoSummonAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("34_loc10")])
+min_pitch = 0.75
+max_pitch = 1.2
 
 [node name="ToolInventory" type="Node2D" parent="ToolBar"]
 position = Vector2(-1, 0)
@@ -642,6 +649,12 @@ script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("78_rohyd")])
 min_pitch = 1.0
 max_pitch = 1.0
+
+[node name="FireAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("80_tnref")
+volume_db = -5.0
+bus = &"Effects"
+script = ExtResource("81_tor4d")
 
 [connection signal="pressed_quit_to_menu" from="PauseMenu" to="." method="_on_pause_menu_pressed_quit_to_menu"]
 [connection signal="do_action" from="ToolBar" to="ToolBar/ToolBarAudio" method="_on_tool_bar_do_action"]

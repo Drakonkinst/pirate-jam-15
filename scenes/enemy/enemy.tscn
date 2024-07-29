@@ -1,21 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2a8ngge05k7t"]
+[gd_scene load_steps=15 format=3 uid="uid://c2a8ngge05k7t"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_qvcdo"]
 [ext_resource type="Script" path="res://scenes/health.gd" id="2_2tcm3"]
 [ext_resource type="Script" path="res://scenes/enemy/state_machine.gd" id="3_0rj1h"]
 [ext_resource type="SpriteFrames" uid="uid://ddbc1ljenr45i" path="res://data/animations/tree_sprite.tres" id="3_5wrtp"]
+[ext_resource type="Script" path="res://scenes/audio/audio_randomizer.gd" id="6_tmba5"]
 [ext_resource type="PackedScene" uid="uid://jci63uf5o54n" path="res://scenes/ui/healthbar.tscn" id="7_d4e3b"]
+[ext_resource type="AudioStream" uid="uid://dc6jwxh5heqqt" path="res://assets/audio/SFXEnemyGetsHit2.ogg" id="7_dwchw"]
+[ext_resource type="AudioStream" uid="uid://bl0xmaqj0lvf0" path="res://assets/audio/SFXEnemyGetsHit3.ogg" id="8_quhrp"]
+[ext_resource type="AudioStream" uid="uid://bos8pvqt5f0r1" path="res://assets/audio/SFXEnemyGetsHit4.ogg" id="9_ke44t"]
+[ext_resource type="AudioStream" uid="uid://u2b5p5tslukd" path="res://assets/audio/SFXEnemyGetsHit5.ogg" id="10_qqmv2"]
+[ext_resource type="AudioStream" uid="uid://b0qbh3o7xvnek" path="res://assets/audio/SFXEnemyGetsHit6.ogg" id="11_qveh1"]
+[ext_resource type="AudioStream" uid="uid://djh62cxoi5pwm" path="res://assets/audio/SFXEnemyGetsHit7.ogg" id="12_7vsi2"]
+[ext_resource type="AudioStream" uid="uid://b8duc2x3v40qh" path="res://assets/audio/SFXEnemyGetsHit.ogg" id="13_pduw2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xycco"]
 size = Vector2(22.3684, 23.4211)
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("attack_audio", "state_machine")]
 z_index = 5
 z_as_relative = false
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_qvcdo")
+attack_audio = NodePath("AttackAudio")
 state_machine = NodePath("StateMachine")
 
 [node name="Health" type="Node" parent="."]
@@ -57,6 +66,14 @@ offset_left = -24.0
 offset_top = -31.0
 offset_right = 16.0
 offset_bottom = 9.0
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="."]
+volume_db = -12.0
+bus = &"Effects"
+script = ExtResource("6_tmba5")
+audio_tracks = Array[AudioStream]([ExtResource("7_dwchw"), ExtResource("8_quhrp"), ExtResource("9_ke44t"), ExtResource("10_qqmv2"), ExtResource("11_qveh1"), ExtResource("12_7vsi2"), ExtResource("13_pduw2")])
+min_pitch = 1.25
+max_pitch = 1.6
 
 [connection signal="changed" from="Health" to="Healthbar" method="_on_health_changed"]
 [connection signal="death" from="Health" to="." method="_on_health_death"]

@@ -6,6 +6,7 @@ const DEFAULT_ANIMATION = "default"
 
 @export var row = 0 
 @export var enemy_data: EnemyData
+@export var attack_audio: AudioRandomizer
 
 var moving: bool = true
 var target_tile: GridTile = null
@@ -46,6 +47,7 @@ func attack(tile: GridTile) -> bool:
 	if tile == null or tile.obstacle == null:
 		return false
 	tile.obstacle.damage(enemy_data.attack_damage)
+	attack_audio.play_random()
 	return true
 
 func damage(val):

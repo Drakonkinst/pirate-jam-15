@@ -74,6 +74,7 @@ scale = Vector2(1.44, 1.44)
 
 [node name="DestroyAudio" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
+bus = &"Effects"
 script = ExtResource("12_5eevk")
 min_pitch = 0.8
 max_pitch = 1.2
