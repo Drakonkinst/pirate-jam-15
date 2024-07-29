@@ -32,6 +32,7 @@ const SUMMON_ORDER: Array[EnemySpawner.EnemyType] = [
 @export var buttons: Array[ToolBarIcon]
 @export var highlight_material: Material
 @export var highlight_thin_material: Material
+@export var highlight_thick_material: Material
 @export var potion_expand_menu: ExpandMenu
 @export var summon_expand_menu: ExpandMenu
 @export var potion_tool_icons: Array[Texture2D]
@@ -49,8 +50,7 @@ var current_tool_index: int = 0
 func _ready() -> void:
     toolbar = GlobalVariables.get_toolbar()
     _set_selected_potion(0)
-    # TODO
-    # _set_selected_summon(0)
+    _set_selected_summon(0)
 
 func _process(_delta: float) -> void:
     var cooldown_array: Array[float] = toolbar.get_cooldown_array()
@@ -123,9 +123,13 @@ func _on_summon_button_button_down() -> void:
 
 func _on_tool_bar_tool_changed(tool: ToolBar.Tool) -> void:
     var tool_index = TOOL_ORDER.find(tool, 0)
-    var needs_thin = tool == ToolBar.Tool.POTION or tool == ToolBar.Tool.SUMMON
+    var needs_thin = tool == ToolBar.Tool.POTION
+    var needs_thick = tool == ToolBar.Tool.SUMMON
     for i in buttons.size():
         if i == tool_index:
+            if needs_thick:
+                print("NEEDS THICK")
+                buttons[i].apply_material(highlight_thick_material)
             if needs_thin:
                 buttons[i].apply_material(highlight_thin_material)
             else:

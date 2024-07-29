@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bngi68ri8c1es"
-path="res://.godot/imported/shadow_creature_2.png-3fafd2740fd5fae350fd5430d608bcdc.ctex"
+path="res://.godot/imported/wind_sprite.png-d3c0fb4fa7cbd9f47b0a3ea514e0f7ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemy/profile/shadow_creature_2.png"
-dest_files=["res://.godot/imported/shadow_creature_2.png-3fafd2740fd5fae350fd5430d608bcdc.ctex"]
+source_file="res://assets/textures/enemy/profile/wind_sprite.png"
+dest_files=["res://.godot/imported/wind_sprite.png-d3c0fb4fa7cbd9f47b0a3ea514e0f7ab.ctex"]
 
 [params]
 

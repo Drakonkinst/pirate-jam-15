@@ -39,13 +39,14 @@ offset_bottom = -126.0
 grow_horizontal = 2
 
 [node name="TextureRect" type="TextureRect" parent="Dropdown"]
-modulate = Color(0.243137, 0.243137, 0.243137, 0.584314)
+modulate = Color(0, 0, 0, 0.411765)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2.96, 1)
 texture = ExtResource("2_sxa8v")
 
 [node name="HideButton" type="Button" parent="Dropdown"]
@@ -62,6 +63,66 @@ offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Hide"
+
+[node name="Label1" type="Label" parent="Dropdown"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 135.0
+offset_top = -160.5
+offset_right = 224.0
+offset_bottom = -115.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Life"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Dropdown"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 135.0
+offset_top = -69.5
+offset_right = 224.0
+offset_bottom = -24.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Stone"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Dropdown"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 135.0
+offset_top = 21.5
+offset_right = 224.0
+offset_bottom = 66.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Crystal"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Dropdown"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 135.0
+offset_top = 112.5
+offset_right = 224.0
+offset_bottom = 157.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Oil"
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Dropdown"]
 layout_mode = 1

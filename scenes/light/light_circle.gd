@@ -6,16 +6,18 @@ signal removed
 
 var tracking: Node2D
 var light_radius: float
+var light_type: LightManager.Type
 
 @onready var light_glow: LightGlow = $LightGlow
 
 func init(track_node: Node2D, radius: float, type: LightManager.Type) -> void:
-	var texture_width = texture.get_width()
-	var texture_height = texture.get_height()
-	tracking = track_node
-	scale = Vector2(radius / texture_width, radius / texture_height)
-	light_radius = radius
-	light_glow.original_scale = scale
+    var texture_width = texture.get_width()
+    var texture_height = texture.get_height()
+    tracking = track_node
+    scale = Vector2(radius / texture_width, radius / texture_height)
+    light_radius = radius
+    light_type = type
+    light_glow.original_scale = scale
 
 func is_in_circle(pos: Vector2) -> bool:
 	var delta_x = abs(pos.x - global_position.x)

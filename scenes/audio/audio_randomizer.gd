@@ -11,7 +11,5 @@ func play_random():
         print("WARNING: No audio found")
         return
     stream = audio_tracks[randi() % audio_tracks.size()]
-    if not stream:
-        return
     pitch_scale = randf_range(min_pitch, max_pitch)
     play()

@@ -2,6 +2,8 @@ extends ProjectileBehavior
 
 class_name TorchBehavior
 
+const ENEMY_TORCH_FIRE := 3.0
+
 @export var light_anchor: Node2D
 
 func on_ready(_projectile: ThrownProjectile):
@@ -10,7 +12,13 @@ func on_ready(_projectile: ThrownProjectile):
 func on_land(_pos: Vector2):
     var obstacle_manager: ObstacleManager = GlobalVariables.get_obstacle_manager()
     var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(_pos)
-    # TODO: Light any enemies in the same tile on fire
+
+    var enemies_affected: Array[Enemy] = GlobalVariables.get_enemy_spawner().get_enemies_in_tile(tile)
+    for enemy: Enemy in enemies_affected:
+        if enemy.is_ally:
+            continue
+        enemy.set_on_fire(ENEMY_TORCH_FIRE)
+
     if tile == null:
         return
 

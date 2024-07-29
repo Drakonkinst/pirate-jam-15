@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deuy1pek76bbo"
-path="res://.godot/imported/shadow_creature.png-cfea4a45acabffde24dd9b858a45b13c.ctex"
+uid="uid://d4ax3gt56rrs0"
+path="res://.godot/imported/wall_top.png-4e1688e583cd0a6c5b2be53f0a24ae40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemy/profile/shadow_creature.png"
-dest_files=["res://.godot/imported/shadow_creature.png-cfea4a45acabffde24dd9b858a45b13c.ctex"]
+source_file="res://assets/textures/wall_top.png"
+dest_files=["res://.godot/imported/wall_top.png-4e1688e583cd0a6c5b2be53f0a24ae40.ctex"]
 
 [params]
 

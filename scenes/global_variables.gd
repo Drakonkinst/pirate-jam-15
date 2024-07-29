@@ -7,6 +7,7 @@ const CONFIG_PATH = "user://settings.cfg"
 # Light radius
 const TORCH_LIGHT_RADIUS := 200.0
 const FLAMING_OBJECT_LIGHT_RADIUS := 175.0
+const FLAMING_ENEMY_LIGHT_RADIUS := 175.0
 const QUARTZ_LIGHT_RADIUS := 250.0
 const QUARTZ_CRYSTAL_LIGHT_RADIUS := 200.0
 
@@ -28,6 +29,9 @@ func get_projectile_manager() -> ProjectileManager:
 
 func get_light_manager() -> LightManager:
 	return curr_game.light_manager
+
+func get_base_health() -> BaseHealth:
+	return curr_game.base_health
 
 func get_dialogue_manager() -> DialogueManager:
 	return curr_game.dialogue_manager

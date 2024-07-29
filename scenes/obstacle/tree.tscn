@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdnr8tlvaswxs"]
+[gd_scene load_steps=15 format=3 uid="uid://bdnr8tlvaswxs"]
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_ubi77"]
 [ext_resource type="Resource" uid="uid://c74t1c6d0mox1" path="res://data/obstacle/tree.tres" id="2_7gwrh"]
 [ext_resource type="Script" path="res://data/obstacle/transmutable_entry.gd" id="3_ca1s4"]
+[ext_resource type="AudioStream" uid="uid://dgfyxil3bgkr1" path="res://assets/audio/SFXTreeBreaks.ogg" id="3_ug6rc"]
 [ext_resource type="Texture2D" uid="uid://bxwpgwksan1se" path="res://assets/textures/obstacle/quartz_tree.png" id="4_6lpjw"]
 [ext_resource type="Script" path="res://scenes/obstacle/tree_behavior.gd" id="5_chy1h"]
 [ext_resource type="Texture2D" uid="uid://bfy15rd0kvyfy" path="res://assets/textures/obstacle/stone_tree.png" id="5_igec0"]
@@ -26,10 +27,11 @@ size = Vector2(141, 96)
 
 [node name="Tree" instance=ExtResource("1_ubi77")]
 data = ExtResource("2_7gwrh")
+default_break_sound = ExtResource("3_ug6rc")
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(-2, -13)
-transmutable_map = [SubResource("Resource_44n8k"), SubResource("Resource_jhma5")]
+transmutable_map = Array[ExtResource("3_ca1s4")]([SubResource("Resource_44n8k"), SubResource("Resource_jhma5")])
 
 [node name="FruitTree" type="Sprite2D" parent="ObstacleModel1" index="1"]
 visible = false
@@ -82,12 +84,13 @@ position = Vector2(-23, -40)
 rotation = 0.285018
 scale = Vector2(0.9, 0.9)
 
-[node name="TreeBehavior" type="Node2D" parent="." index="3" node_paths=PackedStringArray("fruit_tree_model", "original_tree_model", "harvest_area")]
+[node name="TreeBehavior" type="Node2D" parent="." index="3" node_paths=PackedStringArray("fruit_tree_model", "original_tree_model", "harvest_area", "fruit_harvest_points")]
 script = ExtResource("5_chy1h")
-tree_harvest_mask = 2
 fruit_tree_model = NodePath("../ObstacleModel1/FruitTree")
 original_tree_model = NodePath("../ObstacleModel1/Base")
 harvest_area = NodePath("../MouseOverArea")
+fruit_harvest_points = [NodePath("../ObstacleModel1/FruitHarvestPoint"), NodePath("../ObstacleModel1/FruitHarvestPoint2"), NodePath("../ObstacleModel1/FruitHarvestPoint3"), NodePath("../ObstacleModel1/FruitHarvestPoint4"), NodePath("../ObstacleModel1/FruitHarvestPoint5"), NodePath("../ObstacleModel1/FruitHarvestPoint6"), NodePath("../ObstacleModel1/FruitHarvestPoint7")]
+tree_harvest_mask = 2
 
 [node name="BurnLeavesBehavior" type="Node2D" parent="." index="4"]
 script = ExtResource("6_5ae8g")
@@ -105,6 +108,8 @@ z_index = 900
 position = Vector2(-0.5, -63)
 shape = SubResource("RectangleShape2D_lhsll")
 
-[connection signal="removed" from="." to="TreeBehavior" method="_on_tree_removed"]
+[node name="DestroyAudio" parent="." index="8"]
+audio_tracks = Array[AudioStream]([null])
+
 [connection signal="mouse_entered" from="MouseOverArea" to="TreeBehavior" method="_on_area_2d_mouse_entered"]
 [connection signal="moused_over" from="MouseOverArea" to="TreeBehavior" method="_on_mouse_over_area_moused_over"]

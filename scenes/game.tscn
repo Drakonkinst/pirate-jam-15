@@ -1,12 +1,15 @@
-[gd_scene load_steps=91 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=104 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
 [ext_resource type="Texture2D" uid="uid://cmsxn8hkmq3g8" path="res://assets/textures/background_alt.png" id="3_l1dqf"]
 [ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://assets/ui/resource_hud.tscn" id="3_oot8a"]
+[ext_resource type="Texture2D" uid="uid://bntf5w2uwvsb7" path="res://assets/textures/wall_bottom.png" id="4_m1euc"]
 [ext_resource type="Script" path="res://scenes/hud/cursor_effects.gd" id="4_vdaaq"]
+[ext_resource type="Texture2D" uid="uid://d4ax3gt56rrs0" path="res://assets/textures/wall_top.png" id="5_3kq7w"]
 [ext_resource type="Texture2D" uid="uid://bmgy1sy6rb32q" path="res://assets/textures/circle_512.png" id="5_47rpd"]
 [ext_resource type="Script" path="res://scenes/day_tracker.gd" id="6_o1xut"]
+[ext_resource type="Texture2D" uid="uid://cbil27cpbctth" path="res://assets/textures/obstacle/tree.png" id="6_tnkw7"]
 [ext_resource type="PackedScene" uid="uid://dyifllpcx6yhy" path="res://scenes/ui/potion_craft_menu.tscn" id="7_urdin"]
 [ext_resource type="PackedScene" uid="uid://c27pf3yvahh2t" path="res://scenes/dialogue/dialogue_manager.tscn" id="8_7d0d0"]
 [ext_resource type="Texture2D" uid="uid://vs1qri71bqx6" path="res://assets/textures/player_portrait.png" id="9_crwft"]
@@ -17,11 +20,14 @@
 [ext_resource type="PackedScene" uid="uid://bdnr8tlvaswxs" path="res://scenes/obstacle/tree.tscn" id="11_4iroc"]
 [ext_resource type="PackedScene" uid="uid://g0r7v65brbxf" path="res://scenes/grid/grid.tscn" id="11_7lv1o"]
 [ext_resource type="Script" path="res://scenes/audio/tool_bar_audio.gd" id="11_gvs78"]
+[ext_resource type="Script" path="res://scenes/player/base_health.gd" id="12_7pc3e"]
 [ext_resource type="PackedScene" uid="uid://ci5x7iudnfatv" path="res://scenes/obstacle/rock.tscn" id="12_bokvu"]
-[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/shadow_creature.png" id="12_dk08j"]
+[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/rock_sprite.png" id="12_dk08j"]
+[ext_resource type="PackedScene" uid="uid://jci63uf5o54n" path="res://scenes/ui/healthbar.tscn" id="12_h7wtm"]
 [ext_resource type="Script" path="res://scenes/audio/audio_randomizer.gd" id="12_hqgvj"]
 [ext_resource type="AudioStream" uid="uid://b5iybe17vtcm5" path="res://assets/audio/SFXMagicBoltSelected.ogg" id="13_lykkh"]
 [ext_resource type="PackedScene" uid="uid://hmw6qr2yjefw" path="res://scenes/obstacle/oil_spill.tscn" id="13_tpqui"]
+[ext_resource type="Script" path="res://scenes/health.gd" id="14_dohtn"]
 [ext_resource type="PackedScene" uid="uid://bcqx4m1p240sb" path="res://scenes/obstacle/dead_tree.tscn" id="14_gc0kp"]
 [ext_resource type="PackedScene" uid="uid://dutyvrutx3beh" path="res://scenes/obstacle/torch.tscn" id="14_q7ayn"]
 [ext_resource type="PackedScene" uid="uid://4ly726jco8yn" path="res://scenes/obstacle/sapling.tscn" id="15_0ctjf"]
@@ -63,6 +69,7 @@
 [ext_resource type="PackedScene" uid="uid://c8pxl8kvqxfqw" path="res://scenes/light/light_quartz.tscn" id="30_52igg"]
 [ext_resource type="AudioStream" uid="uid://dme4j5gng2i3k" path="res://assets/audio/SFXPickaxeHit.ogg" id="30_tgwhu"]
 [ext_resource type="AudioStream" uid="uid://bj1altj7pui7m" path="res://assets/audio/SFXPotionThrow3.ogg" id="30_wlvrs"]
+[ext_resource type="AudioStream" uid="uid://b2nopdgqiolbn" path="res://assets/audio/SFXSummon.ogg" id="34_loc10"]
 [ext_resource type="PackedScene" uid="uid://cu6wwp5my8ay" path="res://scenes/effect/explosion.tscn" id="36_y78bo"]
 [ext_resource type="PackedScene" uid="uid://5ye7ihrmklny" path="res://scenes/effect/splat.tscn" id="37_6rhao"]
 [ext_resource type="Script" path="res://scenes/pause_control.gd" id="40_uejed"]
@@ -83,7 +90,13 @@
 [ext_resource type="PackedScene" uid="uid://cue740t2tc7o5" path="res://scenes/enemy/types/golem/tree_golem.tscn" id="54_mtxj2"]
 [ext_resource type="AudioStream" uid="uid://bwy3k3hsarsjf" path="res://assets/audio/SFXMenuPause.ogg" id="66_807vn"]
 [ext_resource type="Script" path="res://scenes/daysystem/day_cycle_manager.gd" id="67_l7r7b"]
+[ext_resource type="AudioStream" uid="uid://jpu776c5cfpm" path="res://assets/audio/SFXPotionBreaks2.ogg" id="71_mspmp"]
+[ext_resource type="AudioStream" uid="uid://dp01ou2w0jlqc" path="res://assets/audio/SFXPotionsBreaks3.ogg" id="73_np7hk"]
 [ext_resource type="AudioStream" uid="uid://0ompo3r7kiab" path="res://assets/audio/SFXMenuButtonSelect.ogg" id="78_rohyd"]
+[ext_resource type="AudioStream" uid="uid://c6tajhavixgha" path="res://assets/audio/SFXFireLOOP.ogg" id="80_tnref"]
+[ext_resource type="Script" path="res://scenes/audio/fire_audio.gd" id="81_tor4d"]
+[ext_resource type="AudioStream" uid="uid://dgfyxil3bgkr1" path="res://assets/audio/SFXTreeBreaks.ogg" id="85_mupes"]
+[ext_resource type="AudioStream" uid="uid://corjypnip0syj" path="res://assets/audio/SFXRockBreaks.ogg" id="86_icjs6"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -119,7 +132,7 @@ class_name World
 
 "
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar", "day_cycle_manager")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar", "day_cycle_manager", "base_health")]
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
 obstacle_manager = NodePath("ObstacleManager")
@@ -130,6 +143,7 @@ light_manager = NodePath("World/Grid/LightManager")
 enemy_spawner = NodePath("World/Enemies")
 toolbar = NodePath("ToolBar")
 day_cycle_manager = NodePath("World/DayCycleManager")
+base_health = NodePath("HUD/BaseHealth")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
@@ -153,9 +167,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
-offset_top = -2.0
+offset_top = -5.0
 offset_right = 2.0
-offset_bottom = 27.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_5hatj")
@@ -175,6 +189,99 @@ grow_vertical = 2
 texture = ExtResource("3_l1dqf")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="WallBottom" type="TextureRect" parent="Background"]
+offset_top = 50.0
+offset_right = 2560.0
+offset_bottom = 1490.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_m1euc")
+
+[node name="WallTop" type="TextureRect" parent="Background"]
+offset_top = -40.0
+offset_right = 2560.0
+offset_bottom = 1400.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_3kq7w")
+
+[node name="Tree1" type="TextureRect" parent="Background"]
+offset_left = 1397.0
+offset_top = 683.0
+offset_right = 1909.0
+offset_bottom = 1451.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_tnkw7")
+
+[node name="Tree3" type="TextureRect" parent="Background"]
+offset_left = 1391.0
+offset_top = -482.0
+offset_right = 1903.0
+offset_bottom = 286.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_tnkw7")
+
+[node name="Tree8" type="TextureRect" parent="Background"]
+offset_left = 1152.0
+offset_top = -475.0
+offset_right = 1664.0
+offset_bottom = 293.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_tnkw7")
+
+[node name="Tree9" type="TextureRect" parent="Background"]
+offset_left = 563.0
+offset_top = -502.0
+offset_right = 1075.0
+offset_bottom = 266.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_tnkw7")
+
+[node name="Tree10" type="TextureRect" parent="Background"]
+offset_left = 28.0
+offset_top = -495.0
+offset_right = 540.0
+offset_bottom = 273.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_tnkw7")
+
+[node name="Tree4" type="TextureRect" parent="Background"]
+offset_left = 619.0
+offset_top = 693.0
+offset_right = 1131.0
+offset_bottom = 1461.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_tnkw7")
+
+[node name="Tree5" type="TextureRect" parent="Background"]
+offset_left = 308.0
+offset_top = 680.0
+offset_right = 820.0
+offset_bottom = 1448.0
+texture = ExtResource("6_tnkw7")
+flip_h = true
+
+[node name="Tree6" type="TextureRect" parent="Background"]
+offset_left = 70.0
+offset_top = 693.0
+offset_right = 582.0
+offset_bottom = 1461.0
+texture = ExtResource("6_tnkw7")
+
+[node name="Tree7" type="TextureRect" parent="Background"]
+offset_left = 768.0
+offset_top = 699.0
+offset_right = 1280.0
+offset_bottom = 1467.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_tnkw7")
+flip_h = true
+
+[node name="Tree2" type="TextureRect" parent="Background"]
+offset_left = 1184.0
+offset_top = 680.0
+offset_right = 1696.0
+offset_bottom = 1448.0
+texture = ExtResource("6_tnkw7")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -225,10 +332,13 @@ text = "Daytime
 horizontal_alignment = 1
 
 [node name="ToolBarHud" parent="HUD" instance=ExtResource("9_dlv2r")]
+offset_left = 5.0
+offset_top = -42.0
+offset_right = 5.0
+offset_bottom = -42.0
 mouse_filter = 1
 
 [node name="PotionCraftMenu" parent="HUD" instance=ExtResource("7_urdin")]
-mouse_filter = 1
 
 [node name="ResourceHud" parent="HUD" instance=ExtResource("3_oot8a")]
 
@@ -281,6 +391,48 @@ offset_left = 378.667
 offset_top = 76.0
 offset_right = 378.667
 offset_bottom = 76.0
+
+[node name="BaseHealth" type="Control" parent="HUD"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1906.0
+offset_top = 1037.0
+offset_right = -1866.0
+offset_bottom = 1077.0
+grow_horizontal = 0
+scale = Vector2(18.36, 1.84)
+script = ExtResource("12_7pc3e")
+
+[node name="Health" type="Node" parent="HUD/BaseHealth"]
+script = ExtResource("14_dohtn")
+
+[node name="Healthbar" parent="HUD/BaseHealth" instance=ExtResource("12_h7wtm")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 3.28)
+size_flags_horizontal = 4
+show_only_if_damaged = false
+
+[node name="BarUnder" parent="HUD/BaseHealth/Healthbar" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.16)
+
+[node name="BarOver" parent="HUD/BaseHealth/Healthbar" index="1"]
+scale = Vector2(1, 0.16)
 
 [node name="DialogueManager" parent="." node_paths=PackedStringArray("textbox", "speaker", "pause_control", "player_default_portrait", "villain_default_portrait", "minion_default_portrait") instance=ExtResource("8_7d0d0")]
 process_mode = 3
@@ -481,6 +633,7 @@ script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("22_1s61m"), ExtResource("23_a2iab"), ExtResource("24_m7fgo")])
 
 [node name="DoTorchAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("16_17j03"), ExtResource("17_a7jxu"), ExtResource("18_3tbfr")])
@@ -500,8 +653,12 @@ script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
 
 [node name="DoSummonAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("34_loc10")])
+min_pitch = 0.75
+max_pitch = 1.2
 
 [node name="ToolInventory" type="Node2D" parent="ToolBar"]
 position = Vector2(-1, 0)
@@ -619,6 +776,15 @@ splat_parent = NodePath("../Grid")
 throw_offset = Vector2(25, -75)
 fire_offset = Vector2(80, -50)
 
+[node name="SplashAudio" type="AudioStreamPlayer" parent="World/ProjectileManager"]
+unique_name_in_owner = true
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("71_mspmp"), ExtResource("73_np7hk")])
+min_pitch = 0.75
+max_pitch = 1.0
+
 [node name="DayCycleManager" type="Node2D" parent="World"]
 script = ExtResource("67_l7r7b")
 day_length = 5.0
@@ -636,6 +802,30 @@ process_mode = 3
 stream = ExtResource("49_dv2lr")
 autoplay = true
 bus = &"Music"
+
+[node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("tree_spawn_audio", "rock_spawn_audio")]
+z_index = 1
+script = ExtResource("10_uoctj")
+tree_scene = ExtResource("11_4iroc")
+rock_scene = ExtResource("12_bokvu")
+oil_spill_scene = ExtResource("13_tpqui")
+torch_scene = ExtResource("14_q7ayn")
+sapling_scene = ExtResource("15_0ctjf")
+dead_tree_scene = ExtResource("14_gc0kp")
+dead_sapling_scene = ExtResource("15_e3p3e")
+tree_spawn_audio = NodePath("TreeSpawnAudio")
+rock_spawn_audio = NodePath("RockSpawnAudio")
+
+[node name="TreeSpawnAudio" type="AudioStreamPlayer" parent="ObstacleManager"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("85_mupes")])
+
+[node name="RockSpawnAudio" type="AudioStreamPlayer" parent="ObstacleManager"]
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("86_icjs6")])
 
 [node name="PauseControl" type="Node2D" parent="." node_paths=PackedStringArray("on_pause_audio", "off_pause_audio")]
 process_mode = 3
@@ -659,17 +849,16 @@ audio_tracks = Array[AudioStream]([ExtResource("78_rohyd")])
 min_pitch = 1.0
 max_pitch = 1.0
 
-[node name="ObstacleManager" type="Node2D" parent="."]
-z_index = 1
-script = ExtResource("10_uoctj")
-tree_scene = ExtResource("11_4iroc")
-rock_scene = ExtResource("12_bokvu")
-oil_spill_scene = ExtResource("13_tpqui")
-torch_scene = ExtResource("14_q7ayn")
-sapling_scene = ExtResource("15_0ctjf")
-dead_tree_scene = ExtResource("14_gc0kp")
-dead_sapling_scene = ExtResource("15_e3p3e")
+[node name="FireAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("80_tnref")
+volume_db = -5.0
+bus = &"Effects"
+script = ExtResource("81_tor4d")
 
+[connection signal="game_over" from="HUD/BaseHealth" to="." method="_on_base_health_game_over"]
+[connection signal="changed" from="HUD/BaseHealth/Health" to="HUD/BaseHealth" method="_on_health_changed"]
+[connection signal="changed" from="HUD/BaseHealth/Health" to="HUD/BaseHealth/Healthbar" method="_on_health_changed"]
+[connection signal="death" from="HUD/BaseHealth/Health" to="HUD/BaseHealth" method="_on_health_death"]
 [connection signal="pressed_quit_to_menu" from="PauseMenu" to="." method="_on_pause_menu_pressed_quit_to_menu"]
 [connection signal="do_action" from="ToolBar" to="ToolBar/ToolBarAudio" method="_on_tool_bar_do_action"]
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
@@ -692,3 +881,5 @@ dead_sapling_scene = ExtResource("15_e3p3e")
 [connection signal="timeout" from="World/DayCycleManager/Interval" to="World/DayCycleManager" method="_on_interval_timeout"]
 [connection signal="paused" from="PauseControl" to="PauseMenu" method="_on_pause_control_paused"]
 [connection signal="unpaused" from="PauseControl" to="PauseMenu" method="_on_pause_control_unpaused"]
+
+[editable path="HUD/BaseHealth/Healthbar"]

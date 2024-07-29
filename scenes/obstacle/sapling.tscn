@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://4ly726jco8yn"]
+[gd_scene load_steps=12 format=3 uid="uid://4ly726jco8yn"]
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_aelaq"]
 [ext_resource type="Resource" uid="uid://dvrp2cbwh7e8v" path="res://data/obstacle/sapling.tres" id="2_yt6tw"]
 [ext_resource type="Texture2D" uid="uid://dy0cbkmdp5mcd" path="res://assets/textures/obstacle/sapling.png" id="3_krrjn"]
+[ext_resource type="AudioStream" uid="uid://7tgdnxwyusve" path="res://assets/audio/SFXTreeBreaks2.ogg" id="3_r2quj"]
 [ext_resource type="Script" path="res://data/obstacle/transmutable_entry.gd" id="3_x8dol"]
 [ext_resource type="Texture2D" uid="uid://b5whko5t3gtse" path="res://assets/textures/obstacle/quartz_sapling.png" id="4_kwc8d"]
 [ext_resource type="Script" path="res://scenes/obstacle/sapling_behavior.gd" id="4_l6r4w"]
@@ -21,10 +22,11 @@ texture = ExtResource("5_sbv58")
 
 [node name="Sapling" instance=ExtResource("1_aelaq")]
 data = ExtResource("2_yt6tw")
+default_break_sound = ExtResource("3_r2quj")
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(0, -4)
-transmutable_map = [SubResource("Resource_53op8"), SubResource("Resource_flev8")]
+transmutable_map = Array[ExtResource("3_x8dol")]([SubResource("Resource_53op8"), SubResource("Resource_flev8")])
 
 [node name="Base" parent="ObstacleModel1" index="0"]
 texture = ExtResource("3_krrjn")

@@ -93,6 +93,7 @@ func set_transmuted_state(state: TransmutedState) -> bool:
     if success:
         transmuted_state = state
         on_transmuted_state_change()
+        _update_audio()
     transmuted.emit(self)
     for behavior: ObstacleBehavior in behaviors:
         # Quick null check just in case
@@ -100,9 +101,25 @@ func set_transmuted_state(state: TransmutedState) -> bool:
             behavior.on_transmute(self, state)
     return success
 
+func _update_audio() -> void:
+    var new_audio: AudioStream = null
+    if transmuted_state == TransmutedState.DEFAULT:
+        new_audio = default_break_sound
+    elif transmuted_state == TransmutedState.QUARTZ and quartz_break_sound:
+        new_audio = quartz_break_sound
+    elif transmuted_state == TransmutedState.STONE and rock_break_sound:
+        new_audio = rock_break_sound
+    elif transmuted_state == TransmutedState.WOOD and tree_break_sound:
+        new_audio = tree_break_sound
+
+    if new_audio:
+        destroy_audio.audio_tracks = [new_audio]
+
+
 func reset_transmuted_state() -> bool:
     transmuted_state = TransmutedState.DEFAULT
     model.set_transmuted_state(transmuted_state)
+    _update_audio()
     update_health_from_transmutation(transmuted_state)
     if burning_state.is_burning() and not is_flammable():
         put_out_fire()
@@ -240,8 +257,10 @@ func create_pickup_drops():
         GlobalVariables.get_pickup_manager().spawn_pickup_drop(item, global_position, count)
 
 func _on_health_death() -> void:
-    # TODO: Stretch goal to put an animation here
+    # FIXME: Stretch goal to put an animation here
     destroy_timer.start()
+    destroy_audio.play_random()
+    hide()
     create_pickup_drops()
 
 func _on_burning_state_burnt() -> void:

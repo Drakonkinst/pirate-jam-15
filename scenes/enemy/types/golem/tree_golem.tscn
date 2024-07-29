@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c2a8ngge05k7t" path="res://scenes/enemy/enemy.tscn" id="1_ghl72"]
 [ext_resource type="Resource" uid="uid://cugl0hkcggdac" path="res://data/enemy/golemdata/tree_golem.tres" id="2_psi8u"]
-[ext_resource type="SpriteFrames" uid="uid://de65l4sd4bnae" path="res://data/animations/rock_golem.tres" id="3_5rg82"]
+[ext_resource type="SpriteFrames" uid="uid://dxjjdphv87jxq" path="res://data/animations/tree_golem.tres" id="3_jrewt"]
 [ext_resource type="Script" path="res://scenes/enemy/states/walk_state.gd" id="6_kj3eq"]
 [ext_resource type="Shape2D" uid="uid://cyg8pldk2mnjr" path="res://data/enemy/golem_hitbox.tres" id="6_urbfi"]
 [ext_resource type="Script" path="res://scenes/enemy/states/attack_state.gd" id="7_jse6a"]
@@ -11,10 +11,9 @@
 enemy_data = ExtResource("2_psi8u")
 
 [node name="Sprite" parent="." index="1"]
-modulate = Color(0.403922, 1, 0.27451, 1)
 position = Vector2(0, -40)
 scale = Vector2(0.4, 0.4)
-sprite_frames = ExtResource("3_5rg82")
+sprite_frames = ExtResource("3_jrewt")
 frame_progress = 0.0
 
 [node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]

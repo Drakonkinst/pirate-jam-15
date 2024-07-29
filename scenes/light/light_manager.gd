@@ -27,3 +27,9 @@ func is_in_light(pos: Vector2) -> bool:
         if light.is_in_circle(pos):
             return true
     return false
+
+func any_fire() -> bool:
+    for light in get_children():
+        if light.light_type == Type.FIRE:
+            return true
+    return false

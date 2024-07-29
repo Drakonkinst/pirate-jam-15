@@ -13,8 +13,14 @@ signal quit_to_menu
 @export var enemy_spawner: EnemySpawner
 @export var toolbar: ToolBar
 @export var day_cycle_manager: DayCycleManager
+@export var base_health: BaseHealth
+# TODO
+# @export var game_over_screen:
 
 @onready var pause_control: PauseControl = $PauseControl
+
+var score: int = 0
+var is_game_over: bool = false
 
 func _ready():
 	pause_control.unpause()
@@ -26,3 +32,12 @@ func _ready():
 
 func _on_pause_menu_pressed_quit_to_menu() -> void:
 	quit_to_menu.emit()
+
+func _on_base_health_game_over() -> void:
+	pause_control.disable()
+	get_tree().paused = true
+	# TODO: Show game over screen
+	is_game_over = true
+
+func damage_player(amount: int) -> void:
+	base_health.damage(amount)
