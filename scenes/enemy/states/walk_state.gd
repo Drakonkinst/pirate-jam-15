@@ -10,9 +10,10 @@ const SCAN_INTERVAL = 1.0
 @export var enemy: Enemy
 
 var speed_multiplier = 1.0
-var opponent: Enemy = null
+var curr_opponent: Enemy = null
 var time_until_next_scan: float = 0.0
 var stopped_moving = false
+var attack_timer: float = 0.0
 
 func enter():
     # Change to walking animation
@@ -47,22 +48,30 @@ func update(delta):
         enemy.sprite.pause()
         stopped_moving = false
 
-    if opponent != null:
+    if curr_opponent != null:
         speed_multiplier = 0
         if not stopped_moving:
             enemy.sprite.pause()
             stopped_moving = true
+        attack_timer += delta
+        if attack_timer >= enemy.enemy_data.attack_frequency:
+            curr_opponent.damage(enemy.enemy_data.attack_damage)
+            attack_timer = 0
     elif stopped_moving:
         enemy.sprite.play()
         stopped_moving = false
 
     time_until_next_scan -= delta
     if time_until_next_scan <= 0:
-        opponent = search_for_opponents()
+        curr_opponent = search_for_opponents()
 
 func search_for_opponents() -> Enemy:
-    # TODO: Get the right list
-    var enemies: Array[Enemy] = []
+    var enemy_spawner: EnemySpawner = GlobalVariables.get_enemy_spawner()
+    var enemies: Array[Enemy]
+    if enemy.is_ally:
+        enemies = enemy_spawner.get_enemies_in_row(enemy.row)
+    else:
+        enemies = enemy_spawner.get_allies_in_row(enemy.row)
 
     var origin_x: float = enemy.global_position.x
     var min_x: float = origin_x

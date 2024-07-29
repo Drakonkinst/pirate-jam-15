@@ -7,7 +7,7 @@ const ATTACK_FLAMING_TIME = 3.0
 @export var enemy: Enemy
 
 @onready var cooldown = enemy.enemy_data.attack_frequency
-@onready var timer = 0
+@onready var timer: float = 0.0
 
 func enter():
     timer = 0
