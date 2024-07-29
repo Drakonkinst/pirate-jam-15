@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_46eng")
+type = 3
 health = 100
 attack_damage = 5
 attack_frequency = 1.0

@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_vn25q")
+type = 4
 health = 1000
 attack_damage = 50
 attack_frequency = 3.0

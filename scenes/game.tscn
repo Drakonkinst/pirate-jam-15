@@ -535,7 +535,6 @@ fire_golem = ExtResource("52_ebjpr")
 wind_golem = ExtResource("53_i7n8v")
 tree_golem = ExtResource("54_mtxj2")
 spawning_schedule = ExtResource("31_e2klb")
-endless_mode = true
 
 [node name="EnemySpawns" type="Node2D" parent="World/Enemies"]
 unique_name_in_owner = true

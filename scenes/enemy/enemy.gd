@@ -4,7 +4,7 @@ class_name Enemy
 
 const DEFAULT_ANIMATION = "default"
 
-@export var row = 0 
+@export var row = 0
 @export var enemy_data: EnemyData
 @export var attack_audio: AudioRandomizer
 
@@ -52,9 +52,34 @@ func attack(tile: GridTile) -> bool:
 
 func damage(val):
 	health.damage(val)
-	print(health.health)
-
 
 func _on_health_death():
-	GlobalVariables.get_pickup_manager().spawn_pickup_drop(Pickup.PickupType.SHADOWSAND,global_position,1)
+	# TODO: Fix loot
+	GlobalVariables.get_pickup_manager().spawn_pickup_drop(Pickup.PickupType.SHADOWSAND, global_position, 1)
+	if enemy_data.type == EnemySpawner.EnemyType.TreeGolem:
+		_place_obstacle_nearby(Obstacle.Type.SAPLING)
+	elif enemy_data.type == EnemySpawner.EnemyType.RockGolem:
+		_place_obstacle_nearby(Obstacle.Type.ROCK)
 	queue_free()
+
+func _place_obstacle_nearby(obstacle: Obstacle.Type) -> bool:
+	var grid: Grid = GlobalVariables.get_grid()
+	var tile: GridTile = grid.screenspace_to_tile(global_position)
+	# First try to place on same tile
+	if _place_obstacle_on([tile], obstacle):
+		return true
+	# Then cardinal neighbors
+	if _place_obstacle_on(grid.get_neighbors(tile, false, false), obstacle):
+		return true
+	# Then diagonal
+	if _place_obstacle_on(grid.get_neighbors(tile, true, false), obstacle):
+		return true
+	return false
+
+func _place_obstacle_on(options: Array[GridTile], obstacle) -> bool:
+	for tile: GridTile in options:
+		if tile.obstacle and not tile.obstacle.data.replaceable:
+			continue
+		GlobalVariables.get_obstacle_manager().spawn_obstacle(obstacle, tile)
+		return true
+	return false

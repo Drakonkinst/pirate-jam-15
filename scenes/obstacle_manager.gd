@@ -26,10 +26,6 @@ func spawn_starting_obstacles(grid: Grid):
             obstacle_scene = tree_scene
         elif choice == 1:
             obstacle_scene = rock_scene
-        elif choice == 2:
-            obstacle_scene = oil_spill_scene
-        elif choice == 3:
-            obstacle_scene = sapling_scene
 
         if obstacle_scene:
             spawn_obstacle_scene(obstacle_scene, tile)
