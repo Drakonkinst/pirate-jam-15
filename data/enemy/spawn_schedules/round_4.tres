@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="SpawningSchedule" load_steps=11 format=3 uid="uid://3la7i7j0rah"]
+
+[ext_resource type="Script" path="res://data/enemy/spawning_schedule.gd" id="1_2o8xo"]
+[ext_resource type="Script" path="res://data/enemy/spawn_data.gd" id="2_vqbwn"]
+
+[sub_resource type="Resource" id="Resource_d8l0h"]
+script = ExtResource("2_vqbwn")
+spawn_time = 1.0
+spawn_type = 0
+row = 0
+
+[sub_resource type="Resource" id="Resource_icolh"]
+script = ExtResource("2_vqbwn")
+spawn_time = 2.0
+spawn_type = 1
+row = 1
+
+[sub_resource type="Resource" id="Resource_7l8aa"]
+script = ExtResource("2_vqbwn")
+spawn_time = 3.0
+spawn_type = 2
+row = 2
+
+[sub_resource type="Resource" id="Resource_wru0g"]
+script = ExtResource("2_vqbwn")
+spawn_time = 4.0
+spawn_type = 3
+row = 3
+
+[sub_resource type="Resource" id="Resource_t4eit"]
+script = ExtResource("2_vqbwn")
+spawn_time = 5.0
+spawn_type = 4
+row = 0
+
+[sub_resource type="Resource" id="Resource_ss6tv"]
+script = ExtResource("2_vqbwn")
+spawn_time = 6.0
+spawn_type = 5
+row = 1
+
+[sub_resource type="Resource" id="Resource_t7dpg"]
+script = ExtResource("2_vqbwn")
+spawn_time = 7.0
+spawn_type = 6
+row = 2
+
+[sub_resource type="Resource" id="Resource_se8o4"]
+script = ExtResource("2_vqbwn")
+spawn_time = 8.0
+spawn_type = 7
+row = 3
+
+[resource]
+script = ExtResource("1_2o8xo")
+spawns = Array[ExtResource("2_vqbwn")]([SubResource("Resource_d8l0h"), SubResource("Resource_icolh"), SubResource("Resource_7l8aa"), SubResource("Resource_wru0g"), SubResource("Resource_t4eit"), SubResource("Resource_ss6tv"), SubResource("Resource_t7dpg"), SubResource("Resource_se8o4")])

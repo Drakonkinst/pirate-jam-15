@@ -2,6 +2,11 @@ extends Node2D
 
 class_name EnemySpawner
 
+signal wave_ended
+
+# Connect to day_ended signal to start using next spawning_schedule
+@export var day_cycle_manager: DayCycleManager
+
 @export var rock_sprite: PackedScene
 @export var fire_sprite: PackedScene
 @export var wind_sprite: PackedScene
@@ -14,11 +19,20 @@ class_name EnemySpawner
 
 @onready var enemy_spawns = %EnemySpawns
 @onready var ally_spawns = %AllySpawns
-@export var spawning_schedule: SpawningSchedule
+
+@export var spawning_schedules: Array[SpawningSchedule]
+@onready var curr_spawning_schedule = spawning_schedules[0]
 @export var endless_mode: bool
 @export var spawn_max_offset: float = 20.0
 
-@onready var num_spawns = len(spawning_schedule.spawns)
+@onready var enemies_folder = %EnemiesFolder
+@onready var allies_folder = %EnemiesFolder
+
+@onready var num_spawns = 1:
+    get: return len(curr_spawning_schedule.spawns)
+
+@export var spawning = false
+var round_in_progress = false
 
 enum EnemyType {
     # Sprites
@@ -34,7 +48,6 @@ enum EnemyType {
 }
 
 var game_timer = 0.0
-
 var current_spawn_idx = 0
 var next_spawn_time: float = INF
 var next_spawn_scene: PackedScene
@@ -52,10 +65,19 @@ func _ready():
     get_next_spawn_data.call()
 
 func _process(delta):
+    if not spawning:
+        if get_num_enemies() <= 0 and round_in_progress:
+            wave_ended.emit()
+            round_in_progress = false
+        return
+    
     game_timer += delta
     var spawned = check_spawn()
-    if spawned and (current_spawn_idx < num_spawns or endless_mode): 
-        get_next_spawn_data.call()
+    if spawned:
+        if current_spawn_idx >= num_spawns:
+            spawning = false 
+        else:
+            get_next_spawn_data.call()
 
 func check_spawn() -> bool:
     if game_timer >= next_spawn_time and current_spawn_idx < num_spawns:
@@ -73,7 +95,7 @@ func spawn_enemy_scene(row: int, enemy_scene: PackedScene) -> Enemy:
     var enemy_obj = enemy_scene.instantiate()
     enemy_obj.position = get_enemy_spawn_position(row)
     enemy_obj.row = row
-    add_child(enemy_obj)
+    enemies_folder.add_child(enemy_obj)
     var enemy = enemy_obj as Enemy
     current_spawn_idx += 1
     return enemy
@@ -102,7 +124,7 @@ func get_ally_spawn_position(row: int):
     return spawn_pos
 
 func get_spawn_data():
-    var next_spawn = spawning_schedule.spawns[current_spawn_idx]
+    var next_spawn = curr_spawning_schedule.spawns[current_spawn_idx]
     next_spawn_time = next_spawn.spawn_time
     next_spawn_scene = spawn_type_to_scene(next_spawn.spawn_type)
     next_spawn_row = next_spawn.row
@@ -118,7 +140,7 @@ func endless_get_spawn_data():
 func spawn_type_to_scene(spawn_type: EnemySpawner.EnemyType):
     var enemy_scene: PackedScene
     match spawn_type:
-        #Sprite
+        # Sprite
         EnemyType.RockSprite:
             enemy_scene = rock_sprite
         EnemyType.FireSprite:
@@ -127,7 +149,7 @@ func spawn_type_to_scene(spawn_type: EnemySpawner.EnemyType):
             enemy_scene = wind_sprite
         EnemyType.TreeSprite:
             enemy_scene = tree_sprite
-        #Golem
+        # Golem
         EnemyType.RockGolem:
             enemy_scene = rock_golem
         EnemyType.FireGolem:
@@ -136,9 +158,34 @@ func spawn_type_to_scene(spawn_type: EnemySpawner.EnemyType):
             enemy_scene = wind_golem
         EnemyType.TreeGolem:
             enemy_scene = tree_golem
-        #Default to regular sprite
+        # Default to regular sprite
         _:
             enemy_scene = rock_sprite
     return enemy_scene
 
+func start_endless():
+    endless_mode = true
+    spawning = true
+    get_next_spawn_data = endless_get_spawn_data
+    get_next_spawn_data.call()
 
+func start_next_spawning_schedule(curr_round: int):
+    curr_spawning_schedule = spawning_schedules[curr_round]
+    current_spawn_idx = 0
+
+    get_next_spawn_data.call()
+    spawning = true
+    round_in_progress = true
+    game_timer = 0.0
+
+func _on_day_cycle_manager_day_ended(curr_round):
+    start_next_spawning_schedule(curr_round)
+
+func _on_day_cycle_manager_game_ended():
+    start_endless()
+
+func get_num_enemies():
+    return enemies_folder.get_child_count()
+
+func get_num_allies():
+    return allies_folder.get_child_count()

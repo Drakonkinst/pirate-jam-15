@@ -12,6 +12,7 @@ signal quit_to_menu
 @export var light_manager: LightManager
 @export var enemy_spawner: EnemySpawner
 @export var toolbar: ToolBar
+@export var day_cycle_manager: DayCycleManager
 
 @onready var pause_control: PauseControl = $PauseControl
 
@@ -20,6 +21,8 @@ func _ready():
 	# Grid already instantiated since it is a child
 	obstacle_manager.spawn_starting_obstacles(grid)
 	dialogue_manager.play_conversation(dialogue_manager.current_conversation)
+
+
 
 func _on_pause_menu_pressed_quit_to_menu() -> void:
 	quit_to_menu.emit()

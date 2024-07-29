@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=91 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://assets/ui/resource_hud.tscn" id="3_oot8a"]
 [ext_resource type="Script" path="res://scenes/hud/cursor_effects.gd" id="4_vdaaq"]
 [ext_resource type="Texture2D" uid="uid://bmgy1sy6rb32q" path="res://assets/textures/circle_512.png" id="5_47rpd"]
+[ext_resource type="Script" path="res://scenes/day_tracker.gd" id="6_o1xut"]
 [ext_resource type="PackedScene" uid="uid://dyifllpcx6yhy" path="res://scenes/ui/potion_craft_menu.tscn" id="7_urdin"]
 [ext_resource type="PackedScene" uid="uid://c27pf3yvahh2t" path="res://scenes/dialogue/dialogue_manager.tscn" id="8_7d0d0"]
 [ext_resource type="Texture2D" uid="uid://vs1qri71bqx6" path="res://assets/textures/player_portrait.png" id="9_crwft"]
@@ -62,7 +63,6 @@
 [ext_resource type="PackedScene" uid="uid://c8pxl8kvqxfqw" path="res://scenes/light/light_quartz.tscn" id="30_52igg"]
 [ext_resource type="AudioStream" uid="uid://dme4j5gng2i3k" path="res://assets/audio/SFXPickaxeHit.ogg" id="30_tgwhu"]
 [ext_resource type="AudioStream" uid="uid://bj1altj7pui7m" path="res://assets/audio/SFXPotionThrow3.ogg" id="30_wlvrs"]
-[ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/level_1.tres" id="31_e2klb"]
 [ext_resource type="PackedScene" uid="uid://cu6wwp5my8ay" path="res://scenes/effect/explosion.tscn" id="36_y78bo"]
 [ext_resource type="PackedScene" uid="uid://5ye7ihrmklny" path="res://scenes/effect/splat.tscn" id="37_6rhao"]
 [ext_resource type="Script" path="res://scenes/pause_control.gd" id="40_uejed"]
@@ -71,12 +71,18 @@
 [ext_resource type="PackedScene" uid="uid://5cwnirn55jnd" path="res://scenes/enemy/types/sprite/fire_sprite.tscn" id="48_pfolc"]
 [ext_resource type="AudioStream" uid="uid://bi8dingytba6n" path="res://assets/audio/MUSICBackground.ogg" id="49_dv2lr"]
 [ext_resource type="PackedScene" uid="uid://bfrbgovkbdcr8" path="res://scenes/enemy/types/sprite/wind_sprite.tscn" id="49_k2mie"]
+[ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/round_1.tres" id="50_i40f8"]
 [ext_resource type="PackedScene" uid="uid://cxj6wphfe51ue" path="res://scenes/enemy/types/sprite/tree_sprite.tscn" id="50_qd5sr"]
 [ext_resource type="PackedScene" uid="uid://dp8q0ibg5x7oc" path="res://scenes/menus/pause_menu.tscn" id="50_t4lxk"]
+[ext_resource type="Resource" uid="uid://c25nom7sytva0" path="res://data/enemy/spawn_schedules/round_2.tres" id="51_sdyym"]
 [ext_resource type="PackedScene" uid="uid://b0su8vtbd7ue6" path="res://scenes/enemy/types/golem/fire_golem.tscn" id="52_ebjpr"]
+[ext_resource type="Resource" uid="uid://bvb556qh8nljh" path="res://data/enemy/spawn_schedules/round_3.tres" id="52_hsagx"]
 [ext_resource type="PackedScene" uid="uid://bu1wggooa0cd" path="res://scenes/enemy/types/golem/wind_golem.tscn" id="53_i7n8v"]
+[ext_resource type="Resource" uid="uid://3la7i7j0rah" path="res://data/enemy/spawn_schedules/round_4.tres" id="53_r6ff2"]
+[ext_resource type="Resource" uid="uid://bpdhiw11j7by8" path="res://data/enemy/spawn_schedules/round_5.tres" id="54_enwvg"]
 [ext_resource type="PackedScene" uid="uid://cue740t2tc7o5" path="res://scenes/enemy/types/golem/tree_golem.tscn" id="54_mtxj2"]
 [ext_resource type="AudioStream" uid="uid://bwy3k3hsarsjf" path="res://assets/audio/SFXMenuPause.ogg" id="66_807vn"]
+[ext_resource type="Script" path="res://scenes/daysystem/day_cycle_manager.gd" id="67_l7r7b"]
 [ext_resource type="AudioStream" uid="uid://0ompo3r7kiab" path="res://assets/audio/SFXMenuButtonSelect.ogg" id="78_rohyd"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
@@ -113,7 +119,7 @@ class_name World
 
 "
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar", "day_cycle_manager")]
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
 obstacle_manager = NodePath("ObstacleManager")
@@ -123,6 +129,7 @@ dialogue_manager = NodePath("DialogueManager")
 light_manager = NodePath("World/Grid/LightManager")
 enemy_spawner = NodePath("World/Enemies")
 toolbar = NodePath("ToolBar")
+day_cycle_manager = NodePath("World/DayCycleManager")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
@@ -181,7 +188,7 @@ circle_area_texture = ExtResource("5_47rpd")
 modulate = Color(1, 1, 1, 0.196078)
 texture = ExtResource("5_47rpd")
 
-[node name="DayTrackerContainer" type="MarginContainer" parent="HUD"]
+[node name="DayTrackerContainer" type="MarginContainer" parent="HUD" node_paths=PackedStringArray("day_cycle_manager")]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 160.0
@@ -191,8 +198,11 @@ theme_override_constants/margin_left = 500
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 500
 theme_override_constants/margin_bottom = 30
+script = ExtResource("6_o1xut")
+day_cycle_manager = NodePath("../../World/DayCycleManager")
 
 [node name="ProgressBar" type="ProgressBar" parent="HUD/DayTrackerContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -205,7 +215,8 @@ theme_override_styles/background = SubResource("StyleBoxFlat_mihx5")
 rounded = true
 show_percentage = false
 
-[node name="Label" type="Label" parent="HUD/DayTrackerContainer"]
+[node name="DayLabel" type="Label" parent="HUD/DayTrackerContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = SubResource("Theme_f8suf")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -516,10 +527,11 @@ script = ExtResource("28_m2bqy")
 light_torch_scene = ExtResource("29_tx1bu")
 light_quartz_scene = ExtResource("30_52igg")
 
-[node name="Enemies" type="Node2D" parent="World"]
+[node name="Enemies" type="Node2D" parent="World" node_paths=PackedStringArray("day_cycle_manager")]
 z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("29_uoojh")
+day_cycle_manager = NodePath("../DayCycleManager")
 rock_sprite = ExtResource("47_0ykye")
 fire_sprite = ExtResource("48_pfolc")
 wind_sprite = ExtResource("49_k2mie")
@@ -528,8 +540,7 @@ rock_golem = ExtResource("48_1g0gr")
 fire_golem = ExtResource("52_ebjpr")
 wind_golem = ExtResource("53_i7n8v")
 tree_golem = ExtResource("54_mtxj2")
-spawning_schedule = ExtResource("31_e2klb")
-endless_mode = true
+spawning_schedules = Array[Resource("res://data/enemy/spawning_schedule.gd")]([ExtResource("50_i40f8"), ExtResource("51_sdyym"), ExtResource("52_hsagx"), ExtResource("53_r6ff2"), ExtResource("54_enwvg")])
 
 [node name="EnemySpawns" type="Node2D" parent="World/Enemies"]
 unique_name_in_owner = true
@@ -569,6 +580,12 @@ position = Vector2(0, 635)
 [node name="Spawn4" type="Node2D" parent="World/Enemies/AllySpawns"]
 position = Vector2(0, 760)
 
+[node name="EnemiesFolder" type="Node2D" parent="World/Enemies"]
+unique_name_in_owner = true
+
+[node name="AllliesFolder" type="Node2D" parent="World/Enemies"]
+unique_name_in_owner = true
+
 [node name="PickupManager" type="Node2D" parent="World" node_paths=PackedStringArray("pickup_parent", "gui_targets")]
 z_index = 6
 z_as_relative = false
@@ -602,6 +619,15 @@ splat_parent = NodePath("../Grid")
 throw_offset = Vector2(25, -75)
 fire_offset = Vector2(80, -50)
 
+[node name="DayCycleManager" type="Node2D" parent="World"]
+script = ExtResource("67_l7r7b")
+day_length = 5.0
+night_length = 120.0
+
+[node name="Interval" type="Timer" parent="World/DayCycleManager"]
+unique_name_in_owner = true
+autostart = true
+
 [node name="Player" parent="." groups=["player"] instance=ExtResource("19_c5v0p")]
 position = Vector2(238, 518)
 
@@ -610,17 +636,6 @@ process_mode = 3
 stream = ExtResource("49_dv2lr")
 autoplay = true
 bus = &"Music"
-
-[node name="ObstacleManager" type="Node2D" parent="."]
-z_index = 1
-script = ExtResource("10_uoctj")
-tree_scene = ExtResource("11_4iroc")
-rock_scene = ExtResource("12_bokvu")
-oil_spill_scene = ExtResource("13_tpqui")
-torch_scene = ExtResource("14_q7ayn")
-sapling_scene = ExtResource("15_0ctjf")
-dead_tree_scene = ExtResource("14_gc0kp")
-dead_sapling_scene = ExtResource("15_e3p3e")
 
 [node name="PauseControl" type="Node2D" parent="." node_paths=PackedStringArray("on_pause_audio", "off_pause_audio")]
 process_mode = 3
@@ -644,6 +659,17 @@ audio_tracks = Array[AudioStream]([ExtResource("78_rohyd")])
 min_pitch = 1.0
 max_pitch = 1.0
 
+[node name="ObstacleManager" type="Node2D" parent="."]
+z_index = 1
+script = ExtResource("10_uoctj")
+tree_scene = ExtResource("11_4iroc")
+rock_scene = ExtResource("12_bokvu")
+oil_spill_scene = ExtResource("13_tpqui")
+torch_scene = ExtResource("14_q7ayn")
+sapling_scene = ExtResource("15_0ctjf")
+dead_tree_scene = ExtResource("14_gc0kp")
+dead_sapling_scene = ExtResource("15_e3p3e")
+
 [connection signal="pressed_quit_to_menu" from="PauseMenu" to="." method="_on_pause_menu_pressed_quit_to_menu"]
 [connection signal="do_action" from="ToolBar" to="ToolBar/ToolBarAudio" method="_on_tool_bar_do_action"]
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
@@ -657,5 +683,12 @@ max_pitch = 1.0
 [connection signal="timeout" from="ToolBar/PotionCooldown" to="ToolBar" method="_on_potion_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/SummonCooldown" to="ToolBar" method="_on_summon_cooldown_timeout"]
 [connection signal="updated" from="ToolBar/ToolInventory" to="ToolBar" method="_on_tool_inventory_updated"]
+[connection signal="wave_ended" from="World/Enemies" to="World/DayCycleManager" method="_on_enemies_wave_ended"]
+[connection signal="day_ended" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_day_ended"]
+[connection signal="day_ended" from="World/DayCycleManager" to="World/Enemies" method="_on_day_cycle_manager_day_ended"]
+[connection signal="day_started" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_day_started"]
+[connection signal="game_ended" from="World/DayCycleManager" to="World/Enemies" method="_on_day_cycle_manager_game_ended"]
+[connection signal="interval_passed" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_interval_passed"]
+[connection signal="timeout" from="World/DayCycleManager/Interval" to="World/DayCycleManager" method="_on_interval_timeout"]
 [connection signal="paused" from="PauseControl" to="PauseMenu" method="_on_pause_control_paused"]
 [connection signal="unpaused" from="PauseControl" to="PauseMenu" method="_on_pause_control_unpaused"]
