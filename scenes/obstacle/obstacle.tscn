@@ -18,10 +18,10 @@ z_index = 5
 z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("1_pck6l")
+light_anchor = NodePath("ObstacleModel1/LightAnchor")
 quartz_break_sound = ExtResource("2_v3wac")
 rock_break_sound = ExtResource("3_hg2id")
 tree_break_sound = ExtResource("4_1fq4w")
-light_anchor = NodePath("ObstacleModel1/LightAnchor")
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("2_3c27n")

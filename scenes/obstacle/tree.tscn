@@ -25,8 +25,9 @@ texture = ExtResource("5_igec0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhsll"]
 size = Vector2(141, 96)
 
-[node name="Tree" instance=ExtResource("1_ubi77")]
+[node name="Tree" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_ubi77")]
 data = ExtResource("2_7gwrh")
+behaviors = [NodePath("TreeBehavior"), NodePath("BurnLeavesBehavior")]
 default_break_sound = ExtResource("3_ug6rc")
 
 [node name="ObstacleModel1" parent="." index="1"]

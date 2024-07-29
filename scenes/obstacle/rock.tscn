@@ -22,8 +22,9 @@ script = ExtResource("3_u5mqm")
 state = 1
 texture = ExtResource("5_pvi3p")
 
-[node name="Rock" instance=ExtResource("1_tp0j5")]
+[node name="Rock" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_tp0j5")]
 data = ExtResource("2_l51pq")
+behaviors = [NodePath("StoneVariantsBehavior")]
 default_break_sound = ExtResource("3_syc7k")
 
 [node name="ObstacleModel1" parent="." index="1"]
