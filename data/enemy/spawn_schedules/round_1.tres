@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpawningSchedule" load_steps=7 format=3 uid="uid://bqnpxok6mr2xm"]
+[gd_resource type="Resource" script_class="SpawningSchedule" load_steps=29 format=3 uid="uid://bqnpxok6mr2xm"]
 
 [ext_resource type="Script" path="res://data/enemy/spawning_schedule.gd" id="1_kb71t"]
 [ext_resource type="Script" path="res://data/enemy/spawn_data.gd" id="2_m8qqm"]
@@ -6,27 +6,159 @@
 [sub_resource type="Resource" id="Resource_d8l0h"]
 script = ExtResource("2_m8qqm")
 spawn_time = 1.0
-spawn_type = 0
-row = 0
+spawn_type = 1
+row = 2
 
 [sub_resource type="Resource" id="Resource_icolh"]
 script = ExtResource("2_m8qqm")
 spawn_time = 2.0
-spawn_type = 1
+spawn_type = 0
 row = 1
 
 [sub_resource type="Resource" id="Resource_7l8aa"]
 script = ExtResource("2_m8qqm")
-spawn_time = 3.0
-spawn_type = 2
-row = 2
+spawn_time = 2.0
+spawn_type = 0
+row = 3
 
 [sub_resource type="Resource" id="Resource_wru0g"]
 script = ExtResource("2_m8qqm")
-spawn_time = 4.0
-spawn_type = 3
+spawn_time = 3.0
+spawn_type = 1
+row = 0
+
+[sub_resource type="Resource" id="Resource_rajv3"]
+script = ExtResource("2_m8qqm")
+spawn_time = 3.0
+spawn_type = 1
+row = 4
+
+[sub_resource type="Resource" id="Resource_p56t5"]
+script = ExtResource("2_m8qqm")
+spawn_time = 9.0
+spawn_type = 1
+row = 0
+
+[sub_resource type="Resource" id="Resource_2ee08"]
+script = ExtResource("2_m8qqm")
+spawn_time = 10.0
+spawn_type = 0
+row = 0
+
+[sub_resource type="Resource" id="Resource_1vrib"]
+script = ExtResource("2_m8qqm")
+spawn_time = 9.0
+spawn_type = 1
 row = 3
+
+[sub_resource type="Resource" id="Resource_xgtmn"]
+script = ExtResource("2_m8qqm")
+spawn_time = 10.0
+spawn_type = 0
+row = 3
+
+[sub_resource type="Resource" id="Resource_8pbxu"]
+script = ExtResource("2_m8qqm")
+spawn_time = 11.0
+spawn_type = 2
+row = 5
+
+[sub_resource type="Resource" id="Resource_ma2uc"]
+script = ExtResource("2_m8qqm")
+spawn_time = 13.0
+spawn_type = 2
+row = 5
+
+[sub_resource type="Resource" id="Resource_p62ga"]
+script = ExtResource("2_m8qqm")
+spawn_time = 15.0
+spawn_type = 0
+row = 5
+
+[sub_resource type="Resource" id="Resource_p5tiv"]
+script = ExtResource("2_m8qqm")
+spawn_time = 17.0
+spawn_type = 1
+row = 5
+
+[sub_resource type="Resource" id="Resource_q46oj"]
+script = ExtResource("2_m8qqm")
+spawn_time = 20.0
+spawn_type = 0
+row = 5
+
+[sub_resource type="Resource" id="Resource_2von7"]
+script = ExtResource("2_m8qqm")
+spawn_time = 22.0
+spawn_type = 0
+row = 5
+
+[sub_resource type="Resource" id="Resource_si7ep"]
+script = ExtResource("2_m8qqm")
+spawn_time = 23.0
+spawn_type = 1
+row = 5
+
+[sub_resource type="Resource" id="Resource_a5y38"]
+script = ExtResource("2_m8qqm")
+spawn_time = 27.0
+spawn_type = 3
+row = 5
+
+[sub_resource type="Resource" id="Resource_8r01x"]
+script = ExtResource("2_m8qqm")
+spawn_time = 28.0
+spawn_type = 3
+row = 5
+
+[sub_resource type="Resource" id="Resource_nr4mm"]
+script = ExtResource("2_m8qqm")
+spawn_time = 29.0
+spawn_type = 3
+row = 5
+
+[sub_resource type="Resource" id="Resource_3jjv1"]
+script = ExtResource("2_m8qqm")
+spawn_time = 30.0
+spawn_type = 5
+row = 2
+
+[sub_resource type="Resource" id="Resource_gi73o"]
+script = ExtResource("2_m8qqm")
+spawn_time = 35.0
+spawn_type = 4
+row = 5
+
+[sub_resource type="Resource" id="Resource_2rmpy"]
+script = ExtResource("2_m8qqm")
+spawn_time = 36.0
+spawn_type = 1
+row = 5
+
+[sub_resource type="Resource" id="Resource_dtayw"]
+script = ExtResource("2_m8qqm")
+spawn_time = 37.0
+spawn_type = 4
+row = 5
+
+[sub_resource type="Resource" id="Resource_q0bu7"]
+script = ExtResource("2_m8qqm")
+spawn_time = 38.0
+spawn_type = 5
+row = 5
+
+[sub_resource type="Resource" id="Resource_2yngs"]
+script = ExtResource("2_m8qqm")
+spawn_time = 39.0
+spawn_type = 3
+row = 5
+
+[sub_resource type="Resource" id="Resource_wosbc"]
+script = ExtResource("2_m8qqm")
+spawn_time = 40.0
+spawn_type = 2
+row = 5
 
 [resource]
 script = ExtResource("1_kb71t")
-spawns = Array[ExtResource("2_m8qqm")]([SubResource("Resource_d8l0h"), SubResource("Resource_icolh"), SubResource("Resource_7l8aa"), SubResource("Resource_wru0g")])
+spawns = Array[ExtResource("2_m8qqm")]([SubResource("Resource_d8l0h"), SubResource("Resource_icolh"), SubResource("Resource_7l8aa"), SubResource("Resource_wru0g"), SubResource("Resource_rajv3"), SubResource("Resource_p56t5"), SubResource("Resource_2ee08"), SubResource("Resource_1vrib"), SubResource("Resource_xgtmn"), SubResource("Resource_8pbxu"), SubResource("Resource_ma2uc"), SubResource("Resource_p62ga"), SubResource("Resource_p5tiv"), SubResource("Resource_q46oj"), SubResource("Resource_2von7"), SubResource("Resource_si7ep"), SubResource("Resource_a5y38"), SubResource("Resource_8r01x"), SubResource("Resource_nr4mm"), SubResource("Resource_3jjv1"), SubResource("Resource_gi73o"), SubResource("Resource_2rmpy"), SubResource("Resource_dtayw"), SubResource("Resource_q0bu7"), SubResource("Resource_2yngs"), SubResource("Resource_wosbc")])
