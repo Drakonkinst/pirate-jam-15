@@ -20,14 +20,14 @@ func init(track_node: Node2D, radius: float, type: LightManager.Type) -> void:
     light_glow.original_scale = scale
 
 func is_in_circle(pos: Vector2) -> bool:
-	var delta_x = abs(pos.x - global_position.x)
-	var delta_y = abs(pos.y - global_position.y)
-	var dist_sq = delta_x * delta_x + delta_y * delta_y
-	return dist_sq <= light_radius * light_radius
+    var delta_x = abs(pos.x - global_position.x)
+    var delta_y = abs(pos.y - global_position.y)
+    var dist_sq = delta_x * delta_x + delta_y * delta_y
+    return dist_sq <= light_radius * light_radius
 
 func _process(_delta: float) -> void:
-	if is_instance_valid(tracking) and tracking != null and not tracking.is_queued_for_deletion():
-		global_position = tracking.global_position
-	else:
-		removed.emit()
-		queue_free()
+    if is_instance_valid(tracking) and tracking != null and not tracking.is_queued_for_deletion():
+        global_position = tracking.global_position
+    else:
+        removed.emit()
+        queue_free()
