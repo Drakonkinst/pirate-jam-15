@@ -40,7 +40,6 @@ func _process(_delta: float) -> void:
     var tile: GridTile = grid.screenspace_to_tile(global_position)
     if tile == null:
         if not is_ally and has_reached_end:
-            # TODO: Deal damage to player
             GlobalVariables.curr_game.damage_player(enemy_data.attack_damage)
             queue_free()
             pass

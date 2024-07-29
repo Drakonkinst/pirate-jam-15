@@ -34,7 +34,7 @@ func update(obstacle: Obstacle, delta: float) -> void:
         grow_fruit()
         time_until_next_fruit = randf_range(GROWTH_MIN_TIME, GROWTH_MAX_TIME)
 
-# TODO: Why is it always choosing the same slots???
+# FIXME: Why is it always choosing the same slots???
 func grow_fruit() -> void:
     var num_open_slots = MAX_FRUIT - num_fruit
     num_fruit += 1

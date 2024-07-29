@@ -42,7 +42,6 @@ func _process(delta: float) -> void:
         line_progress += CHARACTERS_PER_SECOND * delta
         textbox.visible_ratio = min(1.0, line_progress / num_chars_in_line)
         if line_progress >= num_chars_in_line:
-            # TODO: Add prompt
             typing = false
 
 func enable() -> void:

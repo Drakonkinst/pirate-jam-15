@@ -5,7 +5,7 @@ class_name ToolInventory
 signal updated
 
 const ITEM_MAX := 99
-const STARTING_COUNT := 1 # TODO: Update to 0 when done testing
+const STARTING_COUNT := 1 # TODO: Tune this value
 const POTION_ORDER: Array[ThrownProjectile.Type] = [
     ThrownProjectile.Type.POTION_WOOD,
     ThrownProjectile.Type.POTION_STONE,
