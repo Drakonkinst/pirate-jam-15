@@ -24,11 +24,17 @@ var transmuted_state: TransmutedState = TransmutedState.DEFAULT
 @onready var model: ObstacleModel = $ObstacleModel1 # Selects the default obstacle model in case there are no extras
 @onready var burning_state: BurningState = $BurningState
 @onready var destroy_timer: Timer = $DestroyTimer
+@onready var destroy_audio: AudioRandomizer = $DestroyAudio
 
 @export var data: ObstacleData
 @export var alternate_models: Array[ObstacleModel] # Optional array. If there are variations of the same model, can list them all here to choose randomly
 @export var behaviors: Array[ObstacleBehavior] # Optional array of behaviors
 @export var light_anchor: Node2D
+
+@export var default_break_sound: AudioStream
+@export var quartz_break_sound: AudioStream
+@export var rock_break_sound: AudioStream
+@export var tree_break_sound: AudioStream
 
 var light_circle: LightCircle
 var loot: Dictionary
@@ -177,6 +183,7 @@ func _ready() -> void:
         # Quick null check just in case
         if behavior:
             behavior.init(self)
+    destroy_audio.audio_tracks = [default_break_sound]
 
 func init_loot() -> void:
     loot = data.loot.resolve()

@@ -21,7 +21,6 @@
 [ext_resource type="Script" path="res://scenes/audio/audio_randomizer.gd" id="12_hqgvj"]
 [ext_resource type="AudioStream" uid="uid://b5iybe17vtcm5" path="res://assets/audio/SFXMagicBoltSelected.ogg" id="13_lykkh"]
 [ext_resource type="PackedScene" uid="uid://hmw6qr2yjefw" path="res://scenes/obstacle/oil_spill.tscn" id="13_tpqui"]
-[ext_resource type="AudioStream" uid="uid://8cbp0d5e7aux" path="res://assets/audio/SFXPickaxeSelected.ogg" id="14_drgnp"]
 [ext_resource type="PackedScene" uid="uid://bcqx4m1p240sb" path="res://scenes/obstacle/dead_tree.tscn" id="14_gc0kp"]
 [ext_resource type="PackedScene" uid="uid://dutyvrutx3beh" path="res://scenes/obstacle/torch.tscn" id="14_q7ayn"]
 [ext_resource type="PackedScene" uid="uid://4ly726jco8yn" path="res://scenes/obstacle/sapling.tscn" id="15_0ctjf"]
@@ -61,6 +60,7 @@
 [ext_resource type="AudioStream" uid="uid://dh5yd5227d7un" path="res://assets/audio/SFXPotionThrow2.ogg" id="29_u3u3v"]
 [ext_resource type="Script" path="res://scenes/enemy/enemy_spawner.gd" id="29_uoojh"]
 [ext_resource type="PackedScene" uid="uid://c8pxl8kvqxfqw" path="res://scenes/light/light_quartz.tscn" id="30_52igg"]
+[ext_resource type="AudioStream" uid="uid://dme4j5gng2i3k" path="res://assets/audio/SFXPickaxeHit.ogg" id="30_tgwhu"]
 [ext_resource type="AudioStream" uid="uid://bj1altj7pui7m" path="res://assets/audio/SFXPotionThrow3.ogg" id="30_wlvrs"]
 [ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/level_1.tres" id="31_e2klb"]
 [ext_resource type="PackedScene" uid="uid://cu6wwp5my8ay" path="res://scenes/effect/explosion.tscn" id="36_y78bo"]
@@ -73,11 +73,11 @@
 [ext_resource type="PackedScene" uid="uid://bfrbgovkbdcr8" path="res://scenes/enemy/types/sprite/wind_sprite.tscn" id="49_k2mie"]
 [ext_resource type="PackedScene" uid="uid://cxj6wphfe51ue" path="res://scenes/enemy/types/sprite/tree_sprite.tscn" id="50_qd5sr"]
 [ext_resource type="PackedScene" uid="uid://dp8q0ibg5x7oc" path="res://scenes/menus/pause_menu.tscn" id="50_t4lxk"]
-[ext_resource type="AudioStream" uid="uid://b0e7oiuo6qjj4" path="res://assets/audio/SFXUnpause.ogg" id="51_jfmbr"]
 [ext_resource type="PackedScene" uid="uid://b0su8vtbd7ue6" path="res://scenes/enemy/types/golem/fire_golem.tscn" id="52_ebjpr"]
 [ext_resource type="PackedScene" uid="uid://bu1wggooa0cd" path="res://scenes/enemy/types/golem/wind_golem.tscn" id="53_i7n8v"]
 [ext_resource type="PackedScene" uid="uid://cue740t2tc7o5" path="res://scenes/enemy/types/golem/tree_golem.tscn" id="54_mtxj2"]
 [ext_resource type="AudioStream" uid="uid://bwy3k3hsarsjf" path="res://assets/audio/SFXMenuPause.ogg" id="66_807vn"]
+[ext_resource type="AudioStream" uid="uid://0ompo3r7kiab" path="res://assets/audio/SFXMenuButtonSelect.ogg" id="78_rohyd"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -449,12 +449,12 @@ script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("15_rjc6w")])
 
 [node name="EquipPickaxeAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-volume_db = -15.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("14_drgnp")])
+audio_tracks = Array[AudioStream]([ExtResource("66_807vn")])
 
 [node name="EquipPotionAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("22_vevts")])
@@ -475,10 +475,15 @@ script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("16_17j03"), ExtResource("17_a7jxu"), ExtResource("18_3tbfr")])
 
 [node name="DoPickaxeAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("30_tgwhu")])
+min_pitch = 0.7
+max_pitch = 0.9
 
 [node name="DoPotionAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+volume_db = 5.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
@@ -635,7 +640,7 @@ max_pitch = 1.0
 volume_db = -15.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("51_jfmbr")])
+audio_tracks = Array[AudioStream]([ExtResource("78_rohyd")])
 min_pitch = 1.0
 max_pitch = 1.0
 
