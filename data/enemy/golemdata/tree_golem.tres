@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_2adet"]
 script = ExtResource("1_gptfe")
 item = 0
-min_count = 7
+min_count = 5
 max_count = 10
 
 [sub_resource type="Resource" id="Resource_7nla7"]

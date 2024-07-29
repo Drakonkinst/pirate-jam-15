@@ -5,14 +5,16 @@ class_name EnemyWalkState
 const OIL_SLOW_FACTOR = 0.75
 const LIGHT_SLOW_FACTOR = 0.5
 
-const SCAN_INTERVAL = 1.0
+const SCAN_INTERVAL = 0.1
+const ATTACK_RANGE := 100.0
 
 @export var enemy: Enemy
 
 var speed_multiplier = 1.0
-var opponent: Enemy = null
+var curr_opponent: Enemy = null
 var time_until_next_scan: float = 0.0
 var stopped_moving = false
+var attack_timer: float = 0.0
 
 func enter():
     # Change to walking animation
@@ -47,25 +49,39 @@ func update(delta):
         enemy.sprite.pause()
         stopped_moving = false
 
-    if opponent != null:
+    if curr_opponent != null:
         speed_multiplier = 0
         if not stopped_moving:
             enemy.sprite.pause()
             stopped_moving = true
+        attack_timer += delta
+        if attack_timer >= enemy.enemy_data.attack_frequency:
+            curr_opponent.damage(enemy.enemy_data.attack_damage)
+            attack_timer = 0
     elif stopped_moving:
         enemy.sprite.play()
         stopped_moving = false
 
     time_until_next_scan -= delta
     if time_until_next_scan <= 0:
-        opponent = search_for_opponents()
+        curr_opponent = search_for_opponents()
+        time_until_next_scan = SCAN_INTERVAL
 
 func search_for_opponents() -> Enemy:
-    # TODO: Get the right list
-    var enemies: Array[Enemy] = []
+    var enemy_spawner: EnemySpawner = GlobalVariables.get_enemy_spawner()
+    var enemies: Array[Enemy]
+    if enemy.is_ally:
+        enemies = enemy_spawner.get_enemies_in_row(enemy.row)
+    else:
+        enemies = enemy_spawner.get_allies_in_row(enemy.row)
 
     var origin_x: float = enemy.global_position.x
-    var min_x: float = origin_x
+    var closest_x: float
+    if enemy.is_ally:
+        closest_x = INF
+    else:
+        closest_x = -INF
+
     var closest_opponent: Enemy = null
     for opponent: Enemy in enemies:
         if opponent.row != enemy.row:
@@ -73,9 +89,17 @@ func search_for_opponents() -> Enemy:
         if opponent.is_ally == enemy.is_ally:
             continue
         var opponent_x: float = opponent.global_position.x
-        if opponent_x >= origin_x and opponent_x <= min_x:
-            min_x = opponent_x
-            closest_opponent = opponent
+        var delta_x: float = abs(opponent_x - origin_x)
+        if delta_x > ATTACK_RANGE:
+            continue
+        if enemy.is_ally:
+            if opponent_x >= origin_x and opponent_x <= closest_x:
+                closest_x = opponent_x
+                closest_opponent = opponent
+        else:
+            if opponent_x <= origin_x and opponent_x >= closest_x:
+                closest_x = opponent_x
+                closest_opponent = opponent
     return closest_opponent
 
 

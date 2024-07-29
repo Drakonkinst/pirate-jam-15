@@ -6,8 +6,8 @@
 [sub_resource type="Resource" id="Resource_s1ikl"]
 script = ExtResource("1_2ct6c")
 item = 0
-min_count = 3
-max_count = 5
+min_count = 1
+max_count = 3
 
 [resource]
 script = ExtResource("1_6xgj0")

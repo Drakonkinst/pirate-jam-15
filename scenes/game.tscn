@@ -740,7 +740,7 @@ position = Vector2(0, 760)
 [node name="EnemiesFolder" type="Node2D" parent="World/Enemies"]
 unique_name_in_owner = true
 
-[node name="AllliesFolder" type="Node2D" parent="World/Enemies"]
+[node name="AlliesFolder" type="Node2D" parent="World/Enemies"]
 unique_name_in_owner = true
 
 [node name="PickupManager" type="Node2D" parent="World" node_paths=PackedStringArray("pickup_parent", "gui_targets")]
@@ -871,7 +871,6 @@ script = ExtResource("81_tor4d")
 [connection signal="timeout" from="ToolBar/TorchCooldown" to="ToolBar" method="_on_torch_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/PotionCooldown" to="ToolBar" method="_on_potion_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/SummonCooldown" to="ToolBar" method="_on_summon_cooldown_timeout"]
-[connection signal="updated" from="ToolBar/ToolInventory" to="ToolBar" method="_on_tool_inventory_updated"]
 [connection signal="wave_ended" from="World/Enemies" to="World/DayCycleManager" method="_on_enemies_wave_ended"]
 [connection signal="day_ended" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_day_ended"]
 [connection signal="day_ended" from="World/DayCycleManager" to="World/Enemies" method="_on_day_cycle_manager_day_ended"]

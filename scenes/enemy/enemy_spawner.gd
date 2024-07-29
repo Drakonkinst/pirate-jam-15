@@ -25,8 +25,8 @@ signal wave_ended
 @export var endless_mode: bool
 @export var spawn_max_offset: float = 20.0
 
-@onready var enemies_folder = %EnemiesFolder
-@onready var allies_folder = %EnemiesFolder
+@onready var enemies_folder: Node2D = %EnemiesFolder
+@onready var allies_folder: Node2D = %AlliesFolder
 
 @onready var num_spawns = 1:
     get: return len(curr_spawning_schedule.spawns)
@@ -105,7 +105,7 @@ func spawn_ally_scene(row: int, enemy_scene: PackedScene) -> Enemy:
     enemy_obj.position = get_ally_spawn_position(row)
     enemy_obj.row = row
     var ally = enemy_obj as Enemy
-    add_child(enemy_obj)
+    allies_folder.add_child(enemy_obj)
     ally.set_ally()
     return ally
 
@@ -137,10 +137,15 @@ func endless_get_spawn_data():
     next_spawn_time = game_timer + 1 + (randi() % 2)
     next_spawn_row = randi_range(0,4)
 
-func get_enemies_in_tile(tile: GridTile) -> Array[Enemy]:
+func get_enemies_in_tile(tile: GridTile, is_ally: bool = false) -> Array[Enemy]:
     var result: Array[Enemy] = []
     var grid = GlobalVariables.get_grid()
-    for node in get_children():
+    var parent: Node2D
+    if is_ally:
+        parent = allies_folder
+    else:
+        parent = enemies_folder
+    for node in parent.get_children():
         if node is Enemy and grid.screenspace_to_tile(node.global_position) == tile:
             result.append(node as Enemy)
     return result
@@ -197,3 +202,20 @@ func get_num_enemies():
 
 func get_num_allies():
     return allies_folder.get_child_count()
+
+func get_enemies_in_row(row: int) -> Array[Enemy]:
+    return get_mobs_in_row(enemies_folder, row)
+
+func get_allies_in_row(row: int) -> Array[Enemy]:
+    return get_mobs_in_row(allies_folder, row)
+
+func get_mobs_in_row(folder: Node2D, row: int) -> Array[Enemy]:
+    var result: Array[Enemy] = []
+    for node in folder.get_children():
+        if not (node is Enemy):
+            continue
+        var enemy: Enemy = node as Enemy
+        if enemy.row != row:
+            continue
+        result.append(enemy)
+    return result
