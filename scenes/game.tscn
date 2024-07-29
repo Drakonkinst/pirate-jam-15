@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=95 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -81,6 +81,8 @@
 [ext_resource type="PackedScene" uid="uid://bu1wggooa0cd" path="res://scenes/enemy/types/golem/wind_golem.tscn" id="53_i7n8v"]
 [ext_resource type="PackedScene" uid="uid://cue740t2tc7o5" path="res://scenes/enemy/types/golem/tree_golem.tscn" id="54_mtxj2"]
 [ext_resource type="AudioStream" uid="uid://bwy3k3hsarsjf" path="res://assets/audio/SFXMenuPause.ogg" id="66_807vn"]
+[ext_resource type="AudioStream" uid="uid://jpu776c5cfpm" path="res://assets/audio/SFXPotionBreaks2.ogg" id="71_mspmp"]
+[ext_resource type="AudioStream" uid="uid://dp01ou2w0jlqc" path="res://assets/audio/SFXPotionsBreaks3.ogg" id="73_np7hk"]
 [ext_resource type="AudioStream" uid="uid://0ompo3r7kiab" path="res://assets/audio/SFXMenuButtonSelect.ogg" id="78_rohyd"]
 [ext_resource type="AudioStream" uid="uid://c6tajhavixgha" path="res://assets/audio/SFXFireLOOP.ogg" id="80_tnref"]
 [ext_resource type="Script" path="res://scenes/audio/fire_audio.gd" id="81_tor4d"]
@@ -705,6 +707,15 @@ explosion_parent = NodePath(".")
 splat_parent = NodePath("../Grid")
 throw_offset = Vector2(25, -75)
 fire_offset = Vector2(80, -50)
+
+[node name="SplashAudio" type="AudioStreamPlayer" parent="World/ProjectileManager"]
+unique_name_in_owner = true
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("71_mspmp"), ExtResource("73_np7hk")])
+min_pitch = 0.75
+max_pitch = 1.0
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("19_c5v0p")]
 position = Vector2(238, 518)

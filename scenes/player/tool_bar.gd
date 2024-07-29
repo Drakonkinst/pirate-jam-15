@@ -19,7 +19,7 @@ enum Tool {
 @onready var tool_inventory: ToolInventory = $ToolInventory
 @onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 
-@export var obstacle_damage: int = 10
+@export var obstacle_damage: int = 20
 
 var current_tool: Tool = Tool.MAGIC_BOLT
 var selected_potion: ThrownProjectile.Type = ThrownProjectile.Type.POTION_WOOD

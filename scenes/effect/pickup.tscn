@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgqgtp3ng3xpo"]
+[gd_scene load_steps=6 format=3 uid="uid://bgqgtp3ng3xpo"]
 
 [ext_resource type="Texture2D" uid="uid://3v5jfrkneqn7" path="res://assets/textures/animated/fire_5.png" id="1_m1h61"]
 [ext_resource type="Script" path="res://scenes/effect/pickup.gd" id="2_k8umf"]
+[ext_resource type="Script" path="res://scenes/audio/audio_randomizer.gd" id="3_l2m80"]
+[ext_resource type="AudioStream" uid="uid://dfwms15lk2sio" path="res://assets/audio/SFXPickUp.ogg" id="4_cbaud"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7my1w"]
 
@@ -20,5 +22,12 @@ scale = Vector2(2.12, 2.12)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_7my1w")
+
+[node name="PickupAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+volume_db = -5.0
+bus = &"Effects"
+script = ExtResource("3_l2m80")
+audio_tracks = Array[AudioStream]([ExtResource("4_cbaud")])
 
 [connection signal="mouse_entered" from="CollectionArea" to="." method="_on_area_2d_mouse_entered"]
