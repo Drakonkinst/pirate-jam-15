@@ -16,14 +16,11 @@ signal crafting_end
 
 
 @export var quartz_img: CompressedTexture2D
-@export var fire_img: CompressedTexture2D
+@export var stone_img: CompressedTexture2D
 @export var wood_img: CompressedTexture2D
 @export var oil_img: CompressedTexture2D
 
 @export var ally_img: CompressedTexture2D
-
-
-
 
 
 
@@ -36,8 +33,8 @@ func setup():
 	match crafting_data.item:
 		CraftingData.ItemType.POTION_QUARTZ:
 			item_texture = quartz_img
-		CraftingData.ItemType.POTION_FIRE:
-			item_texture = fire_img
+		CraftingData.ItemType.POTION_STONE:
+			item_texture = stone_img
 		CraftingData.ItemType.POTION_OIL:
 			item_texture = oil_img
 		CraftingData.ItemType.POTION_WOOD:
@@ -72,7 +69,7 @@ func give_item():
 	match crafting_data.item:
 		CraftingData.ItemType.POTION_WOOD:
 			proj_type = ThrownProjectile.Type.POTION_WOOD
-		CraftingData.ItemType.POTION_FIRE:
+		CraftingData.ItemType.POTION_STONE:
 			proj_type = ThrownProjectile.Type.POTION_STONE
 		CraftingData.ItemType.POTION_QUARTZ:
 			proj_type = ThrownProjectile.Type.POTION_QUARTZ

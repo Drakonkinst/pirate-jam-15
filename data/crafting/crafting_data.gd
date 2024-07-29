@@ -5,7 +5,7 @@ class_name CraftingData
 enum ItemType {
 	#Potions
 	POTION_QUARTZ,
-	POTION_FIRE,
+	POTION_STONE,
 	POTION_OIL,
 	POTION_WOOD,
 	#Allies
