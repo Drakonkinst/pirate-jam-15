@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyifllpcx6yhy"]
+[gd_scene load_steps=10 format=3 uid="uid://dyifllpcx6yhy"]
 
 [ext_resource type="Theme" uid="uid://usfabbbmsm3h" path="res://assets/themes/PotionCraftTheme.tres" id="1_7pvp4"]
 [ext_resource type="Script" path="res://scenes/ui/potion_craft_menu.gd" id="1_kcbrr"]
 [ext_resource type="PackedScene" uid="uid://do6v3t70isonx" path="res://scenes/ui/crafting_menu_listing.tscn" id="3_68ucw"]
 [ext_resource type="Resource" uid="uid://cnlvgyw76gup7" path="res://data/crafting/quartz_potion_data.tres" id="4_lvutk"]
 [ext_resource type="Resource" uid="uid://ddiroii5noo1a" path="res://data/crafting/fire_potion_data.tres" id="5_b7xh6"]
+[ext_resource type="Texture2D" uid="uid://d0qqo84efcd8e" path="res://assets/textures/potion/stone_potion.png" id="6_tg5ej"]
 [ext_resource type="Resource" uid="uid://c8d0r05iwukg" path="res://data/crafting/wood_potion_data.tres" id="6_ykciu"]
 [ext_resource type="Resource" uid="uid://87a3i3gj0s0y" path="res://data/crafting/oil_potion_data.tres" id="7_67s07"]
 [ext_resource type="Resource" uid="uid://cc0yuseikqdtx" path="res://data/crafting/ally_data.tres" id="8_5wdr8"]
@@ -42,9 +43,10 @@ theme = ExtResource("1_7pvp4")
 layout_mode = 2
 crafting_data = ExtResource("4_lvutk")
 
-[node name="FireListing" parent="PanelContainer/VBoxContainer" instance=ExtResource("3_68ucw")]
+[node name="RockListing" parent="PanelContainer/VBoxContainer" instance=ExtResource("3_68ucw")]
 layout_mode = 2
 crafting_data = ExtResource("5_b7xh6")
+stone_img = ExtResource("6_tg5ej")
 
 [node name="WoodListing" parent="PanelContainer/VBoxContainer" instance=ExtResource("3_68ucw")]
 layout_mode = 2
