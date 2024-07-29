@@ -5,7 +5,8 @@ class_name EnemyWalkState
 const OIL_SLOW_FACTOR = 0.75
 const LIGHT_SLOW_FACTOR = 0.5
 
-const SCAN_INTERVAL = 1.0
+const SCAN_INTERVAL = 0.1
+const ATTACK_RANGE := 100.0
 
 @export var enemy: Enemy
 
@@ -64,6 +65,7 @@ func update(delta):
     time_until_next_scan -= delta
     if time_until_next_scan <= 0:
         curr_opponent = search_for_opponents()
+        time_until_next_scan = SCAN_INTERVAL
 
 func search_for_opponents() -> Enemy:
     var enemy_spawner: EnemySpawner = GlobalVariables.get_enemy_spawner()
@@ -74,7 +76,12 @@ func search_for_opponents() -> Enemy:
         enemies = enemy_spawner.get_allies_in_row(enemy.row)
 
     var origin_x: float = enemy.global_position.x
-    var min_x: float = origin_x
+    var closest_x: float
+    if enemy.is_ally:
+        closest_x = INF
+    else:
+        closest_x = -INF
+
     var closest_opponent: Enemy = null
     for opponent: Enemy in enemies:
         if opponent.row != enemy.row:
@@ -82,9 +89,17 @@ func search_for_opponents() -> Enemy:
         if opponent.is_ally == enemy.is_ally:
             continue
         var opponent_x: float = opponent.global_position.x
-        if opponent_x >= origin_x and opponent_x <= min_x:
-            min_x = opponent_x
-            closest_opponent = opponent
+        var delta_x: float = abs(opponent_x - origin_x)
+        if delta_x > ATTACK_RANGE:
+            continue
+        if enemy.is_ally:
+            if opponent_x >= origin_x and opponent_x <= closest_x:
+                closest_x = opponent_x
+                closest_opponent = opponent
+        else:
+            if opponent_x <= origin_x and opponent_x >= closest_x:
+                closest_x = opponent_x
+                closest_opponent = opponent
     return closest_opponent
 
 

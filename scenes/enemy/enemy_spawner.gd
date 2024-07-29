@@ -137,10 +137,15 @@ func endless_get_spawn_data():
     next_spawn_time = game_timer + 1 + (randi() % 2)
     next_spawn_row = randi_range(0,4)
 
-func get_enemies_in_tile(tile: GridTile) -> Array[Enemy]:
+func get_enemies_in_tile(tile: GridTile, is_ally: bool = false) -> Array[Enemy]:
     var result: Array[Enemy] = []
     var grid = GlobalVariables.get_grid()
-    for node in get_children():
+    var parent: Node2D
+    if is_ally:
+        parent = allies_folder
+    else:
+        parent = enemies_folder
+    for node in parent.get_children():
         if node is Enemy and grid.screenspace_to_tile(node.global_position) == tile:
             result.append(node as Enemy)
     return result

@@ -7,7 +7,6 @@ signal day_ended(curr_round: int) # Night Start
 signal interval_passed(curr_time: float) # Each second of the day/night
 signal game_ended
 
-
 @export var day_length: float
 @export var night_length: float
 
