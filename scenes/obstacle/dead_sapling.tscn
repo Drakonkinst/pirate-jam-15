@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c68lf7id1osf4"]
+[gd_scene load_steps=12 format=3 uid="uid://c68lf7id1osf4"]
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_cr6mj"]
 [ext_resource type="Resource" uid="uid://wmlmbvlvhn41" path="res://data/obstacle/dead_sapling.tres" id="2_s53sl"]
 [ext_resource type="Script" path="res://data/obstacle/transmutable_entry.gd" id="3_5fetk"]
 [ext_resource type="Texture2D" uid="uid://camid573dtfid" path="res://assets/textures/obstacle/dead_sapling.png" id="3_g02xa"]
+[ext_resource type="AudioStream" uid="uid://7tgdnxwyusve" path="res://assets/audio/SFXTreeBreaks2.ogg" id="3_t6p4p"]
 [ext_resource type="Texture2D" uid="uid://45j8wai8a8j0" path="res://assets/textures/obstacle/dead_quartz_sapling.png" id="4_qoyfe"]
 [ext_resource type="Texture2D" uid="uid://clc1pmgue6wil" path="res://assets/textures/obstacle/stone_dead_sapling.png" id="5_5ry00"]
 [ext_resource type="Script" path="res://scenes/obstacle/transform_on_transmute.gd" id="7_13ab3"]
@@ -23,12 +24,14 @@ script = ExtResource("3_5fetk")
 state = 1
 texture = ExtResource("3_g02xa")
 
-[node name="DeadSapling" instance=ExtResource("1_cr6mj")]
+[node name="DeadSapling" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_cr6mj")]
 data = ExtResource("2_s53sl")
+behaviors = [NodePath("TransformOnTransmute")]
+default_break_sound = ExtResource("3_t6p4p")
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(0, -4)
-transmutable_map = [SubResource("Resource_47jju"), SubResource("Resource_yk4j5"), SubResource("Resource_wbwqs")]
+transmutable_map = Array[ExtResource("3_5fetk")]([SubResource("Resource_47jju"), SubResource("Resource_yk4j5"), SubResource("Resource_wbwqs")])
 
 [node name="Base" parent="ObstacleModel1" index="0"]
 texture = ExtResource("3_g02xa")

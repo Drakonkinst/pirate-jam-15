@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://ci5x7iudnfatv"]
+[gd_scene load_steps=14 format=3 uid="uid://ci5x7iudnfatv"]
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_tp0j5"]
 [ext_resource type="Resource" uid="uid://cva2uitfiqme8" path="res://data/obstacle/rock.tres" id="2_l51pq"]
+[ext_resource type="AudioStream" uid="uid://corjypnip0syj" path="res://assets/audio/SFXRockBreaks.ogg" id="3_syc7k"]
 [ext_resource type="Script" path="res://data/obstacle/transmutable_entry.gd" id="3_u5mqm"]
 [ext_resource type="Texture2D" uid="uid://bosf5e3kq41vb" path="res://assets/textures/obstacle/quartz_rock.png" id="4_8vkia"]
 [ext_resource type="Texture2D" uid="uid://cjukxpjlt8ero" path="res://assets/textures/obstacle/treeified_rock.png" id="5_pvi3p"]
@@ -21,12 +22,14 @@ script = ExtResource("3_u5mqm")
 state = 1
 texture = ExtResource("5_pvi3p")
 
-[node name="Rock" instance=ExtResource("1_tp0j5")]
+[node name="Rock" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_tp0j5")]
 data = ExtResource("2_l51pq")
+behaviors = [NodePath("StoneVariantsBehavior")]
+default_break_sound = ExtResource("3_syc7k")
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(0, -17)
-transmutable_map = [SubResource("Resource_t0gkr"), SubResource("Resource_ps1qu")]
+transmutable_map = Array[ExtResource("3_u5mqm")]([SubResource("Resource_t0gkr"), SubResource("Resource_ps1qu")])
 
 [node name="Base" parent="ObstacleModel1" index="0"]
 texture = ExtResource("6_c0425")

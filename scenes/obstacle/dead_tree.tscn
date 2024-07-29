@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcqx4m1p240sb"]
+[gd_scene load_steps=12 format=3 uid="uid://bcqx4m1p240sb"]
 
 [ext_resource type="PackedScene" uid="uid://bni7y7dq3ydcl" path="res://scenes/obstacle/obstacle.tscn" id="1_wyyjx"]
 [ext_resource type="Resource" uid="uid://d1jxwgbai44ey" path="res://data/obstacle/dead_tree.tres" id="2_n2om6"]
 [ext_resource type="Script" path="res://data/obstacle/transmutable_entry.gd" id="3_kewb3"]
+[ext_resource type="AudioStream" uid="uid://dgfyxil3bgkr1" path="res://assets/audio/SFXTreeBreaks.ogg" id="3_q0pn4"]
 [ext_resource type="Texture2D" uid="uid://p8b4goedsn71" path="res://assets/textures/obstacle/dead_quartz_tree.png" id="4_5i77k"]
 [ext_resource type="Texture2D" uid="uid://catifqjuiedc4" path="res://assets/textures/obstacle/dead_tree.png" id="5_g0axf"]
 [ext_resource type="Texture2D" uid="uid://csnxq1oyrtsa0" path="res://assets/textures/obstacle/stone_dead_tree.png" id="5_m1otg"]
@@ -23,12 +24,14 @@ script = ExtResource("3_kewb3")
 state = 1
 texture = ExtResource("5_g0axf")
 
-[node name="DeadTree" instance=ExtResource("1_wyyjx")]
+[node name="DeadTree" node_paths=PackedStringArray("behaviors") instance=ExtResource("1_wyyjx")]
 data = ExtResource("2_n2om6")
+behaviors = [NodePath("TransformOnTransmute")]
+default_break_sound = ExtResource("3_q0pn4")
 
 [node name="ObstacleModel1" parent="." index="1"]
 position = Vector2(-2, -13)
-transmutable_map = [SubResource("Resource_44n8k"), SubResource("Resource_x8136"), SubResource("Resource_tcksx")]
+transmutable_map = Array[ExtResource("3_kewb3")]([SubResource("Resource_44n8k"), SubResource("Resource_x8136"), SubResource("Resource_tcksx")])
 
 [node name="Base" parent="ObstacleModel1" index="0"]
 texture = ExtResource("5_g0axf")

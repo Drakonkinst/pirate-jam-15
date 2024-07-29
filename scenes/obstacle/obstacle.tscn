@@ -71,10 +71,12 @@ grow_vertical = 2
 scale = Vector2(1.44, 1.44)
 
 [node name="DestroyTimer" type="Timer" parent="."]
-wait_time = 0.2
 
 [node name="DestroyAudio" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
 script = ExtResource("12_5eevk")
+min_pitch = 0.8
+max_pitch = 1.2
 
 [connection signal="changed" from="Health" to="Healthbar" method="_on_health_changed"]
 [connection signal="death" from="Health" to="." method="_on_health_death"]
