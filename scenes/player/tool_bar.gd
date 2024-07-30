@@ -76,16 +76,22 @@ func _do_torch(target_pos: Vector2) -> bool:
 	return success
 
 func _do_destroy(target_pos: Vector2) -> bool:
-	var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(target_pos)
-	if tile == null:
-		return false
-	var obstacle: Obstacle = tile.obstacle
-	if obstacle == null or obstacle.data.invulnerable:
-		return false
-	obstacle.damage(obstacle_damage)
-	destroy_cooldown.start()
-	do_action.emit(ToolBar.Tool.PICKAXE)
-	return true
+	var projectile_manager: ProjectileManager = GlobalVariables.get_projectile_manager()
+	var success = projectile_manager.throw_projectile(ThrownProjectile.Type.PICKAXE, target_pos)
+	if success:
+		destroy_cooldown.start()
+		do_action.emit(ToolBar.Tool.PICKAXE)
+	return success
+	# var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(target_pos)
+	# if tile == null:
+	# 	return false
+	# var obstacle: Obstacle = tile.obstacle
+	# if obstacle == null or obstacle.data.invulnerable:
+	# 	return false
+	# obstacle.damage(obstacle_damage)
+	# destroy_cooldown.start()
+	# do_action.emit(ToolBar.Tool.PICKAXE)
+	# return true
 
 func _do_potion(target_pos: Vector2) -> bool:
 	var projectile_manager: ProjectileManager = GlobalVariables.get_projectile_manager()

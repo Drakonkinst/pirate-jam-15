@@ -542,21 +542,22 @@ tool_bar = NodePath("../../HUD/ToolBarHud")
 script = ExtResource("20_akytf")
 
 [node name="AttackCooldown" type="Timer" parent="ToolBar"]
-wait_time = 0.75
+wait_time = 0.5
 one_shot = true
 
 [node name="DestroyCooldown" type="Timer" parent="ToolBar"]
+wait_time = 0.75
 one_shot = true
 
 [node name="TorchCooldown" type="Timer" parent="ToolBar"]
 one_shot = true
 
 [node name="PotionCooldown" type="Timer" parent="ToolBar"]
-wait_time = 0.25
+wait_time = 0.2
 one_shot = true
 
 [node name="SummonCooldown" type="Timer" parent="ToolBar"]
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
 
 [node name="ToolBarAudio" type="Node2D" parent="ToolBar"]
@@ -600,13 +601,15 @@ bus = &"Effects"
 script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("16_17j03"), ExtResource("17_a7jxu"), ExtResource("18_3tbfr")])
 
-[node name="DoPotionAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-volume_db = 5.0
+[node name="DoPickaxeAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
+audio_tracks = Array[AudioStream]([ExtResource("30_tgwhu")])
+min_pitch = 0.7
+max_pitch = 0.9
 
-[node name="DoPickaxeAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+[node name="DoPotionAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
 volume_db = 5.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpcl65blo6kv5"]
+
+[ext_resource type="PackedScene" uid="uid://cyq7jll2t5va" path="res://scenes/projectile/thrown_projectile.tscn" id="1_m783e"]
+[ext_resource type="Texture2D" uid="uid://cis2vokqjryh7" path="res://assets/textures/enemy/profile/fire_sprite.png" id="2_rg6r8"]
+[ext_resource type="Script" path="res://scenes/projectile/thrown_enemy.gd" id="3_f6tjc"]
+
+[node name="Projectile" node_paths=PackedStringArray("behavior") instance=ExtResource("1_m783e")]
+rotation_speed_degrees = 180.0
+behavior = NodePath("Behavior")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, -3)
+scale = Vector2(0.225, 0.225)
+texture = ExtResource("2_rg6r8")
+
+[node name="Behavior" type="Node2D" parent="." index="2"]
+script = ExtResource("3_f6tjc")
+tint_color = Color(0.160265, 0.0955214, 0.27516, 1)

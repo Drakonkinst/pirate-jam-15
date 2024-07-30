@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scenes/projectile/potion_oil_behavior.gd" id="3_6g05p"]
 
 [node name="Projectile" node_paths=PackedStringArray("behavior") instance=ExtResource("1_ub8xh")]
+rotation_speed_degrees = 180.0
 behavior = NodePath("Behavior")
 
 [node name="Sprite2D" parent="." index="1"]

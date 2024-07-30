@@ -6,7 +6,7 @@ extends Node2D
 class_name ThrownProjectile
 
 enum Type {
-    TORCH, POTION_OIL, POTION_WOOD, POTION_STONE, POTION_QUARTZ
+    TORCH, POTION_OIL, POTION_WOOD, POTION_STONE, POTION_QUARTZ, PICKAXE, ENEMY
 }
 
 @onready var sprite: Sprite2D = $Sprite2D

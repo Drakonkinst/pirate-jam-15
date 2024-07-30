@@ -14,6 +14,8 @@ const INVERT_Y: Vector2 = Vector2(1.0, -1.0)
 @export var potion_wood_scene: PackedScene
 @export var potion_stone_scene: PackedScene
 @export var potion_quartz_scene: PackedScene
+@export var thrown_pickaxe_scene: PackedScene
+@export var thrown_enemy_scene: PackedScene
 @export var debug_marker_scene: PackedScene
 @export var explosion_scene: PackedScene
 @export var splat_scene: PackedScene
@@ -24,6 +26,7 @@ const INVERT_Y: Vector2 = Vector2(1.0, -1.0)
 @export var fire_offset: Vector2
 @export var arc_height_multiplier: float = 0.25
 @onready var splash_audio: AudioRandomizer = %SplashAudio
+@onready var pickaxe_audio: AudioRandomizer = %PickaxeAudio
 
 func _get_scene_for_projectile(type: ThrownProjectile.Type) -> PackedScene:
     match type:
@@ -37,6 +40,10 @@ func _get_scene_for_projectile(type: ThrownProjectile.Type) -> PackedScene:
             return potion_oil_scene
         ThrownProjectile.Type.TORCH:
             return torch_scene
+        ThrownProjectile.Type.PICKAXE:
+            return thrown_pickaxe_scene
+        ThrownProjectile.Type.ENEMY:
+            return thrown_enemy_scene
         _:
             print("Unknown scene for projectile ", ThrownProjectile.Type.keys()[type])
             return null
@@ -69,6 +76,8 @@ func place_splat(pos: Vector2) -> Splat:
     var splat = splat_obj as Splat
     return splat
 
+func play_pickaxe_audio() -> void:
+    pickaxe_audio.play_random()
 
 func throw_projectile(projectile: ThrownProjectile.Type, mouse_pos: Vector2) -> bool:
     if not is_valid_target(mouse_pos, true):

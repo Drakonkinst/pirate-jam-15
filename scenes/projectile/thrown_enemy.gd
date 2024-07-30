@@ -1,15 +1,14 @@
-extends PotionBehavior
+extends ProjectileBehavior
 
-class_name PotionTransformBehavior
-
-@export var transform_into: Obstacle.TransmutedState
+class_name ThrownEnemyBehavior
 
 func on_land(pos: Vector2):
     super(pos)
+    var obstacle_manager: ObstacleManager = GlobalVariables.get_obstacle_manager()
     var tiles: Array[GridTile] = GlobalVariables.get_grid().get_tiles_in_radius(pos, GlobalVariables.POTION_RADIUS)
     for tile: GridTile in tiles:
         var obstacle: Obstacle = tile.obstacle
         if obstacle == null or not obstacle.data.can_transform:
             continue
-        obstacle.set_transmuted_state(transform_into)
+        obstacle_manager.replace_obstacle(Obstacle.Type.OIL_SPILL, tile)
 
