@@ -17,4 +17,4 @@ resource_type = 0
 script = ExtResource("1_lib8e")
 item = 0
 recipe_list = Array[ExtResource("1_dg3cv")]([SubResource("Resource_t7f0n"), SubResource("Resource_llb7t")])
-crafting_time = 6.0
+crafting_time = 3.0

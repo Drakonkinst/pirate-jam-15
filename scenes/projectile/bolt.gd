@@ -4,7 +4,7 @@ class_name MagicBolt
 
 @export var direction: Vector2
 @export var speed: float = 800.0
-@export var bolt_damage: float = 75.0
+@export var bolt_damage: float = 40.0
 
 func init(from: Vector2, to: Vector2):
 	global_position = from

@@ -1,36 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://do6v3t70isonx"]
+[gd_scene load_steps=4 format=3 uid="uid://do6v3t70isonx"]
 
 [ext_resource type="Script" path="res://scenes/ui/crafting_menu_listing.gd" id="1_82gia"]
 [ext_resource type="Theme" uid="uid://usfabbbmsm3h" path="res://assets/themes/PotionCraftTheme.tres" id="1_dibny"]
 [ext_resource type="Texture2D" uid="uid://3fi7oa62uert" path="res://assets/textures/potion/quartz_potion.png" id="2_475mh"]
-[ext_resource type="Texture2D" uid="uid://klv2cy861ymq" path="res://assets/textures/potion/potion_wood.png" id="3_nxtuw"]
-[ext_resource type="Texture2D" uid="uid://uibvlcal4fy0" path="res://assets/textures/potion/potion_oil.png" id="4_cr548"]
-[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/rock_sprite.png" id="6_7rnf6"]
 
 [node name="CraftingMenuListing" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_82gia")
-quartz_img = ExtResource("2_475mh")
-wood_img = ExtResource("3_nxtuw")
-oil_img = ExtResource("4_cr548")
-ally_img = ExtResource("6_7rnf6")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Title" type="Control" parent="."]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 5
 
-[node name="ItemLabel" type="Label" parent="MarginContainer"]
+[node name="ItemLabel" type="Label" parent="Title"]
 unique_name_in_owner = true
 layout_mode = 2
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 125.0
+offset_bottom = 56.0
 size_flags_horizontal = 3
 theme = ExtResource("1_dibny")
+theme_override_constants/line_spacing = -3
 text = "Quartz Potion
 "
 horizontal_alignment = 1
-vertical_alignment = 1
+autowrap_mode = 3
 text_overrun_behavior = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -45,6 +42,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_dibny")
 texture = ExtResource("2_475mh")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="Button" type="Button" parent="."]
 unique_name_in_owner = true

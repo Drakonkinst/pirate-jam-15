@@ -91,6 +91,16 @@ func spawn_enemy(row: int, enemy: EnemySpawner.EnemyType) -> Enemy:
 func spawn_ally(row: int, enemy: EnemySpawner.EnemyType) -> Enemy:
     return spawn_ally_scene(row, spawn_type_to_scene(enemy))
 
+func summon_ally_at_tile(type: EnemySpawner.EnemyType, tile: GridTile, y_pos: float) -> Enemy:
+    var x_pos = GlobalVariables.get_grid().get_min_x(tile)
+    var enemy_obj = spawn_type_to_scene(type).instantiate()
+    enemy_obj.position = Vector2(x_pos, y_pos)
+    enemy_obj.row = tile.row
+    var ally = enemy_obj as Enemy
+    allies_folder.add_child(enemy_obj)
+    ally.set_ally()
+    return ally
+
 func spawn_enemy_scene(row: int, enemy_scene: PackedScene) -> Enemy:
     var enemy_obj = enemy_scene.instantiate()
     enemy_obj.position = get_enemy_spawn_position(row)

@@ -6,7 +6,7 @@ extends Node2D
 class_name ThrownProjectile
 
 enum Type {
-    TORCH, POTION_OIL, POTION_WOOD, POTION_STONE, POTION_QUARTZ
+    TORCH, POTION_OIL, POTION_WOOD, POTION_STONE, POTION_QUARTZ, PICKAXE, ENEMY
 }
 
 @onready var sprite: Sprite2D = $Sprite2D
@@ -17,6 +17,9 @@ enum Type {
 var velocity: Vector2 = Vector2.ZERO
 var target_y: float = 500
 var gravity: float # Set by ProjectileManager
+
+# Just used for thrown enemy, hardcoded because I am not paid enough
+var enemy_to_spawn: EnemySpawner.EnemyType
 
 func _ready() -> void:
     if behavior:

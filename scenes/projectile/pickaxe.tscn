@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcpwj6imh5smc"]
+
+[ext_resource type="PackedScene" uid="uid://cyq7jll2t5va" path="res://scenes/projectile/thrown_projectile.tscn" id="1_m783e"]
+[ext_resource type="Texture2D" uid="uid://dxsb05hlpce5t" path="res://assets/textures/icon/icon-pickaxe-full.png" id="2_5iux7"]
+[ext_resource type="Script" path="res://scenes/projectile/pickaxe.gd" id="2_pgkld"]
+
+[node name="Projectile" node_paths=PackedStringArray("behavior") instance=ExtResource("1_m783e")]
+rotation_speed_degrees = 300.0
+behavior = NodePath("Behavior")
+
+[node name="CollisionShape2D" parent="." index="0"]
+scale = Vector2(3.14, 3.14)
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, -3)
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("2_5iux7")
+
+[node name="Behavior" type="Node2D" parent="." index="2"]
+script = ExtResource("2_pgkld")
+obstacle_damage = null
+enemy_damage = null
+tint_color = Color(0.160265, 0.0955214, 0.27516, 1)

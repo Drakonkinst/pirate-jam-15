@@ -1,14 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyifllpcx6yhy"]
+[gd_scene load_steps=22 format=3 uid="uid://dyifllpcx6yhy"]
 
 [ext_resource type="Theme" uid="uid://usfabbbmsm3h" path="res://assets/themes/PotionCraftTheme.tres" id="1_7pvp4"]
 [ext_resource type="Script" path="res://scenes/ui/potion_craft_menu.gd" id="1_kcbrr"]
 [ext_resource type="PackedScene" uid="uid://do6v3t70isonx" path="res://scenes/ui/crafting_menu_listing.tscn" id="3_68ucw"]
 [ext_resource type="Resource" uid="uid://cnlvgyw76gup7" path="res://data/crafting/quartz_potion_data.tres" id="4_lvutk"]
 [ext_resource type="Resource" uid="uid://ddiroii5noo1a" path="res://data/crafting/fire_potion_data.tres" id="5_b7xh6"]
+[ext_resource type="Texture2D" uid="uid://klv2cy861ymq" path="res://assets/textures/potion/potion_wood.png" id="5_l7kgf"]
+[ext_resource type="Script" path="res://scenes/audio/audio_randomizer.gd" id="6_7dv8b"]
 [ext_resource type="Texture2D" uid="uid://d0qqo84efcd8e" path="res://assets/textures/potion/stone_potion.png" id="6_tg5ej"]
 [ext_resource type="Resource" uid="uid://c8d0r05iwukg" path="res://data/crafting/wood_potion_data.tres" id="6_ykciu"]
+[ext_resource type="AudioStream" uid="uid://ckrrxrss41ydo" path="res://assets/audio/SFXPotionSelected.ogg" id="7_2dmas"]
 [ext_resource type="Resource" uid="uid://87a3i3gj0s0y" path="res://data/crafting/oil_potion_data.tres" id="7_67s07"]
-[ext_resource type="Resource" uid="uid://cc0yuseikqdtx" path="res://data/crafting/ally_data.tres" id="8_5wdr8"]
+[ext_resource type="Texture2D" uid="uid://3fi7oa62uert" path="res://assets/textures/potion/quartz_potion.png" id="11_rkwxo"]
+[ext_resource type="Texture2D" uid="uid://uibvlcal4fy0" path="res://assets/textures/potion/potion_oil.png" id="13_3anw1"]
+[ext_resource type="Resource" uid="uid://gly2o2jw2ci7" path="res://data/crafting/wood_sprite_data.tres" id="14_4lya5"]
+[ext_resource type="Texture2D" uid="uid://b54vaj87h68p5" path="res://assets/textures/enemy/profile/tree_sprite.png" id="15_j2b14"]
+[ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/rock_sprite.png" id="16_2uj6u"]
+[ext_resource type="Resource" uid="uid://cc0yuseikqdtx" path="res://data/crafting/rock_sprite_data.tres" id="16_3xdin"]
+[ext_resource type="Texture2D" uid="uid://bngi68ri8c1es" path="res://assets/textures/enemy/profile/wind_sprite.png" id="17_w7q0i"]
+[ext_resource type="Texture2D" uid="uid://cis2vokqjryh7" path="res://assets/textures/enemy/profile/fire_sprite.png" id="18_cjwhu"]
+[ext_resource type="Resource" uid="uid://b6hfjndyjrhts" path="res://data/crafting/wind_sprite_data.tres" id="18_t5n4p"]
+[ext_resource type="Resource" uid="uid://cfrp7hesa85er" path="res://data/crafting/fire_sprite_data.tres" id="20_u4ukf"]
 
 [node name="PotionCraftMenu" type="Control"]
 layout_mode = 3
@@ -29,38 +41,113 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 20.0
+offset_top = -496.0
+offset_right = 300.0
+offset_bottom = 332.0
 grow_vertical = 2
 theme = ExtResource("1_7pvp4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="Listings" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 theme = ExtResource("1_7pvp4")
 
-[node name="QuartzListing" parent="PanelContainer/VBoxContainer" instance=ExtResource("3_68ucw")]
-layout_mode = 2
-crafting_data = ExtResource("4_lvutk")
-
-[node name="RockListing" parent="PanelContainer/VBoxContainer" instance=ExtResource("3_68ucw")]
-layout_mode = 2
-crafting_data = ExtResource("5_b7xh6")
-stone_img = ExtResource("6_tg5ej")
-
-[node name="WoodListing" parent="PanelContainer/VBoxContainer" instance=ExtResource("3_68ucw")]
+[node name="WoodListing" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
 layout_mode = 2
 crafting_data = ExtResource("6_ykciu")
+recipe_name = "Potion of Life"
+image = ExtResource("5_l7kgf")
 
-[node name="OilListing" parent="PanelContainer/VBoxContainer" instance=ExtResource("3_68ucw")]
+[node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/WoodListing"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+
+[node name="StoneListing" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
+layout_mode = 2
+crafting_data = ExtResource("5_b7xh6")
+recipe_name = "Potion of Stone"
+image = ExtResource("6_tg5ej")
+
+[node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/StoneListing"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+
+[node name="QuartzListing" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
+layout_mode = 2
+crafting_data = ExtResource("4_lvutk")
+recipe_name = "Potion of Crystal"
+image = ExtResource("11_rkwxo")
+
+[node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/QuartzListing"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+
+[node name="OilListing" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
 layout_mode = 2
 crafting_data = ExtResource("7_67s07")
+recipe_name = "Potion of Oil"
+image = ExtResource("13_3anw1")
 
-[node name="AllyListing" parent="PanelContainer/VBoxContainer" instance=ExtResource("3_68ucw")]
+[node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/OilListing"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+
+[node name="AllyListing" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
 layout_mode = 2
-crafting_data = ExtResource("8_5wdr8")
+crafting_data = ExtResource("14_4lya5")
+recipe_name = "Tree Sprite"
+image = ExtResource("15_j2b14")
 
-[node name="OpenMenuArea" type="Panel" parent="."]
+[node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/AllyListing"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+
+[node name="AllyListing2" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
+layout_mode = 2
+crafting_data = ExtResource("16_3xdin")
+recipe_name = "Rock Sprite"
+image = ExtResource("16_2uj6u")
+
+[node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/AllyListing2"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+
+[node name="AllyListing3" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
+layout_mode = 2
+crafting_data = ExtResource("18_t5n4p")
+recipe_name = "Wind Sprite"
+image = ExtResource("17_w7q0i")
+
+[node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/AllyListing3"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+
+[node name="AllyListing4" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
+layout_mode = 2
+crafting_data = ExtResource("20_u4ukf")
+recipe_name = "Flame Sprite"
+image = ExtResource("18_cjwhu")
+
+[node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/AllyListing4"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+
+[node name="OpenMenuArea" type="Control" parent="."]
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 1
 anchors_preset = 4
@@ -79,10 +166,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 235.0
+offset_right = 48.0
+offset_bottom = 235.0
 grow_horizontal = 2
 grow_vertical = 2
-text = ">"
+text = "CRAFT"
 
 [connection signal="pressed" from="OpenMenuArea/OpenButton" to="." method="_on_button_pressed"]
 
-[editable path="PanelContainer/VBoxContainer/QuartzListing"]
+[editable path="PanelContainer/Listings/QuartzListing"]

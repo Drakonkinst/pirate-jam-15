@@ -128,7 +128,6 @@ func _on_tool_bar_tool_changed(tool: ToolBar.Tool) -> void:
     for i in buttons.size():
         if i == tool_index:
             if needs_thick:
-                print("NEEDS THICK")
                 buttons[i].apply_material(highlight_thick_material)
             if needs_thin:
                 buttons[i].apply_material(highlight_thin_material)
@@ -168,4 +167,3 @@ func _on_tool_bar_tool_inventory_updated() -> void:
     current_potion_count.text = str(potion_count)
     var summon_count = toolbar.tool_inventory.get_summon_count(toolbar.selected_summon)
     current_summon_count.text = str(summon_count)
-

@@ -9,9 +9,9 @@ const ENEMY_TORCH_FIRE := 3.0
 func on_ready(_projectile: ThrownProjectile):
     GlobalVariables.get_light_manager().spawn_tracking(light_anchor, GlobalVariables.TORCH_LIGHT_RADIUS, LightManager.Type.TORCH)
 
-func on_land(_pos: Vector2):
+func on_land(pos: Vector2):
     var obstacle_manager: ObstacleManager = GlobalVariables.get_obstacle_manager()
-    var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(_pos)
+    var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(pos)
 
     var enemies_affected: Array[Enemy] = GlobalVariables.get_enemy_spawner().get_enemies_in_tile(tile)
     for enemy: Enemy in enemies_affected:

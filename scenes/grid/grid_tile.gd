@@ -36,11 +36,11 @@ func _should_highlight() -> bool:
     var grid = GlobalVariables.get_grid()
     var mouse_pos = get_global_mouse_position()
     var current_tool: ToolBar.Tool = GlobalVariables.get_toolbar().current_tool
-    if current_tool == ToolBar.Tool.PICKAXE:
-        return grid.screenspace_to_tile(mouse_pos) == self
     if current_tool == ToolBar.Tool.SUMMON:
-        var player_row = grid.get_grid_row_at_pos(player.global_position)
-        return col == 0 && row == player_row
+        return grid.screenspace_to_tile(mouse_pos) == self
+    # if current_tool == ToolBar.Tool.SUMMON:
+        # var player_row = grid.get_grid_row_at_pos(player.global_position)
+        # return col == 0 && row == player_row
     return false
 
 func clear_obstacle() -> void:
