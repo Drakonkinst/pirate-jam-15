@@ -21,7 +21,7 @@ func toggle_interactible():
 
 func move_panel_tween(pos):
 	var open_tween = create_tween()
-	open_tween.tween_property(self,"global_position",pos,1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	open_tween.tween_property(self,"global_position",pos,0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	open_tween.play()
 	open_tween.finished.connect(toggle_interactible)
 
@@ -37,14 +37,12 @@ func close_menu():
 	print("Closing menu..")
 	move_panel_tween(closed_position)
 
-
-
 func _on_button_pressed():
 	if focused:
 		close_menu()
 		focused = false
-		%OpenButton.text = ">"
+		%OpenButton.text = "CRAFT"
 	else:
 		open_menu()
 		focused = true
-		%OpenButton.text = "<"
+		%OpenButton.text = "HIDE"

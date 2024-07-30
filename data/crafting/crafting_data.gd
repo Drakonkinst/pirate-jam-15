@@ -9,7 +9,10 @@ enum ItemType {
 	POTION_OIL,
 	POTION_WOOD,
 	#Allies
-	ALLY_SPRITE,
+	ROCK_SPRITE,
+	WOOD_SPRITE,
+	FIRE_SPRITE,
+	WIND_SPRITE
 }
 
 @export var item: ItemType
