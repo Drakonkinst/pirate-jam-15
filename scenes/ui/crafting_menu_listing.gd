@@ -28,6 +28,15 @@ func _ready():
 func setup():
     %ItemLabel.text = recipe_name
     %ItemTexture.texture = image
+    %RecipeLabel.text = print_recipe()
+
+func print_recipe():
+    var recipe_str = ""
+    for i in range(0,crafting_data.recipe_list.size()):
+        var current_recipe_item = crafting_data.recipe_list[i]
+        recipe_str += str(current_recipe_item.count) + " - " + str(Pickup.PickupType.keys()[current_recipe_item.resource_type]) + "\n"
+
+    return recipe_str
 
 func _on_craft_button_pressed():
     start_crafting()
