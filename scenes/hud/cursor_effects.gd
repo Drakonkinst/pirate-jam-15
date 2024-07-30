@@ -13,6 +13,10 @@ func _update_cursor() -> void:
     var mouse_pos = get_global_mouse_position()
     global_position = mouse_pos
 
+    if GlobalVariables.curr_game.is_game_over:
+        sprite.hide()
+        return
+
     # TODO: if potion/torch, only show reticle if in valid area
     if current_tool_type == ToolBar.Tool.POTION || current_tool_type == ToolBar.Tool.TORCH:
         var should_show = GlobalVariables.get_projectile_manager().is_valid_target(mouse_pos, true)
@@ -48,7 +52,6 @@ func _on_tool_bar_tool_changed(tool_type: ToolBar.Tool) -> void:
             # _scale_sprite_to_size(50)
             sprite.hide()
     _update_cursor()
-
 
 func _scale_sprite_to_size(size: float) -> void:
     var texture_width = sprite.texture.get_width()

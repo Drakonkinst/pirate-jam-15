@@ -25,6 +25,7 @@ func start_new_game() -> void:
 	game = game_scene.instantiate()
 	GlobalVariables.curr_game = game
 	game.quit_to_menu.connect(quit_to_menu)
+	game.restart.connect(restart)
 	start_game_audio.play()
 	add_child(game)
 
@@ -33,6 +34,10 @@ func quit_to_menu() -> void:
 		remove_child(game)
 		game = null
 	init_main_menu()
+
+func restart() -> void:
+	quit_to_menu()
+	start_new_game()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released(QUIT_INPUT):

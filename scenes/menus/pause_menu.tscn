@@ -35,23 +35,28 @@ offset_right = 250.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 25
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Paused"
 horizontal_alignment = 1
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 text = "Resume"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 text = "Options"
 
 [node name="QuitToMenuButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 text = "Quit to Menu"
 
 [node name="SettingsMenu" parent="." instance=ExtResource("2_khs8f")]

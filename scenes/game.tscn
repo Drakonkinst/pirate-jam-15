@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=110 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -37,8 +37,10 @@
 [ext_resource type="Script" path="res://scenes/pickup_manager.gd" id="16_c2f7e"]
 [ext_resource type="PackedScene" uid="uid://bgqgtp3ng3xpo" path="res://scenes/effect/pickup.tscn" id="16_lfyb5"]
 [ext_resource type="AudioStream" uid="uid://vte5efiqisp7" path="res://assets/audio/SFXTorchThrow3.ogg" id="17_a7jxu"]
+[ext_resource type="Texture2D" uid="uid://nfg7lvaux13e" path="res://assets/textures/Villain_Portrait.PNG" id="17_x7025"]
 [ext_resource type="AudioStream" uid="uid://c0god3bplix1" path="res://assets/audio/SFXTorchThrow.ogg" id="18_3tbfr"]
 [ext_resource type="Script" path="res://scenes/projectile/projectile_manager.gd" id="18_s1wrk"]
+[ext_resource type="PackedScene" uid="uid://bhi00njaa1vq3" path="res://scenes/menus/game_over_menu.tscn" id="19_1ihcy"]
 [ext_resource type="PackedScene" uid="uid://cu2l6glnoatrb" path="res://scenes/player/player.tscn" id="19_c5v0p"]
 [ext_resource type="PackedScene" uid="uid://cx5t0lk1frgn2" path="res://scenes/projectile/torch.tscn" id="20_3f6c5"]
 [ext_resource type="Script" path="res://scenes/player/tool_bar.gd" id="20_akytf"]
@@ -100,6 +102,7 @@
 [ext_resource type="AudioStream" uid="uid://dgfyxil3bgkr1" path="res://assets/audio/SFXTreeBreaks.ogg" id="85_mupes"]
 [ext_resource type="Script" path="res://scenes/audio/background_music.gd" id="86_c2qol"]
 [ext_resource type="AudioStream" uid="uid://corjypnip0syj" path="res://assets/audio/SFXRockBreaks.ogg" id="86_icjs6"]
+[ext_resource type="AudioStream" uid="uid://bdiqkejwlc1p6" path="res://assets/audio/SFXNope.ogg" id="86_phalv"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -135,7 +138,7 @@ class_name World
 
 "
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar", "day_cycle_manager", "base_health")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar", "day_cycle_manager", "base_health", "game_over_screen")]
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
 obstacle_manager = NodePath("ObstacleManager")
@@ -147,6 +150,7 @@ enemy_spawner = NodePath("World/Enemies")
 toolbar = NodePath("ToolBar")
 day_cycle_manager = NodePath("World/DayCycleManager")
 base_health = NodePath("Player/BaseHealth")
+game_over_screen = NodePath("GameOverMenu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
@@ -422,7 +426,6 @@ mouse_filter = 2
 texture = SubResource("GradientTexture2D_q44x3")
 
 [node name="DialogueBox" type="Control" parent="DialogueManager"]
-visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -507,14 +510,13 @@ texture = ExtResource("9_crwft")
 
 [node name="VillainPortrait" type="TextureRect" parent="DialogueManager/DialogueBox"]
 layout_mode = 0
-offset_left = 758.0
-offset_top = -428.0
-offset_right = 2265.0
-offset_bottom = 1072.0
+offset_left = 757.0
+offset_top = -442.0
+offset_right = 2264.0
+offset_bottom = 1084.0
 scale = Vector2(0.3, 0.3)
 mouse_filter = 2
-texture = ExtResource("9_crwft")
-flip_h = true
+texture = ExtResource("17_x7025")
 
 [node name="MinionPortrait" type="TextureRect" parent="DialogueManager/DialogueBox"]
 layout_mode = 0
@@ -530,6 +532,10 @@ texture = ExtResource("12_dk08j")
 layer = 3
 visible = false
 pause_control = NodePath("../PauseControl")
+
+[node name="GameOverMenu" parent="." instance=ExtResource("19_1ihcy")]
+process_mode = 3
+visible = false
 
 [node name="Input" type="Node2D" parent="."]
 
@@ -671,18 +677,33 @@ y_sort_enabled = true
 position = Vector2(1868, 30)
 
 [node name="Spawn0" type="Node2D" parent="World/Enemies/EnemySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(0, 260)
 
 [node name="Spawn1" type="Node2D" parent="World/Enemies/EnemySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(0, 385)
 
 [node name="Spawn2" type="Node2D" parent="World/Enemies/EnemySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(0, 510)
 
 [node name="Spawn3" type="Node2D" parent="World/Enemies/EnemySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(0, 635)
 
 [node name="Spawn4" type="Node2D" parent="World/Enemies/EnemySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(0, 760)
 
 [node name="AllySpawns" type="Node2D" parent="World/Enemies"]
@@ -693,25 +714,46 @@ y_sort_enabled = true
 position = Vector2(346, 30)
 
 [node name="Spawn0" type="Node2D" parent="World/Enemies/AllySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(0, 260)
 
 [node name="Spawn1" type="Node2D" parent="World/Enemies/AllySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(0, 385)
 
 [node name="Spawn2" type="Node2D" parent="World/Enemies/AllySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(0, 510)
 
 [node name="Spawn3" type="Node2D" parent="World/Enemies/AllySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(0, 635)
 
 [node name="Spawn4" type="Node2D" parent="World/Enemies/AllySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(0, 760)
 
 [node name="EnemiesFolder" type="Node2D" parent="World/Enemies"]
 unique_name_in_owner = true
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 
 [node name="AlliesFolder" type="Node2D" parent="World/Enemies"]
 unique_name_in_owner = true
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 
 [node name="PickupManager" type="Node2D" parent="World" node_paths=PackedStringArray("pickup_parent", "gui_targets")]
 z_index = 6
@@ -829,6 +871,14 @@ scale = Vector2(1, 0.16)
 [node name="BarOver" parent="Player/BaseHealth/Healthbar" index="1"]
 scale = Vector2(1, 0.16)
 
+[node name="DamageAudio" type="AudioStreamPlayer" parent="Player/BaseHealth"]
+volume_db = -5.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("86_phalv")])
+min_pitch = 0.8
+max_pitch = 1.2
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("49_dv2lr")
@@ -889,6 +939,8 @@ bus = &"Effects"
 script = ExtResource("81_tor4d")
 
 [connection signal="pressed_quit_to_menu" from="PauseMenu" to="." method="_on_pause_menu_pressed_quit_to_menu"]
+[connection signal="quit_to_menu" from="GameOverMenu" to="." method="_on_game_over_menu_quit_to_menu"]
+[connection signal="restart" from="GameOverMenu" to="." method="_on_game_over_menu_restart"]
 [connection signal="do_action" from="ToolBar" to="ToolBar/ToolBarAudio" method="_on_tool_bar_do_action"]
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
 [connection signal="tool_changed" from="ToolBar" to="HUD/CursorEffects" method="_on_tool_bar_tool_changed"]

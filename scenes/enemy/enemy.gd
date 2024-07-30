@@ -95,6 +95,12 @@ func _on_health_death():
         _place_obstacle_nearby(Obstacle.Type.SAPLING)
     elif enemy_data.type == EnemySpawner.EnemyType.RockGolem:
         _place_obstacle_nearby(Obstacle.Type.ROCK)
+
+    if not is_ally:
+        if enemy_data.type == EnemySpawner.EnemyType.TreeGolem or enemy_data.type == EnemySpawner.EnemyType.RockGolem:
+            GlobalVariables.curr_game.golems_killed += 1
+        else:
+            GlobalVariables.curr_game.golems_killed += 1
     queue_free()
 
 func _place_obstacle_nearby(obstacle: Obstacle.Type) -> bool:
