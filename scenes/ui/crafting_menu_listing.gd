@@ -20,6 +20,15 @@ signal crafting_end
 @export var image: CompressedTexture2D
 @onready var craft_audio: AudioRandomizer = $CraftAudio
 
+
+@export var fire_crystal: CompressedTexture2D
+@export var shadow_sand: CompressedTexture2D
+@export var leaf: CompressedTexture2D
+@export var rock: CompressedTexture2D
+@export var fruit: CompressedTexture2D
+@export var quartz: CompressedTexture2D
+@export var recipe_listing: PackedScene
+
 static var is_crafting := false
 
 func _ready():
@@ -28,15 +37,35 @@ func _ready():
 func setup():
     %ItemLabel.text = recipe_name
     %ItemTexture.texture = image
-    %RecipeLabel.text = print_recipe()
+    show_recipe()
 
-func print_recipe():
-    var recipe_str = ""
+func show_recipe():
+    var container = %RecipeContainer
     for i in range(0,crafting_data.recipe_list.size()):
         var current_recipe_item = crafting_data.recipe_list[i]
-        recipe_str += str(current_recipe_item.count) + " - " + str(Pickup.PickupType.keys()[current_recipe_item.resource_type]) + "\n"
 
-    return recipe_str
+        var new_listing = recipe_listing.instantiate()
+        
+        new_listing.get_node("Count").text = str(current_recipe_item.count)
+
+        var new_icon_texture: CompressedTexture2D
+        match current_recipe_item.resource_type:
+            Pickup.PickupType.SHADOWSAND:
+                new_icon_texture = shadow_sand
+            Pickup.PickupType.FIRE:
+                new_icon_texture = fire_crystal 
+            Pickup.PickupType.QUARTZ:
+                new_icon_texture = quartz 
+            Pickup.PickupType.SAP:
+                new_icon_texture = leaf
+            Pickup.PickupType.FRUIT:
+                new_icon_texture = fruit 
+            Pickup.PickupType.STONE:
+                new_icon_texture = rock 
+            _:
+                new_icon_texture = rock
+        new_listing.get_node("IconContainer").get_node("Icon").texture = new_icon_texture
+        container.add_child(new_listing)
 
 func _on_craft_button_pressed():
     start_crafting()
