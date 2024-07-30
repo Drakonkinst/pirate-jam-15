@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwdhl2q8gkokd"]
+[gd_scene load_steps=7 format=3 uid="uid://dwdhl2q8gkokd"]
 
 [ext_resource type="Script" path="res://scenes/menus/settings_menu.gd" id="1_nqp0l"]
 [ext_resource type="Theme" uid="uid://bkwik1tcqd4en" path="res://assets/themes/MainMenuTheme.tres" id="2_p2fb5"]
 [ext_resource type="FontFile" uid="uid://cslgns4mab5dp" path="res://assets/themes/DungGeunMo.ttf" id="3_upg0e"]
 [ext_resource type="Theme" uid="uid://t4eahik3spf0" path="res://assets/themes/SettingsButtons.tres" id="4_i5or2"]
+[ext_resource type="Texture2D" uid="uid://1dgqot8x8d2x" path="res://assets/ui/panel-border-011.png" id="5_3fkd4"]
 [ext_resource type="PackedScene" uid="uid://kpyn3d6kwgcy" path="res://scenes/menus/ui_click_audio.tscn" id="5_grkcc"]
 
 [node name="SettingsMenu" type="Control" node_paths=PackedStringArray("music_slider", "effects_slider")]
@@ -48,7 +49,18 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_p2fb5")
 theme_override_fonts/font = ExtResource("3_upg0e")
-text = "Settings"
+text = " Settings "
+
+[node name="BorderRect3" type="NinePatchRect" parent="MarginContainer/VBoxContainer/PageTitleContainer/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_3fkd4")
+patch_margin_left = 10
+patch_margin_right = 10
 
 [node name="OptionsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 500)
@@ -98,6 +110,17 @@ custom_minimum_size = Vector2(500, 125)
 layout_mode = 2
 theme = ExtResource("2_p2fb5")
 text = "Return"
+
+[node name="BorderRect3" type="NinePatchRect" parent="MarginContainer/VBoxContainer/OptionsList/HBoxContainer/ReturnButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_3fkd4")
+patch_margin_left = 10
+patch_margin_right = 10
 
 [node name="UIClickAudio" parent="." instance=ExtResource("5_grkcc")]
 

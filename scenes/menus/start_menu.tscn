@@ -1,13 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://bt0lq1q75bews"]
+[gd_scene load_steps=11 format=3 uid="uid://bt0lq1q75bews"]
 
 [ext_resource type="Theme" uid="uid://bkwik1tcqd4en" path="res://assets/themes/MainMenuTheme.tres" id="1_kgndr"]
 [ext_resource type="Script" path="res://scenes/menus/start_menu.gd" id="1_yjtan"]
 [ext_resource type="Script" path="res://scenes/menus/hide_if_web.gd" id="2_ufl12"]
 [ext_resource type="FontFile" uid="uid://cslgns4mab5dp" path="res://assets/themes/DungGeunMo.ttf" id="3_xngib"]
+[ext_resource type="Texture2D" uid="uid://1dgqot8x8d2x" path="res://assets/ui/panel-border-011.png" id="4_iurkj"]
+[ext_resource type="Texture2D" uid="uid://d36qwwv6agvsd" path="res://assets/ui/panel-border-004.png" id="4_lfps3"]
 [ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/rock_sprite.png" id="4_ri3ft"]
 [ext_resource type="PackedScene" uid="uid://kpyn3d6kwgcy" path="res://scenes/menus/ui_click_audio.tscn" id="5_mx8i8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_matrf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_44cow"]
+texture = ExtResource("4_lfps3")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(0, 0, 48, 48)
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -16,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_yjtan")
 
 [node name="Control" type="Control" parent="."]
@@ -26,6 +37,7 @@ anchor_bottom = 1.0
 offset_right = -720.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
@@ -37,6 +49,7 @@ offset_top = -4.0
 offset_right = 681.0
 offset_bottom = 474.0
 grow_horizontal = 2
+mouse_filter = 2
 theme = ExtResource("1_kgndr")
 
 [node name="Label" type="Label" parent="Control/MarginContainer"]
@@ -44,7 +57,21 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_kgndr")
 theme_override_fonts/font = ExtResource("3_xngib")
-text = "Shadowsand Defense"
+text = " Shadowsand Defense "
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_lfps3")
+patch_margin_left = 10
+patch_margin_top = 5
+patch_margin_right = 10
+patch_margin_bottom = 5
 
 [node name="SelectionButtons" type="VBoxContainer" parent="Control"]
 layout_mode = 1
@@ -59,28 +86,73 @@ offset_right = 585.0
 offset_bottom = 337.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 50
 
-[node name="PlayButton" type="Button" parent="Control/SelectionButtons"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/SelectionButtons"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_kgndr")
+
+[node name="PlayButton" type="Button" parent="Control/SelectionButtons/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("1_kgndr")
 text = "Play"
 
-[node name="SettingsButton" type="Button" parent="Control/SelectionButtons"]
+[node name="BorderRect3" type="NinePatchRect" parent="Control/SelectionButtons/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_iurkj")
+patch_margin_left = 10
+patch_margin_right = 10
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/SelectionButtons"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_kgndr")
+
+[node name="SettingsButton" type="Button" parent="Control/SelectionButtons/MarginContainer2"]
 layout_mode = 2
 theme = ExtResource("1_kgndr")
 text = "Settings"
 
-[node name="CreditsButton" type="Button" parent="Control/SelectionButtons"]
+[node name="BorderRect2" type="NinePatchRect" parent="Control/SelectionButtons/MarginContainer2"]
 layout_mode = 2
-theme = ExtResource("1_kgndr")
-text = "Credits"
+texture = ExtResource("4_iurkj")
+patch_margin_left = 10
+patch_margin_right = 10
 
-[node name="ExitButton" type="Button" parent="Control/SelectionButtons"]
+[node name="MarginContainer3" type="MarginContainer" parent="Control/SelectionButtons"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_kgndr")
+
+[node name="ExitButton" type="Button" parent="Control/SelectionButtons/MarginContainer3"]
 layout_mode = 2
 theme = ExtResource("1_kgndr")
 text = "Exit"
 script = ExtResource("2_ufl12")
+
+[node name="BorderRect" type="NinePatchRect" parent="Control/SelectionButtons/MarginContainer3"]
+layout_mode = 2
+texture = ExtResource("4_iurkj")
+patch_margin_left = 10
+patch_margin_right = 10
+
+[node name="MarginContainer4" type="MarginContainer" parent="Control/SelectionButtons"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_kgndr")
+
+[node name="CreditsButton" type="Button" parent="Control/SelectionButtons/MarginContainer4"]
+layout_mode = 2
+theme = ExtResource("1_kgndr")
+text = "Credits"
+
+[node name="BorderRect" type="NinePatchRect" parent="Control/SelectionButtons/MarginContainer4"]
+layout_mode = 2
+texture = ExtResource("4_iurkj")
+patch_margin_left = 10
+patch_margin_right = 10
 
 [node name="PanelContainer2" type="PanelContainer" parent="Control"]
 layout_mode = 1
@@ -92,11 +164,13 @@ offset_top = -152.0
 offset_right = 863.0
 offset_bottom = 326.0
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_kgndr")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_matrf")
 
 [node name="TextureRect2" type="TextureRect" parent="Control/PanelContainer2"]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("4_ri3ft")
 expand_mode = 2
 
@@ -108,10 +182,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="UIClickAudio" parent="." instance=ExtResource("5_mx8i8")]
 
-[connection signal="pressed" from="Control/SelectionButtons/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="Control/SelectionButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="Control/SelectionButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="Control/SelectionButtons/ExitButton" to="." method="_on_exit_button_pressed"]
+[node name="Border" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_44cow")
+
+[connection signal="pressed" from="Control/SelectionButtons/MarginContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Control/SelectionButtons/MarginContainer2/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Control/SelectionButtons/MarginContainer3/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Control/SelectionButtons/MarginContainer4/CreditsButton" to="." method="_on_credits_button_pressed"]
