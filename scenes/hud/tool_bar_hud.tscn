@@ -205,7 +205,8 @@ option_1_texture = ExtResource("16_0rq7f")
 option_2_texture = ExtResource("17_1fsco")
 option_3_texture = ExtResource("18_yd8uy")
 option_4_texture = ExtResource("19_vxb4t")
-labels = Array[String](["Wood", "Stone", "Crystal", "Oil"])
+labels = Array[String](["Potion of Wood", "Potion of Stone", "Potion of Crystal", "Potion of Oil"])
+descriptions = Array[String](["Transform objects into living wood", "Transform objects into durable stone", "Transform objects into light-amplifying quartz", "Transform objects into flammable oil"])
 
 [node name="SummonExpandMenu" parent="." instance=ExtResource("13_642hw")]
 layout_mode = 1
@@ -216,6 +217,7 @@ option_2_texture = ExtResource("21_ywh4k")
 option_3_texture = ExtResource("22_1vx5c")
 option_4_texture = ExtResource("23_fx8xj")
 labels = Array[String](["Tree Sprite", "Rock Sprite", "Wind Sprite", "Flame Sprite"])
+descriptions = Array[String](["Average, Very Flammable", "Durable, High Damage, Slow", "Fast, Fragile", "Attacks Slowly, Sets Targets Ablaze"])
 
 [node name="PotionCount" type="Label" parent="."]
 layout_mode = 1

@@ -12,6 +12,7 @@ signal menu_closed
 @export var option_4_texture: Texture2D
 
 @export var labels: Array[String]
+@export var descriptions: Array[String]
 
 @onready var expand_button: Control = $ExpandButton
 @onready var dropdown: Control = $Dropdown
@@ -31,6 +32,11 @@ signal menu_closed
 @onready var label_3: Label = %Label3
 @onready var label_4: Label = %Label4
 
+@onready var desc_1: Label = %Description1
+@onready var desc_2: Label = %Description2
+@onready var desc_3: Label = %Description3
+@onready var desc_4: Label = %Description4
+
 func _ready() -> void:
     hide_dropdown()
     button_1.texture_normal = option_1_texture
@@ -41,6 +47,10 @@ func _ready() -> void:
     label_2.text = labels[1]
     label_3.text = labels[2]
     label_4.text = labels[3]
+    desc_1.text = descriptions[0]
+    desc_2.text = descriptions[1]
+    desc_3.text = descriptions[2]
+    desc_4.text = descriptions[3]
 
 func update_counts(counts: Array[int]) -> void:
     count_1.text = str(counts[0])

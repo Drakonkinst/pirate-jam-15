@@ -70,13 +70,13 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 135.0
-offset_top = -160.5
-offset_right = 224.0
-offset_bottom = -115.5
+offset_left = 119.0
+offset_top = -184.5
+offset_right = 297.0
+offset_bottom = -139.5
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "Life"
+theme_override_font_sizes/font_size = 28
+text = "Potion of Life"
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Dropdown"]
@@ -85,13 +85,13 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 135.0
-offset_top = -69.5
-offset_right = 224.0
-offset_bottom = -24.5
+offset_left = 119.0
+offset_top = -93.5
+offset_right = 325.0
+offset_bottom = -48.5
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "Stone"
+theme_override_font_sizes/font_size = 28
+text = "Potion of Stone"
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Dropdown"]
@@ -100,13 +100,13 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 135.0
-offset_top = 21.5
-offset_right = 224.0
-offset_bottom = 66.5
+offset_left = 119.0
+offset_top = -2.5
+offset_right = 342.0
+offset_bottom = 42.5
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "Crystal"
+theme_override_font_sizes/font_size = 28
+text = "Potion of Crystal"
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="Dropdown"]
@@ -115,14 +115,82 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 135.0
-offset_top = 112.5
-offset_right = 224.0
-offset_bottom = 157.5
+offset_left = 119.0
+offset_top = 88.5
+offset_right = 286.0
+offset_bottom = 133.5
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "Oil"
+theme_override_font_sizes/font_size = 28
+text = "Potion of Oil"
 vertical_alignment = 1
+
+[node name="Description1" type="Label" parent="Dropdown"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 119.0
+offset_top = -149.5
+offset_right = 344.375
+offset_bottom = -92.555
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.691357, 0.691357, 0.691357, 1)
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 18
+text = "Life"
+autowrap_mode = 3
+
+[node name="Description2" type="Label" parent="Dropdown"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 119.0
+offset_top = -58.5
+offset_right = 344.375
+offset_bottom = -1.55499
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.691357, 0.691357, 0.691357, 1)
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 18
+text = "Stone"
+autowrap_mode = 3
+
+[node name="Description3" type="Label" parent="Dropdown"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 119.0
+offset_top = 32.5
+offset_right = 344.375
+offset_bottom = 89.445
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.691357, 0.691357, 0.691357, 1)
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 18
+text = "Crystal"
+autowrap_mode = 3
+
+[node name="Description4" type="Label" parent="Dropdown"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 119.0
+offset_top = 123.5
+offset_right = 344.375
+offset_bottom = 180.445
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.691357, 0.691357, 0.691357, 1)
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 18
+text = "Oil"
+autowrap_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Dropdown"]
 layout_mode = 1

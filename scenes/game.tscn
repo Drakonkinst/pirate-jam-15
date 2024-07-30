@@ -143,7 +143,7 @@ light_manager = NodePath("World/Grid/LightManager")
 enemy_spawner = NodePath("World/Enemies")
 toolbar = NodePath("ToolBar")
 day_cycle_manager = NodePath("World/DayCycleManager")
-base_health = NodePath("HUD/BaseHealth")
+base_health = NodePath("Player/BaseHealth")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
@@ -332,13 +332,16 @@ text = "Daytime
 horizontal_alignment = 1
 
 [node name="ToolBarHud" parent="HUD" instance=ExtResource("9_dlv2r")]
-offset_left = 5.0
-offset_top = -42.0
-offset_right = 5.0
-offset_bottom = -42.0
 mouse_filter = 1
 
 [node name="PotionCraftMenu" parent="HUD" instance=ExtResource("7_urdin")]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_right = 0.0
+grow_horizontal = 1
 
 [node name="ResourceHud" parent="HUD" instance=ExtResource("3_oot8a")]
 
@@ -391,48 +394,6 @@ offset_left = 378.667
 offset_top = 76.0
 offset_right = 378.667
 offset_bottom = 76.0
-
-[node name="BaseHealth" type="Control" parent="HUD"]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1906.0
-offset_top = 1037.0
-offset_right = -1866.0
-offset_bottom = 1077.0
-grow_horizontal = 0
-scale = Vector2(18.36, 1.84)
-script = ExtResource("12_7pc3e")
-
-[node name="Health" type="Node" parent="HUD/BaseHealth"]
-script = ExtResource("14_dohtn")
-
-[node name="Healthbar" parent="HUD/BaseHealth" instance=ExtResource("12_h7wtm")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1, 3.28)
-size_flags_horizontal = 4
-show_only_if_damaged = false
-
-[node name="BarUnder" parent="HUD/BaseHealth/Healthbar" index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1, 0.16)
-
-[node name="BarOver" parent="HUD/BaseHealth/Healthbar" index="1"]
-scale = Vector2(1, 0.16)
 
 [node name="DialogueManager" parent="." node_paths=PackedStringArray("textbox", "speaker", "pause_control", "player_default_portrait", "villain_default_portrait", "minion_default_portrait") instance=ExtResource("8_7d0d0")]
 process_mode = 3
@@ -797,6 +758,48 @@ autostart = true
 [node name="Player" parent="." groups=["player"] instance=ExtResource("19_c5v0p")]
 position = Vector2(238, 518)
 
+[node name="BaseHealth" type="Control" parent="Player"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -34.0
+offset_top = -124.0
+offset_right = 6.0
+offset_bottom = -84.0
+grow_horizontal = 2
+scale = Vector2(2, 1)
+script = ExtResource("12_7pc3e")
+
+[node name="Health" type="Node" parent="Player/BaseHealth"]
+script = ExtResource("14_dohtn")
+
+[node name="Healthbar" parent="Player/BaseHealth" instance=ExtResource("12_h7wtm")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.5)
+size_flags_horizontal = 4
+show_only_if_damaged = false
+
+[node name="BarUnder" parent="Player/BaseHealth/Healthbar" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.16)
+
+[node name="BarOver" parent="Player/BaseHealth/Healthbar" index="1"]
+scale = Vector2(1, 0.16)
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("49_dv2lr")
@@ -855,10 +858,6 @@ volume_db = -5.0
 bus = &"Effects"
 script = ExtResource("81_tor4d")
 
-[connection signal="game_over" from="HUD/BaseHealth" to="." method="_on_base_health_game_over"]
-[connection signal="changed" from="HUD/BaseHealth/Health" to="HUD/BaseHealth" method="_on_health_changed"]
-[connection signal="changed" from="HUD/BaseHealth/Health" to="HUD/BaseHealth/Healthbar" method="_on_health_changed"]
-[connection signal="death" from="HUD/BaseHealth/Health" to="HUD/BaseHealth" method="_on_health_death"]
 [connection signal="pressed_quit_to_menu" from="PauseMenu" to="." method="_on_pause_menu_pressed_quit_to_menu"]
 [connection signal="do_action" from="ToolBar" to="ToolBar/ToolBarAudio" method="_on_tool_bar_do_action"]
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
@@ -878,7 +877,11 @@ script = ExtResource("81_tor4d")
 [connection signal="game_ended" from="World/DayCycleManager" to="World/Enemies" method="_on_day_cycle_manager_game_ended"]
 [connection signal="interval_passed" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_interval_passed"]
 [connection signal="timeout" from="World/DayCycleManager/Interval" to="World/DayCycleManager" method="_on_interval_timeout"]
+[connection signal="game_over" from="Player/BaseHealth" to="." method="_on_base_health_game_over"]
+[connection signal="changed" from="Player/BaseHealth/Health" to="Player/BaseHealth" method="_on_health_changed"]
+[connection signal="changed" from="Player/BaseHealth/Health" to="Player/BaseHealth/Healthbar" method="_on_health_changed"]
+[connection signal="death" from="Player/BaseHealth/Health" to="Player/BaseHealth" method="_on_health_death"]
 [connection signal="paused" from="PauseControl" to="PauseMenu" method="_on_pause_control_paused"]
 [connection signal="unpaused" from="PauseControl" to="PauseMenu" method="_on_pause_control_unpaused"]
 
-[editable path="HUD/BaseHealth/Healthbar"]
+[editable path="Player/BaseHealth/Healthbar"]

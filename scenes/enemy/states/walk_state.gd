@@ -5,6 +5,8 @@ class_name EnemyWalkState
 const OIL_SLOW_FACTOR = 0.75
 const LIGHT_SLOW_FACTOR = 0.5
 
+const OPPONENT_FIRE_TIME := 2.0
+
 const SCAN_INTERVAL = 0.1
 const ATTACK_RANGE := 100.0
 
@@ -57,6 +59,8 @@ func update(delta):
         attack_timer += delta
         if attack_timer >= enemy.enemy_data.attack_frequency:
             curr_opponent.damage(enemy.enemy_data.attack_damage)
+            if enemy.enemy_data.type == EnemySpawner.EnemyType.FireSprite:
+                curr_opponent.set_on_fire(OPPONENT_FIRE_TIME)
             attack_timer = 0
     elif stopped_moving:
         enemy.sprite.play()

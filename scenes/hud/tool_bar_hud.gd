@@ -128,7 +128,6 @@ func _on_tool_bar_tool_changed(tool: ToolBar.Tool) -> void:
     for i in buttons.size():
         if i == tool_index:
             if needs_thick:
-                print("NEEDS THICK")
                 buttons[i].apply_material(highlight_thick_material)
             if needs_thin:
                 buttons[i].apply_material(highlight_thin_material)
