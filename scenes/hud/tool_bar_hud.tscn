@@ -217,7 +217,7 @@ option_2_texture = ExtResource("21_ywh4k")
 option_3_texture = ExtResource("22_1vx5c")
 option_4_texture = ExtResource("23_fx8xj")
 labels = Array[String](["Tree Sprite", "Rock Sprite", "Wind Sprite", "Flame Sprite"])
-descriptions = Array[String](["Average, Very Flammable", "Durable, High Damage, Slow", "Fast, Fragile", "Attacks Slowly, Sets Targets Ablaze"])
+descriptions = Array[String](["Average Stats, Very Flammable", "Durable, High Damage, Slow", "Fast, Fragile", "Attacks Slowly, Flaming Attacks"])
 
 [node name="PotionCount" type="Label" parent="."]
 layout_mode = 1

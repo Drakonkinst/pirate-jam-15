@@ -1,18 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpcl65blo6kv5"]
+[gd_scene load_steps=8 format=3 uid="uid://dpcl65blo6kv5"]
 
 [ext_resource type="PackedScene" uid="uid://cyq7jll2t5va" path="res://scenes/projectile/thrown_projectile.tscn" id="1_m783e"]
 [ext_resource type="Texture2D" uid="uid://cis2vokqjryh7" path="res://assets/textures/enemy/profile/fire_sprite.png" id="2_rg6r8"]
 [ext_resource type="Script" path="res://scenes/projectile/thrown_enemy.gd" id="3_f6tjc"]
+[ext_resource type="Texture2D" uid="uid://dxfxj7axhrl6" path="res://assets/textures/enemy/sprite/rock/Rock_Shadow_Spirit_1.PNG" id="4_e5ktf"]
+[ext_resource type="Texture2D" uid="uid://bbqntxa1gnwmx" path="res://assets/textures/enemy/sprite/tree/Tree_Shadow_Spirit_1.PNG" id="5_er7cr"]
+[ext_resource type="Texture2D" uid="uid://cgjr868g45v0" path="res://assets/textures/enemy/sprite/wind/Wind_Shadow_Spirit_1.PNG" id="6_wxmut"]
+[ext_resource type="Texture2D" uid="uid://bjxpe8ditx1x1" path="res://assets/textures/enemy/sprite/fire/Fire_Shadow_Spirit_1.PNG" id="7_tg8vd"]
 
 [node name="Projectile" node_paths=PackedStringArray("behavior") instance=ExtResource("1_m783e")]
-rotation_speed_degrees = 180.0
+rotation_speed_degrees = 360.0
 behavior = NodePath("Behavior")
+
+[node name="CollisionShape2D" parent="." index="0"]
+scale = Vector2(2.665, 2.665)
+disabled = true
 
 [node name="Sprite2D" parent="." index="1"]
 position = Vector2(0, -3)
-scale = Vector2(0.225, 0.225)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_rg6r8")
+flip_h = true
 
-[node name="Behavior" type="Node2D" parent="." index="2"]
+[node name="Behavior" type="Node2D" parent="." index="2" node_paths=PackedStringArray("sprite")]
 script = ExtResource("3_f6tjc")
+sprite = NodePath("../Sprite2D")
+stone_texture = ExtResource("4_e5ktf")
+wood_texture = ExtResource("5_er7cr")
+wind_texture = ExtResource("6_wxmut")
+fire_texture = ExtResource("7_tg8vd")
 tint_color = Color(0.160265, 0.0955214, 0.27516, 1)

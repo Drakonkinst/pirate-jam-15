@@ -57,6 +57,9 @@ func should_ally_stop(tile: GridTile) -> bool:
 func should_enemy_stop(tile: GridTile) -> bool:
     return tile.col == 0
 
+func get_min_x(tile: GridTile) -> float:
+    return get_tile_center(tile).x - tile_width / 2.0
+
 func get_y_extents() -> Vector2:
     var origin = find_grid_origin()
     var min_extent = origin.y + tile_height / 2.0

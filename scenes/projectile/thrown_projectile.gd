@@ -18,6 +18,9 @@ var velocity: Vector2 = Vector2.ZERO
 var target_y: float = 500
 var gravity: float # Set by ProjectileManager
 
+# Just used for thrown enemy, hardcoded because I am not paid enough
+var enemy_to_spawn: EnemySpawner.EnemyType
+
 func _ready() -> void:
     if behavior:
         behavior.on_ready(self)

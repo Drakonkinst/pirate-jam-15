@@ -27,6 +27,7 @@ const INVERT_Y: Vector2 = Vector2(1.0, -1.0)
 @export var arc_height_multiplier: float = 0.25
 @onready var splash_audio: AudioRandomizer = %SplashAudio
 @onready var pickaxe_audio: AudioRandomizer = %PickaxeAudio
+@onready var summon_audio: AudioRandomizer = %SummonAudio
 
 func _get_scene_for_projectile(type: ThrownProjectile.Type) -> PackedScene:
     match type:
@@ -48,10 +49,10 @@ func _get_scene_for_projectile(type: ThrownProjectile.Type) -> PackedScene:
             print("Unknown scene for projectile ", ThrownProjectile.Type.keys()[type])
             return null
 
-func _fire_projectile(projectile: ThrownProjectile.Type, from: Vector2, to: Vector2) -> void:
-    _fire_projectile_scene(_get_scene_for_projectile(projectile), from, to)
+func fire_projectile(projectile: ThrownProjectile.Type, from: Vector2, to: Vector2) -> ThrownProjectile:
+    return _fire_projectile_scene(_get_scene_for_projectile(projectile), from, to)
 
-func _fire_projectile_scene(projectile_scene: PackedScene, from: Vector2, to: Vector2) -> void:
+func _fire_projectile_scene(projectile_scene: PackedScene, from: Vector2, to: Vector2) -> ThrownProjectile:
     var projectile_obj = projectile_scene.instantiate()
     add_child(projectile_obj)
     var projectile = projectile_obj as ThrownProjectile
@@ -59,6 +60,7 @@ func _fire_projectile_scene(projectile_scene: PackedScene, from: Vector2, to: Ve
     projectile.target_y = to.y
     projectile.gravity = GRAVITY
     projectile.velocity = _calculate_trajectory(from, to)
+    return projectile
 
 func place_explosion(pos: Vector2) -> Explosion:
     var explosion_obj = explosion_scene.instantiate()
@@ -79,10 +81,13 @@ func place_splat(pos: Vector2) -> Splat:
 func play_pickaxe_audio() -> void:
     pickaxe_audio.play_random()
 
+func play_summon_audio() -> void:
+    summon_audio.play_random()
+
 func throw_projectile(projectile: ThrownProjectile.Type, mouse_pos: Vector2) -> bool:
     if not is_valid_target(mouse_pos, true):
         return false
-    _fire_projectile(projectile, player.global_position + throw_offset, mouse_pos)
+    fire_projectile(projectile, player.global_position + throw_offset, mouse_pos)
     return true
 
 func is_valid_target(pos: Vector2, is_throwing: bool) -> bool:

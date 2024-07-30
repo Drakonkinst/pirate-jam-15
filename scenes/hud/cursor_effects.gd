@@ -19,7 +19,6 @@ func _update_cursor() -> void:
         var toolbar: ToolBar = GlobalVariables.get_toolbar()
         if current_tool_type == ToolBar.Tool.POTION and toolbar.tool_inventory.get_potion_count(toolbar.selected_potion) <= 0:
             should_show = false
-
         if should_show:
             sprite.show()
         else:
@@ -39,8 +38,14 @@ func _on_tool_bar_tool_changed(tool_type: ToolBar.Tool) -> void:
         ToolBar.Tool.MAGIC_BOLT:
             sprite.hide()
         ToolBar.Tool.PICKAXE:
-            sprite.hide()
+            sprite.show()
+            sprite.texture = circle_area_texture
+            _scale_sprite_to_size(50)
+            # sprite.hide()
         ToolBar.Tool.SUMMON:
+            # sprite.show()
+            # sprite.texture = circle_area_texture
+            # _scale_sprite_to_size(50)
             sprite.hide()
     _update_cursor()
 

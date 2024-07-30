@@ -6,6 +6,7 @@ signal tool_changed(tool: Tool)
 signal do_action(tool: Tool)
 signal tool_inventory_updated
 
+const ALLY_SPAWN_MARGIN := 20.0
 # Should be same order as in UI
 enum Tool {
 	MAGIC_BOLT, TORCH, PICKAXE, POTION, SUMMON
@@ -105,13 +106,27 @@ func _do_potion(target_pos: Vector2) -> bool:
 		tool_inventory_updated.emit()
 	return success
 
-func _do_summon(_target_pos: Vector2) -> bool:
+func _do_summon(target_pos: Vector2) -> bool:
 	# Based on player position
-	var row = GlobalVariables.get_grid().get_grid_row_at_pos(player.position)
+	# var row = GlobalVariables.get_grid().get_grid_row_at_pos(player.position)
 	var type: EnemySpawner.EnemyType = selected_summon
 	var success = tool_inventory.get_summon_count(type) > 0
 	if success:
-		GlobalVariables.get_enemy_spawner().spawn_ally(row, selected_summon)
+		# Correct the target_pos a bit
+		var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(target_pos)
+		if tile == null:
+			return false
+		var x_pos = GlobalVariables.get_grid().get_min_x(tile)
+		target_pos = Vector2(x_pos + ALLY_SPAWN_MARGIN, target_pos.y)
+
+		var projectile_manager: ProjectileManager = GlobalVariables.get_projectile_manager()
+		if not projectile_manager.is_valid_target(target_pos, true):
+			return false
+		var projectile: ThrownProjectile = projectile_manager.fire_projectile(ThrownProjectile.Type.ENEMY, player.global_position + projectile_manager.throw_offset, target_pos)
+		projectile.enemy_to_spawn = type
+		# Call it again lol
+		projectile.behavior.on_ready(projectile)
+		# GlobalVariables.get_enemy_spawner().spawn_ally(row, selected_summon)
 		summon_cooldown.start()
 		tool_inventory.add_summon_count(type, -1)
 		do_action.emit(ToolBar.Tool.SUMMON)

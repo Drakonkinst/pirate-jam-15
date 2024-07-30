@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=107 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -98,6 +98,7 @@
 [ext_resource type="AudioStream" uid="uid://c6tajhavixgha" path="res://assets/audio/SFXFireLOOP.ogg" id="80_tnref"]
 [ext_resource type="Script" path="res://scenes/audio/fire_audio.gd" id="81_tor4d"]
 [ext_resource type="AudioStream" uid="uid://dgfyxil3bgkr1" path="res://assets/audio/SFXTreeBreaks.ogg" id="85_mupes"]
+[ext_resource type="Script" path="res://scenes/audio/background_music.gd" id="86_c2qol"]
 [ext_resource type="AudioStream" uid="uid://corjypnip0syj" path="res://assets/audio/SFXRockBreaks.ogg" id="86_icjs6"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
@@ -600,12 +601,6 @@ bus = &"Effects"
 script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("16_17j03"), ExtResource("17_a7jxu"), ExtResource("18_3tbfr")])
 
-[node name="DoPotionAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-volume_db = 5.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
-
 [node name="DoPickaxeAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
 volume_db = 5.0
 bus = &"Effects"
@@ -613,12 +608,18 @@ script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
 
 [node name="DoSummonAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-volume_db = -10.0
+volume_db = 5.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("34_loc10")])
-min_pitch = 0.75
-max_pitch = 1.2
+audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
+min_pitch = 1.1
+max_pitch = 1.3
+
+[node name="DoPotionAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+volume_db = 5.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
 
 [node name="ToolInventory" type="Node2D" parent="ToolBar"]
 position = Vector2(-1, 0)
@@ -645,6 +646,7 @@ light_torch_scene = ExtResource("29_tx1bu")
 light_quartz_scene = ExtResource("30_52igg")
 
 [node name="Enemies" type="Node2D" parent="World" node_paths=PackedStringArray("day_cycle_manager")]
+z_index = 5
 z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("29_uoojh")
@@ -661,6 +663,9 @@ spawning_schedules = Array[Resource("res://data/enemy/spawning_schedule.gd")]([E
 
 [node name="EnemySpawns" type="Node2D" parent="World/Enemies"]
 unique_name_in_owner = true
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1868, 30)
 
 [node name="Spawn0" type="Node2D" parent="World/Enemies/EnemySpawns"]
@@ -680,6 +685,9 @@ position = Vector2(0, 760)
 
 [node name="AllySpawns" type="Node2D" parent="World/Enemies"]
 unique_name_in_owner = true
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(346, 30)
 
 [node name="Spawn0" type="Node2D" parent="World/Enemies/AllySpawns"]
@@ -756,6 +764,15 @@ audio_tracks = Array[AudioStream]([ExtResource("30_tgwhu")])
 min_pitch = 0.7
 max_pitch = 0.9
 
+[node name="SummonAudio" type="AudioStreamPlayer" parent="World/ProjectileManager"]
+unique_name_in_owner = true
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("34_loc10")])
+min_pitch = 0.75
+max_pitch = 1.2
+
 [node name="DayCycleManager" type="Node2D" parent="World"]
 script = ExtResource("67_l7r7b")
 day_length = 5.0
@@ -774,9 +791,9 @@ layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -34.0
+offset_left = -39.0
 offset_top = -124.0
-offset_right = 6.0
+offset_right = 1.0
 offset_bottom = -84.0
 grow_horizontal = 2
 scale = Vector2(2, 1)
@@ -815,6 +832,7 @@ process_mode = 3
 stream = ExtResource("49_dv2lr")
 autoplay = true
 bus = &"Music"
+script = ExtResource("86_c2qol")
 
 [node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("tree_spawn_audio", "rock_spawn_audio")]
 z_index = 1
