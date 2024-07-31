@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=126 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -110,6 +110,7 @@
 [ext_resource type="AudioStream" uid="uid://bdiqkejwlc1p6" path="res://assets/audio/SFXNope.ogg" id="86_phalv"]
 [ext_resource type="Resource" uid="uid://l376to3uvh8x" path="res://data/dialogue/night_2.tres" id="87_yp1ax"]
 [ext_resource type="Resource" uid="uid://bvlvh38ya4k5i" path="res://data/dialogue/night_3.tres" id="88_aqxax"]
+[ext_resource type="Resource" uid="uid://bar2fqg6qv1pj" path="res://data/dialogue/end_game.tres" id="88_hc3tq"]
 [ext_resource type="Resource" uid="uid://d35rsi2rpc46j" path="res://data/dialogue/night_4.tres" id="89_mhsa2"]
 [ext_resource type="Resource" uid="uid://cp5ytkox1lf4v" path="res://data/dialogue/night_5.tres" id="90_iru54"]
 [ext_resource type="AudioStream" uid="uid://bd3b5f42356ie" path="res://assets/audio/MUSICBackground2.ogg" id="99_4386c"]
@@ -392,7 +393,7 @@ offset_bottom = 217.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("10_p1sjc")
 theme_override_font_sizes/font_size = 32
-text = "Advance to Night"
+text = "Start Round"
 
 [node name="ToolBarHud" parent="HUD" node_paths=PackedStringArray("tool_info_hud") instance=ExtResource("9_dlv2r")]
 names = Array[String](["Magic Bolt", "Torch", "Pickaxe", "Potion", "Summon Sprite"])
@@ -676,6 +677,7 @@ script = ExtResource("22_30ic7")
 mouse_over_mask = 2
 
 [node name="ClickHandler" type="Node2D" parent="Input" node_paths=PackedStringArray("tool_bar")]
+process_mode = 3
 script = ExtResource("28_xelsv")
 tool_bar = NodePath("../../HUD/ToolBarHud")
 
@@ -963,7 +965,7 @@ max_pitch = 1.3
 script = ExtResource("67_l7r7b")
 day_length = 15.0
 night_length = 120.0
-dialogue = Array[Resource("res://scenes/dialogue/conversation.gd")]([ExtResource("86_b2t3i"), ExtResource("87_yp1ax"), ExtResource("88_aqxax"), ExtResource("89_mhsa2"), ExtResource("90_iru54")])
+dialogue = Array[Resource("res://scenes/dialogue/conversation.gd")]([ExtResource("86_b2t3i"), ExtResource("87_yp1ax"), ExtResource("88_aqxax"), ExtResource("89_mhsa2"), ExtResource("90_iru54"), ExtResource("88_hc3tq")])
 
 [node name="Interval" type="Timer" parent="World/DayCycleManager"]
 unique_name_in_owner = true
@@ -1102,6 +1104,7 @@ script = ExtResource("81_tor4d")
 [connection signal="day_ended" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_day_ended"]
 [connection signal="day_ended" from="World/DayCycleManager" to="World/Enemies" method="_on_day_cycle_manager_day_ended"]
 [connection signal="day_started" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_day_started"]
+[connection signal="game_over" from="World/DayCycleManager" to="." method="_on_base_health_game_over"]
 [connection signal="interval_passed" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_interval_passed"]
 [connection signal="timeout" from="World/DayCycleManager/Interval" to="World/DayCycleManager" method="_on_interval_timeout"]
 [connection signal="game_over" from="Player/BaseHealth" to="." method="_on_base_health_game_over"]

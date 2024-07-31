@@ -9,6 +9,8 @@ const CLICK_INPUT := "click"
 var click_pressed: bool = false
 var first_click: bool = true
 func handle_click() -> void:
+    if get_tree().paused:
+        return
     var mouse_pos = get_global_mouse_position()
     if tool_bar.handle_click(mouse_pos, first_click):
         return

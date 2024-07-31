@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Conversation" load_steps=12 format=3 uid="uid://bvlvh38ya4k5i"]
+[gd_resource type="Resource" script_class="Conversation" load_steps=18 format=3 uid="uid://bvlvh38ya4k5i"]
 
 [ext_resource type="Script" path="res://scenes/dialogue/conversation_line.gd" id="1_v42ue"]
 [ext_resource type="Resource" uid="uid://cpitq8aifldof" path="res://data/dialogue/speaker_villain.tres" id="2_mfuvd"]
@@ -8,27 +8,27 @@
 [sub_resource type="Resource" id="Resource_anqha"]
 script = ExtResource("1_v42ue")
 speaker = ExtResource("2_mfuvd")
-text = "You're out of practice, Lux. You used to be a lot more fun to battle."
+text = "You seem to be getting back into your old habits..."
 
 [sub_resource type="Resource" id="Resource_qsp5h"]
 script = ExtResource("1_v42ue")
 speaker = ExtResource("3_tpan4")
-text = "Then let me go! I don't want to fight you."
+text = "Old habits?"
 
 [sub_resource type="Resource" id="Resource_38oxr"]
 script = ExtResource("1_v42ue")
 speaker = ExtResource("2_mfuvd")
-text = "We both know that can't happen."
+text = "You know... throwing things. Brewing your alchemical mixtures. Playing with shadowsand."
 
 [sub_resource type="Resource" id="Resource_5rmsy"]
 script = ExtResource("1_v42ue")
-speaker = ExtResource("3_tpan4")
-text = "Why must you be so arrogant? Why can't you treat these creatures with respect?"
+speaker = ExtResource("2_mfuvd")
+text = "Pretending as if you have any say in how nature carries itself."
 
 [sub_resource type="Resource" id="Resource_gkdba"]
 script = ExtResource("1_v42ue")
 speaker = ExtResource("2_mfuvd")
-text = "Why do you even care? They are but shadows and sand. "
+text = "Ha. It's like we're kids again!"
 
 [sub_resource type="Resource" id="Resource_yfa16"]
 script = ExtResource("1_v42ue")
@@ -38,8 +38,38 @@ text = "You would be fighting forever if you wish to free them from my command."
 [sub_resource type="Resource" id="Resource_clqsd"]
 script = ExtResource("1_v42ue")
 speaker = ExtResource("3_tpan4")
-text = "I will if I must."
+text = "Don't bring up the past if you're only going to taunt me."
+
+[sub_resource type="Resource" id="Resource_0dbvd"]
+script = ExtResource("1_v42ue")
+speaker = ExtResource("3_tpan4")
+text = "I have no need for any of your mockery."
+
+[sub_resource type="Resource" id="Resource_g73nn"]
+script = ExtResource("1_v42ue")
+speaker = ExtResource("2_mfuvd")
+text = "You're starting to sound just like me when you're angry, you know. "
+
+[sub_resource type="Resource" id="Resource_b1u5o"]
+script = ExtResource("1_v42ue")
+speaker = ExtResource("2_mfuvd")
+text = "If only you'd start acting like me, too. Wouldn't that be fun?"
+
+[sub_resource type="Resource" id="Resource_mvvhj"]
+script = ExtResource("1_v42ue")
+speaker = ExtResource("3_tpan4")
+text = "Enough!"
+
+[sub_resource type="Resource" id="Resource_3t5gn"]
+script = ExtResource("1_v42ue")
+speaker = ExtResource("3_tpan4")
+text = "You're wasting my time. I need to keep moving."
+
+[sub_resource type="Resource" id="Resource_g4w4t"]
+script = ExtResource("1_v42ue")
+speaker = ExtResource("2_mfuvd")
+text = "Then what are you waiting for? Defeat me. "
 
 [resource]
 script = ExtResource("4_0sci5")
-lines = Array[ExtResource("1_v42ue")]([SubResource("Resource_anqha"), SubResource("Resource_qsp5h"), SubResource("Resource_38oxr"), SubResource("Resource_5rmsy"), SubResource("Resource_gkdba"), SubResource("Resource_yfa16"), SubResource("Resource_clqsd")])
+lines = Array[ExtResource("1_v42ue")]([SubResource("Resource_anqha"), SubResource("Resource_qsp5h"), SubResource("Resource_38oxr"), SubResource("Resource_5rmsy"), SubResource("Resource_gkdba"), SubResource("Resource_yfa16"), SubResource("Resource_clqsd"), SubResource("Resource_0dbvd"), SubResource("Resource_g73nn"), SubResource("Resource_b1u5o"), SubResource("Resource_mvvhj"), SubResource("Resource_3t5gn"), SubResource("Resource_g4w4t")])

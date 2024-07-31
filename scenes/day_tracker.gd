@@ -20,7 +20,7 @@ func change_day():
 	day_time = day_cycle_manager.day_length
 	progress_bar.max_value = day_time
 	progress_bar.value = 0
-	day_label.text = "Daytime"
+	day_label.text = "Preparations"
 	skip_day_button.show()
 
 func change_night():
@@ -28,8 +28,11 @@ func change_night():
 	night_time = day_cycle_manager.night_length
 	progress_bar.max_value = night_time
 	progress_bar.value = 0
-	var night = day_cycle_manager.current_round
-	day_label.text = "Night " + str(night + 1)
+	var night = day_cycle_manager.current_round + 1
+	if night == day_cycle_manager.MAX_ROUND:
+		day_label.text = "Final Round"
+	else:
+		day_label.text = "Round " + str(night)
 	skip_day_button.hide()
 
 func on_time_change(curr_time: float):

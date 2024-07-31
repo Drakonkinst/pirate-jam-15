@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=15 format=3 uid="uid://bar2fqg6qv1pj"]
+
+[ext_resource type="Script" path="res://scenes/dialogue/conversation_line.gd" id="1_kix2g"]
+[ext_resource type="Resource" uid="uid://s0pc1vhb6kex" path="res://data/dialogue/speaker_unknown_1.tres" id="2_f0vce"]
+[ext_resource type="Resource" uid="uid://18cioolat8ns" path="res://data/dialogue/speaker_unknown_2.tres" id="3_6af66"]
+[ext_resource type="Script" path="res://scenes/dialogue/conversation.gd" id="5_5jcq2"]
+
+[sub_resource type="Resource" id="Resource_xa844"]
+script = ExtResource("1_kix2g")
+speaker = ExtResource("2_f0vce")
+text = "Lieutenant General! Have you any orders for us?"
+
+[sub_resource type="Resource" id="Resource_0iito"]
+script = ExtResource("1_kix2g")
+speaker = ExtResource("3_6af66")
+text = "Shadowsand, torches, and... what are these, pickaxes? What happened here?"
+
+[sub_resource type="Resource" id="Resource_7cq82"]
+script = ExtResource("1_kix2g")
+speaker = ExtResource("2_f0vce")
+text = "As of yet unsure, sir. This must be the work of a dozen sorcerers or more; we've never seen so much destruction!"
+
+[sub_resource type="Resource" id="Resource_24nkb"]
+script = ExtResource("1_kix2g")
+speaker = ExtResource("3_6af66")
+text = "...It is a shame that so much harm must come to nature. "
+
+[sub_resource type="Resource" id="Resource_rkfnn"]
+script = ExtResource("1_kix2g")
+speaker = ExtResource("3_6af66")
+text = "Send a messenger back to the barracks. I will take some scouts and venture out from here."
+
+[sub_resource type="Resource" id="Resource_i747t"]
+script = ExtResource("1_kix2g")
+speaker = ExtResource("2_f0vce")
+text = "Understood, sir! I shall take my leave!"
+
+[sub_resource type="Resource" id="Resource_f45nu"]
+script = ExtResource("1_kix2g")
+speaker = ExtResource("3_6af66")
+text = "..."
+
+[sub_resource type="Resource" id="Resource_cljd2"]
+script = ExtResource("1_kix2g")
+speaker = ExtResource("3_6af66")
+text = "Lux... I hope you're not alone."
+
+[sub_resource type="Resource" id="Resource_bwv4g"]
+script = ExtResource("1_kix2g")
+speaker = ExtResource("3_6af66")
+text = "I hope you are safe."
+
+[sub_resource type="Resource" id="Resource_kqjp1"]
+script = ExtResource("1_kix2g")
+speaker = ExtResource("3_6af66")
+text = "I am coming to take you home."
+
+[resource]
+script = ExtResource("5_5jcq2")
+lines = Array[ExtResource("1_kix2g")]([SubResource("Resource_xa844"), SubResource("Resource_0iito"), SubResource("Resource_7cq82"), SubResource("Resource_24nkb"), SubResource("Resource_rkfnn"), SubResource("Resource_i747t"), SubResource("Resource_f45nu"), SubResource("Resource_cljd2"), SubResource("Resource_bwv4g"), SubResource("Resource_kqjp1")])

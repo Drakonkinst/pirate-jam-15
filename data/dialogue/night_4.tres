@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Conversation" load_steps=12 format=3 uid="uid://d35rsi2rpc46j"]
+[gd_resource type="Resource" script_class="Conversation" load_steps=21 format=3 uid="uid://d35rsi2rpc46j"]
 
 [ext_resource type="Script" path="res://scenes/dialogue/conversation_line.gd" id="1_q0gos"]
 [ext_resource type="Resource" uid="uid://cpitq8aifldof" path="res://data/dialogue/speaker_villain.tres" id="2_l4skp"]
@@ -7,39 +7,84 @@
 
 [sub_resource type="Resource" id="Resource_anqha"]
 script = ExtResource("1_q0gos")
-speaker = ExtResource("2_l4skp")
-text = "You're out of practice, Lux. You used to be a lot more fun to battle."
+speaker = ExtResource("3_nk4tr")
+text = "(out of breath)"
 
 [sub_resource type="Resource" id="Resource_qsp5h"]
 script = ExtResource("1_q0gos")
-speaker = ExtResource("3_nk4tr")
-text = "Then let me go! I don't want to fight you."
+speaker = ExtResource("2_l4skp")
+text = "You're a fool for running away. They'll capture you again soon."
 
 [sub_resource type="Resource" id="Resource_38oxr"]
 script = ExtResource("1_q0gos")
 speaker = ExtResource("2_l4skp")
-text = "We both know that can't happen."
+text = "And you'll be back in that hell just like I was all those years ago."
 
 [sub_resource type="Resource" id="Resource_5rmsy"]
 script = ExtResource("1_q0gos")
-speaker = ExtResource("3_nk4tr")
-text = "Why must you be so arrogant? Why can't you treat these creatures with respect?"
+speaker = ExtResource("2_l4skp")
+text = "They don't understand people like us. They never will, Lux."
 
 [sub_resource type="Resource" id="Resource_gkdba"]
 script = ExtResource("1_q0gos")
 speaker = ExtResource("2_l4skp")
-text = "Why do you even care? They are but shadows and sand. "
+text = "When will you accept that?"
 
 [sub_resource type="Resource" id="Resource_yfa16"]
 script = ExtResource("1_q0gos")
-speaker = ExtResource("2_l4skp")
-text = "You would be fighting forever if you wish to free them from my command."
+speaker = ExtResource("3_nk4tr")
+text = "You gave up, Umbra! There was still hope!"
 
 [sub_resource type="Resource" id="Resource_clqsd"]
 script = ExtResource("1_q0gos")
 speaker = ExtResource("3_nk4tr")
-text = "I will if I must."
+text = "The alchemists were just doing their best. With time, we could have—"
+
+[sub_resource type="Resource" id="Resource_4ht3a"]
+script = ExtResource("1_q0gos")
+speaker = ExtResource("2_l4skp")
+text = "WE couldn't have done ANYTHING! We were doomed from the start! We ALWAYS were!"
+
+[sub_resource type="Resource" id="Resource_bkc7f"]
+script = ExtResource("1_q0gos")
+speaker = ExtResource("2_l4skp")
+text = "...Lux."
+
+[sub_resource type="Resource" id="Resource_m5shh"]
+script = ExtResource("1_q0gos")
+speaker = ExtResource("2_l4skp")
+text = "You didn't come with me then. So, join me now."
+
+[sub_resource type="Resource" id="Resource_rhhhb"]
+script = ExtResource("1_q0gos")
+speaker = ExtResource("3_nk4tr")
+text = "What?"
+
+[sub_resource type="Resource" id="Resource_cyoaq"]
+script = ExtResource("1_q0gos")
+speaker = ExtResource("2_l4skp")
+text = "It could have always been us, together."
+
+[sub_resource type="Resource" id="Resource_24cpj"]
+script = ExtResource("1_q0gos")
+speaker = ExtResource("2_l4skp")
+text = "There's no other way for you to hide from the Tower."
+
+[sub_resource type="Resource" id="Resource_jrq6v"]
+script = ExtResource("1_q0gos")
+speaker = ExtResource("3_nk4tr")
+text = "You're lying! I... I can still do this!"
+
+[sub_resource type="Resource" id="Resource_wbsgh"]
+script = ExtResource("1_q0gos")
+speaker = ExtResource("2_l4skp")
+text = "You're delusional."
+
+[sub_resource type="Resource" id="Resource_xyopr"]
+script = ExtResource("1_q0gos")
+speaker = ExtResource("2_l4skp")
+text = "No. I'm certain."
 
 [resource]
 script = ExtResource("4_gu1dt")
-lines = Array[ExtResource("1_q0gos")]([SubResource("Resource_anqha"), SubResource("Resource_qsp5h"), SubResource("Resource_38oxr"), SubResource("Resource_5rmsy"), SubResource("Resource_gkdba"), SubResource("Resource_yfa16"), SubResource("Resource_clqsd")])
+lines = Array[ExtResource("1_q0gos")]([SubResource("Resource_anqha"), SubResource("Resource_qsp5h"), SubResource("Resource_38oxr"), SubResource("Resource_5rmsy"), SubResource("Resource_gkdba"), SubResource("Resource_yfa16"), SubResource("Resource_clqsd"), SubResource("Resource_4ht3a"), SubResource("Resource_bkc7f"), SubResource("Resource_m5shh"), SubResource("Resource_rhhhb"), SubResource("Resource_cyoaq"), SubResource("Resource_24cpj"), SubResource("Resource_jrq6v"), SubResource("Resource_wbsgh"), SubResource("Resource_xyopr")])

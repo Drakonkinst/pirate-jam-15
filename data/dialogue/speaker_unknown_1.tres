@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Speaker" load_steps=2 format=3 uid="uid://s0pc1vhb6kex"]
+
+[ext_resource type="Script" path="res://scenes/dialogue/speaker.gd" id="1_lhtkb"]
+
+[resource]
+script = ExtResource("1_lhtkb")
+id = "soldier"
+name = "Tower Soldier"
+text_color = Color(0.90336, 0.857633, 0.552993, 1)

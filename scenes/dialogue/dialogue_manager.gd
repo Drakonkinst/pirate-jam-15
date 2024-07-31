@@ -4,7 +4,7 @@ class_name DialogueManager
 
 signal finish_conversation
 
-const CHARACTERS_PER_SECOND := 20
+const CHARACTERS_PER_SECOND := 30
 const CLICK_INPUT := "click"
 const CLOSE_DIALOGUE_INPUT := "close_dialogue"
 const PROP_FONT_COLOR := "theme_override_colors/font_color"

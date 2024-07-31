@@ -17,13 +17,19 @@ signal game_over
 
 var current_round = 0
 const MAX_ROUND = 5
+var should_end_game: bool = false
+var ended_game: bool = false
 
 func _process(delta):
+    if should_end_game and not ended_game:
+        ended_game = true
+        GlobalVariables.curr_game.game_result = "You won!"
+        game_over.emit()
+
     current_time += delta
     if not is_night:
         if current_time > day_length:
             end_day()
-    
 
 func skip_day() -> void:
     end_day()
@@ -33,8 +39,9 @@ func get_current_time():
 
 func start_day():
     if current_round >= MAX_ROUND:
-        GlobalVariables.curr_game.game_result = "You won!"
-        game_over.emit()
+        should_end_game = true
+        GlobalVariables.get_dialogue_manager().play_conversation(dialogue[current_round])
+        return
     %Interval.start()
     day_started.emit(current_round)
     current_time = 0.0

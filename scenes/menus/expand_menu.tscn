@@ -137,7 +137,7 @@ offset_bottom = -92.555
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.691357, 0.691357, 0.691357, 1)
 theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
 text = "Life"
 autowrap_mode = 3
 
@@ -154,7 +154,7 @@ offset_bottom = -1.55499
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.691357, 0.691357, 0.691357, 1)
 theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
 text = "Stone"
 autowrap_mode = 3
 
@@ -171,7 +171,7 @@ offset_bottom = 89.445
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.691357, 0.691357, 0.691357, 1)
 theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
 text = "Crystal"
 autowrap_mode = 3
 
@@ -188,7 +188,7 @@ offset_bottom = 180.445
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.691357, 0.691357, 0.691357, 1)
 theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
 text = "Oil"
 autowrap_mode = 3
 

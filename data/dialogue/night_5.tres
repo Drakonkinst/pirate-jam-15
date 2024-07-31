@@ -1,45 +1,101 @@
-[gd_resource type="Resource" script_class="Conversation" load_steps=12 format=3 uid="uid://cp5ytkox1lf4v"]
+[gd_resource type="Resource" script_class="Conversation" load_steps=24 format=3 uid="uid://cp5ytkox1lf4v"]
 
 [ext_resource type="Script" path="res://scenes/dialogue/conversation_line.gd" id="1_j4k04"]
 [ext_resource type="Resource" uid="uid://cpitq8aifldof" path="res://data/dialogue/speaker_villain.tres" id="2_okopj"]
 [ext_resource type="Resource" uid="uid://ckhv75piusks0" path="res://data/dialogue/speaker_player.tres" id="3_ljlue"]
+[ext_resource type="Resource" uid="uid://bbbsmph5hvv3e" path="res://data/dialogue/speaker_none.tres" id="4_ggpyl"]
 [ext_resource type="Script" path="res://scenes/dialogue/conversation.gd" id="4_gu6b3"]
 
 [sub_resource type="Resource" id="Resource_anqha"]
 script = ExtResource("1_j4k04")
 speaker = ExtResource("2_okopj")
-text = "You're out of practice, Lux. You used to be a lot more fun to battle."
+text = "This is your last chance, Lux."
 
 [sub_resource type="Resource" id="Resource_qsp5h"]
 script = ExtResource("1_j4k04")
-speaker = ExtResource("3_ljlue")
-text = "Then let me go! I don't want to fight you."
+speaker = ExtResource("2_okopj")
+text = "Which do you choose—"
 
 [sub_resource type="Resource" id="Resource_38oxr"]
 script = ExtResource("1_j4k04")
 speaker = ExtResource("2_okopj")
-text = "We both know that can't happen."
+text = "Life, or Death?"
 
 [sub_resource type="Resource" id="Resource_5rmsy"]
 script = ExtResource("1_j4k04")
 speaker = ExtResource("3_ljlue")
-text = "Why must you be so arrogant? Why can't you treat these creatures with respect?"
+text = "..."
 
 [sub_resource type="Resource" id="Resource_gkdba"]
 script = ExtResource("1_j4k04")
-speaker = ExtResource("2_okopj")
-text = "Why do you even care? They are but shadows and sand. "
+speaker = ExtResource("3_ljlue")
+text = "I—"
 
 [sub_resource type="Resource" id="Resource_yfa16"]
 script = ExtResource("1_j4k04")
-speaker = ExtResource("2_okopj")
-text = "You would be fighting forever if you wish to free them from my command."
+speaker = ExtResource("4_ggpyl")
+text = "(whistling, barking, and a rush of hoofbeats echo in the distance, becoming ever so slightly louder as the seconds pass)"
 
 [sub_resource type="Resource" id="Resource_clqsd"]
 script = ExtResource("1_j4k04")
 speaker = ExtResource("3_ljlue")
-text = "I will if I must."
+text = "Oh, shade. The Tower's already found my tracks."
+
+[sub_resource type="Resource" id="Resource_gm115"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("2_okopj")
+text = "Then you'd better lose quickly."
+
+[sub_resource type="Resource" id="Resource_dyn2u"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("3_ljlue")
+text = "Why are you so incessantly childish? When will you grow up?"
+
+[sub_resource type="Resource" id="Resource_kps3q"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("2_okopj")
+text = "Unfortunately, I never got that chance."
+
+[sub_resource type="Resource" id="Resource_xa844"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("3_ljlue")
+text = "You used to be so different, Umbra. I remember a time when I actually cared for you."
+
+[sub_resource type="Resource" id="Resource_0iito"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("2_okopj")
+text = "Ouch. Harsh words."
+
+[sub_resource type="Resource" id="Resource_7cq82"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("3_ljlue")
+text = "Don't treat this as a joke. "
+
+[sub_resource type="Resource" id="Resource_24nkb"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("3_ljlue")
+text = "You can change if only you'd let me help you."
+
+[sub_resource type="Resource" id="Resource_rkfnn"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("2_okopj")
+text = "...I doubt it."
+
+[sub_resource type="Resource" id="Resource_i747t"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("3_ljlue")
+text = "Please. Just think about it seriously for once."
+
+[sub_resource type="Resource" id="Resource_f45nu"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("2_okopj")
+text = "..."
+
+[sub_resource type="Resource" id="Resource_cljd2"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("2_okopj")
+text = "Death it is."
 
 [resource]
 script = ExtResource("4_gu6b3")
-lines = Array[ExtResource("1_j4k04")]([SubResource("Resource_anqha"), SubResource("Resource_qsp5h"), SubResource("Resource_38oxr"), SubResource("Resource_5rmsy"), SubResource("Resource_gkdba"), SubResource("Resource_yfa16"), SubResource("Resource_clqsd")])
+lines = Array[ExtResource("1_j4k04")]([SubResource("Resource_anqha"), SubResource("Resource_qsp5h"), SubResource("Resource_38oxr"), SubResource("Resource_5rmsy"), SubResource("Resource_gkdba"), SubResource("Resource_yfa16"), SubResource("Resource_clqsd"), SubResource("Resource_gm115"), SubResource("Resource_dyn2u"), SubResource("Resource_kps3q"), SubResource("Resource_xa844"), SubResource("Resource_0iito"), SubResource("Resource_7cq82"), SubResource("Resource_24nkb"), SubResource("Resource_rkfnn"), SubResource("Resource_i747t"), SubResource("Resource_f45nu"), SubResource("Resource_cljd2")])

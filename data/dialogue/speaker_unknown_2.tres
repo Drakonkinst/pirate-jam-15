@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Speaker" load_steps=2 format=3 uid="uid://18cioolat8ns"]
+
+[ext_resource type="Script" path="res://scenes/dialogue/speaker.gd" id="1_ei7bp"]
+
+[resource]
+script = ExtResource("1_ei7bp")
+id = "unknown"
+name = "Unknown"
+text_color = Color(0.345098, 0.788235, 0.666667, 1)
