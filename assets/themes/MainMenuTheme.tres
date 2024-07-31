@@ -1,21 +1,35 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bkwik1tcqd4en"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bkwik1tcqd4en"]
 
 [ext_resource type="FontFile" uid="uid://cslgns4mab5dp" path="res://assets/themes/DungGeunMo.ttf" id="1_losue"]
+[ext_resource type="FontFile" uid="uid://k16e325u2v05" path="res://assets/themes/MedievalSharp-Bold.ttf" id="1_tfg4s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i68bb"]
-bg_color = Color(0.0483032, 0.139335, 0.517664, 1)
+bg_color = Color(0.4, 0.187667, 0.14, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7etk"]
-bg_color = Color(0.207174, 0.243837, 0.608201, 1)
+bg_color = Color(0.63, 0.4116, 0.2205, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xt2b5"]
-bg_color = Color(0.496705, 0.313233, 0.989205, 1)
+bg_color = Color(0.34, 0.2125, 0.17, 1)
 
 [resource]
 default_font = ExtResource("1_losue")
 default_font_size = 80
+Button/colors/font_color = Color(0.9, 0.7062, 0.558, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 10
+Button/fonts/font = ExtResource("1_tfg4s")
 Button/styles/hover = SubResource("StyleBoxFlat_i68bb")
 Button/styles/normal = SubResource("StyleBoxFlat_i7etk")
+Label/colors/font_color = Color(0.991154, 0.735404, 0.664047, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 10
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/fonts/font = ExtResource("1_tfg4s")
 Label/styles/normal = SubResource("StyleBoxFlat_xt2b5")
 MarginContainer/constants/margin_bottom = 15
 MarginContainer/constants/margin_left = 15

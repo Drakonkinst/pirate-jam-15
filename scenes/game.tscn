@@ -1,9 +1,8 @@
-[gd_scene load_steps=110 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=113 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
 [ext_resource type="Texture2D" uid="uid://cmsxn8hkmq3g8" path="res://assets/textures/background_alt.png" id="3_l1dqf"]
-[ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://assets/ui/resource_hud.tscn" id="3_oot8a"]
 [ext_resource type="Texture2D" uid="uid://bntf5w2uwvsb7" path="res://assets/textures/wall_bottom.png" id="4_m1euc"]
 [ext_resource type="Script" path="res://scenes/hud/cursor_effects.gd" id="4_vdaaq"]
 [ext_resource type="Texture2D" uid="uid://d4ax3gt56rrs0" path="res://assets/textures/wall_top.png" id="5_3kq7w"]
@@ -16,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cqbxejr72xyb3" path="res://scenes/hud/tool_bar_hud.tscn" id="9_dlv2r"]
 [ext_resource type="Resource" uid="uid://dre5kdk0osd5h" path="res://data/dialogue/sample_convo.tres" id="9_nf1db"]
 [ext_resource type="Texture2D" uid="uid://ckaoxt7bilkcr" path="res://assets/textures/1x1.png" id="9_yvt3t"]
+[ext_resource type="FontFile" uid="uid://k16e325u2v05" path="res://assets/themes/MedievalSharp-Bold.ttf" id="10_p1sjc"]
 [ext_resource type="Script" path="res://scenes/obstacle_manager.gd" id="10_uoctj"]
 [ext_resource type="PackedScene" uid="uid://bdnr8tlvaswxs" path="res://scenes/obstacle/tree.tscn" id="11_4iroc"]
 [ext_resource type="PackedScene" uid="uid://g0r7v65brbxf" path="res://scenes/grid/grid.tscn" id="11_7lv1o"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/rock_sprite.png" id="12_dk08j"]
 [ext_resource type="PackedScene" uid="uid://jci63uf5o54n" path="res://scenes/ui/healthbar.tscn" id="12_h7wtm"]
 [ext_resource type="Script" path="res://scenes/audio/audio_randomizer.gd" id="12_hqgvj"]
+[ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://scenes/hud/resource_hud.tscn" id="13_08qek"]
 [ext_resource type="AudioStream" uid="uid://b5iybe17vtcm5" path="res://assets/audio/SFXMagicBoltSelected.ogg" id="13_lykkh"]
 [ext_resource type="PackedScene" uid="uid://hmw6qr2yjefw" path="res://scenes/obstacle/oil_spill.tscn" id="13_tpqui"]
 [ext_resource type="Script" path="res://scenes/health.gd" id="14_dohtn"]
@@ -107,19 +108,36 @@
 [sub_resource type="Theme" id="Theme_yptux"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mihx5"]
-bg_color = Color(0.67451, 0.607843, 0.0431373, 0.752941)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+bg_color = Color(0.756863, 0.564706, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpufp"]
+bg_color = Color(1, 0.894194, 0.00294329, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
 
 [sub_resource type="Theme" id="Theme_f8suf"]
 default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_oumiu"]
+Button/fonts/font = ExtResource("10_p1sjc")
+Label/fonts/font = ExtResource("10_p1sjc")
 
 [sub_resource type="Gradient" id="Gradient_82ifm"]
 colors = PackedColorArray(0, 0, 0, 0.419608, 0, 0, 0, 0.870588)
@@ -325,7 +343,9 @@ theme = SubResource("Theme_yptux")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_p1sjc")
 theme_override_styles/background = SubResource("StyleBoxFlat_mihx5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jpufp")
 rounded = true
 show_percentage = false
 
@@ -334,6 +354,10 @@ unique_name_in_owner = true
 layout_mode = 2
 theme = SubResource("Theme_f8suf")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.996391, 0.812405, 0.583117, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_p1sjc")
+theme_override_font_sizes/font_size = 64
 text = "Daytime
 "
 horizontal_alignment = 1
@@ -352,7 +376,7 @@ offset_right = 0.0
 offset_bottom = 76.0
 grow_horizontal = 1
 
-[node name="ResourceHud" parent="HUD" instance=ExtResource("3_oot8a")]
+[node name="ResourceHud" parent="HUD" instance=ExtResource("13_08qek")]
 
 [node name="OffsetFromZoom" type="Control" parent="HUD/ResourceHud"]
 anchors_preset = 0
@@ -423,6 +447,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = SubResource("Theme_oumiu")
 texture = SubResource("GradientTexture2D_q44x3")
 
 [node name="DialogueBox" type="Control" parent="DialogueManager"]
@@ -439,6 +464,7 @@ offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
+theme = SubResource("Theme_oumiu")
 
 [node name="Background" type="TextureRect" parent="DialogueManager/DialogueBox"]
 modulate = Color(0.201527, 0.201527, 0.201527, 1)
@@ -449,6 +475,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = SubResource("Theme_oumiu")
 texture = ExtResource("9_yvt3t")
 
 [node name="HintText" type="Label" parent="DialogueManager/DialogueBox"]
@@ -461,6 +488,7 @@ offset_left = 874.0
 offset_top = 250.0
 offset_right = 1374.0
 offset_bottom = 350.0
+theme = SubResource("Theme_oumiu")
 theme_override_colors/font_color = Color(0.593134, 0.593134, 0.593134, 1)
 theme_override_font_sizes/font_size = 26
 text = "(Click to advance, X to skip)"
@@ -474,6 +502,7 @@ offset_left = 28.0
 offset_top = 2.0
 offset_right = 1168.0
 offset_bottom = 102.0
+theme = SubResource("Theme_oumiu")
 theme_override_font_sizes/font_size = 48
 text = "Lux"
 
@@ -485,6 +514,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = SubResource("Theme_oumiu")
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 65
 theme_override_constants/margin_right = 30
@@ -494,6 +524,7 @@ theme_override_constants/margin_bottom = 60
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 size_flags_vertical = 1
+theme = SubResource("Theme_oumiu")
 theme_override_font_sizes/font_size = 32
 text = "This is some text. When there is enough text, it will wrap the text to go onto the next line."
 autowrap_mode = 3
@@ -506,6 +537,7 @@ offset_right = 1482.0
 offset_bottom = 1072.0
 scale = Vector2(0.3, 0.3)
 mouse_filter = 2
+theme = SubResource("Theme_oumiu")
 texture = ExtResource("9_crwft")
 
 [node name="VillainPortrait" type="TextureRect" parent="DialogueManager/DialogueBox"]
@@ -516,6 +548,7 @@ offset_right = 2264.0
 offset_bottom = 1084.0
 scale = Vector2(0.3, 0.3)
 mouse_filter = 2
+theme = SubResource("Theme_oumiu")
 texture = ExtResource("17_x7025")
 
 [node name="MinionPortrait" type="TextureRect" parent="DialogueManager/DialogueBox"]
@@ -526,6 +559,7 @@ offset_right = 4180.0
 offset_bottom = 2309.0
 scale = Vector2(0.1, 0.1)
 mouse_filter = 2
+theme = SubResource("Theme_oumiu")
 texture = ExtResource("12_dk08j")
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("pause_control") instance=ExtResource("50_t4lxk")]

@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://vuab2fkvice1"]
 
-[ext_resource type="FontFile" uid="uid://cslgns4mab5dp" path="res://assets/themes/DungGeunMo.ttf" id="1_tqw2v"]
+[ext_resource type="FontFile" uid="uid://k16e325u2v05" path="res://assets/themes/MedievalSharp-Bold.ttf" id="1_qhe8w"]
 
 [resource]
 Label/font_sizes/font_size = 50
-Label/fonts/font = ExtResource("1_tqw2v")
+Label/fonts/font = ExtResource("1_qhe8w")

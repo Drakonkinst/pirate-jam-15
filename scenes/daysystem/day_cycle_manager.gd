@@ -36,14 +36,12 @@ func get_current_time():
     return current_time
 
 func start_day():
-    print("Start of day")
     %Interval.start()
     day_started.emit(current_round)
     current_time = 0.0
     is_night = false
 
 func end_day():
-    print("End of day, start of night")
     current_time = 0.0
     %Interval.stop()
     day_ended.emit(current_round)
@@ -53,5 +51,4 @@ func _on_interval_timeout():
     interval_passed.emit(current_time)
 
 func _on_enemies_wave_ended():
-    print("WAVE ENDED")
     start_day()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://cqbxejr72xyb3"]
+[gd_scene load_steps=30 format=3 uid="uid://cqbxejr72xyb3"]
 
 [ext_resource type="Script" path="res://scenes/hud/tool_bar_hud.gd" id="1_nptwf"]
-[ext_resource type="Texture2D" uid="uid://tkvdjxmelk14" path="res://assets/ui/GUI-1.png.png" id="2_o1r3x"]
+[ext_resource type="FontFile" uid="uid://k16e325u2v05" path="res://assets/themes/MedievalSharp-Bold.ttf" id="1_ymvhu"]
+[ext_resource type="Texture2D" uid="uid://d36qwwv6agvsd" path="res://assets/ui/panel-border-004.png" id="2_oghpe"]
 [ext_resource type="Texture2D" uid="uid://de2rw7qb6ivnu" path="res://assets/textures/icon/icon-cast.png" id="3_b6np5"]
 [ext_resource type="Material" uid="uid://dawr3v4rqfldd" path="res://data/sprite/highlight_material.tres" id="3_h2egh"]
 [ext_resource type="Material" uid="uid://dripghlxlqi8y" path="res://data/sprite/highlight_thin_material.tres" id="3_x5q4i"]
@@ -16,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://klv2cy861ymq" path="res://assets/textures/potion/potion_wood.png" id="16_0rq7f"]
 [ext_resource type="Texture2D" uid="uid://c3whl0vb4wi2d" path="res://assets/textures/potion/potion_grayscale.png" id="16_rj06c"]
 [ext_resource type="Texture2D" uid="uid://d0qqo84efcd8e" path="res://assets/textures/potion/stone_potion.png" id="17_1fsco"]
+[ext_resource type="Texture2D" uid="uid://1dgqot8x8d2x" path="res://assets/ui/panel-border-011.png" id="18_vk0bb"]
 [ext_resource type="Texture2D" uid="uid://3fi7oa62uert" path="res://assets/textures/potion/quartz_potion.png" id="18_yd8uy"]
 [ext_resource type="Texture2D" uid="uid://uibvlcal4fy0" path="res://assets/textures/potion/potion_oil.png" id="19_vxb4t"]
 [ext_resource type="Texture2D" uid="uid://b54vaj87h68p5" path="res://assets/textures/enemy/profile/tree_sprite.png" id="20_2eot2"]
@@ -24,10 +26,26 @@
 [ext_resource type="Texture2D" uid="uid://bngi68ri8c1es" path="res://assets/textures/enemy/profile/wind_sprite.png" id="22_1vx5c"]
 [ext_resource type="Texture2D" uid="uid://cis2vokqjryh7" path="res://assets/textures/enemy/profile/fire_sprite.png" id="23_fx8xj"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ie0ih"]
-texture = ExtResource("2_o1r3x")
-texture_margin_left = 1.0
-texture_margin_right = 1.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ml0no"]
+texture = ExtResource("2_oghpe")
+texture_margin_left = 7.0
+texture_margin_top = 5.0
+texture_margin_right = 7.0
+texture_margin_bottom = 5.0
+modulate_color = Color(0.564962, 0.564962, 0.564962, 1)
+
+[sub_resource type="Theme" id="Theme_1j4nh"]
+Button/fonts/font = ExtResource("1_ymvhu")
+Label/fonts/font = ExtResource("1_ymvhu")
+Label/styles/normal = null
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_ml0no")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fne3g"]
+bg_color = Color(0.210972, 0.108474, 0.00726687, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lwsvn"]
+texture = ExtResource("18_vk0bb")
+modulate_color = Color(0.473976, 0.473976, 0.473976, 1)
 
 [node name="ToolBarHud" type="Control" node_paths=PackedStringArray("buttons", "potion_expand_menu", "summon_expand_menu", "current_potion_count", "current_summon_count")]
 layout_mode = 3
@@ -36,6 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_1j4nh")
 script = ExtResource("1_nptwf")
 buttons = [NodePath("MarginContainer/ActionsContainer/AttackButton"), NodePath("MarginContainer/ActionsContainer/TorchButton"), NodePath("MarginContainer/ActionsContainer/DestroyButton"), NodePath("MarginContainer/ActionsContainer/PotionButton"), NodePath("MarginContainer/ActionsContainer/SummonButton")]
 highlight_material = ExtResource("3_h2egh")
@@ -47,6 +66,18 @@ potion_tool_icons = Array[Texture2D]([ExtResource("16_0rq7f"), ExtResource("17_1
 summon_tool_icons = Array[Texture2D]([ExtResource("20_2eot2"), ExtResource("21_ywh4k"), ExtResource("22_1vx5c"), ExtResource("23_fx8xj")])
 current_potion_count = NodePath("PotionCount")
 current_summon_count = NodePath("SummonCount")
+metadata/_edit_lock_ = true
+
+[node name="Background2" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -125.0
+offset_right = 745.0
+grow_vertical = 0
+theme = SubResource("Theme_1j4nh")
+theme_override_styles/panel = SubResource("StyleBoxFlat_fne3g")
 
 [node name="Background" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -56,7 +87,7 @@ anchor_bottom = 1.0
 offset_top = -125.0
 offset_right = 745.0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxTexture_ie0ih")
+theme = SubResource("Theme_1j4nh")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -65,11 +96,13 @@ offset_top = 955.0
 offset_right = 744.0
 offset_bottom = 1080.0
 mouse_filter = 0
+theme = SubResource("Theme_1j4nh")
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
 [node name="ActionsContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme = SubResource("Theme_1j4nh")
 theme_override_constants/separation = 0
 
 [node name="AttackButton" type="TextureButton" parent="MarginContainer/ActionsContainer"]
@@ -77,11 +110,21 @@ custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+theme = SubResource("Theme_1j4nh")
 action_mode = 0
 texture_normal = ExtResource("3_b6np5")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("5_bf7hs")
+
+[node name="Panel" type="Panel" parent="MarginContainer/ActionsContainer/AttackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_lwsvn")
 
 [node name="ProgressOverlay" type="TextureProgressBar" parent="MarginContainer/ActionsContainer/AttackButton"]
 layout_mode = 1
@@ -93,6 +136,7 @@ offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.313, 0.313)
+theme = SubResource("Theme_1j4nh")
 value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
@@ -103,11 +147,21 @@ custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+theme = SubResource("Theme_1j4nh")
 action_mode = 0
 texture_normal = ExtResource("4_qwe61")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("5_bf7hs")
+
+[node name="Panel" type="Panel" parent="MarginContainer/ActionsContainer/TorchButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_lwsvn")
 
 [node name="ProgressOverlay" type="TextureProgressBar" parent="MarginContainer/ActionsContainer/TorchButton"]
 layout_mode = 1
@@ -119,6 +173,7 @@ offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.313, 0.313)
+theme = SubResource("Theme_1j4nh")
 value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
@@ -129,11 +184,21 @@ custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+theme = SubResource("Theme_1j4nh")
 action_mode = 0
 texture_normal = ExtResource("5_hxrcs")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("5_bf7hs")
+
+[node name="Panel" type="Panel" parent="MarginContainer/ActionsContainer/DestroyButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_lwsvn")
 
 [node name="ProgressOverlay" type="TextureProgressBar" parent="MarginContainer/ActionsContainer/DestroyButton"]
 layout_mode = 1
@@ -145,6 +210,7 @@ offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.313, 0.313)
+theme = SubResource("Theme_1j4nh")
 value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
@@ -155,11 +221,21 @@ custom_minimum_size = Vector2(70, 100)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+theme = SubResource("Theme_1j4nh")
 action_mode = 0
 texture_normal = ExtResource("16_rj06c")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("5_bf7hs")
+
+[node name="Panel" type="Panel" parent="MarginContainer/ActionsContainer/PotionButton"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 9.0
+offset_right = 23.0
+offset_bottom = 34.0
+scale = Vector2(3.64, 3.28)
+theme_override_styles/panel = SubResource("StyleBoxTexture_lwsvn")
 
 [node name="ProgressOverlay" type="TextureProgressBar" parent="MarginContainer/ActionsContainer/PotionButton"]
 layout_mode = 1
@@ -167,6 +243,7 @@ offset_top = 15.0
 offset_right = 176.0
 offset_bottom = 191.0
 scale = Vector2(0.4, 0.4)
+theme = SubResource("Theme_1j4nh")
 value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
@@ -177,11 +254,19 @@ custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+theme = SubResource("Theme_1j4nh")
 action_mode = 0
 texture_normal = ExtResource("21_h15j4")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("5_bf7hs")
+
+[node name="Panel" type="Panel" parent="MarginContainer/ActionsContainer/SummonButton"]
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 25.0
+scale = Vector2(3.68, 3.24)
+theme_override_styles/panel = SubResource("StyleBoxTexture_lwsvn")
 
 [node name="ProgressOverlay" type="TextureProgressBar" parent="MarginContainer/ActionsContainer/SummonButton"]
 layout_mode = 1
@@ -194,6 +279,7 @@ offset_bottom = 185.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.313, 0.24)
+theme = SubResource("Theme_1j4nh")
 value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
@@ -201,6 +287,7 @@ texture_progress = ExtResource("20_2eot2")
 
 [node name="PotionExpandMenu" parent="." instance=ExtResource("13_642hw")]
 layout_mode = 1
+theme = SubResource("Theme_1j4nh")
 option_1_texture = ExtResource("16_0rq7f")
 option_2_texture = ExtResource("17_1fsco")
 option_3_texture = ExtResource("18_yd8uy")
@@ -212,6 +299,7 @@ descriptions = Array[String](["Transform objects into living wood", "Transform o
 layout_mode = 1
 offset_left = 612.0
 offset_right = 652.0
+theme = SubResource("Theme_1j4nh")
 option_1_texture = ExtResource("20_2eot2")
 option_2_texture = ExtResource("21_ywh4k")
 option_3_texture = ExtResource("22_1vx5c")
@@ -224,11 +312,12 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 518.0
-offset_top = -43.0
-offset_right = 558.0
-offset_bottom = -20.0
+offset_left = 519.0
+offset_top = -75.0
+offset_right = 559.0
+offset_bottom = -52.0
 grow_vertical = 0
+theme = SubResource("Theme_1j4nh")
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -239,10 +328,11 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 647.0
-offset_top = -43.0
+offset_top = -72.0
 offset_right = 687.0
-offset_bottom = -20.0
+offset_bottom = -49.0
 grow_vertical = 0
+theme = SubResource("Theme_1j4nh")
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -116,8 +116,8 @@ func end_crafting():
 func give_item():
     var tool_inv = GlobalVariables.get_toolbar().tool_inventory
     # Dont mind the below code it does the thing
-    var proj_type: ThrownProjectile.Type = -1
-    var summon_type: EnemySpawner.EnemyType = -1
+    var proj_type: ThrownProjectile.Type = 0 as ThrownProjectile.Type
+    var summon_type: EnemySpawner.EnemyType = 0 as EnemySpawner.EnemyType
     match crafting_data.item:
         CraftingData.ItemType.POTION_WOOD:
             proj_type = ThrownProjectile.Type.POTION_WOOD
