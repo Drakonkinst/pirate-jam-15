@@ -17,6 +17,7 @@ signal restart
 @export var base_health: BaseHealth
 @export var game_over_screen: GameOverMenu
 @export var victory_screen: GameOverMenu
+@export var background_music: BackgroundMusic
 
 @onready var pause_control: PauseControl = $PauseControl
 

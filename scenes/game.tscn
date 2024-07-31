@@ -169,7 +169,7 @@ class_name World
 
 "
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar", "day_cycle_manager", "base_health", "game_over_screen")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar", "day_cycle_manager", "base_health", "game_over_screen", "background_music")]
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
 obstacle_manager = NodePath("ObstacleManager")
@@ -182,6 +182,7 @@ toolbar = NodePath("ToolBar")
 day_cycle_manager = NodePath("World/DayCycleManager")
 base_health = NodePath("Player/BaseHealth")
 game_over_screen = NodePath("GameOverMenu")
+background_music = NodePath("BackgroundMusic")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
@@ -1030,7 +1031,7 @@ stream = ExtResource("49_dv2lr")
 autoplay = true
 bus = &"Music"
 script = ExtResource("86_c2qol")
-tracks = Array[AudioStream]([ExtResource("99_4386c"), ExtResource("100_ppgwg"), ExtResource("101_ki1ut"), ExtResource("102_h4fah"), ExtResource("49_dv2lr")])
+tracks = Array[AudioStream]([ExtResource("49_dv2lr"), ExtResource("99_4386c"), ExtResource("100_ppgwg"), ExtResource("101_ki1ut"), ExtResource("102_h4fah"), ExtResource("99_4386c")])
 
 [node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("tree_spawn_audio", "rock_spawn_audio")]
 z_index = 1

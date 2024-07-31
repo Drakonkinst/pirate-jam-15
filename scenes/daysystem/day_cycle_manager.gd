@@ -40,8 +40,10 @@ func get_current_time():
 func start_day():
     if current_round >= MAX_ROUND:
         should_end_game = true
+        GlobalVariables.get_background_music().switch_track()
         GlobalVariables.get_dialogue_manager().play_conversation(dialogue[current_round])
         return
+    GlobalVariables.get_background_music().switch_track()
     %Interval.start()
     day_started.emit(current_round)
     current_time = 0.0
