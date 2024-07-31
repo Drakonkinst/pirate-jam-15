@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dyifllpcx6yhy"]
+[gd_scene load_steps=41 format=3 uid="uid://dyifllpcx6yhy"]
 
 [ext_resource type="Theme" uid="uid://usfabbbmsm3h" path="res://assets/themes/PotionCraftTheme.tres" id="1_7pvp4"]
 [ext_resource type="Script" path="res://scenes/ui/potion_craft_menu.gd" id="1_kcbrr"]
@@ -23,9 +23,122 @@
 [ext_resource type="Texture2D" uid="uid://cis2vokqjryh7" path="res://assets/textures/enemy/profile/fire_sprite.png" id="18_cjwhu"]
 [ext_resource type="Resource" uid="uid://b6hfjndyjrhts" path="res://data/crafting/wind_sprite_data.tres" id="18_t5n4p"]
 [ext_resource type="Resource" uid="uid://cfrp7hesa85er" path="res://data/crafting/fire_sprite_data.tres" id="20_u4ukf"]
+[ext_resource type="Script" path="res://scenes/ui/potion_fill.gd" id="24_2qiea"]
+[ext_resource type="Texture2D" uid="uid://cjrojgwc1uuy4" path="res://assets/textures/potion_flask/potion_fill_1.png" id="24_76ao6"]
+[ext_resource type="Texture2D" uid="uid://cwck0fg7ymhom" path="res://assets/textures/potion_flask/potion_fill_2.png" id="25_kr2ss"]
+[ext_resource type="Texture2D" uid="uid://egl8u4qg45dr" path="res://assets/textures/potion_flask/potion_fill_3.png" id="26_gcy4d"]
+[ext_resource type="Texture2D" uid="uid://c3jl5w3qlaac1" path="res://assets/textures/potion_flask/potion_fill_4.png" id="27_ill2h"]
+[ext_resource type="Texture2D" uid="uid://cbn16dtxbcbqk" path="res://assets/textures/potion_flask/potion_fill_5.png" id="28_2onjh"]
+[ext_resource type="Texture2D" uid="uid://ct3uus36abvx5" path="res://assets/textures/potion_flask/potion_fill_6.png" id="29_imxcm"]
+[ext_resource type="Texture2D" uid="uid://budb2ge4c0k2d" path="res://assets/textures/potion_flask/potion_bubble_1.png" id="30_q4xe5"]
+[ext_resource type="Texture2D" uid="uid://c21h1yidfpdk3" path="res://assets/textures/potion_flask/potion_bubble_2.png" id="31_ppsmm"]
+[ext_resource type="Texture2D" uid="uid://sqymsp7vu2ak" path="res://assets/textures/potion_flask/potion_bubble_3.png" id="32_7amoo"]
+[ext_resource type="Texture2D" uid="uid://blggydlbd6jqm" path="res://assets/textures/potion_flask/potion_bubble_4.png" id="33_7k2m5"]
+[ext_resource type="Texture2D" uid="uid://dgx3frberogja" path="res://assets/textures/potion_flask/potion_bubble_5.png" id="34_uom0g"]
+[ext_resource type="Texture2D" uid="uid://d5o0dywg0wka" path="res://assets/textures/potion_flask/potion_bubble_6.png" id="35_mlmxp"]
+[ext_resource type="Texture2D" uid="uid://x5qkmvpm24mq" path="res://assets/textures/potion_flask/potion_bubble_7.png" id="36_lw50m"]
+[ext_resource type="Texture2D" uid="uid://b8g3btjgxtq41" path="res://assets/textures/potion_flask/potion_flask.png" id="37_nrm6i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6kga"]
 bg_color = Color(0.21, 0.1029, 0.021, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cip8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_76ao6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_kr2ss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_gcy4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ill2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_2onjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_imxcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_q4xe5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_q4xe5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_ppsmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_7amoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_7k2m5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_uom0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_mlmxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_lw50m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_ppsmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_q4xe5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_ppsmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_7amoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_7k2m5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_uom0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_mlmxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_lw50m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_7amoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_7k2m5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_uom0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_mlmxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_lw50m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_q4xe5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_ppsmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_7amoo")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="PotionCraftMenu" type="Control"]
 layout_mode = 3
@@ -33,7 +146,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -300.0
-offset_right = -300.0
+offset_top = 91.0
+offset_right = -1920.0
+offset_bottom = -189.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -46,9 +161,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -496.0
+offset_top = -514.0
 offset_right = 300.0
-offset_bottom = 332.0
+offset_bottom = 314.0
 grow_vertical = 2
 theme = ExtResource("1_7pvp4")
 
@@ -61,6 +176,7 @@ layout_mode = 2
 crafting_data = ExtResource("6_ykciu")
 recipe_name = "Potion of Life"
 image = ExtResource("5_l7kgf")
+animation_tint = Color(0.368627, 0.509804, 0.211765, 1)
 
 [node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/WoodListing"]
 volume_db = -10.0
@@ -81,6 +197,7 @@ layout_mode = 2
 crafting_data = ExtResource("5_b7xh6")
 recipe_name = "Potion of Stone"
 image = ExtResource("6_tg5ej")
+animation_tint = Color(0.231373, 0.27451, 0.317647, 1)
 
 [node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/StoneListing"]
 volume_db = -10.0
@@ -101,6 +218,7 @@ layout_mode = 2
 crafting_data = ExtResource("4_lvutk")
 recipe_name = "Potion of Crystal"
 image = ExtResource("11_rkwxo")
+animation_tint = Color(0.87451, 0.87451, 0.878431, 1)
 
 [node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/QuartzListing"]
 volume_db = -10.0
@@ -121,6 +239,7 @@ layout_mode = 2
 crafting_data = ExtResource("7_67s07")
 recipe_name = "Potion of Oil"
 image = ExtResource("13_3anw1")
+animation_tint = Color(0.152941, 0.12549, 0.117647, 1)
 
 [node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/OilListing"]
 volume_db = -10.0
@@ -141,6 +260,7 @@ layout_mode = 2
 crafting_data = ExtResource("14_4lya5")
 recipe_name = "Tree Sprite"
 image = ExtResource("15_j2b14")
+animation_tint = Color(0.321569, 0.501961, 0.278431, 1)
 
 [node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/AllyListing"]
 volume_db = -10.0
@@ -161,6 +281,7 @@ layout_mode = 2
 crafting_data = ExtResource("16_3xdin")
 recipe_name = "Rock Sprite"
 image = ExtResource("16_2uj6u")
+animation_tint = Color(0.611765, 0.611765, 0.792157, 1)
 
 [node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/AllyListing2"]
 volume_db = -10.0
@@ -181,6 +302,7 @@ layout_mode = 2
 crafting_data = ExtResource("18_t5n4p")
 recipe_name = "Wind Sprite"
 image = ExtResource("17_w7q0i")
+animation_tint = Color(0.498039, 0.729412, 0.835294, 1)
 
 [node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/AllyListing3"]
 volume_db = -10.0
@@ -201,6 +323,7 @@ layout_mode = 2
 crafting_data = ExtResource("20_u4ukf")
 recipe_name = "Flame Sprite"
 image = ExtResource("18_cjwhu")
+animation_tint = Color(0.721569, 0.462745, 0.290196, 1)
 
 [node name="CraftAudio" type="AudioStreamPlayer" parent="PanelContainer/Listings/AllyListing4"]
 volume_db = -10.0
@@ -223,9 +346,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 301.0
-offset_top = -77.0
+offset_top = -95.0
 offset_right = 351.0
-offset_bottom = 23.0
+offset_bottom = 5.0
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 
@@ -242,8 +365,44 @@ offset_bottom = 235.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_u6kga")
-text = "CRAFT"
 
+[node name="PotionFill" type="Node2D" parent="OpenMenuArea/OpenButton"]
+unique_name_in_owner = true
+position = Vector2(51, 42)
+scale = Vector2(0.271, 0.271)
+script = ExtResource("24_2qiea")
+
+[node name="FillPotion" type="AnimatedSprite2D" parent="OpenMenuArea/OpenButton/PotionFill"]
+visible = false
+modulate = Color(0.168627, 0.713726, 0.168627, 1)
+sprite_frames = SubResource("SpriteFrames_cip8t")
+frame = 29
+frame_progress = 1.0
+
+[node name="Base" type="Sprite2D" parent="OpenMenuArea/OpenButton/PotionFill"]
+texture = ExtResource("37_nrm6i")
+
+[node name="OpenButtonLabel" type="Label" parent="OpenMenuArea/OpenButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CRAFT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="crafting_start" from="PanelContainer/Listings/WoodListing" to="." method="_on_wood_listing_crafting_start"]
+[connection signal="crafting_start" from="PanelContainer/Listings/StoneListing" to="." method="_on_stone_listing_crafting_start"]
+[connection signal="crafting_start" from="PanelContainer/Listings/QuartzListing" to="." method="_on_quartz_listing_crafting_start"]
+[connection signal="crafting_start" from="PanelContainer/Listings/OilListing" to="." method="_on_oil_listing_crafting_start"]
+[connection signal="crafting_start" from="PanelContainer/Listings/AllyListing" to="." method="_on_ally_listing_crafting_start"]
+[connection signal="crafting_start" from="PanelContainer/Listings/AllyListing2" to="." method="_on_ally_listing_2_crafting_start"]
+[connection signal="crafting_start" from="PanelContainer/Listings/AllyListing3" to="." method="_on_ally_listing_3_crafting_start"]
+[connection signal="crafting_start" from="PanelContainer/Listings/AllyListing4" to="." method="_on_ally_listing_4_crafting_start"]
 [connection signal="pressed" from="OpenMenuArea/OpenButton" to="." method="_on_button_pressed"]
+[connection signal="animation_finished" from="OpenMenuArea/OpenButton/PotionFill/FillPotion" to="OpenMenuArea/OpenButton/PotionFill" method="_on_fill_potion_animation_finished"]
 
 [editable path="PanelContainer/Listings/QuartzListing"]

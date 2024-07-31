@@ -3,7 +3,7 @@ extends HBoxContainer
 class_name CraftingMenuListing
 
 # Signals for playing effects when crafting begins, progresses, or ends
-signal crafting_start
+signal crafting_start(tint: Color)
 signal crafting_failed
 signal crafting_timer_down
 signal crafting_end
@@ -29,6 +29,7 @@ signal crafting_end
 @export var fruit: CompressedTexture2D
 @export var quartz: CompressedTexture2D
 @export var recipe_listing: PackedScene
+@export var animation_tint: Color
 
 static var is_crafting := false
 
@@ -78,7 +79,7 @@ func start_crafting():
         crafting_failed.emit()
         return
     is_crafting = true
-    crafting_start.emit()
+    crafting_start.emit(animation_tint)
     crafting_time = crafting_data.crafting_time
     craft_button.text = str(crafting_time)
     

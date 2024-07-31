@@ -401,17 +401,6 @@ names = Array[String](["Magic Bolt", "Torch", "Pickaxe", "Potion", "Summon Sprit
 descriptions = Array[String](["Deals damage to enemies.", "Provides light that slows enemies. Sets objects and enemies ablaze. Especially good against trees.", "Destroys objects and damages enemies. Especially good against rocks.", "Throws potions that transform objects into other materials.", "Creates ally shadow sprites that fight for you."])
 tool_info_hud = NodePath("../ToolInfoHud")
 
-[node name="PotionCraftMenu" parent="HUD" instance=ExtResource("7_urdin")]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_right = 0.0
-anchor_bottom = 0.5
-offset_left = 0.0
-offset_top = 76.0
-offset_right = 0.0
-offset_bottom = 76.0
-grow_horizontal = 1
-
 [node name="ResourceHud" parent="HUD" instance=ExtResource("13_08qek")]
 offset_right = -920.0
 offset_bottom = -880.0
@@ -465,6 +454,17 @@ offset_left = 378.667
 offset_top = 76.0
 offset_right = 378.667
 offset_bottom = 76.0
+
+[node name="PotionCraftMenu" parent="HUD" instance=ExtResource("7_urdin")]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 64.0
+offset_right = 0.0
+offset_bottom = 64.0
+grow_horizontal = 1
 
 [node name="ToolInfoHud" type="Control" parent="HUD" node_paths=PackedStringArray("name_text", "description_text")]
 layout_mode = 3
@@ -964,7 +964,7 @@ max_pitch = 1.3
 
 [node name="DayCycleManager" type="Node2D" parent="World"]
 script = ExtResource("67_l7r7b")
-day_length = 15.0
+day_length = 20.0
 night_length = 120.0
 dialogue = Array[Resource("res://scenes/dialogue/conversation.gd")]([ExtResource("86_b2t3i"), ExtResource("87_yp1ax"), ExtResource("88_aqxax"), ExtResource("89_mhsa2"), ExtResource("90_iru54"), ExtResource("88_hc3tq")])
 
