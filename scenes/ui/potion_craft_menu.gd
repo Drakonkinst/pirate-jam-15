@@ -1,7 +1,7 @@
 extends Control
 
-@onready var open_position = Vector2(0,self.position.y)
-@onready var closed_position = Vector2(-300,self.position.y)
+@onready var open_position = Vector2(-73,self.position.y)
+@onready var closed_position = Vector2(-310,self.position.y)
 @onready var potion_fill: PotionFill = %PotionFill
 var can_interact = false
 var focused = false

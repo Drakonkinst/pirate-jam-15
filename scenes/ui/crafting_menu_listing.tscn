@@ -12,8 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://bkupopcgs5qps" path="res://recipe_listing.tscn" id="8_m7dj6"]
 
 [node name="CraftingMenuListing" type="HBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 193.0
+offset_bottom = 75.0
+size_flags_vertical = 0
 script = ExtResource("1_82gia")
 recipe_name = null
 fire_crystal = ExtResource("2_3uns2")
@@ -25,17 +26,17 @@ quartz = ExtResource("7_ejr75")
 recipe_listing = ExtResource("8_m7dj6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(100, 75)
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ItemLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 25)
+custom_minimum_size = Vector2(125, 25)
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_dibny")
-theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 16
 text = "Quartz Potion
 "
 horizontal_alignment = 1
@@ -52,14 +53,13 @@ theme_override_constants/separation = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(50, 100)
+custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ItemTexture" type="TextureRect" parent="PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
 theme = ExtResource("1_dibny")
 texture = ExtResource("2_475mh")
 expand_mode = 1
@@ -70,10 +70,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.5
 theme = ExtResource("1_dibny")
-text = "Craft
-"
+text = "Craft"
 
 [node name="CraftingTimer" type="Timer" parent="."]
 unique_name_in_owner = true
