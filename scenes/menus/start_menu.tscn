@@ -7,8 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d36qwwv6agvsd" path="res://assets/ui/panel-border-004.png" id="4_lfps3"]
 [ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/rock_sprite.png" id="4_ri3ft"]
 [ext_resource type="PackedScene" uid="uid://kpyn3d6kwgcy" path="res://scenes/menus/ui_click_audio.tscn" id="5_mx8i8"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_matrf"]
+[ext_resource type="Texture2D" uid="uid://vs1qri71bqx6" path="res://assets/textures/player_portrait.png" id="6_qvuhd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_44cow"]
 texture = ExtResource("4_lfps3")
@@ -158,7 +157,7 @@ texture = ExtResource("4_iurkj")
 patch_margin_left = 10
 patch_margin_right = 10
 
-[node name="PanelContainer2" type="PanelContainer" parent="Control"]
+[node name="PanelContainer2" type="Control" parent="Control"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -170,13 +169,28 @@ offset_bottom = 326.0
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_kgndr")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_matrf")
+
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer2"]
+layout_mode = 2
+offset_left = 49.0
+offset_top = -123.0
+offset_right = 1549.0
+offset_bottom = 1377.0
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("6_qvuhd")
 
 [node name="TextureRect2" type="TextureRect" parent="Control/PanelContainer2"]
 layout_mode = 2
+offset_left = 44.0
+offset_top = 113.0
+offset_right = 1544.0
+offset_bottom = 1613.0
+rotation = -0.138057
+scale = Vector2(0.215, 0.215)
 mouse_filter = 2
 texture = ExtResource("4_ri3ft")
 expand_mode = 2
+stretch_mode = 4
 
 [node name="BlockOut" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)

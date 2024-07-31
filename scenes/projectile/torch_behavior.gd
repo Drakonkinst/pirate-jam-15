@@ -29,3 +29,4 @@ func on_land(pos: Vector2):
         obstacle_manager.replace_obstacle(Obstacle.Type.TORCH, tile)
     else:
         tile.obstacle.set_on_fire(GlobalVariables.TORCH_FIRE_DURATION)
+        GlobalVariables.curr_game.score += 10

@@ -175,7 +175,7 @@ theme = ExtResource("1_7pvp4")
 [node name="WoodListing" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
 layout_mode = 2
 crafting_data = ExtResource("6_ykciu")
-recipe_name = "Potion of Life"
+recipe_name = "Potion of Wood"
 image = ExtResource("5_l7kgf")
 animation_tint = Color(0.368627, 0.509804, 0.211765, 1)
 

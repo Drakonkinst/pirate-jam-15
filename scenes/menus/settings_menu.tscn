@@ -54,10 +54,12 @@ layout_mode = 2
 theme = ExtResource("2_p2fb5")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PageTitleContainer"]
+custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_p2fb5")
 text = " Settings "
+vertical_alignment = 1
 
 [node name="BorderRect3" type="NinePatchRect" parent="MarginContainer/VBoxContainer/PageTitleContainer/Label"]
 modulate = Color(0.662452, 0.662452, 0.662452, 1)

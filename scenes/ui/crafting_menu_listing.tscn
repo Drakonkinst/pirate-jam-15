@@ -16,7 +16,6 @@ offset_right = 193.0
 offset_bottom = 75.0
 size_flags_vertical = 0
 script = ExtResource("1_82gia")
-recipe_name = null
 fire_crystal = ExtResource("2_3uns2")
 shadow_sand = ExtResource("3_flr1n")
 leaf = ExtResource("4_3ktw6")
@@ -75,6 +74,7 @@ text = "Craft"
 
 [node name="CraftingTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 0.1
 one_shot = true
 
 [connection signal="pressed" from="Button" to="." method="_on_craft_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=130 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://4ly726jco8yn" path="res://scenes/obstacle/sapling.tscn" id="15_0ctjf"]
 [ext_resource type="PackedScene" uid="uid://c68lf7id1osf4" path="res://scenes/obstacle/dead_sapling.tscn" id="15_e3p3e"]
 [ext_resource type="AudioStream" uid="uid://dfykpd75drack" path="res://assets/audio/SFXTorchSelected.ogg" id="15_rjc6w"]
+[ext_resource type="Script" path="res://scenes/hud/score.gd" id="15_v7ehn"]
 [ext_resource type="AudioStream" uid="uid://1lf81bxd8lv" path="res://assets/audio/SFXTorchThrow2.ogg" id="16_17j03"]
 [ext_resource type="Script" path="res://scenes/pickup_manager.gd" id="16_c2f7e"]
 [ext_resource type="PackedScene" uid="uid://bgqgtp3ng3xpo" path="res://scenes/effect/pickup.tscn" id="16_lfyb5"]
@@ -262,10 +263,10 @@ stretch_mode = 4
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
+offset_left = -8.0
 offset_top = -2.0
 offset_right = 2.0
-offset_bottom = 27.0
+offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_l1dqf")
@@ -576,6 +577,19 @@ text = "Daytime
 "
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="Score" type="Label" parent="HUD"]
+offset_left = 1599.0
+offset_top = 39.0
+offset_right = 1899.0
+offset_bottom = 98.0
+size_flags_horizontal = 8
+theme = SubResource("Theme_f8suf")
+theme_override_fonts/font = ExtResource("10_p1sjc")
+theme_override_font_sizes/font_size = 48
+text = "Score: 99999"
+autowrap_mode = 3
+script = ExtResource("15_v7ehn")
 
 [node name="DialogueManager" parent="." node_paths=PackedStringArray("textbox", "speaker", "pause_control", "player_default_portrait", "villain_default_portrait", "minion_default_portrait") instance=ExtResource("8_7d0d0")]
 process_mode = 3

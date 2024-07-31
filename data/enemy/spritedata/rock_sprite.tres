@@ -1,13 +1,36 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://bp0ds1hd06hnc"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=12 format=3 uid="uid://bp0ds1hd06hnc"]
 
 [ext_resource type="Script" path="res://data/item/loot_item_entry.gd" id="1_2ct6c"]
 [ext_resource type="Script" path="res://data/enemy/enemy_data.gd" id="1_6xgj0"]
+[ext_resource type="Script" path="res://data/item/loot_entry.gd" id="2_1esky"]
+[ext_resource type="Script" path="res://data/item/loot_choice_entry.gd" id="3_fr0xk"]
+[ext_resource type="Script" path="res://data/item/loot_multiple_entry.gd" id="4_fe11w"]
 
-[sub_resource type="Resource" id="Resource_s1ikl"]
+[sub_resource type="Resource" id="Resource_xhfha"]
 script = ExtResource("1_2ct6c")
 item = 0
 min_count = 0
 max_count = 2
+
+[sub_resource type="Resource" id="Resource_disjn"]
+script = ExtResource("2_1esky")
+
+[sub_resource type="Resource" id="Resource_hqayq"]
+script = ExtResource("1_2ct6c")
+item = 5
+min_count = 1
+max_count = 1
+
+[sub_resource type="Resource" id="Resource_wxpsj"]
+script = ExtResource("2_1esky")
+
+[sub_resource type="Resource" id="Resource_eecnk"]
+script = ExtResource("3_fr0xk")
+entries = Array[ExtResource("2_1esky")]([SubResource("Resource_disjn"), SubResource("Resource_hqayq"), SubResource("Resource_wxpsj")])
+
+[sub_resource type="Resource" id="Resource_4dixh"]
+script = ExtResource("4_fe11w")
+entries = Array[ExtResource("2_1esky")]([SubResource("Resource_xhfha"), SubResource("Resource_eecnk")])
 
 [resource]
 script = ExtResource("1_6xgj0")
@@ -16,7 +39,7 @@ health = 120
 attack_damage = 15
 attack_frequency = 2.0
 move_speed = 5500.0
-loot = SubResource("Resource_s1ikl")
+loot = SubResource("Resource_4dixh")
 flammable = true
 chance_transform = 0.25
 can_absorb = Array[int]([])

@@ -52,11 +52,13 @@ layout_mode = 2
 theme = ExtResource("2_wcwh0")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PageTitleContainer"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_wcwh0")
 theme_override_fonts/font = ExtResource("4_e4mry")
 text = "Credits"
+horizontal_alignment = 1
 
 [node name="BorderRect3" type="NinePatchRect" parent="MarginContainer/VBoxContainer/PageTitleContainer/Label"]
 modulate = Color(0.67069, 0.67069, 0.67069, 1)
@@ -70,126 +72,198 @@ texture = ExtResource("5_atw5w")
 patch_margin_left = 10
 patch_margin_right = 10
 
-[node name="CreditsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 500)
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_right = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="CreditsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_csx5o")
 theme_override_constants/separation = 15
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CreditsList"]
-custom_minimum_size = Vector2(1000, 0)
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList/HBoxContainer2"]
+custom_minimum_size = Vector2(420, 0)
 layout_mode = 2
-size_flags_horizontal = 11
+size_flags_horizontal = 9
 theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
 text = "Drakonkinst"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer2"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList/HBoxContainer2"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 11
+size_flags_horizontal = 9
 theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
-text = "Programming"
+text = "Project Lead"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CreditsList"]
-custom_minimum_size = Vector2(1000, 0)
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer3"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList/HBoxContainer3"]
+custom_minimum_size = Vector2(420, 0)
 layout_mode = 2
-size_flags_horizontal = 11
+size_flags_horizontal = 9
 theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
 text = "Logan Langdon"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer3"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList/HBoxContainer3"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 11
+size_flags_horizontal = 9
 theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
 text = "Programming"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CreditsList"]
-custom_minimum_size = Vector2(1000, 0)
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer4"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList/HBoxContainer4"]
+custom_minimum_size = Vector2(420, 0)
 layout_mode = 2
-size_flags_horizontal = 11
+size_flags_horizontal = 9
 theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
 text = "kaijuCrow"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer4"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList/HBoxContainer4"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 11
+size_flags_horizontal = 9
 theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
 text = "Design"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CreditsList"]
-custom_minimum_size = Vector2(1000, 0)
+[node name="CreditsList2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_csx5o")
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList2"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer5"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList2/HBoxContainer5"]
+custom_minimum_size = Vector2(420, 0)
 layout_mode = 2
-size_flags_horizontal = 11
+size_flags_horizontal = 9
 theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
 text = "@teleportwarning"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer5"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList2/HBoxContainer5"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 11
+size_flags_horizontal = 9
 theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
-text = "Artwork
-"
+text = "Art"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CreditsList"]
-custom_minimum_size = Vector2(1000, 0)
+[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList2"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer6"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList2/HBoxContainer6"]
+custom_minimum_size = Vector2(420, 0)
 layout_mode = 2
-size_flags_horizontal = 11
+size_flags_horizontal = 9
 theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
 text = "@Furby_Mom
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer6"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CreditsList2/HBoxContainer6"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 11
+size_flags_horizontal = 9
 theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
-text = "Artwork
+text = "Art"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_right = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+size_flags_horizontal = 9
+text = "Sound Effects and Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+size_flags_horizontal = 9
+theme_override_font_sizes/font_size = 32
+text = "freesound.org"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+size_flags_horizontal = 9
+theme_override_font_sizes/font_size = 32
+text = "opengameart.org
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CreditsList"]
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+size_flags_horizontal = 9
+theme_override_font_sizes/font_size = 32
+text = "creatorchords.com"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 alignment = 1
 
-[node name="ReturnButton" type="Button" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer"]
+[node name="ReturnButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(500, 125)
 layout_mode = 2
+size_flags_vertical = 4
 theme = ExtResource("2_wcwh0")
 text = "Return"
 
-[node name="BorderRect3" type="NinePatchRect" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer/ReturnButton"]
+[node name="BorderRect3" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/ReturnButton"]
 modulate = Color(0.67069, 0.67069, 0.67069, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -213,4 +287,4 @@ patch_margin_bottom = 10
 
 [node name="UIClickAudio" parent="." instance=ExtResource("4_r41db")]
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/CreditsList/HBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/ReturnButton" to="." method="_on_return_button_pressed"]
