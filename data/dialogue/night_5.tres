@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=12 format=3 uid="uid://cp5ytkox1lf4v"]
+
+[ext_resource type="Script" path="res://scenes/dialogue/conversation_line.gd" id="1_j4k04"]
+[ext_resource type="Resource" uid="uid://cpitq8aifldof" path="res://data/dialogue/speaker_villain.tres" id="2_okopj"]
+[ext_resource type="Resource" uid="uid://ckhv75piusks0" path="res://data/dialogue/speaker_player.tres" id="3_ljlue"]
+[ext_resource type="Script" path="res://scenes/dialogue/conversation.gd" id="4_gu6b3"]
+
+[sub_resource type="Resource" id="Resource_anqha"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("2_okopj")
+text = "You're out of practice, Lux. You used to be a lot more fun to battle."
+
+[sub_resource type="Resource" id="Resource_qsp5h"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("3_ljlue")
+text = "Then let me go! I don't want to fight you."
+
+[sub_resource type="Resource" id="Resource_38oxr"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("2_okopj")
+text = "We both know that can't happen."
+
+[sub_resource type="Resource" id="Resource_5rmsy"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("3_ljlue")
+text = "Why must you be so arrogant? Why can't you treat these creatures with respect?"
+
+[sub_resource type="Resource" id="Resource_gkdba"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("2_okopj")
+text = "Why do you even care? They are but shadows and sand. "
+
+[sub_resource type="Resource" id="Resource_yfa16"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("2_okopj")
+text = "You would be fighting forever if you wish to free them from my command."
+
+[sub_resource type="Resource" id="Resource_clqsd"]
+script = ExtResource("1_j4k04")
+speaker = ExtResource("3_ljlue")
+text = "I will if I must."
+
+[resource]
+script = ExtResource("4_gu6b3")
+lines = Array[ExtResource("1_j4k04")]([SubResource("Resource_anqha"), SubResource("Resource_qsp5h"), SubResource("Resource_38oxr"), SubResource("Resource_5rmsy"), SubResource("Resource_gkdba"), SubResource("Resource_yfa16"), SubResource("Resource_clqsd")])

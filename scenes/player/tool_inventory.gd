@@ -41,6 +41,7 @@ func set_potion_count(type: ThrownProjectile.Type, value: int) -> void:
     updated.emit()
 
 func add_potion_count(type: ThrownProjectile.Type, value: int) -> void:
+    print("ADD POTION")
     var new_count = get_potion_count(type) + value
     set_potion_count(type, new_count)
 
@@ -57,6 +58,7 @@ func set_summon_count(type: EnemySpawner.EnemyType, value: int) -> void:
     updated.emit()
 
 func add_summon_count(type: EnemySpawner.EnemyType, value: int) -> void:
+    print("ADD SUMMON")
     var new_count = get_summon_count(type) + value
     set_summon_count(type, new_count)
 

@@ -102,7 +102,7 @@ func _on_health_death():
     elif enemy_data.type == EnemySpawner.EnemyType.RockGolem:
         _place_obstacle_nearby(Obstacle.Type.ROCK)
 
-    if not is_ally:
+    if not is_ally and not has_reached_end:
         if enemy_data.type == EnemySpawner.EnemyType.TreeGolem or enemy_data.type == EnemySpawner.EnemyType.RockGolem:
             GlobalVariables.curr_game.golems_killed += 1
         else:

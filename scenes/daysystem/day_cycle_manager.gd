@@ -10,14 +10,13 @@ signal game_ended
 @export var day_length: float
 @export var night_length: float
 
+@export var dialogue: Array[Conversation]
+
 @onready var is_night: bool
 @onready var current_time: float = 0.0
 
 var current_round = 0
 const MAX_ROUNDS = 5
-
-func _ready():
-    start_day()
 
 func _process(delta):
     current_time += delta
@@ -40,6 +39,7 @@ func start_day():
     day_started.emit(current_round)
     current_time = 0.0
     is_night = false
+    GlobalVariables.get_dialogue_manager().play_conversation(dialogue[current_round])
 
 func end_day():
     current_time = 0.0

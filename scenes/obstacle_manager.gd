@@ -24,7 +24,7 @@ func spawn_starting_obstacles(grid: Grid):
     # To demo obstacle spawning
     for tile: GridTile in GridIterator.new(grid):
         var obstacle_scene: PackedScene = null
-        var choice = randi() % 4
+        var choice = randi() % 3
         if grid.should_ally_stop(tile) or grid.should_enemy_stop(tile):
             continue
         if choice == 0:

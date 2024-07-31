@@ -43,6 +43,7 @@ func _process(delta: float) -> void:
         textbox.visible_ratio = min(1.0, line_progress / num_chars_in_line)
         if line_progress >= num_chars_in_line:
             typing = false
+    print(get_tree().paused)
 
 func enable() -> void:
     get_tree().paused = true

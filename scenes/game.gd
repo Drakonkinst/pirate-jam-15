@@ -28,7 +28,8 @@ func _ready():
     pause_control.unpause()
     # Grid already instantiated since it is a child
     obstacle_manager.spawn_starting_obstacles(grid)
-    dialogue_manager.play_conversation(dialogue_manager.current_conversation)
+    # dialogue_manager.play_conversation(dialogue_manager.current_conversation)
+    day_cycle_manager.start_day()
 
 func _on_pause_menu_pressed_quit_to_menu() -> void:
     quit_to_menu.emit()

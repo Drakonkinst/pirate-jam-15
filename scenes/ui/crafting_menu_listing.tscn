@@ -15,6 +15,7 @@
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_82gia")
+recipe_name = null
 fire_crystal = ExtResource("2_3uns2")
 shadow_sand = ExtResource("3_flr1n")
 leaf = ExtResource("4_3ktw6")

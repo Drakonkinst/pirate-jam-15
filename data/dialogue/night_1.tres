@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=11 format=3 uid="uid://c4glhwnrt00eo"]
+
+[ext_resource type="Script" path="res://scenes/dialogue/conversation_line.gd" id="1_5t8bg"]
+[ext_resource type="Resource" uid="uid://ckhv75piusks0" path="res://data/dialogue/speaker_player.tres" id="2_56yqy"]
+[ext_resource type="Resource" uid="uid://cpitq8aifldof" path="res://data/dialogue/speaker_villain.tres" id="3_4arci"]
+[ext_resource type="Script" path="res://scenes/dialogue/conversation.gd" id="5_6qtib"]
+
+[sub_resource type="Resource" id="Resource_anqha"]
+script = ExtResource("1_5t8bg")
+speaker = ExtResource("2_56yqy")
+text = "Phew, I'm glad I made it out alive... I thought I'd run into—"
+
+[sub_resource type="Resource" id="Resource_qsp5h"]
+script = ExtResource("1_5t8bg")
+speaker = ExtResource("2_56yqy")
+text = "Oh no."
+
+[sub_resource type="Resource" id="Resource_38oxr"]
+script = ExtResource("1_5t8bg")
+speaker = ExtResource("3_4arci")
+text = "Give up, Lux! You're outnumbered."
+
+[sub_resource type="Resource" id="Resource_5rmsy"]
+script = ExtResource("1_5t8bg")
+speaker = ExtResource("3_4arci")
+text = "Surrender your materials and come quietly."
+
+[sub_resource type="Resource" id="Resource_gkdba"]
+script = ExtResource("1_5t8bg")
+speaker = ExtResource("2_56yqy")
+text = "You don't scare me, Umbra."
+
+[sub_resource type="Resource" id="Resource_yfa16"]
+script = ExtResource("1_5t8bg")
+speaker = ExtResource("2_56yqy")
+text = "In fact, you'll find I have some friends of my own!"
+
+[resource]
+script = ExtResource("5_6qtib")
+lines = Array[ExtResource("1_5t8bg")]([SubResource("Resource_anqha"), SubResource("Resource_qsp5h"), SubResource("Resource_38oxr"), SubResource("Resource_5rmsy"), SubResource("Resource_gkdba"), SubResource("Resource_yfa16")])

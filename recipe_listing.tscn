@@ -21,7 +21,7 @@ theme_override_fonts/font = ExtResource("1_vfjam")
 theme_override_font_sizes/font_size = 24
 text = "1
 "
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="IconContainer" type="PanelContainer" parent="."]
