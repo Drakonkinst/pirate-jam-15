@@ -293,7 +293,7 @@ option_1_texture = ExtResource("16_0rq7f")
 option_2_texture = ExtResource("17_1fsco")
 option_3_texture = ExtResource("18_yd8uy")
 option_4_texture = ExtResource("19_vxb4t")
-labels = Array[String](["Potion of Wood", "Potion of Stone", "Potion of Crystal", "Potion of Oil"])
+labels = Array[String](["Potion of Life", "Potion of Stone", "Potion of Crystal", "Potion of Oil"])
 descriptions = Array[String](["Transform objects into living wood", "Transform objects into durable stone", "Transform objects into light-amplifying quartz", "Transform objects into flammable oil"])
 
 [node name="SummonExpandMenu" parent="." instance=ExtResource("13_642hw")]
