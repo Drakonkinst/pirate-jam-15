@@ -48,6 +48,9 @@ func get_toolbar() -> ToolBar:
 func get_grid() -> Grid:
     return curr_game.grid
 
+func get_day_cycle_manager() -> DayCycleManager:
+    return curr_game.day_cycle_manager
+
 func _load_config() -> void:
     var err := config.load(CONFIG_PATH)
     if err == OK:

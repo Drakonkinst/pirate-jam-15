@@ -31,6 +31,9 @@ func _process(delta):
                 start_day()
                 current_round += 1
 
+func skip_day() -> void:
+    end_day()
+
 func get_current_time():
     return current_time
 

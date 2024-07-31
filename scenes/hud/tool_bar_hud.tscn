@@ -54,6 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = SubResource("Theme_1j4nh")
 script = ExtResource("1_nptwf")
 buttons = [NodePath("MarginContainer/ActionsContainer/AttackButton"), NodePath("MarginContainer/ActionsContainer/TorchButton"), NodePath("MarginContainer/ActionsContainer/DestroyButton"), NodePath("MarginContainer/ActionsContainer/PotionButton"), NodePath("MarginContainer/ActionsContainer/SummonButton")]
@@ -66,7 +67,6 @@ potion_tool_icons = Array[Texture2D]([ExtResource("16_0rq7f"), ExtResource("17_1
 summon_tool_icons = Array[Texture2D]([ExtResource("20_2eot2"), ExtResource("21_ywh4k"), ExtResource("22_1vx5c"), ExtResource("23_fx8xj")])
 current_potion_count = NodePath("PotionCount")
 current_summon_count = NodePath("SummonCount")
-metadata/_edit_lock_ = true
 
 [node name="Background2" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -102,6 +102,7 @@ theme_override_constants/margin_right = 50
 
 [node name="ActionsContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 0
 theme = SubResource("Theme_1j4nh")
 theme_override_constants/separation = 0
 
