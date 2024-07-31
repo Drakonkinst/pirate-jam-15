@@ -3,7 +3,7 @@ extends ProjectileBehavior
 class_name PickaxeBehavior
 
 @export var obstacle_damage: int = 20
-@export var enemy_damage: int = 40
+@export var enemy_damage: int = 35
 
 func on_land(pos: Vector2):
     var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(pos)

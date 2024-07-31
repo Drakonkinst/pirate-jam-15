@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpawningSchedule" load_steps=8 format=3 uid="uid://bpdhiw11j7by8"]
+[gd_resource type="Resource" script_class="SpawningSchedule" load_steps=4 format=3 uid="uid://bpdhiw11j7by8"]
 
 [ext_resource type="Script" path="res://data/enemy/spawning_schedule.gd" id="1_u1id6"]
 [ext_resource type="Script" path="res://data/enemy/spawn_data.gd" id="2_ybnbv"]
@@ -6,33 +6,9 @@
 [sub_resource type="Resource" id="Resource_mqydj"]
 script = ExtResource("2_ybnbv")
 spawn_time = 1.0
-spawn_type = 4
-row = 5
-
-[sub_resource type="Resource" id="Resource_l2ha6"]
-script = ExtResource("2_ybnbv")
-spawn_time = 2.0
-spawn_type = 4
-row = 5
-
-[sub_resource type="Resource" id="Resource_batvm"]
-script = ExtResource("2_ybnbv")
-spawn_time = 3.0
-spawn_type = 4
-row = 5
-
-[sub_resource type="Resource" id="Resource_fofnv"]
-script = ExtResource("2_ybnbv")
-spawn_time = 4.0
-spawn_type = 4
-row = 5
-
-[sub_resource type="Resource" id="Resource_kvlh8"]
-script = ExtResource("2_ybnbv")
-spawn_time = 5.0
-spawn_type = 4
-row = 5
+spawn_type = 0
+row = 0
 
 [resource]
 script = ExtResource("1_u1id6")
-spawns = Array[ExtResource("2_ybnbv")]([SubResource("Resource_mqydj"), SubResource("Resource_l2ha6"), SubResource("Resource_batvm"), SubResource("Resource_fofnv"), SubResource("Resource_kvlh8"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+spawns = Array[ExtResource("2_ybnbv")]([SubResource("Resource_mqydj")])

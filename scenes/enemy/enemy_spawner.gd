@@ -177,9 +177,9 @@ func spawn_type_to_scene(spawn_type: EnemySpawner.EnemyType):
 		EnemyType.RockGolem:
 			enemy_scene = rock_golem
 		EnemyType.FireGolem:
-			enemy_scene = fire_golem
+			enemy_scene = rock_golem
 		EnemyType.WindGolem:
-			enemy_scene = wind_golem
+			enemy_scene = rock_golem
 		EnemyType.TreeGolem:
 			enemy_scene = tree_golem
 		# Default to regular sprite
