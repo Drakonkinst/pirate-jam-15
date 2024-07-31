@@ -1,11 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqlemk2n7ch6l"]
+[gd_scene load_steps=9 format=3 uid="uid://bqlemk2n7ch6l"]
 
 [ext_resource type="Theme" uid="uid://t4eahik3spf0" path="res://assets/themes/SettingsButtons.tres" id="1_csx5o"]
 [ext_resource type="Script" path="res://scenes/menus/credits_menu.gd" id="1_q5wwe"]
 [ext_resource type="Theme" uid="uid://bkwik1tcqd4en" path="res://assets/themes/MainMenuTheme.tres" id="2_wcwh0"]
-[ext_resource type="FontFile" uid="uid://cslgns4mab5dp" path="res://assets/themes/DungGeunMo.ttf" id="3_2blmg"]
+[ext_resource type="FontFile" uid="uid://k16e325u2v05" path="res://assets/themes/MedievalSharp-Bold.ttf" id="4_e4mry"]
 [ext_resource type="PackedScene" uid="uid://kpyn3d6kwgcy" path="res://scenes/menus/ui_click_audio.tscn" id="4_r41db"]
 [ext_resource type="Texture2D" uid="uid://1dgqot8x8d2x" path="res://assets/ui/panel-border-011.png" id="5_atw5w"]
+[ext_resource type="Texture2D" uid="uid://d36qwwv6agvsd" path="res://assets/ui/panel-border-004.png" id="6_i23gj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o4c2y"]
+texture = ExtResource("6_i23gj")
+texture_margin_left = 10.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 5.0
+modulate_color = Color(0.856067, 0.856067, 0.856067, 1)
 
 [node name="CreditsMenu" type="Control"]
 layout_mode = 3
@@ -46,10 +55,11 @@ theme = ExtResource("2_wcwh0")
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_wcwh0")
-theme_override_fonts/font = ExtResource("3_2blmg")
+theme_override_fonts/font = ExtResource("4_e4mry")
 text = "Credits"
 
 [node name="BorderRect3" type="NinePatchRect" parent="MarginContainer/VBoxContainer/PageTitleContainer/Label"]
+modulate = Color(0.67069, 0.67069, 0.67069, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,6 +74,110 @@ patch_margin_right = 10
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 theme = ExtResource("1_csx5o")
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CreditsList"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 11
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
+text = "Drakonkinst"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 11
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
+text = "Programming"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CreditsList"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 11
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
+text = "Logan Langdon"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 11
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
+text = "Programming"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CreditsList"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 11
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
+text = "kaijuCrow"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 11
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
+text = "Design"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CreditsList"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 11
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
+text = "@teleportwarning"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 11
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
+text = "Artwork
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CreditsList"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 11
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
+text = "@Furby_Mom
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 11
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4c2y")
+text = "Artwork
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CreditsList"]
 layout_mode = 2
@@ -76,6 +190,7 @@ theme = ExtResource("2_wcwh0")
 text = "Return"
 
 [node name="BorderRect3" type="NinePatchRect" parent="MarginContainer/VBoxContainer/CreditsList/HBoxContainer/ReturnButton"]
+modulate = Color(0.67069, 0.67069, 0.67069, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,6 +200,16 @@ grow_vertical = 2
 texture = ExtResource("5_atw5w")
 patch_margin_left = 10
 patch_margin_right = 10
+
+[node name="BorderRect3" type="NinePatchRect" parent="MarginContainer"]
+modulate = Color(0.564962, 0.564962, 0.564962, 1)
+layout_mode = 2
+texture = ExtResource("5_atw5w")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
 [node name="UIClickAudio" parent="." instance=ExtResource("4_r41db")]
 

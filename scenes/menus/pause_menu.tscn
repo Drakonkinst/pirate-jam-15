@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp8q0ibg5x7oc"]
+[gd_scene load_steps=8 format=3 uid="uid://dp8q0ibg5x7oc"]
 
 [ext_resource type="Script" path="res://scenes/menus/pause_menu.gd" id="1_m7m0e"]
 [ext_resource type="PackedScene" uid="uid://dwdhl2q8gkokd" path="res://scenes/menus/settings_menu.tscn" id="2_khs8f"]
+[ext_resource type="FontFile" uid="uid://k16e325u2v05" path="res://assets/themes/MedievalSharp-Bold.ttf" id="3_btd2f"]
 [ext_resource type="Shader" path="res://shader/paused.gdshader" id="3_wsghj"]
 [ext_resource type="PackedScene" uid="uid://kpyn3d6kwgcy" path="res://scenes/menus/ui_click_audio.tscn" id="4_o0d51"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xchq8"]
 shader = ExtResource("3_wsghj")
 shader_parameter/blur_amount = 1.0
+
+[sub_resource type="Theme" id="Theme_5ukou"]
+Button/fonts/font = ExtResource("3_btd2f")
+Label/fonts/font = ExtResource("3_btd2f")
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -35,32 +40,38 @@ offset_right = 250.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_5ukou")
 theme_override_constants/separation = 25
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_5ukou")
 theme_override_font_sizes/font_size = 36
 text = "Paused"
 horizontal_alignment = 1
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_5ukou")
 theme_override_font_sizes/font_size = 26
 text = "Resume"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_5ukou")
 theme_override_font_sizes/font_size = 26
 text = "Options"
 
 [node name="QuitToMenuButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_5ukou")
 theme_override_font_sizes/font_size = 26
 text = "Quit to Menu"
 
 [node name="SettingsMenu" parent="." instance=ExtResource("2_khs8f")]
 visible = false
+theme = SubResource("Theme_5ukou")
 
 [node name="UIClickAudio" parent="." instance=ExtResource("4_o0d51")]
 

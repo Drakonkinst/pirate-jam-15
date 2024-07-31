@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhi00njaa1vq3"]
+[gd_scene load_steps=6 format=3 uid="uid://bhi00njaa1vq3"]
 
 [ext_resource type="Script" path="res://scenes/menus/game_over_menu.gd" id="1_qutcf"]
 [ext_resource type="Shader" path="res://shader/paused.gdshader" id="1_rxv1i"]
 [ext_resource type="PackedScene" uid="uid://kpyn3d6kwgcy" path="res://scenes/menus/ui_click_audio.tscn" id="3_4ke6q"]
+[ext_resource type="Theme" uid="uid://t4eahik3spf0" path="res://assets/themes/SettingsButtons.tres" id="3_afm5b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6k54j"]
 shader = ExtResource("1_rxv1i")
@@ -42,23 +43,27 @@ offset_right = 250.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_afm5b")
 theme_override_constants/separation = 25
 alignment = 1
 
 [node name="GameOver" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_afm5b")
 theme_override_font_sizes/font_size = 40
 text = "Game Over!"
 horizontal_alignment = 1
 
 [node name="Score" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_afm5b")
 theme_override_font_sizes/font_size = 26
 text = "Score: ???"
 horizontal_alignment = 1
 
 [node name="EnemiesKilled" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_afm5b")
 theme_override_font_sizes/font_size = 26
 text = "Enemies Killed: ???"
 horizontal_alignment = 1
@@ -66,6 +71,7 @@ horizontal_alignment = 1
 [node name="RoundsSurvived" type="Label" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
+theme = ExtResource("3_afm5b")
 theme_override_font_sizes/font_size = 26
 text = "Rounds Survived: ???"
 horizontal_alignment = 1
@@ -73,12 +79,14 @@ horizontal_alignment = 1
 [node name="RestartButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme = ExtResource("3_afm5b")
 theme_override_font_sizes/font_size = 26
 text = "Play Again"
 
 [node name="QuitToMenuButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme = ExtResource("3_afm5b")
 theme_override_font_sizes/font_size = 26
 text = "Quit to Menu"
 

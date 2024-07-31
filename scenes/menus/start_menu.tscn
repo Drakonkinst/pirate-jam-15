@@ -123,6 +123,23 @@ texture = ExtResource("4_iurkj")
 patch_margin_left = 10
 patch_margin_right = 10
 
+[node name="MarginContainer4" type="MarginContainer" parent="Control/SelectionButtons"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_kgndr")
+
+[node name="CreditsButton" type="Button" parent="Control/SelectionButtons/MarginContainer4"]
+layout_mode = 2
+theme = ExtResource("1_kgndr")
+text = "Credits"
+
+[node name="BorderRect" type="NinePatchRect" parent="Control/SelectionButtons/MarginContainer4"]
+modulate = Color(0.521141, 0.521141, 0.521141, 1)
+layout_mode = 2
+texture = ExtResource("4_iurkj")
+patch_margin_left = 10
+patch_margin_right = 10
+
 [node name="MarginContainer3" type="MarginContainer" parent="Control/SelectionButtons"]
 layout_mode = 2
 mouse_filter = 2
@@ -135,23 +152,6 @@ text = "Exit"
 script = ExtResource("2_ufl12")
 
 [node name="BorderRect" type="NinePatchRect" parent="Control/SelectionButtons/MarginContainer3"]
-modulate = Color(0.521141, 0.521141, 0.521141, 1)
-layout_mode = 2
-texture = ExtResource("4_iurkj")
-patch_margin_left = 10
-patch_margin_right = 10
-
-[node name="MarginContainer4" type="MarginContainer" parent="Control/SelectionButtons"]
-layout_mode = 2
-mouse_filter = 2
-theme = ExtResource("1_kgndr")
-
-[node name="CreditsButton" type="Button" parent="Control/SelectionButtons/MarginContainer4"]
-layout_mode = 2
-theme = ExtResource("1_kgndr")
-text = "Credits"
-
-[node name="BorderRect" type="NinePatchRect" parent="Control/SelectionButtons/MarginContainer4"]
 modulate = Color(0.521141, 0.521141, 0.521141, 1)
 layout_mode = 2
 texture = ExtResource("4_iurkj")
@@ -202,5 +202,5 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_44cow")
 
 [connection signal="pressed" from="Control/SelectionButtons/MarginContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Control/SelectionButtons/MarginContainer2/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="Control/SelectionButtons/MarginContainer3/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="Control/SelectionButtons/MarginContainer4/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Control/SelectionButtons/MarginContainer3/ExitButton" to="." method="_on_exit_button_pressed"]
