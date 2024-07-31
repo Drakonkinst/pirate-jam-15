@@ -16,6 +16,7 @@ signal restart
 @export var day_cycle_manager: DayCycleManager
 @export var base_health: BaseHealth
 @export var game_over_screen: GameOverMenu
+@export var victory_screen: GameOverMenu
 
 @onready var pause_control: PauseControl = $PauseControl
 
@@ -23,6 +24,8 @@ var score: int = 0
 var sprites_killed: int = 0
 var golems_killed: int = 0
 var is_game_over: bool = false
+
+var game_result = ""
 
 func _ready():
     pause_control.unpause()
@@ -47,3 +50,9 @@ func _on_game_over_menu_quit_to_menu() -> void:
 
 func _on_game_over_menu_restart() -> void:
     restart.emit()
+
+func _on_victory_menu_restart():
+    restart.emit()
+    
+func _on_victory_menu_quit_to_menu():
+    quit_to_menu.emit()

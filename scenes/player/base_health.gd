@@ -16,6 +16,7 @@ func damage(amount: int) -> void:
     health.damage(amount)
 
 func _on_health_death() -> void:
+    GlobalVariables.curr_game.game_result = "Game Over!"
     game_over.emit()
 
 func _on_health_changed(value: int, percent: float, instant: bool) -> void:

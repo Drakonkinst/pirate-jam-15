@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=112 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -81,16 +81,13 @@
 [ext_resource type="PackedScene" uid="uid://5cwnirn55jnd" path="res://scenes/enemy/types/sprite/fire_sprite.tscn" id="48_pfolc"]
 [ext_resource type="AudioStream" uid="uid://bi8dingytba6n" path="res://assets/audio/MUSICBackground.ogg" id="49_dv2lr"]
 [ext_resource type="PackedScene" uid="uid://bfrbgovkbdcr8" path="res://scenes/enemy/types/sprite/wind_sprite.tscn" id="49_k2mie"]
-[ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/round_1.tres" id="50_i40f8"]
 [ext_resource type="PackedScene" uid="uid://cxj6wphfe51ue" path="res://scenes/enemy/types/sprite/tree_sprite.tscn" id="50_qd5sr"]
 [ext_resource type="PackedScene" uid="uid://dp8q0ibg5x7oc" path="res://scenes/menus/pause_menu.tscn" id="50_t4lxk"]
-[ext_resource type="Resource" uid="uid://c25nom7sytva0" path="res://data/enemy/spawn_schedules/round_2.tres" id="51_sdyym"]
 [ext_resource type="PackedScene" uid="uid://b0su8vtbd7ue6" path="res://scenes/enemy/types/golem/fire_golem.tscn" id="52_ebjpr"]
-[ext_resource type="Resource" uid="uid://bvb556qh8nljh" path="res://data/enemy/spawn_schedules/round_3.tres" id="52_hsagx"]
 [ext_resource type="PackedScene" uid="uid://bu1wggooa0cd" path="res://scenes/enemy/types/golem/wind_golem.tscn" id="53_i7n8v"]
-[ext_resource type="Resource" uid="uid://3la7i7j0rah" path="res://data/enemy/spawn_schedules/round_4.tres" id="53_r6ff2"]
-[ext_resource type="Resource" uid="uid://bpdhiw11j7by8" path="res://data/enemy/spawn_schedules/round_5.tres" id="54_enwvg"]
 [ext_resource type="PackedScene" uid="uid://cue740t2tc7o5" path="res://scenes/enemy/types/golem/tree_golem.tscn" id="54_mtxj2"]
+[ext_resource type="Script" path="res://data/enemy/spawning_schedule.gd" id="56_d630x"]
+[ext_resource type="Script" path="res://data/enemy/spawn_data.gd" id="57_i53ro"]
 [ext_resource type="AudioStream" uid="uid://bwy3k3hsarsjf" path="res://assets/audio/SFXMenuPause.ogg" id="66_807vn"]
 [ext_resource type="Script" path="res://scenes/daysystem/day_cycle_manager.gd" id="67_l7r7b"]
 [ext_resource type="AudioStream" uid="uid://jpu776c5cfpm" path="res://assets/audio/SFXPotionBreaks2.ogg" id="71_mspmp"]
@@ -155,6 +152,16 @@ class_name World
 
 
 "
+
+[sub_resource type="Resource" id="Resource_eevq7"]
+script = ExtResource("57_i53ro")
+spawn_time = 1.0
+spawn_type = 2
+row = 5
+
+[sub_resource type="Resource" id="Resource_uofp8"]
+script = ExtResource("56_d630x")
+spawns = Array[ExtResource("57_i53ro")]([SubResource("Resource_eevq7")])
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar", "day_cycle_manager", "base_health", "game_over_screen")]
 script = ExtResource("1_0vq47")
@@ -701,7 +708,7 @@ rock_golem = ExtResource("48_1g0gr")
 fire_golem = ExtResource("52_ebjpr")
 wind_golem = ExtResource("53_i7n8v")
 tree_golem = ExtResource("54_mtxj2")
-spawning_schedules = Array[Resource("res://data/enemy/spawning_schedule.gd")]([ExtResource("50_i40f8"), ExtResource("51_sdyym"), ExtResource("52_hsagx"), ExtResource("53_r6ff2"), ExtResource("54_enwvg")])
+spawning_schedules = Array[ExtResource("56_d630x")]([SubResource("Resource_uofp8"), SubResource("Resource_uofp8"), SubResource("Resource_uofp8"), SubResource("Resource_uofp8"), SubResource("Resource_uofp8")])
 
 [node name="EnemySpawns" type="Node2D" parent="World/Enemies"]
 unique_name_in_owner = true
@@ -876,6 +883,7 @@ offset_bottom = -84.0
 grow_horizontal = 2
 scale = Vector2(2, 1)
 script = ExtResource("12_7pc3e")
+metadata/_edit_use_anchors_ = true
 
 [node name="Health" type="Node" parent="Player/BaseHealth"]
 script = ExtResource("14_dohtn")
@@ -991,7 +999,7 @@ script = ExtResource("81_tor4d")
 [connection signal="day_ended" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_day_ended"]
 [connection signal="day_ended" from="World/DayCycleManager" to="World/Enemies" method="_on_day_cycle_manager_day_ended"]
 [connection signal="day_started" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_day_started"]
-[connection signal="game_ended" from="World/DayCycleManager" to="World/Enemies" method="_on_day_cycle_manager_game_ended"]
+[connection signal="game_over" from="World/DayCycleManager" to="." method="_on_base_health_game_over"]
 [connection signal="interval_passed" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_interval_passed"]
 [connection signal="timeout" from="World/DayCycleManager/Interval" to="World/DayCycleManager" method="_on_interval_timeout"]
 [connection signal="game_over" from="Player/BaseHealth" to="." method="_on_base_health_game_over"]
