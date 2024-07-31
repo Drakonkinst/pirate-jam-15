@@ -39,6 +39,9 @@ const SUMMON_ORDER: Array[EnemySpawner.EnemyType] = [
 @export var summon_tool_icons: Array[Texture2D]
 @export var current_potion_count: Label
 @export var current_summon_count: Label
+@export var names: Array[String]
+@export var descriptions: Array[String]
+@export var tool_info_hud: ToolInfoHud
 
 @onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 var toolbar: ToolBar
@@ -136,6 +139,7 @@ func _on_tool_bar_tool_changed(tool: ToolBar.Tool) -> void:
         else:
             buttons[i].apply_material(null)
     current_tool_index = tool_index
+    tool_info_hud.set_text(names[tool_index], descriptions[tool_index])
 
 func _on_potion_expand_menu_click_index(index: int) -> void:
     toolbar.set_tool(ToolBar.Tool.POTION)

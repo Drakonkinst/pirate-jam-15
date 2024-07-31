@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=137 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -28,40 +28,54 @@
 [ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://scenes/hud/resource_hud.tscn" id="13_08qek"]
 [ext_resource type="AudioStream" uid="uid://b5iybe17vtcm5" path="res://assets/audio/SFXMagicBoltSelected.ogg" id="13_lykkh"]
 [ext_resource type="PackedScene" uid="uid://hmw6qr2yjefw" path="res://scenes/obstacle/oil_spill.tscn" id="13_tpqui"]
+[ext_resource type="Script" path="res://scenes/hud/tool_info_hud.gd" id="14_7rdqt"]
 [ext_resource type="Script" path="res://scenes/health.gd" id="14_dohtn"]
 [ext_resource type="PackedScene" uid="uid://bcqx4m1p240sb" path="res://scenes/obstacle/dead_tree.tscn" id="14_gc0kp"]
 [ext_resource type="PackedScene" uid="uid://dutyvrutx3beh" path="res://scenes/obstacle/torch.tscn" id="14_q7ayn"]
 [ext_resource type="PackedScene" uid="uid://4ly726jco8yn" path="res://scenes/obstacle/sapling.tscn" id="15_0ctjf"]
 [ext_resource type="PackedScene" uid="uid://c68lf7id1osf4" path="res://scenes/obstacle/dead_sapling.tscn" id="15_e3p3e"]
+[ext_resource type="Texture2D" uid="uid://d36qwwv6agvsd" path="res://assets/ui/panel-border-004.png" id="15_jp3su"]
 [ext_resource type="AudioStream" uid="uid://dfykpd75drack" path="res://assets/audio/SFXTorchSelected.ogg" id="15_rjc6w"]
 [ext_resource type="AudioStream" uid="uid://1lf81bxd8lv" path="res://assets/audio/SFXTorchThrow2.ogg" id="16_17j03"]
 [ext_resource type="Script" path="res://scenes/pickup_manager.gd" id="16_c2f7e"]
+[ext_resource type="Texture2D" uid="uid://de2rw7qb6ivnu" path="res://assets/textures/icon/icon-cast.png" id="16_jhg5a"]
 [ext_resource type="PackedScene" uid="uid://bgqgtp3ng3xpo" path="res://scenes/effect/pickup.tscn" id="16_lfyb5"]
+[ext_resource type="Script" path="res://scenes/hud/tool_bar_icon.gd" id="17_2k7yj"]
 [ext_resource type="AudioStream" uid="uid://vte5efiqisp7" path="res://assets/audio/SFXTorchThrow3.ogg" id="17_a7jxu"]
 [ext_resource type="Texture2D" uid="uid://nfg7lvaux13e" path="res://assets/textures/Villain_Portrait.PNG" id="17_x7025"]
 [ext_resource type="AudioStream" uid="uid://c0god3bplix1" path="res://assets/audio/SFXTorchThrow.ogg" id="18_3tbfr"]
 [ext_resource type="Script" path="res://scenes/projectile/projectile_manager.gd" id="18_s1wrk"]
+[ext_resource type="Texture2D" uid="uid://1dgqot8x8d2x" path="res://assets/ui/panel-border-011.png" id="18_snu3l"]
 [ext_resource type="PackedScene" uid="uid://bhi00njaa1vq3" path="res://scenes/menus/game_over_menu.tscn" id="19_1ihcy"]
+[ext_resource type="Texture2D" uid="uid://c1xsyfss3rwrv" path="res://assets/textures/icon/icon-cast-full.png" id="19_7vkgn"]
 [ext_resource type="PackedScene" uid="uid://cu2l6glnoatrb" path="res://scenes/player/player.tscn" id="19_c5v0p"]
 [ext_resource type="PackedScene" uid="uid://cx5t0lk1frgn2" path="res://scenes/projectile/torch.tscn" id="20_3f6c5"]
 [ext_resource type="Script" path="res://scenes/player/tool_bar.gd" id="20_akytf"]
 [ext_resource type="PackedScene" uid="uid://cj7mjnnov1jiq" path="res://scenes/player/debug_circle.tscn" id="20_capy2"]
+[ext_resource type="Texture2D" uid="uid://cmsofbqengwtf" path="res://assets/textures/icon/icon-torch.png" id="20_ii0u8"]
 [ext_resource type="PackedScene" uid="uid://cj44eljqklllk" path="res://scenes/projectile/potion_oil.tscn" id="21_12ehp"]
+[ext_resource type="Texture2D" uid="uid://dlor8yt37nk47" path="res://assets/textures/icon/icon-torch-full.png" id="21_spx4k"]
 [ext_resource type="AudioStream" uid="uid://sl2rq8fwd4mh" path="res://assets/audio/SFXMagicBoltCast2.ogg" id="22_1s61m"]
 [ext_resource type="Texture2D" uid="uid://5cl3ivaiy1tn" path="res://assets/textures/resource/resource_shadow.png" id="22_2cmqr"]
 [ext_resource type="Script" path="res://scenes/hud/mouse_over_handler.gd" id="22_30ic7"]
 [ext_resource type="PackedScene" uid="uid://caimb710mdulv" path="res://scenes/projectile/potion_wood.tscn" id="22_i3eab"]
+[ext_resource type="Texture2D" uid="uid://cl5iw1n8edw7j" path="res://assets/textures/icon/icon-pickaxe.png" id="22_rjnox"]
 [ext_resource type="AudioStream" uid="uid://ckrrxrss41ydo" path="res://assets/audio/SFXPotionSelected.ogg" id="22_vevts"]
 [ext_resource type="PackedScene" uid="uid://bijsw4pri2ff" path="res://scenes/projectile/potion_stone.tscn" id="23_65kor"]
 [ext_resource type="AudioStream" uid="uid://o23of6cpw8qf" path="res://assets/audio/SFXMagicBoltCast3.ogg" id="23_a2iab"]
+[ext_resource type="Texture2D" uid="uid://dxsb05hlpce5t" path="res://assets/textures/icon/icon-pickaxe-full.png" id="23_c2lly"]
 [ext_resource type="Texture2D" uid="uid://c0f67wjooigon" path="res://assets/textures/resource/resource_fire.png" id="23_c6f8w"]
 [ext_resource type="PackedScene" uid="uid://cqj3ms8wjn564" path="res://scenes/projectile/potion_quartz.tscn" id="24_50sjw"]
+[ext_resource type="Texture2D" uid="uid://c3whl0vb4wi2d" path="res://assets/textures/potion/potion_grayscale.png" id="24_b7qo8"]
 [ext_resource type="AudioStream" uid="uid://bt50416hqjcxb" path="res://assets/audio/SFXMagicBoltCast.ogg" id="24_m7fgo"]
 [ext_resource type="Texture2D" uid="uid://q37qqy3fjdg2" path="res://assets/textures/resource/resource_quartz.png" id="24_qssr7"]
+[ext_resource type="Texture2D" uid="uid://klv2cy861ymq" path="res://assets/textures/potion/potion_wood.png" id="25_a2cog"]
 [ext_resource type="Texture2D" uid="uid://bi6hufoa61ksj" path="res://assets/textures/resource/resource_wood.png" id="25_lh07w"]
 [ext_resource type="PackedScene" uid="uid://j6ftocfpm1hl" path="res://scenes/projectile/bolt.tscn" id="25_xb5cv"]
 [ext_resource type="Script" path="res://scenes/player/tool_inventory.gd" id="25_yxm1x"]
 [ext_resource type="Texture2D" uid="uid://b12vk7snwti44" path="res://assets/textures/resource/resource_fruit.png" id="26_tx8vj"]
+[ext_resource type="Texture2D" uid="uid://uomfp0vrpvlq" path="res://assets/textures/enemy/profile/grayscale_sprite.png" id="26_wbtat"]
+[ext_resource type="Texture2D" uid="uid://b54vaj87h68p5" path="res://assets/textures/enemy/profile/tree_sprite.png" id="27_qrr3g"]
 [ext_resource type="Texture2D" uid="uid://cp74hu4ij71w1" path="res://assets/textures/resource/resource_stone.png" id="27_wwljy"]
 [ext_resource type="AudioStream" uid="uid://bx485s10qbsuq" path="res://assets/audio/SFXPotionThrow.ogg" id="28_dd6wx"]
 [ext_resource type="Script" path="res://scenes/light/light_manager.gd" id="28_m2bqy"]
@@ -141,6 +155,24 @@ corner_detail = 20
 
 [sub_resource type="Theme" id="Theme_f8suf"]
 default_font_size = 32
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_indfn"]
+texture = ExtResource("15_jp3su")
+texture_margin_left = 7.0
+texture_margin_top = 5.0
+texture_margin_right = 7.0
+texture_margin_bottom = 5.0
+modulate_color = Color(0.564962, 0.564962, 0.564962, 1)
+
+[sub_resource type="Theme" id="Theme_c0aqm"]
+Button/fonts/font = ExtResource("10_p1sjc")
+Label/fonts/font = ExtResource("10_p1sjc")
+Label/styles/normal = null
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_indfn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l0u8x"]
+texture = ExtResource("18_snu3l")
+modulate_color = Color(0.473976, 0.473976, 0.473976, 1)
 
 [sub_resource type="Theme" id="Theme_oumiu"]
 Button/fonts/font = ExtResource("10_p1sjc")
@@ -369,8 +401,11 @@ text = "Daytime
 "
 horizontal_alignment = 1
 
-[node name="ToolBarHud" parent="HUD" instance=ExtResource("9_dlv2r")]
+[node name="ToolBarHud" parent="HUD" node_paths=PackedStringArray("tool_info_hud") instance=ExtResource("9_dlv2r")]
 mouse_filter = 1
+names = Array[String](["Magic Bolt", "Torch", "Pickaxe", "Potion", "Summon Sprite"])
+descriptions = Array[String](["Deals damage to enemies.", "Provides light that slows enemies. Sets objects and enemies ablaze. Especially good against trees.", "Destroys objects and damages enemies. Especially good against rocks.", "Throws potions that transform objects into other materials.", "Creates ally shadow sprites that fight for you."])
+tool_info_hud = NodePath("../ToolInfoHud")
 
 [node name="PotionCraftMenu" parent="HUD" instance=ExtResource("7_urdin")]
 anchors_preset = 4
@@ -434,6 +469,261 @@ offset_left = 378.667
 offset_top = 76.0
 offset_right = 378.667
 offset_bottom = 76.0
+
+[node name="ToolInfoHud" type="Control" parent="HUD" node_paths=PackedStringArray("name_text", "description_text")]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -950.0
+offset_top = -152.0
+offset_right = -150.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+script = ExtResource("14_7rdqt")
+name_text = NodePath("Name")
+description_text = NodePath("Description")
+
+[node name="Background" type="ColorRect" parent="HUD/ToolInfoHud"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.596078)
+
+[node name="Name" type="Label" parent="HUD/ToolInfoHud"]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 775.0
+offset_bottom = 59.0
+theme = SubResource("Theme_f8suf")
+theme_override_fonts/font = ExtResource("10_p1sjc")
+theme_override_font_sizes/font_size = 48
+text = "Daytime
+"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Description" type="Label" parent="HUD/ToolInfoHud"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 53.0
+offset_right = -25.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_f8suf")
+theme_override_colors/font_color = Color(0.724643, 0.724643, 0.724643, 1)
+theme_override_fonts/font = ExtResource("10_p1sjc")
+theme_override_font_sizes/font_size = 32
+text = "Daytime
+"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+offset_left = 1.0
+offset_top = 955.0
+offset_right = 744.0
+offset_bottom = 1080.0
+mouse_filter = 0
+theme = SubResource("Theme_c0aqm")
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="ActionsContainer" type="HBoxContainer" parent="HUD/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_c0aqm")
+theme_override_constants/separation = 0
+
+[node name="AttackButton" type="TextureButton" parent="HUD/MarginContainer/ActionsContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = SubResource("Theme_c0aqm")
+action_mode = 0
+texture_normal = ExtResource("16_jhg5a")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("17_2k7yj")
+
+[node name="Panel" type="Panel" parent="HUD/MarginContainer/ActionsContainer/AttackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_l0u8x")
+
+[node name="ProgressOverlay" type="TextureProgressBar" parent="HUD/MarginContainer/ActionsContainer/AttackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 176.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.313, 0.313)
+theme = SubResource("Theme_c0aqm")
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("19_7vkgn")
+
+[node name="TorchButton" type="TextureButton" parent="HUD/MarginContainer/ActionsContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = SubResource("Theme_c0aqm")
+action_mode = 0
+texture_normal = ExtResource("20_ii0u8")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("17_2k7yj")
+
+[node name="Panel" type="Panel" parent="HUD/MarginContainer/ActionsContainer/TorchButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_l0u8x")
+
+[node name="ProgressOverlay" type="TextureProgressBar" parent="HUD/MarginContainer/ActionsContainer/TorchButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 176.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.313, 0.313)
+theme = SubResource("Theme_c0aqm")
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("21_spx4k")
+
+[node name="DestroyButton" type="TextureButton" parent="HUD/MarginContainer/ActionsContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = SubResource("Theme_c0aqm")
+action_mode = 0
+texture_normal = ExtResource("22_rjnox")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("17_2k7yj")
+
+[node name="Panel" type="Panel" parent="HUD/MarginContainer/ActionsContainer/DestroyButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_l0u8x")
+
+[node name="ProgressOverlay" type="TextureProgressBar" parent="HUD/MarginContainer/ActionsContainer/DestroyButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 176.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.313, 0.313)
+theme = SubResource("Theme_c0aqm")
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("23_c2lly")
+
+[node name="PotionButton" type="TextureButton" parent="HUD/MarginContainer/ActionsContainer"]
+custom_minimum_size = Vector2(70, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = SubResource("Theme_c0aqm")
+action_mode = 0
+texture_normal = ExtResource("24_b7qo8")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("17_2k7yj")
+
+[node name="Panel" type="Panel" parent="HUD/MarginContainer/ActionsContainer/PotionButton"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 9.0
+offset_right = 23.0
+offset_bottom = 34.0
+scale = Vector2(3.64, 3.28)
+theme_override_styles/panel = SubResource("StyleBoxTexture_l0u8x")
+
+[node name="ProgressOverlay" type="TextureProgressBar" parent="HUD/MarginContainer/ActionsContainer/PotionButton"]
+layout_mode = 1
+offset_top = 15.0
+offset_right = 176.0
+offset_bottom = 191.0
+scale = Vector2(0.4, 0.4)
+theme = SubResource("Theme_c0aqm")
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("25_a2cog")
+
+[node name="SummonButton" type="TextureButton" parent="HUD/MarginContainer/ActionsContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = SubResource("Theme_c0aqm")
+action_mode = 0
+texture_normal = ExtResource("26_wbtat")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("17_2k7yj")
+
+[node name="Panel" type="Panel" parent="HUD/MarginContainer/ActionsContainer/SummonButton"]
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 25.0
+scale = Vector2(3.68, 3.24)
+theme_override_styles/panel = SubResource("StyleBoxTexture_l0u8x")
+
+[node name="ProgressOverlay" type="TextureProgressBar" parent="HUD/MarginContainer/ActionsContainer/SummonButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 9.0
+offset_right = 176.0
+offset_bottom = 185.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.313, 0.24)
+theme = SubResource("Theme_c0aqm")
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("27_qrr3g")
 
 [node name="DialogueManager" parent="." node_paths=PackedStringArray("textbox", "speaker", "pause_control", "player_default_portrait", "villain_default_portrait", "minion_default_portrait") instance=ExtResource("8_7d0d0")]
 process_mode = 3

@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bngi68ri8c1es" path="res://assets/textures/enemy/profile/wind_sprite.png" id="22_1vx5c"]
 [ext_resource type="Texture2D" uid="uid://cis2vokqjryh7" path="res://assets/textures/enemy/profile/fire_sprite.png" id="23_fx8xj"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ml0no"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q60jy"]
 texture = ExtResource("2_oghpe")
 texture_margin_left = 7.0
 texture_margin_top = 5.0
@@ -38,7 +38,7 @@ modulate_color = Color(0.564962, 0.564962, 0.564962, 1)
 Button/fonts/font = ExtResource("1_ymvhu")
 Label/fonts/font = ExtResource("1_ymvhu")
 Label/styles/normal = null
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_ml0no")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_q60jy")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fne3g"]
 bg_color = Color(0.210972, 0.108474, 0.00726687, 1)
