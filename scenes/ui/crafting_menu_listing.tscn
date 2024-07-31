@@ -2,25 +2,25 @@
 
 [ext_resource type="Script" path="res://scenes/ui/crafting_menu_listing.gd" id="1_82gia"]
 [ext_resource type="Theme" uid="uid://usfabbbmsm3h" path="res://assets/themes/PotionCraftTheme.tres" id="1_dibny"]
+[ext_resource type="Texture2D" uid="uid://red1uw8onyrb" path="res://assets/textures/resource/small/resource_fire.png" id="2_3uns2"]
 [ext_resource type="Texture2D" uid="uid://3fi7oa62uert" path="res://assets/textures/potion/quartz_potion.png" id="2_475mh"]
-[ext_resource type="Texture2D" uid="uid://c0f67wjooigon" path="res://assets/textures/resource/resource_fire.png" id="2_pn0g7"]
-[ext_resource type="Texture2D" uid="uid://5cl3ivaiy1tn" path="res://assets/textures/resource/resource_shadow.png" id="3_6e1kf"]
-[ext_resource type="Texture2D" uid="uid://bi6hufoa61ksj" path="res://assets/textures/resource/resource_wood.png" id="4_8rn05"]
-[ext_resource type="Texture2D" uid="uid://cp74hu4ij71w1" path="res://assets/textures/resource/resource_stone.png" id="5_0x45c"]
-[ext_resource type="Texture2D" uid="uid://b12vk7snwti44" path="res://assets/textures/resource/resource_fruit.png" id="6_j2ca6"]
-[ext_resource type="Texture2D" uid="uid://q37qqy3fjdg2" path="res://assets/textures/resource/resource_quartz.png" id="7_b1tqv"]
+[ext_resource type="Texture2D" uid="uid://b058yp8lg0c02" path="res://assets/textures/resource/small/resource_shadow.png" id="3_flr1n"]
+[ext_resource type="Texture2D" uid="uid://c3pkr1ox465r2" path="res://assets/textures/resource/small/resource_wood.png" id="4_3ktw6"]
+[ext_resource type="Texture2D" uid="uid://dxmv2k5uhbywe" path="res://assets/textures/resource/small/resource_stone.png" id="5_ptyuh"]
+[ext_resource type="Texture2D" uid="uid://b3cjvgcrtxvd4" path="res://assets/textures/resource/small/resource_fruit.png" id="6_1fll2"]
+[ext_resource type="Texture2D" uid="uid://bw1wfrr353bjd" path="res://assets/textures/resource/small/resource_quartz.png" id="7_ejr75"]
 [ext_resource type="PackedScene" uid="uid://bkupopcgs5qps" path="res://recipe_listing.tscn" id="8_m7dj6"]
 
 [node name="CraftingMenuListing" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_82gia")
-fire_crystal = ExtResource("2_pn0g7")
-shadow_sand = ExtResource("3_6e1kf")
-leaf = ExtResource("4_8rn05")
-rock = ExtResource("5_0x45c")
-fruit = ExtResource("6_j2ca6")
-quartz = ExtResource("7_b1tqv")
+fire_crystal = ExtResource("2_3uns2")
+shadow_sand = ExtResource("3_flr1n")
+leaf = ExtResource("4_3ktw6")
+rock = ExtResource("5_ptyuh")
+fruit = ExtResource("6_1fll2")
+quartz = ExtResource("7_ejr75")
 recipe_listing = ExtResource("8_m7dj6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

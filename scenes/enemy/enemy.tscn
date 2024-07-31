@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c2a8ngge05k7t"]
+[gd_scene load_steps=18 format=3 uid="uid://c2a8ngge05k7t"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_qvcdo"]
 [ext_resource type="Script" path="res://scenes/health.gd" id="2_2tcm3"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://djh62cxoi5pwm" path="res://assets/audio/SFXEnemyGetsHit7.ogg" id="12_7vsi2"]
 [ext_resource type="AudioStream" uid="uid://b8duc2x3v40qh" path="res://assets/audio/SFXEnemyGetsHit.ogg" id="13_pduw2"]
 [ext_resource type="Script" path="res://scenes/burning_state.gd" id="14_hd7jp"]
+[ext_resource type="AudioStream" uid="uid://dcjmp2fm33o6m" path="res://assets/audio/SFXMagicBoltHitsEnemy.ogg" id="16_dv7uc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xycco"]
 size = Vector2(22.3684, 23.4211)
@@ -98,6 +99,14 @@ script = ExtResource("14_hd7jp")
 
 [node name="LightAnchor" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="DamageAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"Effects"
+script = ExtResource("6_tmba5")
+audio_tracks = Array[AudioStream]([ExtResource("16_dv7uc")])
+min_pitch = 1.0
+max_pitch = 1.3
 
 [connection signal="changed" from="Health" to="Healthbar" method="_on_health_changed"]
 [connection signal="death" from="Health" to="." method="_on_health_death"]

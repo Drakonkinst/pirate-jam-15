@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=115 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -72,6 +72,7 @@
 [ext_resource type="PackedScene" uid="uid://c8pxl8kvqxfqw" path="res://scenes/light/light_quartz.tscn" id="30_52igg"]
 [ext_resource type="AudioStream" uid="uid://dme4j5gng2i3k" path="res://assets/audio/SFXPickaxeHit.ogg" id="30_tgwhu"]
 [ext_resource type="AudioStream" uid="uid://bj1altj7pui7m" path="res://assets/audio/SFXPotionThrow3.ogg" id="30_wlvrs"]
+[ext_resource type="AudioStream" uid="uid://8ujajk7k8kqf" path="res://assets/audio/SFXSummonSelected.ogg" id="31_xtepc"]
 [ext_resource type="AudioStream" uid="uid://b2nopdgqiolbn" path="res://assets/audio/SFXSummon.ogg" id="34_loc10"]
 [ext_resource type="PackedScene" uid="uid://cu6wwp5my8ay" path="res://scenes/effect/explosion.tscn" id="36_y78bo"]
 [ext_resource type="PackedScene" uid="uid://5ye7ihrmklny" path="res://scenes/effect/splat.tscn" id="37_6rhao"]
@@ -100,6 +101,7 @@
 [ext_resource type="AudioStream" uid="uid://0ompo3r7kiab" path="res://assets/audio/SFXMenuButtonSelect.ogg" id="78_rohyd"]
 [ext_resource type="AudioStream" uid="uid://c6tajhavixgha" path="res://assets/audio/SFXFireLOOP.ogg" id="80_tnref"]
 [ext_resource type="Script" path="res://scenes/audio/fire_audio.gd" id="81_tor4d"]
+[ext_resource type="AudioStream" uid="uid://dcjmp2fm33o6m" path="res://assets/audio/SFXMagicBoltHitsEnemy.ogg" id="84_l0jrm"]
 [ext_resource type="AudioStream" uid="uid://dgfyxil3bgkr1" path="res://assets/audio/SFXTreeBreaks.ogg" id="85_mupes"]
 [ext_resource type="Script" path="res://scenes/audio/background_music.gd" id="86_c2qol"]
 [ext_resource type="AudioStream" uid="uid://corjypnip0syj" path="res://assets/audio/SFXRockBreaks.ogg" id="86_icjs6"]
@@ -628,8 +630,10 @@ script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("22_vevts")])
 
 [node name="EquipSummonAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
+volume_db = -5.0
 bus = &"Effects"
 script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("31_xtepc")])
 
 [node name="DoAttackAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
 volume_db = -10.0
@@ -850,6 +854,14 @@ script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("34_loc10")])
 min_pitch = 0.75
 max_pitch = 1.2
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="World/ProjectileManager"]
+unique_name_in_owner = true
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("84_l0jrm")])
+min_pitch = 1.0
+max_pitch = 1.3
 
 [node name="DayCycleManager" type="Node2D" parent="World"]
 script = ExtResource("67_l7r7b")

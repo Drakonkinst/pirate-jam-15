@@ -28,6 +28,7 @@ const INVERT_Y: Vector2 = Vector2(1.0, -1.0)
 @onready var splash_audio: AudioRandomizer = %SplashAudio
 @onready var pickaxe_audio: AudioRandomizer = %PickaxeAudio
 @onready var summon_audio: AudioRandomizer = %SummonAudio
+@onready var death_audio: AudioRandomizer = %DeathAudio
 
 func _get_scene_for_projectile(type: ThrownProjectile.Type) -> PackedScene:
     match type:
@@ -83,6 +84,9 @@ func play_pickaxe_audio() -> void:
 
 func play_summon_audio() -> void:
     summon_audio.play_random()
+
+func play_death_audio() -> void:
+    death_audio.play_random()
 
 func throw_projectile(projectile: ThrownProjectile.Type, mouse_pos: Vector2) -> bool:
     if not is_valid_target(mouse_pos, true):

@@ -19,6 +19,7 @@ signal crafting_end
 
 @export var image: CompressedTexture2D
 @onready var craft_audio: AudioRandomizer = $CraftAudio
+@onready var insufficient_resources_audio: AudioRandomizer = $InsufficientResources
 
 
 @export var fire_crystal: CompressedTexture2D
@@ -95,6 +96,7 @@ func try_expend_resources() -> bool:
         var held_resource = player_resources.get_count(crafting_component.resource_type)
         if cost > held_resource:
             print("Not enough resources")
+            insufficient_resources_audio.play_random()
             return false
 
     # Reduce resources if so

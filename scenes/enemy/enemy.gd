@@ -21,6 +21,7 @@ var is_ally: bool = false
 @onready var burning_state: BurningState = %BurningState
 @onready var flaming_overlay: Node2D = %Flaming
 @onready var light_anchor: Node2D = %LightAnchor
+@onready var damage_audio: AudioRandomizer = %DamageAudio
 var size_x: float
 var light_circle: LightCircle
 var loot: Dictionary
@@ -81,8 +82,13 @@ func attack(tile: GridTile) -> bool:
     attack_audio.play_random()
     return true
 
-func damage(val):
+func damage(val, is_magic_bolt: bool = false):
+    if is_magic_bolt:
+        damage_audio.play_random()
     health.damage(val)
+    if is_magic_bolt:
+        if health.health <= 0:
+            GlobalVariables.get_projectile_manager().play_death_audio()
 
 func _create_pickup_drops():
     for item: Pickup.PickupType in loot.keys():

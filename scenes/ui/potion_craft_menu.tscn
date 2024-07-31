@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dyifllpcx6yhy"]
+[gd_scene load_steps=24 format=3 uid="uid://dyifllpcx6yhy"]
 
 [ext_resource type="Theme" uid="uid://usfabbbmsm3h" path="res://assets/themes/PotionCraftTheme.tres" id="1_7pvp4"]
 [ext_resource type="Script" path="res://scenes/ui/potion_craft_menu.gd" id="1_kcbrr"]
@@ -9,14 +9,16 @@
 [ext_resource type="Script" path="res://scenes/audio/audio_randomizer.gd" id="6_7dv8b"]
 [ext_resource type="Texture2D" uid="uid://d0qqo84efcd8e" path="res://assets/textures/potion/stone_potion.png" id="6_tg5ej"]
 [ext_resource type="Resource" uid="uid://c8d0r05iwukg" path="res://data/crafting/wood_potion_data.tres" id="6_ykciu"]
-[ext_resource type="AudioStream" uid="uid://ckrrxrss41ydo" path="res://assets/audio/SFXPotionSelected.ogg" id="7_2dmas"]
 [ext_resource type="Resource" uid="uid://87a3i3gj0s0y" path="res://data/crafting/oil_potion_data.tres" id="7_67s07"]
+[ext_resource type="AudioStream" uid="uid://bauvqhawiucb2" path="res://assets/audio/SFXPotionBrewed.ogg" id="7_s4jkv"]
+[ext_resource type="AudioStream" uid="uid://nmxvsvys07ss" path="res://assets/audio/SFXInsufficientMaterials.ogg" id="8_pnof2"]
 [ext_resource type="Texture2D" uid="uid://3fi7oa62uert" path="res://assets/textures/potion/quartz_potion.png" id="11_rkwxo"]
 [ext_resource type="Texture2D" uid="uid://uibvlcal4fy0" path="res://assets/textures/potion/potion_oil.png" id="13_3anw1"]
 [ext_resource type="Resource" uid="uid://gly2o2jw2ci7" path="res://data/crafting/wood_sprite_data.tres" id="14_4lya5"]
 [ext_resource type="Texture2D" uid="uid://b54vaj87h68p5" path="res://assets/textures/enemy/profile/tree_sprite.png" id="15_j2b14"]
 [ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/rock_sprite.png" id="16_2uj6u"]
 [ext_resource type="Resource" uid="uid://cc0yuseikqdtx" path="res://data/crafting/rock_sprite_data.tres" id="16_3xdin"]
+[ext_resource type="AudioStream" uid="uid://8ujajk7k8kqf" path="res://assets/audio/SFXSummonSelected.ogg" id="17_4uw6k"]
 [ext_resource type="Texture2D" uid="uid://bngi68ri8c1es" path="res://assets/textures/enemy/profile/wind_sprite.png" id="17_w7q0i"]
 [ext_resource type="Texture2D" uid="uid://cis2vokqjryh7" path="res://assets/textures/enemy/profile/fire_sprite.png" id="18_cjwhu"]
 [ext_resource type="Resource" uid="uid://b6hfjndyjrhts" path="res://data/crafting/wind_sprite_data.tres" id="18_t5n4p"]
@@ -61,7 +63,15 @@ image = ExtResource("5_l7kgf")
 volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("6_7dv8b")
-audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+audio_tracks = Array[AudioStream]([ExtResource("7_s4jkv")])
+
+[node name="InsufficientResources" type="AudioStreamPlayer" parent="PanelContainer/Listings/WoodListing"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("8_pnof2")])
+min_pitch = 0.75
+max_pitch = 0.75
 
 [node name="StoneListing" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
 layout_mode = 2
@@ -73,7 +83,15 @@ image = ExtResource("6_tg5ej")
 volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("6_7dv8b")
-audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+audio_tracks = Array[AudioStream]([ExtResource("7_s4jkv")])
+
+[node name="InsufficientResources" type="AudioStreamPlayer" parent="PanelContainer/Listings/StoneListing"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("8_pnof2")])
+min_pitch = 0.75
+max_pitch = 0.75
 
 [node name="QuartzListing" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
 layout_mode = 2
@@ -85,7 +103,15 @@ image = ExtResource("11_rkwxo")
 volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("6_7dv8b")
-audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+audio_tracks = Array[AudioStream]([ExtResource("7_s4jkv")])
+
+[node name="InsufficientResources" type="AudioStreamPlayer" parent="PanelContainer/Listings/QuartzListing"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("8_pnof2")])
+min_pitch = 1.2
+max_pitch = 1.2
 
 [node name="OilListing" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
 layout_mode = 2
@@ -97,7 +123,15 @@ image = ExtResource("13_3anw1")
 volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("6_7dv8b")
-audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+audio_tracks = Array[AudioStream]([ExtResource("7_s4jkv")])
+
+[node name="InsufficientResources" type="AudioStreamPlayer" parent="PanelContainer/Listings/OilListing"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("8_pnof2")])
+min_pitch = 1.2
+max_pitch = 1.2
 
 [node name="AllyListing" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
 layout_mode = 2
@@ -109,7 +143,15 @@ image = ExtResource("15_j2b14")
 volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("6_7dv8b")
-audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+audio_tracks = Array[AudioStream]([ExtResource("17_4uw6k")])
+
+[node name="InsufficientResources" type="AudioStreamPlayer" parent="PanelContainer/Listings/AllyListing"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("8_pnof2")])
+min_pitch = 1.2
+max_pitch = 1.2
 
 [node name="AllyListing2" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
 layout_mode = 2
@@ -121,7 +163,15 @@ image = ExtResource("16_2uj6u")
 volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("6_7dv8b")
-audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+audio_tracks = Array[AudioStream]([ExtResource("17_4uw6k")])
+
+[node name="InsufficientResources" type="AudioStreamPlayer" parent="PanelContainer/Listings/AllyListing2"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("8_pnof2")])
+min_pitch = 1.2
+max_pitch = 1.2
 
 [node name="AllyListing3" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
 layout_mode = 2
@@ -133,7 +183,15 @@ image = ExtResource("17_w7q0i")
 volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("6_7dv8b")
-audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+audio_tracks = Array[AudioStream]([ExtResource("17_4uw6k")])
+
+[node name="InsufficientResources" type="AudioStreamPlayer" parent="PanelContainer/Listings/AllyListing3"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("8_pnof2")])
+min_pitch = 1.2
+max_pitch = 1.2
 
 [node name="AllyListing4" parent="PanelContainer/Listings" instance=ExtResource("3_68ucw")]
 layout_mode = 2
@@ -145,7 +203,15 @@ image = ExtResource("18_cjwhu")
 volume_db = -10.0
 bus = &"Effects"
 script = ExtResource("6_7dv8b")
-audio_tracks = Array[AudioStream]([ExtResource("7_2dmas")])
+audio_tracks = Array[AudioStream]([ExtResource("17_4uw6k")])
+
+[node name="InsufficientResources" type="AudioStreamPlayer" parent="PanelContainer/Listings/AllyListing4"]
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("6_7dv8b")
+audio_tracks = Array[AudioStream]([ExtResource("8_pnof2")])
+min_pitch = 1.2
+max_pitch = 1.2
 
 [node name="OpenMenuArea" type="Control" parent="."]
 custom_minimum_size = Vector2(50, 100)
