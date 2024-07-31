@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=129 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -147,6 +147,49 @@ corner_detail = 20
 
 [sub_resource type="Theme" id="Theme_f8suf"]
 default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ruum"]
+bg_color = Color(0.984314, 0.85098, 0.164706, 0.623529)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 3
+shadow_size = 5
+shadow_offset = Vector2(3.305, 3.555)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77sbj"]
+bg_color = Color(0.858824, 0.698039, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 3
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yph87"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
 
 [sub_resource type="Theme" id="Theme_oumiu"]
 Button/fonts/font = ExtResource("10_p1sjc")
@@ -392,8 +435,15 @@ offset_top = 142.0
 offset_right = 150.0
 offset_bottom = 217.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.344076, 0.344076, 0.344076, 1)
+theme_override_colors/font_outline_color = Color(1, 0.683333, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_p1sjc")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ruum")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77sbj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yph87")
 text = "Start Round"
 
 [node name="ToolBarHud" parent="HUD" node_paths=PackedStringArray("tool_info_hud") instance=ExtResource("9_dlv2r")]

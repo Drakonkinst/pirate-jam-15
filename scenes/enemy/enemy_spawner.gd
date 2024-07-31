@@ -67,8 +67,9 @@ func _ready():
 func _process(delta):
     if not spawning:
         if get_num_enemies() <= 0 and round_in_progress:
-            wave_ended.emit()
             round_in_progress = false
+            await get_tree().create_timer(3.0).timeout
+            wave_ended.emit()
 
         return
     
