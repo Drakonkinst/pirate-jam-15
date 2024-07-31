@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=125 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -112,6 +112,10 @@
 [ext_resource type="Resource" uid="uid://bvlvh38ya4k5i" path="res://data/dialogue/night_3.tres" id="88_aqxax"]
 [ext_resource type="Resource" uid="uid://d35rsi2rpc46j" path="res://data/dialogue/night_4.tres" id="89_mhsa2"]
 [ext_resource type="Resource" uid="uid://cp5ytkox1lf4v" path="res://data/dialogue/night_5.tres" id="90_iru54"]
+[ext_resource type="AudioStream" uid="uid://bd3b5f42356ie" path="res://assets/audio/MUSICBackground2.ogg" id="99_4386c"]
+[ext_resource type="AudioStream" uid="uid://bjcr5du8bdd7i" path="res://assets/audio/MUSICBackground3.ogg" id="100_ppgwg"]
+[ext_resource type="AudioStream" uid="uid://cb6li3lvgxaox" path="res://assets/audio/MUSICBackground4.ogg" id="101_ki1ut"]
+[ext_resource type="AudioStream" uid="uid://bqp5mx7qsue42" path="res://assets/audio/MUSICBackground5.ogg" id="102_h4fah"]
 
 [sub_resource type="Theme" id="Theme_yptux"]
 
@@ -1024,6 +1028,7 @@ stream = ExtResource("49_dv2lr")
 autoplay = true
 bus = &"Music"
 script = ExtResource("86_c2qol")
+tracks = Array[AudioStream]([ExtResource("99_4386c"), ExtResource("100_ppgwg"), ExtResource("101_ki1ut"), ExtResource("102_h4fah"), ExtResource("49_dv2lr")])
 
 [node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("tree_spawn_audio", "rock_spawn_audio")]
 z_index = 1
