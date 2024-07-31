@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://usfabbbmsm3h"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://usfabbbmsm3h"]
 
 [ext_resource type="FontFile" uid="uid://k16e325u2v05" path="res://assets/themes/MedievalSharp-Bold.ttf" id="1_7n4ab"]
 
@@ -7,8 +7,13 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unc8y"]
 bg_color = Color(0.788235, 0.188235, 0.0666667, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77kkw"]
+bg_color = Color(0.22, 0.13486, 0.0308, 1)
+
 [resource]
 Button/fonts/font = ExtResource("1_7n4ab")
 Button/styles/focus = SubResource("StyleBoxEmpty_qx4po")
 Button/styles/pressed = SubResource("StyleBoxFlat_unc8y")
+HBoxContainer/constants/separation = 4
 Label/fonts/font = ExtResource("1_7n4ab")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_77kkw")

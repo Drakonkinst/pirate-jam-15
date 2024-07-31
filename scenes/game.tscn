@@ -1102,7 +1102,6 @@ script = ExtResource("81_tor4d")
 [connection signal="day_ended" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_day_ended"]
 [connection signal="day_ended" from="World/DayCycleManager" to="World/Enemies" method="_on_day_cycle_manager_day_ended"]
 [connection signal="day_started" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_day_started"]
-[connection signal="game_ended" from="World/DayCycleManager" to="World/Enemies" method="_on_day_cycle_manager_game_ended"]
 [connection signal="interval_passed" from="World/DayCycleManager" to="HUD/DayTrackerContainer" method="_on_day_cycle_manager_interval_passed"]
 [connection signal="timeout" from="World/DayCycleManager/Interval" to="World/DayCycleManager" method="_on_interval_timeout"]
 [connection signal="game_over" from="Player/BaseHealth" to="." method="_on_base_health_game_over"]

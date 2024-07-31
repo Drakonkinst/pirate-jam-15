@@ -24,6 +24,9 @@
 [ext_resource type="Resource" uid="uid://b6hfjndyjrhts" path="res://data/crafting/wind_sprite_data.tres" id="18_t5n4p"]
 [ext_resource type="Resource" uid="uid://cfrp7hesa85er" path="res://data/crafting/fire_sprite_data.tres" id="20_u4ukf"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6kga"]
+bg_color = Color(0.21, 0.1029, 0.021, 1)
+
 [node name="PotionCraftMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -238,6 +241,7 @@ offset_right = 48.0
 offset_bottom = 235.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_u6kga")
 text = "CRAFT"
 
 [connection signal="pressed" from="OpenMenuArea/OpenButton" to="." method="_on_button_pressed"]

@@ -9,24 +9,24 @@ signal start_game
 @onready var credits_menu: CreditsMenu = %CreditsMenu
 
 func _ready() -> void:
-	GlobalVariables.unmuffle_music()
-	get_tree().paused = false
-	settings_menu.hide()
-	credits_menu.hide()
+    GlobalVariables.unmuffle_music()
+    get_tree().paused = false
+    settings_menu.hide()
+    credits_menu.hide()
 
 func _on_start_menu_open_settings() -> void:
-	settings_menu.show()
+    settings_menu.show()
 
 func _on_start_menu_open_credits() -> void:
-	credits_menu.show()
+    credits_menu.show()
 
 func _on_start_menu_start_game() -> void:
-	start_game.emit()
+    start_game.emit()
 
 func _on_settings_menu_pressed_back() -> void:
-	start_menu.on_enable()
-	settings_menu.hide()
+    start_menu.on_enable()
+    settings_menu.hide()
 
 func _on_credits_menu_pressed_back() -> void:
-	start_menu.on_enable()
-	credits_menu.hide()
+    start_menu.on_enable()
+    credits_menu.hide()

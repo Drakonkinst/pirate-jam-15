@@ -69,6 +69,7 @@ func _process(delta):
         if get_num_enemies() <= 0 and round_in_progress:
             wave_ended.emit()
             round_in_progress = false
+
         return
     
     game_timer += delta

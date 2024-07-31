@@ -11,27 +11,27 @@ signal open_credits
 @onready var block_out: ColorRect = $BlockOut
 
 func _ready():
-	block_out.hide()
+    block_out.hide()
 
 func on_enable():
-	block_out.hide()
+    block_out.hide()
 
 func _on_play_button_pressed() -> void:
-	start_game.emit()
+    start_game.emit()
 
 func _on_settings_button_pressed():
-	ui_click_audio.play()
-	block_out.show()
-	open_settings.emit()
+    ui_click_audio.play()
+    block_out.show()
+    open_settings.emit()
 
 func _on_credits_button_pressed():
-	ui_click_audio.play()
-	block_out.show()
-	open_credits.emit()
+    ui_click_audio.play()
+    block_out.show()
+    open_credits.emit()
 
 func _on_exit_button_pressed():
-	ui_click_audio.play()
-	get_tree().quit()
+    ui_click_audio.play()
+    get_tree().quit()
 
 
 

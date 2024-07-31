@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkupopcgs5qps"]
 
 [ext_resource type="Texture2D" uid="uid://c0f67wjooigon" path="res://assets/textures/resource/resource_fire.png" id="1_fsr11"]
-[ext_resource type="FontFile" uid="uid://cslgns4mab5dp" path="res://assets/themes/DungGeunMo.ttf" id="1_vfjam"]
+[ext_resource type="Theme" uid="uid://t4eahik3spf0" path="res://assets/themes/SettingsButtons.tres" id="1_ps2ws"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iuj6c"]
 
@@ -11,13 +11,13 @@ offset_right = 74.0
 offset_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_ps2ws")
 
 [node name="Count" type="Label" parent="."]
 custom_minimum_size = Vector2(30, 10)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("1_vfjam")
 theme_override_font_sizes/font_size = 24
 text = "1
 "
