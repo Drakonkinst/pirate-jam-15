@@ -17,6 +17,7 @@ scale = Vector2(2.665, 2.665)
 disabled = true
 
 [node name="Sprite2D" parent="." index="1"]
+self_modulate = Color(0.447059, 0.796078, 0.905882, 1)
 position = Vector2(0, -3)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_rg6r8")

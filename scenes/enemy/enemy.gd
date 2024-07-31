@@ -16,6 +16,7 @@ var target_tile: GridTile = null
 var is_ally: bool = false
 
 @export var state_machine: StateMachine
+@export var ally_color_tint: Color
 @onready var sprite: AnimatedSprite2D = %Sprite
 @onready var health: Health = %Health
 @onready var burning_state: BurningState = %BurningState
@@ -68,6 +69,7 @@ func get_tile_ahead() -> GridTile:
 func set_ally() -> void:
     is_ally = true
     sprite.flip_h = true
+    sprite.self_modulate = ally_color_tint
 
 func get_current_tile() -> GridTile:
     var tile: GridTile = GlobalVariables.get_grid().screenspace_to_tile(global_position)

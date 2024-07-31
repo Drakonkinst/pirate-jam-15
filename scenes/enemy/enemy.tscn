@@ -29,6 +29,7 @@ collision_mask = 0
 script = ExtResource("1_qvcdo")
 attack_audio = NodePath("AttackAudio")
 state_machine = NodePath("StateMachine")
+ally_color_tint = Color(0.447059, 0.796078, 0.905882, 1)
 
 [node name="Health" type="Node" parent="."]
 unique_name_in_owner = true
