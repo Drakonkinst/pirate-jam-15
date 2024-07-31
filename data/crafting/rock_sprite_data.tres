@@ -10,11 +10,11 @@ resource_type = 0
 
 [sub_resource type="Resource" id="Resource_kn38o"]
 script = ExtResource("1_wltjr")
-count = 5
+count = 3
 resource_type = 5
 
 [resource]
 script = ExtResource("2_l0mrx")
 item = 4
 recipe_list = Array[ExtResource("1_wltjr")]([SubResource("Resource_t7f0n"), SubResource("Resource_kn38o")])
-crafting_time = 3.0
+crafting_time = 0.1

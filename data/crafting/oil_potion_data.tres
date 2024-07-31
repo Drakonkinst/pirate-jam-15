@@ -1,25 +1,20 @@
-[gd_resource type="Resource" script_class="CraftingData" load_steps=6 format=3 uid="uid://87a3i3gj0s0y"]
+[gd_resource type="Resource" script_class="CraftingData" load_steps=5 format=3 uid="uid://87a3i3gj0s0y"]
 
 [ext_resource type="Script" path="res://data/crafting/recipe_listing.gd" id="1_55q4b"]
 [ext_resource type="Script" path="res://data/crafting/crafting_data.gd" id="2_rfiyc"]
 
 [sub_resource type="Resource" id="Resource_71c3i"]
 script = ExtResource("1_55q4b")
-count = 3
-resource_type = 0
-
-[sub_resource type="Resource" id="Resource_llb7t"]
-script = ExtResource("1_55q4b")
-count = 10
-resource_type = 5
+count = 5
+resource_type = 4
 
 [sub_resource type="Resource" id="Resource_t7f0n"]
 script = ExtResource("1_55q4b")
-count = 5
+count = 1
 resource_type = 1
 
 [resource]
 script = ExtResource("2_rfiyc")
 item = 2
-recipe_list = Array[ExtResource("1_55q4b")]([SubResource("Resource_71c3i"), SubResource("Resource_llb7t"), SubResource("Resource_t7f0n")])
-crafting_time = 3.0
+recipe_list = Array[ExtResource("1_55q4b")]([SubResource("Resource_71c3i"), SubResource("Resource_t7f0n")])
+crafting_time = 0.1

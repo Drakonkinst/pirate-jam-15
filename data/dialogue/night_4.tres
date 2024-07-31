@@ -82,7 +82,7 @@ text = "You're delusional."
 
 [sub_resource type="Resource" id="Resource_xyopr"]
 script = ExtResource("1_q0gos")
-speaker = ExtResource("2_l4skp")
+speaker = ExtResource("3_nk4tr")
 text = "No. I'm certain."
 
 [resource]

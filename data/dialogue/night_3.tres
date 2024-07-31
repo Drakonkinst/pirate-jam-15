@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Conversation" load_steps=18 format=3 uid="uid://bvlvh38ya4k5i"]
+[gd_resource type="Resource" script_class="Conversation" load_steps=17 format=3 uid="uid://bvlvh38ya4k5i"]
 
 [ext_resource type="Script" path="res://scenes/dialogue/conversation_line.gd" id="1_v42ue"]
 [ext_resource type="Resource" uid="uid://cpitq8aifldof" path="res://data/dialogue/speaker_villain.tres" id="2_mfuvd"]
@@ -29,11 +29,6 @@ text = "Pretending as if you have any say in how nature carries itself."
 script = ExtResource("1_v42ue")
 speaker = ExtResource("2_mfuvd")
 text = "Ha. It's like we're kids again!"
-
-[sub_resource type="Resource" id="Resource_yfa16"]
-script = ExtResource("1_v42ue")
-speaker = ExtResource("2_mfuvd")
-text = "You would be fighting forever if you wish to free them from my command."
 
 [sub_resource type="Resource" id="Resource_clqsd"]
 script = ExtResource("1_v42ue")
@@ -72,4 +67,4 @@ text = "Then what are you waiting for? Defeat me. "
 
 [resource]
 script = ExtResource("4_0sci5")
-lines = Array[ExtResource("1_v42ue")]([SubResource("Resource_anqha"), SubResource("Resource_qsp5h"), SubResource("Resource_38oxr"), SubResource("Resource_5rmsy"), SubResource("Resource_gkdba"), SubResource("Resource_yfa16"), SubResource("Resource_clqsd"), SubResource("Resource_0dbvd"), SubResource("Resource_g73nn"), SubResource("Resource_b1u5o"), SubResource("Resource_mvvhj"), SubResource("Resource_3t5gn"), SubResource("Resource_g4w4t")])
+lines = Array[ExtResource("1_v42ue")]([SubResource("Resource_anqha"), SubResource("Resource_qsp5h"), SubResource("Resource_38oxr"), SubResource("Resource_5rmsy"), SubResource("Resource_gkdba"), SubResource("Resource_clqsd"), SubResource("Resource_0dbvd"), SubResource("Resource_g73nn"), SubResource("Resource_b1u5o"), SubResource("Resource_mvvhj"), SubResource("Resource_3t5gn"), SubResource("Resource_g4w4t")])
