@@ -26,6 +26,8 @@ const GRAVITY := 450.0
 const BOBBING_SPEED := 3.0
 const BOBBING_AMPLITUDE := 7.0
 
+const MAX_AGE := 60
+
 @export var target: Vector2
 @export var pickup_type: PickupType
 
@@ -77,6 +79,8 @@ func _physics_process(delta: float) -> void:
         var offset = sin(landing_age * BOBBING_SPEED)
         position = landing_position + Vector2(0, -offset * BOBBING_AMPLITUDE)
         landing_age += delta
+        if landing_age >= MAX_AGE:
+            queue_free()
 
 func start_floating() -> void:
     float_time_remaining = randf_range(FLOAT_MIN_TIME, FLOAT_MAX_TIME)
