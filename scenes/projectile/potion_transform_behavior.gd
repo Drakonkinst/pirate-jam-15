@@ -12,4 +12,5 @@ func on_land(pos: Vector2):
         if obstacle == null or not obstacle.data.can_transform:
             continue
         obstacle.set_transmuted_state(transform_into)
+        GlobalVariables.curr_game.score += 20
 

@@ -33,6 +33,7 @@ func on_land(pos: Vector2):
     if tile.obstacle and not tile.obstacle.data.invulnerable:
         success = true
         tile.obstacle.damage(obstacle_damage)
+        GlobalVariables.curr_game.score += 10
     if success:
         GlobalVariables.get_projectile_manager().play_pickaxe_audio()
 

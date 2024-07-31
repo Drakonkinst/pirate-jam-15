@@ -81,7 +81,8 @@ func start_crafting():
     is_crafting = true
     crafting_start.emit(animation_tint)
     crafting_time = crafting_data.crafting_time
-    craft_button.text = str(crafting_time)
+    craft_button.text = "Crafting..."
+    GlobalVariables.curr_game.score += 20
     
     crafting_timer.wait_time = 1
     crafting_timer.start()

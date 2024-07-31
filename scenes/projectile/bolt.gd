@@ -19,4 +19,5 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
         var enemy = body as Enemy
         if not enemy.is_ally:
             body.damage(bolt_damage, true)
+            GlobalVariables.curr_game.score += 5
             queue_free()

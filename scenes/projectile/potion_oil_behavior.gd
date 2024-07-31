@@ -11,4 +11,5 @@ func on_land(pos: Vector2):
         if obstacle == null or not obstacle.data.can_transform:
             continue
         obstacle_manager.replace_obstacle(Obstacle.Type.OIL_SPILL, tile)
+        GlobalVariables.curr_game.score += 20
 
