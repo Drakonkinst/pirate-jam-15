@@ -6,7 +6,7 @@
 [sub_resource type="Resource" id="Resource_i7w6l"]
 script = ExtResource("2_mu2go")
 spawn_time = 1.0
-spawn_type = 4
+spawn_type = 5
 row = 2
 
 [sub_resource type="Resource" id="Resource_7bklh"]
@@ -36,13 +36,13 @@ row = 2
 [sub_resource type="Resource" id="Resource_ndhed"]
 script = ExtResource("2_mu2go")
 spawn_time = 15.0
-spawn_type = 4
+spawn_type = 5
 row = 2
 
 [sub_resource type="Resource" id="Resource_52v0o"]
 script = ExtResource("2_mu2go")
 spawn_time = 18.0
-spawn_type = 7
+spawn_type = 3
 row = 0
 
 [sub_resource type="Resource" id="Resource_ctqi2"]
@@ -60,7 +60,7 @@ row = 0
 [sub_resource type="Resource" id="Resource_pvoe7"]
 script = ExtResource("2_mu2go")
 spawn_time = 21.0
-spawn_type = 4
+spawn_type = 5
 row = 4
 
 [sub_resource type="Resource" id="Resource_kq1y2"]
@@ -113,50 +113,50 @@ row = 0
 
 [sub_resource type="Resource" id="Resource_k6c0e"]
 script = ExtResource("2_mu2go")
-spawn_time = 40.0
-spawn_type = 4
+spawn_time = 45.0
+spawn_type = 5
 row = 1
 
 [sub_resource type="Resource" id="Resource_xqitr"]
 script = ExtResource("2_mu2go")
-spawn_time = 41.0
-spawn_type = 4
+spawn_time = 46.0
+spawn_type = 5
 row = 2
 
 [sub_resource type="Resource" id="Resource_6lwmx"]
 script = ExtResource("2_mu2go")
-spawn_time = 42.0
+spawn_time = 55.0
 spawn_type = 2
 row = 0
 
 [sub_resource type="Resource" id="Resource_32bjr"]
 script = ExtResource("2_mu2go")
-spawn_time = 43.0
+spawn_time = 57.0
 spawn_type = 2
 row = 0
 
 [sub_resource type="Resource" id="Resource_8g7ns"]
 script = ExtResource("2_mu2go")
-spawn_time = 44.0
+spawn_time = 58.0
 spawn_type = 2
 row = 0
 
 [sub_resource type="Resource" id="Resource_1iea3"]
 script = ExtResource("2_mu2go")
-spawn_time = 45.0
-spawn_type = 2
+spawn_time = 59.0
+spawn_type = 3
 row = 4
 
 [sub_resource type="Resource" id="Resource_yyymr"]
 script = ExtResource("2_mu2go")
-spawn_time = 46.0
-spawn_type = 2
-row = 4
+spawn_time = 60.0
+spawn_type = 3
+row = 2
 
 [sub_resource type="Resource" id="Resource_i88gh"]
 script = ExtResource("2_mu2go")
-spawn_time = 47.0
-spawn_type = 2
+spawn_time = 60.0
+spawn_type = 3
 row = 4
 
 [resource]

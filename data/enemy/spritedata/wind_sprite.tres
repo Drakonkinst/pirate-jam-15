@@ -12,8 +12,8 @@ max_count = 3
 [resource]
 script = ExtResource("1_myj3a")
 type = 2
-health = 50
-attack_damage = 5
+health = 25
+attack_damage = 3
 attack_frequency = 0.5
 move_speed = 12000.0
 loot = SubResource("Resource_53qd4")
