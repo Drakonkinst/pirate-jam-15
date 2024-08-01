@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt0lq1q75bews"]
+[gd_scene load_steps=11 format=3 uid="uid://bt0lq1q75bews"]
 
 [ext_resource type="Theme" uid="uid://bkwik1tcqd4en" path="res://assets/themes/MainMenuTheme.tres" id="1_kgndr"]
 [ext_resource type="Script" path="res://scenes/menus/start_menu.gd" id="1_yjtan"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://deuy1pek76bbo" path="res://assets/textures/enemy/profile/rock_sprite.png" id="4_ri3ft"]
 [ext_resource type="PackedScene" uid="uid://kpyn3d6kwgcy" path="res://scenes/menus/ui_click_audio.tscn" id="5_mx8i8"]
 [ext_resource type="Texture2D" uid="uid://vs1qri71bqx6" path="res://assets/textures/player_portrait.png" id="6_qvuhd"]
+[ext_resource type="Texture2D" uid="uid://6e4kyqlgi2g0" path="res://assets/textures/gamejam_crow.png" id="7_tp0hb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_44cow"]
 texture = ExtResource("4_lfps3")
@@ -178,6 +179,15 @@ offset_right = 1549.0
 offset_bottom = 1377.0
 scale = Vector2(0.48, 0.48)
 texture = ExtResource("6_qvuhd")
+
+[node name="TextureRect3" type="TextureRect" parent="Control/PanelContainer2"]
+layout_mode = 2
+offset_left = 1534.0
+offset_top = -329.0
+offset_right = 1935.0
+offset_bottom = 94.0
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("7_tp0hb")
 
 [node name="TextureRect2" type="TextureRect" parent="Control/PanelContainer2"]
 layout_mode = 2
