@@ -1,0 +1,146 @@
+[gd_scene load_steps=10 format=3 uid="uid://d1ldpq02q14iu"]
+
+[ext_resource type="Script" path="res://scenes/hud/day_tracker.gd" id="1_t7hqb"]
+[ext_resource type="FontFile" uid="uid://k16e325u2v05" path="res://assets/themes/MedievalSharp-Bold.ttf" id="2_84b5k"]
+
+[sub_resource type="Theme" id="Theme_yptux"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mihx5"]
+bg_color = Color(0.756863, 0.564706, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpufp"]
+bg_color = Color(1, 0.894194, 0.00294329, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+
+[sub_resource type="Theme" id="Theme_f8suf"]
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ruum"]
+bg_color = Color(0.984314, 0.85098, 0.164706, 0.623529)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 3
+shadow_size = 5
+shadow_offset = Vector2(3.305, 3.555)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77sbj"]
+bg_color = Color(0.858824, 0.698039, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 3
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yph87"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[node name="DayTrackerContainer" type="Control" node_paths=PackedStringArray("skip_day_button")]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 160.0
+grow_horizontal = 2
+mouse_filter = 1
+script = ExtResource("1_t7hqb")
+skip_day_button = NodePath("SkipDayButton")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+offset_left = 710.0
+offset_top = 30.0
+offset_right = 1210.0
+offset_bottom = 130.0
+size_flags_horizontal = 4
+mouse_filter = 2
+theme = SubResource("Theme_yptux")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_84b5k")
+theme_override_styles/background = SubResource("StyleBoxFlat_mihx5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jpufp")
+rounded = true
+show_percentage = false
+
+[node name="DayLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 500.0
+offset_top = 40.0
+offset_right = 1420.0
+offset_bottom = 119.0
+theme = SubResource("Theme_f8suf")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.996391, 0.812405, 0.583117, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_84b5k")
+theme_override_font_sizes/font_size = 64
+text = "Preparation"
+horizontal_alignment = 1
+
+[node name="SkipDayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 142.0
+offset_right = 150.0
+offset_bottom = 217.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.344076, 0.344076, 0.344076, 1)
+theme_override_colors/font_outline_color = Color(1, 0.683333, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_84b5k")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ruum")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77sbj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yph87")
+text = "Start Round"
+
+[connection signal="pressed" from="SkipDayButton" to="." method="_on_skip_day_button_pressed"]

@@ -96,6 +96,8 @@ theme = ExtResource("1_kgndr")
 
 [node name="PlayButton" type="Button" parent="Control/SelectionButtons/MarginContainer"]
 layout_mode = 2
+focus_next = NodePath("../../MarginContainer2/SettingsButton")
+focus_previous = NodePath("../../MarginContainer3/ExitButton")
 theme = ExtResource("1_kgndr")
 text = "Play"
 
@@ -113,6 +115,8 @@ theme = ExtResource("1_kgndr")
 
 [node name="SettingsButton" type="Button" parent="Control/SelectionButtons/MarginContainer2"]
 layout_mode = 2
+focus_next = NodePath("../../MarginContainer4/CreditsButton")
+focus_previous = NodePath("../../MarginContainer/PlayButton")
 theme = ExtResource("1_kgndr")
 text = "Settings"
 
@@ -130,6 +134,8 @@ theme = ExtResource("1_kgndr")
 
 [node name="CreditsButton" type="Button" parent="Control/SelectionButtons/MarginContainer4"]
 layout_mode = 2
+focus_next = NodePath("../../MarginContainer3/ExitButton")
+focus_previous = NodePath("../../MarginContainer2/SettingsButton")
 theme = ExtResource("1_kgndr")
 text = "Credits"
 
@@ -147,6 +153,8 @@ theme = ExtResource("1_kgndr")
 
 [node name="ExitButton" type="Button" parent="Control/SelectionButtons/MarginContainer3"]
 layout_mode = 2
+focus_next = NodePath("../../MarginContainer/PlayButton")
+focus_previous = NodePath("../../MarginContainer4/CreditsButton")
 theme = ExtResource("1_kgndr")
 text = "Exit"
 script = ExtResource("2_ufl12")

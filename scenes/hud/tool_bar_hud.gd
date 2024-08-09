@@ -124,10 +124,10 @@ func _on_potion_button_button_down() -> void:
 func _on_summon_button_button_down() -> void:
     toolbar.set_tool(ToolBar.Tool.SUMMON)
 
-func _on_tool_bar_tool_changed(tool: ToolBar.Tool) -> void:
-    var tool_index = TOOL_ORDER.find(tool, 0)
-    var needs_thin = tool == ToolBar.Tool.POTION
-    var needs_thick = tool == ToolBar.Tool.SUMMON
+func _on_tool_bar_tool_changed(tool_type: ToolBar.Tool) -> void:
+    var tool_index = TOOL_ORDER.find(tool_type, 0)
+    var needs_thin = tool_type == ToolBar.Tool.POTION
+    var needs_thick = tool_type == ToolBar.Tool.SUMMON
     for i in buttons.size():
         if i == tool_index:
             if needs_thick:

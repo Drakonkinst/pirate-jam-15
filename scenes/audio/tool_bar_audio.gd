@@ -14,6 +14,8 @@ class_name ToolBarAudio
 @onready var equip_potion: AudioRandomizer = $EquipPotionAudio
 @onready var equip_summon: AudioRandomizer = $EquipSummonAudio
 
+# TODO: Move this to be outside ToolBar
+
 # MAGIC_BOLT, TORCH, PICKAXE, POTION, SUMMON
 
 # Ignore the first tool change on game start
