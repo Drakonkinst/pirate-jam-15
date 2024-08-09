@@ -2,12 +2,23 @@ extends Node2D
 
 class_name ProjectileManager
 
+# TODO: ProjectileManager really shouldn't be owning some of these, but whatever
+signal splash_spawned
+signal ally_summoned
+signal pickaxe_landed
+signal enemy_killed
+
 const CLICK_INPUT := "click"
 const GRAVITY: float = 1000.0
 const INVERT_Y: Vector2 = Vector2(1.0, -1.0)
 
 @onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 
+@export var explosion_parent: Node2D
+@export var splat_parent: Node2D
+@export var show_debug: bool = false
+
+@export_group("Internal")
 @export var magic_bolt_scene: PackedScene
 @export var torch_scene: PackedScene
 @export var potion_oil_scene: PackedScene
@@ -19,16 +30,9 @@ const INVERT_Y: Vector2 = Vector2(1.0, -1.0)
 @export var debug_marker_scene: PackedScene
 @export var explosion_scene: PackedScene
 @export var splat_scene: PackedScene
-@export var explosion_parent: Node2D
-@export var splat_parent: Node2D
-@export var show_debug: bool = false
 @export var throw_offset: Vector2
 @export var fire_offset: Vector2
 @export var arc_height_multiplier: float = 0.25
-@onready var splash_audio: AudioRandomizer = %SplashAudio
-@onready var pickaxe_audio: AudioRandomizer = %PickaxeAudio
-@onready var summon_audio: AudioRandomizer = %SummonAudio
-@onready var death_audio: AudioRandomizer = %DeathAudio
 
 func _get_scene_for_projectile(type: ThrownProjectile.Type) -> PackedScene:
     match type:
@@ -68,7 +72,7 @@ func place_explosion(pos: Vector2) -> Explosion:
     explosion_obj.position = pos
     explosion_parent.add_child(explosion_obj)
     var explosion = explosion_obj as Explosion
-    splash_audio.play_random()
+    splash_spawned.emit()
     return explosion
 
 func place_splat(pos: Vector2) -> Splat:
@@ -80,13 +84,13 @@ func place_splat(pos: Vector2) -> Splat:
     return splat
 
 func play_pickaxe_audio() -> void:
-    pickaxe_audio.play_random()
+    pickaxe_landed.emit()
 
 func play_summon_audio() -> void:
-    summon_audio.play_random()
+    ally_summoned.emit()
 
 func play_death_audio() -> void:
-    death_audio.play_random()
+    enemy_killed.emit()
 
 func throw_projectile(projectile: ThrownProjectile.Type, mouse_pos: Vector2) -> bool:
     if not is_valid_target(mouse_pos, true):

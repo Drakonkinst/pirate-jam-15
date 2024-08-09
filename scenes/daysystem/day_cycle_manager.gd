@@ -6,6 +6,7 @@ signal day_started(curr_round: int) # Night End
 signal day_ended(curr_round: int) # Night Start
 signal interval_passed(curr_time: float) # Each second of the day/night
 signal game_over
+signal finished_final_round(curr_round: int)
 
 @export var day_length: float
 @export var night_length: float
@@ -40,10 +41,9 @@ func get_current_time():
 func start_day():
     if current_round >= MAX_ROUND:
         should_end_game = true
-        GlobalVariables.get_background_music().switch_track()
+        finished_final_round.emit()
         GlobalVariables.get_dialogue_manager().play_conversation(dialogue[current_round])
         return
-    GlobalVariables.get_background_music().switch_track()
     %Interval.start()
     day_started.emit(current_round)
     current_time = 0.0

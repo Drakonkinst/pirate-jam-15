@@ -2,8 +2,8 @@ extends Node2D
 
 class_name ToolBar
 
-signal tool_changed(tool: Tool)
-signal do_action(tool: Tool)
+signal tool_changed(tool_type: Tool)
+signal do_action(tool_type: Tool)
 signal tool_inventory_updated
 
 const ALLY_SPAWN_MARGIN := 20.0

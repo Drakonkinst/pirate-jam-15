@@ -112,6 +112,19 @@ max_value = 2.0
 step = 0.1
 value = 1.0
 
+[node name="AutoPickup" type="HBoxContainer" parent="MarginContainer/VBoxContainer/OptionsList"]
+layout_mode = 2
+theme = ExtResource("4_i5or2")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/OptionsList/AutoPickup"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Effects"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/OptionsList/AutoPickup"]
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/OptionsList"]
 layout_mode = 2
 alignment = 1

@@ -33,7 +33,6 @@ func change_night():
     skip_day_button.hide()
 
 func on_time_change(curr_time: float):
-    print("Current time is: " + str(curr_time))
     progress_bar.value = curr_time
 
 func _on_day_cycle_manager_interval_passed(curr_time:float):

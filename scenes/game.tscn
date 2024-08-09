@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=118 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -39,6 +39,7 @@
 [ext_resource type="AudioStream" uid="uid://c0god3bplix1" path="res://assets/audio/SFXTorchThrow.ogg" id="18_3tbfr"]
 [ext_resource type="Script" path="res://scenes/projectile/projectile_manager.gd" id="18_s1wrk"]
 [ext_resource type="PackedScene" uid="uid://bhi00njaa1vq3" path="res://scenes/menus/game_over_menu.tscn" id="19_1ihcy"]
+[ext_resource type="Script" path="res://scenes/audio/audio_manager.gd" id="19_3w8xd"]
 [ext_resource type="PackedScene" uid="uid://cu2l6glnoatrb" path="res://scenes/player/player.tscn" id="19_c5v0p"]
 [ext_resource type="PackedScene" uid="uid://cx5t0lk1frgn2" path="res://scenes/projectile/torch.tscn" id="20_3f6c5"]
 [ext_resource type="Script" path="res://scenes/player/tool_bar.gd" id="20_akytf"]
@@ -126,20 +127,20 @@ class_name World
 
 "
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar", "day_cycle_manager", "base_health", "game_over_screen", "background_music")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("grid", "obstacle_manager", "projectile_manager", "pickup_manager", "dialogue_manager", "light_manager", "enemy_spawner", "toolbar", "day_cycle_manager", "base_health", "game_over_screen", "pause_control")]
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
 obstacle_manager = NodePath("ObstacleManager")
 projectile_manager = NodePath("World/ProjectileManager")
-pickup_manager = NodePath("World/PickupManager")
+pickup_manager = NodePath("PickupManager")
 dialogue_manager = NodePath("DialogueManager")
 light_manager = NodePath("World/Grid/LightManager")
 enemy_spawner = NodePath("World/Enemies")
 toolbar = NodePath("ToolBar")
-day_cycle_manager = NodePath("World/DayCycleManager")
+day_cycle_manager = NodePath("DayCycleManager")
 base_health = NodePath("Player/BaseHealth")
 game_over_screen = NodePath("GameOverMenu")
-background_music = NodePath("BackgroundMusic")
+pause_control = NodePath("InputManager/PauseControl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
@@ -292,7 +293,7 @@ modulate = Color(1, 1, 1, 0.196078)
 texture = ExtResource("5_47rpd")
 
 [node name="DayTracker" parent="HUD" node_paths=PackedStringArray("day_cycle_manager") instance=ExtResource("9_ym8r7")]
-day_cycle_manager = NodePath("../../World/DayCycleManager")
+day_cycle_manager = NodePath("../../DayCycleManager")
 
 [node name="ToolBarHud" parent="HUD" node_paths=PackedStringArray("tool_info_hud") instance=ExtResource("9_dlv2r")]
 names = Array[String](["Magic Bolt", "Torch", "Pickaxe", "Potion", "Summon Sprite"])
@@ -439,30 +440,145 @@ autowrap_mode = 3
 script = ExtResource("15_v7ehn")
 
 [node name="DialogueManager" parent="." node_paths=PackedStringArray("pause_control") instance=ExtResource("8_7d0d0")]
-pause_control = NodePath("../PauseControl")
+pause_control = NodePath("../InputManager/PauseControl")
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("pause_control") instance=ExtResource("50_t4lxk")]
 layer = 3
 visible = false
-pause_control = NodePath("../PauseControl")
+pause_control = NodePath("../InputManager/PauseControl")
 
 [node name="GameOverMenu" parent="." instance=ExtResource("19_1ihcy")]
 process_mode = 3
 visible = false
 
-[node name="Input" type="Node2D" parent="."]
+[node name="AudioManager" type="Node2D" parent="."]
+script = ExtResource("19_3w8xd")
 
-[node name="MouseOverHandler" type="Node2D" parent="Input"]
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="AudioManager"]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("49_dv2lr")
+autoplay = true
+bus = &"Music"
+script = ExtResource("86_c2qol")
+tracks = Array[AudioStream]([ExtResource("49_dv2lr"), ExtResource("99_4386c"), ExtResource("100_ppgwg"), ExtResource("101_ki1ut"), ExtResource("102_h4fah"), ExtResource("99_4386c")])
+
+[node name="FireAudio" type="AudioStreamPlayer" parent="AudioManager"]
+unique_name_in_owner = true
+stream = ExtResource("80_tnref")
+volume_db = -5.0
+bus = &"Effects"
+script = ExtResource("81_tor4d")
+
+[node name="ToolBarAudio" type="Node2D" parent="AudioManager"]
+unique_name_in_owner = true
+script = ExtResource("11_gvs78")
+
+[node name="EquipAttackAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
+unique_name_in_owner = true
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("13_lykkh")])
+
+[node name="EquipTorchAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
+unique_name_in_owner = true
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("15_rjc6w")])
+
+[node name="EquipPickaxeAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
+unique_name_in_owner = true
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("66_807vn")])
+
+[node name="EquipPotionAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
+unique_name_in_owner = true
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("22_vevts")])
+
+[node name="EquipSummonAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
+unique_name_in_owner = true
+volume_db = -5.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("31_xtepc")])
+
+[node name="DoAttackAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
+unique_name_in_owner = true
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("22_1s61m"), ExtResource("23_a2iab"), ExtResource("24_m7fgo")])
+
+[node name="DoTorchAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
+unique_name_in_owner = true
+volume_db = -10.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("16_17j03"), ExtResource("17_a7jxu"), ExtResource("18_3tbfr")])
+
+[node name="DoPickaxeAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
+unique_name_in_owner = true
+volume_db = 5.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
+
+[node name="DoSummonAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
+unique_name_in_owner = true
+volume_db = 5.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
+min_pitch = 1.1
+max_pitch = 1.3
+
+[node name="DoPotionAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
+unique_name_in_owner = true
+volume_db = 5.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
+
+[node name="PauseAudio" type="AudioStreamPlayer" parent="AudioManager"]
+unique_name_in_owner = true
+volume_db = -15.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("66_807vn")])
+min_pitch = 1.0
+max_pitch = 1.0
+
+[node name="UnpauseAudio" type="AudioStreamPlayer" parent="AudioManager"]
+unique_name_in_owner = true
+volume_db = -15.0
+bus = &"Effects"
+script = ExtResource("12_hqgvj")
+audio_tracks = Array[AudioStream]([ExtResource("78_rohyd")])
+min_pitch = 1.0
+max_pitch = 1.0
+
+[node name="InputManager" type="Node2D" parent="."]
+
+[node name="MouseOverHandler" type="Node2D" parent="InputManager"]
 script = ExtResource("22_30ic7")
 mouse_over_mask = 2
 
-[node name="ClickHandler" type="Node2D" parent="Input" node_paths=PackedStringArray("tool_bar")]
+[node name="ClickHandler" type="Node2D" parent="InputManager" node_paths=PackedStringArray("tool_bar")]
 process_mode = 3
 script = ExtResource("28_xelsv")
 tool_bar = NodePath("../../HUD/ToolBarHud")
 
-[node name="InputHandler" type="Node2D" parent="Input"]
+[node name="InputHandler" type="Node2D" parent="InputManager"]
 script = ExtResource("26_742tv")
+
+[node name="PauseControl" type="Node2D" parent="InputManager"]
+process_mode = 3
+script = ExtResource("40_uejed")
 
 [node name="ToolBar" type="Node2D" parent="."]
 script = ExtResource("20_akytf")
@@ -484,69 +600,6 @@ one_shot = true
 [node name="SummonCooldown" type="Timer" parent="ToolBar"]
 wait_time = 0.5
 one_shot = true
-
-[node name="ToolBarAudio" type="Node2D" parent="ToolBar"]
-script = ExtResource("11_gvs78")
-
-[node name="EquipAttackAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-volume_db = -10.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("13_lykkh")])
-
-[node name="EquipTorchAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("15_rjc6w")])
-
-[node name="EquipPickaxeAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("66_807vn")])
-
-[node name="EquipPotionAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-volume_db = -10.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("22_vevts")])
-
-[node name="EquipSummonAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-volume_db = -5.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("31_xtepc")])
-
-[node name="DoAttackAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-volume_db = -10.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("22_1s61m"), ExtResource("23_a2iab"), ExtResource("24_m7fgo")])
-
-[node name="DoTorchAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-volume_db = -10.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("16_17j03"), ExtResource("17_a7jxu"), ExtResource("18_3tbfr")])
-
-[node name="DoPickaxeAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-volume_db = 5.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
-
-[node name="DoSummonAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-volume_db = 5.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
-min_pitch = 1.1
-max_pitch = 1.3
-
-[node name="DoPotionAudio" type="AudioStreamPlayer" parent="ToolBar/ToolBarAudio"]
-volume_db = 5.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
 
 [node name="ToolInventory" type="Node2D" parent="ToolBar"]
 position = Vector2(-1, 0)
@@ -577,7 +630,7 @@ z_index = 5
 z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("29_uoojh")
-day_cycle_manager = NodePath("../DayCycleManager")
+day_cycle_manager = NodePath("../../DayCycleManager")
 rock_sprite = ExtResource("47_0ykye")
 fire_sprite = ExtResource("48_pfolc")
 wind_sprite = ExtResource("49_k2mie")
@@ -674,20 +727,10 @@ z_index = 5
 z_as_relative = false
 y_sort_enabled = true
 
-[node name="PickupManager" type="Node2D" parent="World" node_paths=PackedStringArray("pickup_parent", "gui_targets")]
+[node name="Pickups" type="Node2D" parent="World"]
 z_index = 6
 z_as_relative = false
 y_sort_enabled = true
-script = ExtResource("16_c2f7e")
-pickup_scene = ExtResource("16_lfyb5")
-pickup_parent = NodePath(".")
-gold_texture = ExtResource("22_2cmqr")
-fire_texture = ExtResource("23_c6f8w")
-quartz_texture = ExtResource("24_qssr7")
-sap_texture = ExtResource("25_lh07w")
-fruit_texture = ExtResource("26_tx8vj")
-stone_texture = ExtResource("27_wwljy")
-gui_targets = [NodePath("../../HUD/ResourceHud/OffsetFromZoom/GoldAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/SapAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/StoneAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/FruitAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/QuartzAnchor"), NodePath("../../HUD/ResourceHud/OffsetFromZoom/FireAnchor")]
 
 [node name="ProjectileManager" type="Node2D" parent="World" node_paths=PackedStringArray("explosion_parent", "splat_parent")]
 z_index = 7
@@ -744,15 +787,27 @@ audio_tracks = Array[AudioStream]([ExtResource("84_l0jrm")])
 min_pitch = 1.0
 max_pitch = 1.3
 
-[node name="DayCycleManager" type="Node2D" parent="World"]
+[node name="DayCycleManager" type="Node2D" parent="."]
 script = ExtResource("67_l7r7b")
 day_length = 20.0
 night_length = 120.0
 dialogue = Array[Resource("res://scenes/dialogue/conversation.gd")]([ExtResource("86_b2t3i"), ExtResource("87_yp1ax"), ExtResource("88_aqxax"), ExtResource("89_mhsa2"), ExtResource("90_iru54"), ExtResource("88_hc3tq")])
 
-[node name="Interval" type="Timer" parent="World/DayCycleManager"]
+[node name="Interval" type="Timer" parent="DayCycleManager"]
 unique_name_in_owner = true
 autostart = true
+
+[node name="PickupManager" type="Node2D" parent="." node_paths=PackedStringArray("pickup_parent", "gui_targets")]
+script = ExtResource("16_c2f7e")
+pickup_scene = ExtResource("16_lfyb5")
+pickup_parent = NodePath("../World/Pickups")
+gold_texture = ExtResource("22_2cmqr")
+fire_texture = ExtResource("23_c6f8w")
+quartz_texture = ExtResource("24_qssr7")
+sap_texture = ExtResource("25_lh07w")
+fruit_texture = ExtResource("26_tx8vj")
+stone_texture = ExtResource("27_wwljy")
+gui_targets = [NodePath("../HUD/ResourceHud/OffsetFromZoom/GoldAnchor"), NodePath("../HUD/ResourceHud/OffsetFromZoom/SapAnchor"), NodePath("../HUD/ResourceHud/OffsetFromZoom/StoneAnchor"), NodePath("../HUD/ResourceHud/OffsetFromZoom/FruitAnchor"), NodePath("../HUD/ResourceHud/OffsetFromZoom/QuartzAnchor"), NodePath("../HUD/ResourceHud/OffsetFromZoom/FireAnchor")]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("19_c5v0p")]
 position = Vector2(238, 518)
@@ -807,14 +862,6 @@ audio_tracks = Array[AudioStream]([ExtResource("86_phalv")])
 min_pitch = 0.8
 max_pitch = 1.2
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-process_mode = 3
-stream = ExtResource("49_dv2lr")
-autoplay = true
-bus = &"Music"
-script = ExtResource("86_c2qol")
-tracks = Array[AudioStream]([ExtResource("49_dv2lr"), ExtResource("99_4386c"), ExtResource("100_ppgwg"), ExtResource("101_ki1ut"), ExtResource("102_h4fah"), ExtResource("99_4386c")])
-
 [node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("tree_spawn_audio", "rock_spawn_audio")]
 z_index = 1
 script = ExtResource("10_uoctj")
@@ -839,42 +886,18 @@ bus = &"Effects"
 script = ExtResource("12_hqgvj")
 audio_tracks = Array[AudioStream]([ExtResource("86_icjs6")])
 
-[node name="PauseControl" type="Node2D" parent="." node_paths=PackedStringArray("on_pause_audio", "off_pause_audio")]
-process_mode = 3
-script = ExtResource("40_uejed")
-on_pause_audio = NodePath("PauseAudio")
-off_pause_audio = NodePath("UnpauseAudio")
-
-[node name="PauseAudio" type="AudioStreamPlayer" parent="PauseControl"]
-volume_db = -15.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("66_807vn")])
-min_pitch = 1.0
-max_pitch = 1.0
-
-[node name="UnpauseAudio" type="AudioStreamPlayer" parent="PauseControl"]
-volume_db = -15.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("78_rohyd")])
-min_pitch = 1.0
-max_pitch = 1.0
-
-[node name="FireAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("80_tnref")
-volume_db = -5.0
-bus = &"Effects"
-script = ExtResource("81_tor4d")
-
 [connection signal="pressed_quit_to_menu" from="PauseMenu" to="." method="_on_pause_menu_pressed_quit_to_menu"]
 [connection signal="quit_to_menu" from="GameOverMenu" to="." method="_on_game_over_menu_quit_to_menu"]
 [connection signal="restart" from="GameOverMenu" to="." method="_on_game_over_menu_restart"]
-[connection signal="do_action" from="ToolBar" to="ToolBar/ToolBarAudio" method="_on_tool_bar_do_action"]
+[connection signal="paused" from="InputManager/PauseControl" to="PauseMenu" method="_on_pause_control_paused"]
+[connection signal="paused" from="InputManager/PauseControl" to="AudioManager" method="_on_pause_control_paused"]
+[connection signal="unpaused" from="InputManager/PauseControl" to="PauseMenu" method="_on_pause_control_unpaused"]
+[connection signal="unpaused" from="InputManager/PauseControl" to="AudioManager" method="_on_pause_control_unpaused"]
+[connection signal="do_action" from="ToolBar" to="AudioManager" method="_on_tool_bar_do_action"]
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
 [connection signal="tool_changed" from="ToolBar" to="HUD/CursorEffects" method="_on_tool_bar_tool_changed"]
 [connection signal="tool_changed" from="ToolBar" to="HUD/ToolBarHud" method="_on_tool_bar_tool_changed"]
-[connection signal="tool_changed" from="ToolBar" to="ToolBar/ToolBarAudio" method="_on_tool_bar_tool_changed"]
+[connection signal="tool_changed" from="ToolBar" to="AudioManager" method="_on_tool_bar_tool_changed"]
 [connection signal="tool_inventory_updated" from="ToolBar" to="HUD/ToolBarHud" method="_on_tool_bar_tool_inventory_updated"]
 [connection signal="timeout" from="ToolBar/AttackCooldown" to="ToolBar" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/DestroyCooldown" to="ToolBar" method="_on_destroy_cooldown_timeout"]
@@ -882,18 +905,19 @@ script = ExtResource("81_tor4d")
 [connection signal="timeout" from="ToolBar/PotionCooldown" to="ToolBar" method="_on_potion_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/SummonCooldown" to="ToolBar" method="_on_summon_cooldown_timeout"]
 [connection signal="updated" from="ToolBar/ToolInventory" to="ToolBar" method="_on_tool_inventory_updated"]
-[connection signal="wave_ended" from="World/Enemies" to="World/DayCycleManager" method="_on_enemies_wave_ended"]
-[connection signal="day_ended" from="World/DayCycleManager" to="HUD/DayTracker" method="_on_day_cycle_manager_day_ended"]
-[connection signal="day_ended" from="World/DayCycleManager" to="World/Enemies" method="_on_day_cycle_manager_day_ended"]
-[connection signal="day_started" from="World/DayCycleManager" to="HUD/DayTracker" method="_on_day_cycle_manager_day_started"]
-[connection signal="game_over" from="World/DayCycleManager" to="." method="_on_base_health_game_over"]
-[connection signal="interval_passed" from="World/DayCycleManager" to="HUD/DayTracker" method="_on_day_cycle_manager_interval_passed"]
-[connection signal="timeout" from="World/DayCycleManager/Interval" to="World/DayCycleManager" method="_on_interval_timeout"]
+[connection signal="wave_ended" from="World/Enemies" to="DayCycleManager" method="_on_enemies_wave_ended"]
+[connection signal="ally_summoned" from="World/ProjectileManager" to="AudioManager" method="_on_projectile_manager_ally_summoned"]
+[connection signal="day_ended" from="DayCycleManager" to="HUD/DayTracker" method="_on_day_cycle_manager_day_ended"]
+[connection signal="day_ended" from="DayCycleManager" to="World/Enemies" method="_on_day_cycle_manager_day_ended"]
+[connection signal="day_started" from="DayCycleManager" to="HUD/DayTracker" method="_on_day_cycle_manager_day_started"]
+[connection signal="day_started" from="DayCycleManager" to="AudioManager" method="_on_day_cycle_manager_day_started"]
+[connection signal="finished_final_round" from="DayCycleManager" to="AudioManager" method="_on_day_cycle_manager_finished_final_round"]
+[connection signal="game_over" from="DayCycleManager" to="." method="_on_base_health_game_over"]
+[connection signal="interval_passed" from="DayCycleManager" to="HUD/DayTracker" method="_on_day_cycle_manager_interval_passed"]
+[connection signal="timeout" from="DayCycleManager/Interval" to="DayCycleManager" method="_on_interval_timeout"]
 [connection signal="game_over" from="Player/BaseHealth" to="." method="_on_base_health_game_over"]
 [connection signal="changed" from="Player/BaseHealth/Health" to="Player/BaseHealth" method="_on_health_changed"]
 [connection signal="changed" from="Player/BaseHealth/Health" to="Player/BaseHealth/Healthbar" method="_on_health_changed"]
 [connection signal="death" from="Player/BaseHealth/Health" to="Player/BaseHealth" method="_on_health_death"]
-[connection signal="paused" from="PauseControl" to="PauseMenu" method="_on_pause_control_paused"]
-[connection signal="unpaused" from="PauseControl" to="PauseMenu" method="_on_pause_control_unpaused"]
 
 [editable path="Player/BaseHealth/Healthbar"]

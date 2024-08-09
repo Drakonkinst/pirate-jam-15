@@ -51,9 +51,6 @@ func get_grid() -> Grid:
 func get_day_cycle_manager() -> DayCycleManager:
     return curr_game.day_cycle_manager
 
-func get_background_music() -> BackgroundMusic:
-    return curr_game.background_music
-
 func _load_config() -> void:
     var err := config.load(CONFIG_PATH)
     if err == OK:

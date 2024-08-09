@@ -28,6 +28,7 @@ func is_in_light(pos: Vector2) -> bool:
             return true
     return false
 
+# TODO: Make an event when this value changes
 func any_fire() -> bool:
     for light in get_children():
         if light.light_type == Type.FIRE:

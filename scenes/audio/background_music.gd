@@ -7,10 +7,10 @@ class_name BackgroundMusic
 var current_track := -1
 
 func _ready() -> void:
-    switch_track()
+    # switch_track(0)
+    pass
 
-func switch_track() -> void:
-    var curr_round = GlobalVariables.get_day_cycle_manager().current_round
+func switch_track(curr_round: int) -> void:
     if curr_round >= 0 and curr_round < tracks.size():
         stream = tracks[curr_round]
     else:

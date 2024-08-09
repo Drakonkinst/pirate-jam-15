@@ -13,9 +13,11 @@ const PLAYER_DEFAULT := "player"
 const VILLAIN_DEFAULT := "villain"
 const MINION_DEFAULT := "minion"
 
+@export var pause_control: PauseControl
+
+@export_group("Internal")
 @export var textbox: Label
 @export var speaker: Label
-@export var pause_control: PauseControl
 @onready var overlay: TextureRect = $DialogueOverlay
 @onready var dialogue_container: Control = $DialogueBox
 

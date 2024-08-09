@@ -2,17 +2,17 @@ extends Node2D
 
 class_name ToolBarAudio
 
-@onready var do_attack: AudioRandomizer = $DoAttackAudio
-@onready var do_torch: AudioRandomizer = $DoTorchAudio
-@onready var do_pickaxe: AudioRandomizer = $DoPickaxeAudio
-@onready var do_potion: AudioRandomizer = $DoPotionAudio
-@onready var do_summon: AudioRandomizer = $DoSummonAudio
+@onready var do_attack: AudioRandomizer = %DoAttackAudio
+@onready var do_torch: AudioRandomizer = %DoTorchAudio
+@onready var do_pickaxe: AudioRandomizer = %DoPickaxeAudio
+@onready var do_potion: AudioRandomizer = %DoPotionAudio
+@onready var do_summon: AudioRandomizer = %DoSummonAudio
 
-@onready var equip_attack: AudioRandomizer = $EquipAttackAudio
-@onready var equip_torch: AudioRandomizer = $EquipTorchAudio
-@onready var equip_pickaxe: AudioRandomizer = $EquipPickaxeAudio
-@onready var equip_potion: AudioRandomizer = $EquipPotionAudio
-@onready var equip_summon: AudioRandomizer = $EquipSummonAudio
+@onready var equip_attack: AudioRandomizer = %EquipAttackAudio
+@onready var equip_torch: AudioRandomizer = %EquipTorchAudio
+@onready var equip_pickaxe: AudioRandomizer = %EquipPickaxeAudio
+@onready var equip_potion: AudioRandomizer = %EquipPotionAudio
+@onready var equip_summon: AudioRandomizer = %EquipSummonAudio
 
 # TODO: Move this to be outside ToolBar
 
@@ -21,7 +21,7 @@ class_name ToolBarAudio
 # Ignore the first tool change on game start
 var curr_tool: ToolBar.Tool = ToolBar.Tool.MAGIC_BOLT
 
-func _on_tool_bar_tool_changed(tool_type: ToolBar.Tool) -> void:
+func on_tool_changed(tool_type: ToolBar.Tool) -> void:
     var has_changed = tool_type != curr_tool
     curr_tool = tool_type
     if not has_changed:
@@ -39,7 +39,7 @@ func _on_tool_bar_tool_changed(tool_type: ToolBar.Tool) -> void:
         ToolBar.Tool.SUMMON:
             equip_summon.play_random()
 
-func _on_tool_bar_do_action(tool_type: ToolBar.Tool) -> void:
+func on_tool_action(tool_type: ToolBar.Tool) -> void:
     match tool_type:
         ToolBar.Tool.MAGIC_BOLT:
             do_attack.play_random()

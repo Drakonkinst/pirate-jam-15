@@ -16,10 +16,7 @@ signal restart
 @export var day_cycle_manager: DayCycleManager
 @export var base_health: BaseHealth
 @export var game_over_screen: GameOverMenu
-@export var victory_screen: GameOverMenu
-@export var background_music: BackgroundMusic
-
-@onready var pause_control: PauseControl = $PauseControl
+@export var pause_control: PauseControl
 
 var score: int = 0
 var sprites_killed: int = 0
