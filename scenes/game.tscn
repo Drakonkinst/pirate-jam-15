@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://83e3egs2ymb0"]
+[gd_scene load_steps=89 format=3 uid="uid://83e3egs2ymb0"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_0vq47"]
 [ext_resource type="Texture2D" uid="uid://p8gr24fapagv" path="res://assets/textures/background.png" id="2_5hatj"]
@@ -16,13 +16,11 @@
 [ext_resource type="Script" path="res://scenes/obstacle_manager.gd" id="10_uoctj"]
 [ext_resource type="PackedScene" uid="uid://bdnr8tlvaswxs" path="res://scenes/obstacle/tree.tscn" id="11_4iroc"]
 [ext_resource type="PackedScene" uid="uid://g0r7v65brbxf" path="res://scenes/grid/grid.tscn" id="11_7lv1o"]
-[ext_resource type="Script" path="res://scenes/audio/tool_bar_audio.gd" id="11_gvs78"]
 [ext_resource type="Script" path="res://scenes/player/base_health.gd" id="12_7pc3e"]
 [ext_resource type="PackedScene" uid="uid://ci5x7iudnfatv" path="res://scenes/obstacle/rock.tscn" id="12_bokvu"]
 [ext_resource type="PackedScene" uid="uid://jci63uf5o54n" path="res://scenes/ui/healthbar.tscn" id="12_h7wtm"]
 [ext_resource type="Script" path="res://scenes/audio/audio_randomizer.gd" id="12_hqgvj"]
 [ext_resource type="PackedScene" uid="uid://wvqco7kk748v" path="res://scenes/hud/resource_hud.tscn" id="13_08qek"]
-[ext_resource type="AudioStream" uid="uid://b5iybe17vtcm5" path="res://assets/audio/SFXMagicBoltSelected.ogg" id="13_lykkh"]
 [ext_resource type="PackedScene" uid="uid://hmw6qr2yjefw" path="res://scenes/obstacle/oil_spill.tscn" id="13_tpqui"]
 [ext_resource type="Script" path="res://scenes/hud/tool_info_hud.gd" id="14_7rdqt"]
 [ext_resource type="Script" path="res://scenes/health.gd" id="14_dohtn"]
@@ -30,31 +28,23 @@
 [ext_resource type="PackedScene" uid="uid://dutyvrutx3beh" path="res://scenes/obstacle/torch.tscn" id="14_q7ayn"]
 [ext_resource type="PackedScene" uid="uid://4ly726jco8yn" path="res://scenes/obstacle/sapling.tscn" id="15_0ctjf"]
 [ext_resource type="PackedScene" uid="uid://c68lf7id1osf4" path="res://scenes/obstacle/dead_sapling.tscn" id="15_e3p3e"]
-[ext_resource type="AudioStream" uid="uid://dfykpd75drack" path="res://assets/audio/SFXTorchSelected.ogg" id="15_rjc6w"]
 [ext_resource type="Script" path="res://scenes/hud/score.gd" id="15_v7ehn"]
-[ext_resource type="AudioStream" uid="uid://1lf81bxd8lv" path="res://assets/audio/SFXTorchThrow2.ogg" id="16_17j03"]
 [ext_resource type="Script" path="res://scenes/pickup_manager.gd" id="16_c2f7e"]
 [ext_resource type="PackedScene" uid="uid://bgqgtp3ng3xpo" path="res://scenes/effect/pickup.tscn" id="16_lfyb5"]
-[ext_resource type="AudioStream" uid="uid://vte5efiqisp7" path="res://assets/audio/SFXTorchThrow3.ogg" id="17_a7jxu"]
-[ext_resource type="AudioStream" uid="uid://c0god3bplix1" path="res://assets/audio/SFXTorchThrow.ogg" id="18_3tbfr"]
 [ext_resource type="Script" path="res://scenes/projectile/projectile_manager.gd" id="18_s1wrk"]
 [ext_resource type="PackedScene" uid="uid://bhi00njaa1vq3" path="res://scenes/menus/game_over_menu.tscn" id="19_1ihcy"]
-[ext_resource type="Script" path="res://scenes/audio/audio_manager.gd" id="19_3w8xd"]
 [ext_resource type="PackedScene" uid="uid://cu2l6glnoatrb" path="res://scenes/player/player.tscn" id="19_c5v0p"]
+[ext_resource type="PackedScene" uid="uid://byvaf71dnten0" path="res://scenes/audio/audio_manager.tscn" id="19_no7xj"]
 [ext_resource type="PackedScene" uid="uid://cx5t0lk1frgn2" path="res://scenes/projectile/torch.tscn" id="20_3f6c5"]
 [ext_resource type="Script" path="res://scenes/player/tool_bar.gd" id="20_akytf"]
 [ext_resource type="PackedScene" uid="uid://cj7mjnnov1jiq" path="res://scenes/player/debug_circle.tscn" id="20_capy2"]
 [ext_resource type="PackedScene" uid="uid://cj44eljqklllk" path="res://scenes/projectile/potion_oil.tscn" id="21_12ehp"]
-[ext_resource type="AudioStream" uid="uid://sl2rq8fwd4mh" path="res://assets/audio/SFXMagicBoltCast2.ogg" id="22_1s61m"]
 [ext_resource type="Texture2D" uid="uid://5cl3ivaiy1tn" path="res://assets/textures/resource/resource_shadow.png" id="22_2cmqr"]
 [ext_resource type="Script" path="res://scenes/hud/mouse_over_handler.gd" id="22_30ic7"]
 [ext_resource type="PackedScene" uid="uid://caimb710mdulv" path="res://scenes/projectile/potion_wood.tscn" id="22_i3eab"]
-[ext_resource type="AudioStream" uid="uid://ckrrxrss41ydo" path="res://assets/audio/SFXPotionSelected.ogg" id="22_vevts"]
 [ext_resource type="PackedScene" uid="uid://bijsw4pri2ff" path="res://scenes/projectile/potion_stone.tscn" id="23_65kor"]
-[ext_resource type="AudioStream" uid="uid://o23of6cpw8qf" path="res://assets/audio/SFXMagicBoltCast3.ogg" id="23_a2iab"]
 [ext_resource type="Texture2D" uid="uid://c0f67wjooigon" path="res://assets/textures/resource/resource_fire.png" id="23_c6f8w"]
 [ext_resource type="PackedScene" uid="uid://cqj3ms8wjn564" path="res://scenes/projectile/potion_quartz.tscn" id="24_50sjw"]
-[ext_resource type="AudioStream" uid="uid://bt50416hqjcxb" path="res://assets/audio/SFXMagicBoltCast.ogg" id="24_m7fgo"]
 [ext_resource type="Texture2D" uid="uid://q37qqy3fjdg2" path="res://assets/textures/resource/resource_quartz.png" id="24_qssr7"]
 [ext_resource type="Texture2D" uid="uid://bi6hufoa61ksj" path="res://assets/textures/resource/resource_wood.png" id="25_lh07w"]
 [ext_resource type="PackedScene" uid="uid://j6ftocfpm1hl" path="res://scenes/projectile/bolt.tscn" id="25_xb5cv"]
@@ -62,24 +52,17 @@
 [ext_resource type="Script" path="res://scenes/hud/input_handler.gd" id="26_742tv"]
 [ext_resource type="Texture2D" uid="uid://b12vk7snwti44" path="res://assets/textures/resource/resource_fruit.png" id="26_tx8vj"]
 [ext_resource type="Texture2D" uid="uid://cp74hu4ij71w1" path="res://assets/textures/resource/resource_stone.png" id="27_wwljy"]
-[ext_resource type="AudioStream" uid="uid://bx485s10qbsuq" path="res://assets/audio/SFXPotionThrow.ogg" id="28_dd6wx"]
 [ext_resource type="Script" path="res://scenes/light/light_manager.gd" id="28_m2bqy"]
 [ext_resource type="Script" path="res://scenes/hud/click_handler.gd" id="28_xelsv"]
 [ext_resource type="PackedScene" uid="uid://xwlygvxjdnu2" path="res://scenes/light/light_torch.tscn" id="29_tx1bu"]
-[ext_resource type="AudioStream" uid="uid://dh5yd5227d7un" path="res://assets/audio/SFXPotionThrow2.ogg" id="29_u3u3v"]
 [ext_resource type="Script" path="res://scenes/enemy/enemy_spawner.gd" id="29_uoojh"]
 [ext_resource type="PackedScene" uid="uid://c8pxl8kvqxfqw" path="res://scenes/light/light_quartz.tscn" id="30_52igg"]
-[ext_resource type="AudioStream" uid="uid://dme4j5gng2i3k" path="res://assets/audio/SFXPickaxeHit.ogg" id="30_tgwhu"]
-[ext_resource type="AudioStream" uid="uid://bj1altj7pui7m" path="res://assets/audio/SFXPotionThrow3.ogg" id="30_wlvrs"]
-[ext_resource type="AudioStream" uid="uid://8ujajk7k8kqf" path="res://assets/audio/SFXSummonSelected.ogg" id="31_xtepc"]
-[ext_resource type="AudioStream" uid="uid://b2nopdgqiolbn" path="res://assets/audio/SFXSummon.ogg" id="34_loc10"]
 [ext_resource type="PackedScene" uid="uid://cu6wwp5my8ay" path="res://scenes/effect/explosion.tscn" id="36_y78bo"]
 [ext_resource type="PackedScene" uid="uid://5ye7ihrmklny" path="res://scenes/effect/splat.tscn" id="37_6rhao"]
 [ext_resource type="Script" path="res://scenes/pause_control.gd" id="40_uejed"]
 [ext_resource type="PackedScene" uid="uid://qqbtem7vl5pf" path="res://scenes/enemy/types/sprite/rock_sprite.tscn" id="47_0ykye"]
 [ext_resource type="PackedScene" uid="uid://dbb3qghct8ehc" path="res://scenes/enemy/types/golem/rock_golem.tscn" id="48_1g0gr"]
 [ext_resource type="PackedScene" uid="uid://5cwnirn55jnd" path="res://scenes/enemy/types/sprite/fire_sprite.tscn" id="48_pfolc"]
-[ext_resource type="AudioStream" uid="uid://bi8dingytba6n" path="res://assets/audio/MUSICBackground.ogg" id="49_dv2lr"]
 [ext_resource type="PackedScene" uid="uid://bfrbgovkbdcr8" path="res://scenes/enemy/types/sprite/wind_sprite.tscn" id="49_k2mie"]
 [ext_resource type="Resource" uid="uid://bqnpxok6mr2xm" path="res://data/enemy/spawn_schedules/round_1.tres" id="50_i40f8"]
 [ext_resource type="PackedScene" uid="uid://cxj6wphfe51ue" path="res://scenes/enemy/types/sprite/tree_sprite.tscn" id="50_qd5sr"]
@@ -91,19 +74,11 @@
 [ext_resource type="Resource" uid="uid://3la7i7j0rah" path="res://data/enemy/spawn_schedules/round_4.tres" id="53_r6ff2"]
 [ext_resource type="Resource" uid="uid://bpdhiw11j7by8" path="res://data/enemy/spawn_schedules/round_5.tres" id="54_enwvg"]
 [ext_resource type="PackedScene" uid="uid://cue740t2tc7o5" path="res://scenes/enemy/types/golem/tree_golem.tscn" id="54_mtxj2"]
-[ext_resource type="AudioStream" uid="uid://bwy3k3hsarsjf" path="res://assets/audio/SFXMenuPause.ogg" id="66_807vn"]
 [ext_resource type="Script" path="res://scenes/daysystem/day_cycle_manager.gd" id="67_l7r7b"]
-[ext_resource type="AudioStream" uid="uid://jpu776c5cfpm" path="res://assets/audio/SFXPotionBreaks2.ogg" id="71_mspmp"]
-[ext_resource type="AudioStream" uid="uid://dp01ou2w0jlqc" path="res://assets/audio/SFXPotionsBreaks3.ogg" id="73_np7hk"]
 [ext_resource type="PackedScene" uid="uid://bcpwj6imh5smc" path="res://scenes/projectile/pickaxe.tscn" id="74_e84s6"]
 [ext_resource type="PackedScene" uid="uid://dpcl65blo6kv5" path="res://scenes/projectile/thrown_enemy.tscn" id="75_lx0rs"]
-[ext_resource type="AudioStream" uid="uid://0ompo3r7kiab" path="res://assets/audio/SFXMenuButtonSelect.ogg" id="78_rohyd"]
-[ext_resource type="AudioStream" uid="uid://c6tajhavixgha" path="res://assets/audio/SFXFireLOOP.ogg" id="80_tnref"]
-[ext_resource type="Script" path="res://scenes/audio/fire_audio.gd" id="81_tor4d"]
-[ext_resource type="AudioStream" uid="uid://dcjmp2fm33o6m" path="res://assets/audio/SFXMagicBoltHitsEnemy.ogg" id="84_l0jrm"]
 [ext_resource type="AudioStream" uid="uid://dgfyxil3bgkr1" path="res://assets/audio/SFXTreeBreaks.ogg" id="85_mupes"]
 [ext_resource type="Resource" uid="uid://c4glhwnrt00eo" path="res://data/dialogue/night_1.tres" id="86_b2t3i"]
-[ext_resource type="Script" path="res://scenes/audio/background_music.gd" id="86_c2qol"]
 [ext_resource type="AudioStream" uid="uid://corjypnip0syj" path="res://assets/audio/SFXRockBreaks.ogg" id="86_icjs6"]
 [ext_resource type="AudioStream" uid="uid://bdiqkejwlc1p6" path="res://assets/audio/SFXNope.ogg" id="86_phalv"]
 [ext_resource type="Resource" uid="uid://l376to3uvh8x" path="res://data/dialogue/night_2.tres" id="87_yp1ax"]
@@ -111,10 +86,6 @@
 [ext_resource type="Resource" uid="uid://bar2fqg6qv1pj" path="res://data/dialogue/end_game.tres" id="88_hc3tq"]
 [ext_resource type="Resource" uid="uid://d35rsi2rpc46j" path="res://data/dialogue/night_4.tres" id="89_mhsa2"]
 [ext_resource type="Resource" uid="uid://cp5ytkox1lf4v" path="res://data/dialogue/night_5.tres" id="90_iru54"]
-[ext_resource type="AudioStream" uid="uid://bd3b5f42356ie" path="res://assets/audio/MUSICBackground2.ogg" id="99_4386c"]
-[ext_resource type="AudioStream" uid="uid://bjcr5du8bdd7i" path="res://assets/audio/MUSICBackground3.ogg" id="100_ppgwg"]
-[ext_resource type="AudioStream" uid="uid://cb6li3lvgxaox" path="res://assets/audio/MUSICBackground4.ogg" id="101_ki1ut"]
-[ext_resource type="AudioStream" uid="uid://bqp5mx7qsue42" path="res://assets/audio/MUSICBackground5.ogg" id="102_h4fah"]
 
 [sub_resource type="Theme" id="Theme_f8suf"]
 default_font_size = 32
@@ -451,116 +422,7 @@ pause_control = NodePath("../InputManager/PauseControl")
 process_mode = 3
 visible = false
 
-[node name="AudioManager" type="Node2D" parent="."]
-script = ExtResource("19_3w8xd")
-
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="AudioManager"]
-unique_name_in_owner = true
-process_mode = 3
-stream = ExtResource("49_dv2lr")
-autoplay = true
-bus = &"Music"
-script = ExtResource("86_c2qol")
-tracks = Array[AudioStream]([ExtResource("49_dv2lr"), ExtResource("99_4386c"), ExtResource("100_ppgwg"), ExtResource("101_ki1ut"), ExtResource("102_h4fah"), ExtResource("99_4386c")])
-
-[node name="FireAudio" type="AudioStreamPlayer" parent="AudioManager"]
-unique_name_in_owner = true
-stream = ExtResource("80_tnref")
-volume_db = -5.0
-bus = &"Effects"
-script = ExtResource("81_tor4d")
-
-[node name="ToolBarAudio" type="Node2D" parent="AudioManager"]
-unique_name_in_owner = true
-script = ExtResource("11_gvs78")
-
-[node name="EquipAttackAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
-unique_name_in_owner = true
-volume_db = -10.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("13_lykkh")])
-
-[node name="EquipTorchAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
-unique_name_in_owner = true
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("15_rjc6w")])
-
-[node name="EquipPickaxeAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
-unique_name_in_owner = true
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("66_807vn")])
-
-[node name="EquipPotionAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
-unique_name_in_owner = true
-volume_db = -10.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("22_vevts")])
-
-[node name="EquipSummonAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
-unique_name_in_owner = true
-volume_db = -5.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("31_xtepc")])
-
-[node name="DoAttackAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
-unique_name_in_owner = true
-volume_db = -10.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("22_1s61m"), ExtResource("23_a2iab"), ExtResource("24_m7fgo")])
-
-[node name="DoTorchAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
-unique_name_in_owner = true
-volume_db = -10.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("16_17j03"), ExtResource("17_a7jxu"), ExtResource("18_3tbfr")])
-
-[node name="DoPickaxeAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
-unique_name_in_owner = true
-volume_db = 5.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
-
-[node name="DoSummonAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
-unique_name_in_owner = true
-volume_db = 5.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
-min_pitch = 1.1
-max_pitch = 1.3
-
-[node name="DoPotionAudio" type="AudioStreamPlayer" parent="AudioManager/ToolBarAudio"]
-unique_name_in_owner = true
-volume_db = 5.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("28_dd6wx"), ExtResource("29_u3u3v"), ExtResource("30_wlvrs")])
-
-[node name="PauseAudio" type="AudioStreamPlayer" parent="AudioManager"]
-unique_name_in_owner = true
-volume_db = -15.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("66_807vn")])
-min_pitch = 1.0
-max_pitch = 1.0
-
-[node name="UnpauseAudio" type="AudioStreamPlayer" parent="AudioManager"]
-unique_name_in_owner = true
-volume_db = -15.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("78_rohyd")])
-min_pitch = 1.0
-max_pitch = 1.0
+[node name="AudioManager" parent="." instance=ExtResource("19_no7xj")]
 
 [node name="InputManager" type="Node2D" parent="."]
 
@@ -736,6 +598,8 @@ y_sort_enabled = true
 z_index = 7
 z_as_relative = false
 script = ExtResource("18_s1wrk")
+explosion_parent = NodePath(".")
+splat_parent = NodePath("../Grid")
 magic_bolt_scene = ExtResource("25_xb5cv")
 torch_scene = ExtResource("20_3f6c5")
 potion_oil_scene = ExtResource("21_12ehp")
@@ -747,45 +611,8 @@ thrown_enemy_scene = ExtResource("75_lx0rs")
 debug_marker_scene = ExtResource("20_capy2")
 explosion_scene = ExtResource("36_y78bo")
 splat_scene = ExtResource("37_6rhao")
-explosion_parent = NodePath(".")
-splat_parent = NodePath("../Grid")
 throw_offset = Vector2(25, -75)
 fire_offset = Vector2(80, -50)
-
-[node name="SplashAudio" type="AudioStreamPlayer" parent="World/ProjectileManager"]
-unique_name_in_owner = true
-volume_db = -10.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("71_mspmp"), ExtResource("73_np7hk")])
-min_pitch = 0.75
-max_pitch = 1.0
-
-[node name="PickaxeAudio" type="AudioStreamPlayer" parent="World/ProjectileManager"]
-unique_name_in_owner = true
-volume_db = -10.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("30_tgwhu")])
-min_pitch = 0.7
-max_pitch = 0.9
-
-[node name="SummonAudio" type="AudioStreamPlayer" parent="World/ProjectileManager"]
-unique_name_in_owner = true
-volume_db = -10.0
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("34_loc10")])
-min_pitch = 0.75
-max_pitch = 1.2
-
-[node name="DeathAudio" type="AudioStreamPlayer" parent="World/ProjectileManager"]
-unique_name_in_owner = true
-bus = &"Effects"
-script = ExtResource("12_hqgvj")
-audio_tracks = Array[AudioStream]([ExtResource("84_l0jrm")])
-min_pitch = 1.0
-max_pitch = 1.3
 
 [node name="DayCycleManager" type="Node2D" parent="."]
 script = ExtResource("67_l7r7b")
@@ -890,14 +717,10 @@ audio_tracks = Array[AudioStream]([ExtResource("86_icjs6")])
 [connection signal="quit_to_menu" from="GameOverMenu" to="." method="_on_game_over_menu_quit_to_menu"]
 [connection signal="restart" from="GameOverMenu" to="." method="_on_game_over_menu_restart"]
 [connection signal="paused" from="InputManager/PauseControl" to="PauseMenu" method="_on_pause_control_paused"]
-[connection signal="paused" from="InputManager/PauseControl" to="AudioManager" method="_on_pause_control_paused"]
 [connection signal="unpaused" from="InputManager/PauseControl" to="PauseMenu" method="_on_pause_control_unpaused"]
-[connection signal="unpaused" from="InputManager/PauseControl" to="AudioManager" method="_on_pause_control_unpaused"]
-[connection signal="do_action" from="ToolBar" to="AudioManager" method="_on_tool_bar_do_action"]
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
 [connection signal="tool_changed" from="ToolBar" to="HUD/CursorEffects" method="_on_tool_bar_tool_changed"]
 [connection signal="tool_changed" from="ToolBar" to="HUD/ToolBarHud" method="_on_tool_bar_tool_changed"]
-[connection signal="tool_changed" from="ToolBar" to="AudioManager" method="_on_tool_bar_tool_changed"]
 [connection signal="tool_inventory_updated" from="ToolBar" to="HUD/ToolBarHud" method="_on_tool_bar_tool_inventory_updated"]
 [connection signal="timeout" from="ToolBar/AttackCooldown" to="ToolBar" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/DestroyCooldown" to="ToolBar" method="_on_destroy_cooldown_timeout"]
@@ -906,12 +729,9 @@ audio_tracks = Array[AudioStream]([ExtResource("86_icjs6")])
 [connection signal="timeout" from="ToolBar/SummonCooldown" to="ToolBar" method="_on_summon_cooldown_timeout"]
 [connection signal="updated" from="ToolBar/ToolInventory" to="ToolBar" method="_on_tool_inventory_updated"]
 [connection signal="wave_ended" from="World/Enemies" to="DayCycleManager" method="_on_enemies_wave_ended"]
-[connection signal="ally_summoned" from="World/ProjectileManager" to="AudioManager" method="_on_projectile_manager_ally_summoned"]
 [connection signal="day_ended" from="DayCycleManager" to="HUD/DayTracker" method="_on_day_cycle_manager_day_ended"]
 [connection signal="day_ended" from="DayCycleManager" to="World/Enemies" method="_on_day_cycle_manager_day_ended"]
 [connection signal="day_started" from="DayCycleManager" to="HUD/DayTracker" method="_on_day_cycle_manager_day_started"]
-[connection signal="day_started" from="DayCycleManager" to="AudioManager" method="_on_day_cycle_manager_day_started"]
-[connection signal="finished_final_round" from="DayCycleManager" to="AudioManager" method="_on_day_cycle_manager_finished_final_round"]
 [connection signal="game_over" from="DayCycleManager" to="." method="_on_base_health_game_over"]
 [connection signal="interval_passed" from="DayCycleManager" to="HUD/DayTracker" method="_on_day_cycle_manager_interval_passed"]
 [connection signal="timeout" from="DayCycleManager/Interval" to="DayCycleManager" method="_on_interval_timeout"]
