@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
+@export var tools: Array[ToolData]
+
 @onready var move_control: PlayerMoveControl = $PlayerMoveControl
 @onready var player_resources: PlayerResources = $PlayerResources
 @onready var animation_control: PlayerAnimationControl = $PlayerAnimationControl

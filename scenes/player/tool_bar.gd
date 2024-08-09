@@ -12,11 +12,16 @@ enum Tool {
 	MAGIC_BOLT, TORCH, PICKAXE, POTION, SUMMON
 }
 
+# TODO: Possibly move this logic to be under Player
+# TODO: Establish an unlock system
+
+# TODO: Dynamically generate the cooldowns for each tool
 @onready var attack_cooldown: Timer = $AttackCooldown
 @onready var destroy_cooldown: Timer = $DestroyCooldown
 @onready var torch_cooldown: Timer = $TorchCooldown
 @onready var potion_cooldown: Timer = $PotionCooldown
 @onready var summon_cooldown: Timer = $SummonCooldown
+
 @onready var tool_inventory: ToolInventory = $ToolInventory
 @onready var player: Player = get_tree().get_nodes_in_group(GlobalVariables.PLAYER_GROUP)[0]
 
