@@ -16,6 +16,7 @@ const INVERT_Y: Vector2 = Vector2(1.0, -1.0)
 
 @export var explosion_parent: Node2D
 @export var splat_parent: Node2D
+@export var projectile_parent: Node2D
 @export var show_debug: bool = false
 
 @export_group("Internal")
@@ -59,7 +60,7 @@ func fire_projectile(projectile: ThrownProjectile.Type, from: Vector2, to: Vecto
 
 func _fire_projectile_scene(projectile_scene: PackedScene, from: Vector2, to: Vector2) -> ThrownProjectile:
     var projectile_obj = projectile_scene.instantiate()
-    add_child(projectile_obj)
+    projectile_parent.add_child(projectile_obj)
     var projectile = projectile_obj as ThrownProjectile
     projectile.global_position = from
     projectile.target_y = to.y
@@ -116,7 +117,7 @@ func fire_bolt(to: Vector2) -> bool:
     if not is_valid_target(to, false):
         return false
     var bolt_obj = magic_bolt_scene.instantiate()
-    add_child(bolt_obj)
+    projectile_parent.add_child(bolt_obj)
     var bolt = bolt_obj as MagicBolt
     bolt.init(player.global_position + fire_offset, to)
     return true
@@ -125,7 +126,7 @@ func _place_debug_circle(pos: Vector2):
     if not show_debug:
         return
     var obj = debug_marker_scene.instantiate()
-    add_child(obj)
+    projectile_parent.add_child(obj)
     obj.position = pos
 
 # https://gamedev.stackexchange.com/questions/114635

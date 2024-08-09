@@ -4,8 +4,13 @@ class_name EnemySpawner
 
 signal wave_ended
 
-# Connect to day_ended signal to start using next spawning_schedule
+# TODO: Move to be the same parent node, but add filtering for ally/enemy
+@export var enemies_folder: Node2D
+@export var allies_folder: Node2D
 @export var day_cycle_manager: DayCycleManager
+
+@export_group("Internal")
+# Connect to day_ended signal to start using next spawning_schedule
 
 @export var rock_sprite: PackedScene
 @export var fire_sprite: PackedScene
@@ -25,8 +30,7 @@ signal wave_ended
 @export var endless_mode: bool
 @export var spawn_max_offset: float = 20.0
 
-@onready var enemies_folder: Node2D = %EnemiesFolder
-@onready var allies_folder: Node2D = %AlliesFolder
+
 
 @onready var num_spawns = 1:
     get: return len(curr_spawning_schedule.spawns)

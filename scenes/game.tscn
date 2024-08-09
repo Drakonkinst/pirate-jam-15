@@ -102,11 +102,11 @@ class_name World
 script = ExtResource("1_0vq47")
 grid = NodePath("World/Grid")
 obstacle_manager = NodePath("ObstacleManager")
-projectile_manager = NodePath("World/ProjectileManager")
+projectile_manager = NodePath("ProjectileManager")
 pickup_manager = NodePath("PickupManager")
 dialogue_manager = NodePath("DialogueManager")
 light_manager = NodePath("World/Grid/LightManager")
-enemy_spawner = NodePath("World/Enemies")
+enemy_spawner = NodePath("EnemyManager")
 toolbar = NodePath("ToolBar")
 day_cycle_manager = NodePath("DayCycleManager")
 base_health = NodePath("Player/BaseHealth")
@@ -422,6 +422,45 @@ pause_control = NodePath("../InputManager/PauseControl")
 process_mode = 3
 visible = false
 
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+script = SubResource("GDScript_hp6k0")
+
+[node name="Grid" parent="World" instance=ExtResource("11_7lv1o")]
+z_index = 2
+z_as_relative = false
+y_sort_enabled = true
+offset = Vector2(30, 0)
+debug_marker_scene = ExtResource("20_capy2")
+
+[node name="LightManager" type="CanvasGroup" parent="World/Grid"]
+self_modulate = Color(1, 1, 1, 0.156863)
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -3)
+script = ExtResource("28_m2bqy")
+light_torch_scene = ExtResource("29_tx1bu")
+light_quartz_scene = ExtResource("30_52igg")
+
+[node name="Enemies" type="Node2D" parent="World"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+
+[node name="Allies" type="Node2D" parent="World"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+
+[node name="Pickups" type="Node2D" parent="World"]
+z_index = 6
+z_as_relative = false
+y_sort_enabled = true
+
+[node name="Projectiles" type="Node2D" parent="World"]
+z_index = 7
+z_as_relative = false
+
 [node name="AudioManager" parent="." instance=ExtResource("19_no7xj")]
 
 [node name="InputManager" type="Node2D" parent="."]
@@ -467,139 +506,13 @@ one_shot = true
 position = Vector2(-1, 0)
 script = ExtResource("25_yxm1x")
 
-[node name="World" type="Node2D" parent="."]
-y_sort_enabled = true
-script = SubResource("GDScript_hp6k0")
-
-[node name="Grid" parent="World" instance=ExtResource("11_7lv1o")]
-z_index = 2
-z_as_relative = false
-y_sort_enabled = true
-offset = Vector2(30, 0)
-debug_marker_scene = ExtResource("20_capy2")
-
-[node name="LightManager" type="CanvasGroup" parent="World/Grid"]
-self_modulate = Color(1, 1, 1, 0.156863)
-z_index = 2
-z_as_relative = false
-position = Vector2(0, -3)
-script = ExtResource("28_m2bqy")
-light_torch_scene = ExtResource("29_tx1bu")
-light_quartz_scene = ExtResource("30_52igg")
-
-[node name="Enemies" type="Node2D" parent="World" node_paths=PackedStringArray("day_cycle_manager")]
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-script = ExtResource("29_uoojh")
-day_cycle_manager = NodePath("../../DayCycleManager")
-rock_sprite = ExtResource("47_0ykye")
-fire_sprite = ExtResource("48_pfolc")
-wind_sprite = ExtResource("49_k2mie")
-tree_sprite = ExtResource("50_qd5sr")
-rock_golem = ExtResource("48_1g0gr")
-fire_golem = ExtResource("52_ebjpr")
-wind_golem = ExtResource("53_i7n8v")
-tree_golem = ExtResource("54_mtxj2")
-spawning_schedules = Array[Resource("res://data/enemy/spawning_schedule.gd")]([ExtResource("50_i40f8"), ExtResource("51_sdyym"), ExtResource("52_hsagx"), ExtResource("53_r6ff2"), ExtResource("54_enwvg")])
-
-[node name="EnemySpawns" type="Node2D" parent="World/Enemies"]
-unique_name_in_owner = true
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(1868, 30)
-
-[node name="Spawn0" type="Node2D" parent="World/Enemies/EnemySpawns"]
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(0, 260)
-
-[node name="Spawn1" type="Node2D" parent="World/Enemies/EnemySpawns"]
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(0, 385)
-
-[node name="Spawn2" type="Node2D" parent="World/Enemies/EnemySpawns"]
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(0, 510)
-
-[node name="Spawn3" type="Node2D" parent="World/Enemies/EnemySpawns"]
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(0, 635)
-
-[node name="Spawn4" type="Node2D" parent="World/Enemies/EnemySpawns"]
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(0, 760)
-
-[node name="AllySpawns" type="Node2D" parent="World/Enemies"]
-unique_name_in_owner = true
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(346, 30)
-
-[node name="Spawn0" type="Node2D" parent="World/Enemies/AllySpawns"]
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(0, 260)
-
-[node name="Spawn1" type="Node2D" parent="World/Enemies/AllySpawns"]
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(0, 385)
-
-[node name="Spawn2" type="Node2D" parent="World/Enemies/AllySpawns"]
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(0, 510)
-
-[node name="Spawn3" type="Node2D" parent="World/Enemies/AllySpawns"]
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(0, 635)
-
-[node name="Spawn4" type="Node2D" parent="World/Enemies/AllySpawns"]
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(0, 760)
-
-[node name="EnemiesFolder" type="Node2D" parent="World/Enemies"]
-unique_name_in_owner = true
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-
-[node name="AlliesFolder" type="Node2D" parent="World/Enemies"]
-unique_name_in_owner = true
-z_index = 5
-z_as_relative = false
-y_sort_enabled = true
-
-[node name="Pickups" type="Node2D" parent="World"]
-z_index = 6
-z_as_relative = false
-y_sort_enabled = true
-
-[node name="ProjectileManager" type="Node2D" parent="World" node_paths=PackedStringArray("explosion_parent", "splat_parent")]
+[node name="ProjectileManager" type="Node2D" parent="." node_paths=PackedStringArray("explosion_parent", "splat_parent", "projectile_parent")]
 z_index = 7
 z_as_relative = false
 script = ExtResource("18_s1wrk")
 explosion_parent = NodePath(".")
-splat_parent = NodePath("../Grid")
+splat_parent = NodePath("../World/Grid")
+projectile_parent = NodePath("../World/Projectiles")
 magic_bolt_scene = ExtResource("25_xb5cv")
 torch_scene = ExtResource("20_3f6c5")
 potion_oil_scene = ExtResource("21_12ehp")
@@ -613,6 +526,98 @@ explosion_scene = ExtResource("36_y78bo")
 splat_scene = ExtResource("37_6rhao")
 throw_offset = Vector2(25, -75)
 fire_offset = Vector2(80, -50)
+
+[node name="EnemyManager" type="Node2D" parent="." node_paths=PackedStringArray("enemies_folder", "allies_folder", "day_cycle_manager")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+script = ExtResource("29_uoojh")
+enemies_folder = NodePath("../World/Enemies")
+allies_folder = NodePath("../World/Allies")
+day_cycle_manager = NodePath("../DayCycleManager")
+rock_sprite = ExtResource("47_0ykye")
+fire_sprite = ExtResource("48_pfolc")
+wind_sprite = ExtResource("49_k2mie")
+tree_sprite = ExtResource("50_qd5sr")
+rock_golem = ExtResource("48_1g0gr")
+fire_golem = ExtResource("52_ebjpr")
+wind_golem = ExtResource("53_i7n8v")
+tree_golem = ExtResource("54_mtxj2")
+spawning_schedules = Array[Resource("res://data/enemy/spawning_schedule.gd")]([ExtResource("50_i40f8"), ExtResource("51_sdyym"), ExtResource("52_hsagx"), ExtResource("53_r6ff2"), ExtResource("54_enwvg")])
+
+[node name="EnemySpawns" type="Node2D" parent="EnemyManager"]
+unique_name_in_owner = true
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(1868, 30)
+
+[node name="Spawn0" type="Node2D" parent="EnemyManager/EnemySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 260)
+
+[node name="Spawn1" type="Node2D" parent="EnemyManager/EnemySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 385)
+
+[node name="Spawn2" type="Node2D" parent="EnemyManager/EnemySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 510)
+
+[node name="Spawn3" type="Node2D" parent="EnemyManager/EnemySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 635)
+
+[node name="Spawn4" type="Node2D" parent="EnemyManager/EnemySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 760)
+
+[node name="AllySpawns" type="Node2D" parent="EnemyManager"]
+unique_name_in_owner = true
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(346, 30)
+
+[node name="Spawn0" type="Node2D" parent="EnemyManager/AllySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 260)
+
+[node name="Spawn1" type="Node2D" parent="EnemyManager/AllySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 385)
+
+[node name="Spawn2" type="Node2D" parent="EnemyManager/AllySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 510)
+
+[node name="Spawn3" type="Node2D" parent="EnemyManager/AllySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 635)
+
+[node name="Spawn4" type="Node2D" parent="EnemyManager/AllySpawns"]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 760)
 
 [node name="DayCycleManager" type="Node2D" parent="."]
 script = ExtResource("67_l7r7b")
@@ -719,8 +724,10 @@ audio_tracks = Array[AudioStream]([ExtResource("86_icjs6")])
 [connection signal="paused" from="InputManager/PauseControl" to="PauseMenu" method="_on_pause_control_paused"]
 [connection signal="unpaused" from="InputManager/PauseControl" to="PauseMenu" method="_on_pause_control_unpaused"]
 [connection signal="do_action" from="ToolBar" to="Player" method="_on_tool_bar_do_action"]
+[connection signal="do_action" from="ToolBar" to="AudioManager" method="_on_tool_bar_do_action"]
 [connection signal="tool_changed" from="ToolBar" to="HUD/CursorEffects" method="_on_tool_bar_tool_changed"]
 [connection signal="tool_changed" from="ToolBar" to="HUD/ToolBarHud" method="_on_tool_bar_tool_changed"]
+[connection signal="tool_changed" from="ToolBar" to="AudioManager" method="_on_tool_bar_tool_changed"]
 [connection signal="tool_inventory_updated" from="ToolBar" to="HUD/ToolBarHud" method="_on_tool_bar_tool_inventory_updated"]
 [connection signal="timeout" from="ToolBar/AttackCooldown" to="ToolBar" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/DestroyCooldown" to="ToolBar" method="_on_destroy_cooldown_timeout"]
@@ -728,9 +735,13 @@ audio_tracks = Array[AudioStream]([ExtResource("86_icjs6")])
 [connection signal="timeout" from="ToolBar/PotionCooldown" to="ToolBar" method="_on_potion_cooldown_timeout"]
 [connection signal="timeout" from="ToolBar/SummonCooldown" to="ToolBar" method="_on_summon_cooldown_timeout"]
 [connection signal="updated" from="ToolBar/ToolInventory" to="ToolBar" method="_on_tool_inventory_updated"]
-[connection signal="wave_ended" from="World/Enemies" to="DayCycleManager" method="_on_enemies_wave_ended"]
+[connection signal="ally_summoned" from="ProjectileManager" to="AudioManager" method="_on_projectile_manager_ally_summoned"]
+[connection signal="enemy_killed" from="ProjectileManager" to="AudioManager" method="_on_projectile_manager_enemy_killed"]
+[connection signal="pickaxe_landed" from="ProjectileManager" to="AudioManager" method="_on_projectile_manager_pickaxe_landed"]
+[connection signal="splash_spawned" from="ProjectileManager" to="AudioManager" method="_on_projectile_manager_splash_spawned"]
+[connection signal="wave_ended" from="EnemyManager" to="DayCycleManager" method="_on_enemies_wave_ended"]
 [connection signal="day_ended" from="DayCycleManager" to="HUD/DayTracker" method="_on_day_cycle_manager_day_ended"]
-[connection signal="day_ended" from="DayCycleManager" to="World/Enemies" method="_on_day_cycle_manager_day_ended"]
+[connection signal="day_ended" from="DayCycleManager" to="EnemyManager" method="_on_day_cycle_manager_day_ended"]
 [connection signal="day_started" from="DayCycleManager" to="HUD/DayTracker" method="_on_day_cycle_manager_day_started"]
 [connection signal="game_over" from="DayCycleManager" to="." method="_on_base_health_game_over"]
 [connection signal="interval_passed" from="DayCycleManager" to="HUD/DayTracker" method="_on_day_cycle_manager_interval_passed"]
